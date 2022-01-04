@@ -1,0 +1,49 @@
+@import "src/variables";
+
+.input {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1;
+  }
+
+  &__field {
+    font-family: Karla, 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    height: 40px;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $dark-grey25;
+    background-color: transparent;
+
+    &::placeholder {
+      color: $dark-grey25;
+    }
+
+    &:disabled {
+      background-color: $light-grey;
+      cursor: not-allowed;
+    }
+
+    &--bordered {
+      border: 1px solid $dark-grey25;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    &--bad {
+      border-color: $error;
+    }
+  }
+
+  &__validation {
+    color: $error;
+  }
+}
