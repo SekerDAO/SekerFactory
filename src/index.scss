@@ -1,0 +1,89 @@
+@import "assets/styles/colors";
+
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/Karla-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SairaSemiCondensed';
+  font-style: normal;
+  font-weight: 600;
+  src: url("assets/fonts/SairaSemiCondensed-SemiBold.ttf");
+  font-display: swap;
+}
+
+html {
+  font-size: 10px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Karla, 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: $dark-grey;
+  background-color: $light-grey;
+}
+
+h1 {
+  font-family: SairaSemiCondensed, 'Open Sans', sans-serif;
+  display: block;
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: $dark-grey;
+  text-align: left;
+}
+
+h2 {
+  font-family: SairaSemiCondensed, 'Open Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  color: $dark-grey;
+  font-weight: 600;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h3 {
+  font-family: SairaSemiCondensed, 'Open Sans', sans-serif;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: $dark-grey50;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: $dark-grey;
+}
+
+a,
+a:hover {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+p {
+  margin: 0;
+  color: $dark-grey;
+}
