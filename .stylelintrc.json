@@ -1,8 +1,7 @@
 {
-  "extends": "stylelint-config-standard-scss",
+  "extends": "stylelint-config-standard",
   "rules" : {
     "indentation": 2,
-    "color-hex-case": "upper",
-    "scss/at-import-partial-extension": "always"
+    "color-hex-case": "upper"
   }
 }

@@ -1,6 +1,59 @@
 @import "../../assets/styles/colors.scss";
 
 .home-page {
+  &__about {
+    margin-top: 40px;
+
+    p {
+      color: $white;
+      font-weight: bold;
+    }
+
+    & &--purple {
+      margin-top: 20px;
+      color: $purple;
+    }
+  }
+
+  &__purchase {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    &-item {
+      width: calc(50% - 10px);
+      border: 1px solid $dark-grey50;
+      padding: 20px;
+      border-radius: 5px;
+
+      &-img-container {
+        height: 200px;
+        width: 250px;
+        margin-bottom: 40px;
+      }
+
+      & &-address {
+        color: orange;
+        margin-top: 20px;
+      }
+
+      h1,
+      p,
+      li {
+        color: $white;
+      }
+
+      ul {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .btn {
+        width: 200px;
+      }
+    }
+  }
+
   .featured-event {
     background-color: $dark-grey;
     padding-top: 40px;
@@ -27,7 +80,7 @@
       h2 {
         p {
           margin-top: 10px;
-          font-style: bold;
+          font-weight: bold;
         }
       }
 
@@ -60,6 +113,38 @@
 
       .btn {
         margin-left: 10px;
+      }
+    }
+  }
+
+  .upcoming-events {
+    background-color: $dark-grey;
+    padding: 40px 20% 80px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        color: $white;
+      }
+    }
+
+    &__list {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-item {
+        min-height: 250px;
+        width: calc(50% - 10px);
+        position: relative;
+
+        .image-placeholder {
+          position: absolute;
+        }
       }
     }
   }

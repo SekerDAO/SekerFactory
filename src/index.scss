@@ -1,7 +1,7 @@
-@import "assets/styles/colors";
+@import "assets/styles/colors.scss";
 
 @font-face {
-  font-family: 'Karla';
+  font-family: Karla;
   font-style: normal;
   font-weight: normal;
   src: url("assets/fonts/Karla-Regular.ttf");
@@ -9,7 +9,7 @@
 }
 
 @font-face {
-  font-family: 'SairaSemiCondensed';
+  font-family: SairaSemiCondensed;
   font-style: normal;
   font-weight: 600;
   src: url("assets/fonts/SairaSemiCondensed-SemiBold.ttf");
@@ -29,13 +29,11 @@ body {
 *,
 ::before,
 ::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
-  font-family: Karla, 'Open Sans', sans-serif;
+  font-family: Karla, "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 20px;
   color: $dark-grey;
@@ -43,7 +41,7 @@ body {
 }
 
 h1 {
-  font-family: SairaSemiCondensed, 'Open Sans', sans-serif;
+  font-family: SairaSemiCondensed, "Open Sans", sans-serif;
   display: block;
   padding: 0;
   margin-block-start: 0;
@@ -53,7 +51,7 @@ h1 {
 }
 
 h2 {
-  font-family: SairaSemiCondensed, 'Open Sans', sans-serif;
+  font-family: SairaSemiCondensed, "Open Sans", sans-serif;
   padding: 0;
   margin: 0;
   font-size: 24px;
@@ -64,7 +62,7 @@ h2 {
 }
 
 h3 {
-  font-family: SairaSemiCondensed, 'Open Sans', sans-serif;
+  font-family: SairaSemiCondensed, "Open Sans", sans-serif;
   margin-block-start: 0;
   margin-block-end: 0;
   color: $dark-grey50;
@@ -78,8 +76,6 @@ a {
 
 a,
 a:hover {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
