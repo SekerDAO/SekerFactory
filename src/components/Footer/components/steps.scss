@@ -1,19 +1,6 @@
 @import "src/assets/styles/colors.scss";
 
 .genesis-step {
-  max-width: 565px;
-
-  h1 {
-    color: $white;
-    font-size: 60px;
-    margin-bottom: 40px;
-  }
-
-  p {
-    margin-top: 20px;
-    color: $white;
-  }
-
   &__buttons {
     margin-top: 40px;
     display: flex;
@@ -34,11 +21,6 @@
     .btn:first-of-type {
       margin-right: 20px;
     }
-  }
-
-  a {
-    color: $white;
-    font-weight: bold;
   }
 }
 
@@ -78,6 +60,11 @@
         align-items: center;
         color: $white;
       }
+    }
+
+    a {
+      color: $white;
+      font-weight: bold;
     }
   }
 
