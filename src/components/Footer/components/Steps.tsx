@@ -64,13 +64,13 @@ export const PhaseZero: FunctionComponent = () => (
 		subTitle="Phase 0 | January 2022"
 		content={
 			<>
-				<p>
+				<p className="bold">
 					We have secured a 4000 sq ft location in the bustling heart of Downtown Los Angeles to
 					serve as our first official Seker Factory(001), with ambitions for the space to become an
 					exceptionally immersive digital art gallery, a pioneering hackerspace / artist studio, an
 					exciting events venue, and much more
 				</p>
-				<p>
+				<p className="bold">
 					{`While we have completed construction upgrade to the venue and have started designing out the
 	space (including the installation of state-of-the-art sound systems and digital displays), we
 	intend to continue expanding this creative center and its digital experiences with the help of
