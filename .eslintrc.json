@@ -1,0 +1,89 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      // Allows for the parsing of JSX
+      "jsx": true
+    }
+  },
+  "plugins": ["import", "prefer-arrow"],
+  "ignorePatterns": ["node_modules/**/*"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": ["error", {
+      "semi": false,
+      "singleQuote": false,
+      "printWidth": 100,
+      "trailingComma": "none",
+      "arrowParens": "avoid",
+      "endOfLine": "auto"
+    }],
+    // Can break code with auto-fix option, we are checking it separately (see package.json lint-hooks script)
+    "react-hooks/exhaustive-deps": 0,
+    "no-console": [
+      "warn",
+      {
+        "allow": ["error"]
+      }
+    ],
+    "no-alert": "error",
+    "no-debugger": "error",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": false }],
+    "react/prop-types": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "prefer-promise-reject-errors": "error",
+    "prefer-const": ["error", {
+      "destructuring": "all",
+      "ignoreReadBeforeAssign": false
+    }],
+    "import/extensions": ["error", {"tsx": "never", "json": "always", "scss": "always"}],
+    "import/no-unresolved": "off", // does not work with foo/index.ts
+    "import/imports-first": ["error", "absolute-first"],
+    "no-bitwise": "error",
+    "@typescript-eslint/no-shadow": "error",
+    "no-array-constructor": "error",
+    "no-caller": "error",
+    "no-class-assign": "error",
+    "no-cond-assign": "error",
+    "no-useless-escape": "error",
+    "no-useless-return": "error",
+    "no-duplicate-case": "error",
+    "no-duplicate-imports": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-unused-expressions": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        "disallowPrototype": true,
+        "singleReturnOnly": false,
+        "classPropertiesAllowed": false
+      }
+    ],
+    "@typescript-eslint/no-var-requires": "error",
+    "react/jsx-props-no-spreading": ["error", {
+      "html": "ignore"
+    }],
+    "no-implicit-coercion": ["error", {"boolean": false}],
+    "no-param-reassign": ["error", {"props":  true}],
+    "no-process-env": "error"
+  }
+}

@@ -1,7 +1,5 @@
-import { FunctionComponent } from "react";
+import {FunctionComponent} from "react"
 
-const EventDetails: FunctionComponent = () => {
-    return <main>I am event details page</main>
-}
+const EventDetails: FunctionComponent = () => <main>I am event details page</main>
 
 export default EventDetails

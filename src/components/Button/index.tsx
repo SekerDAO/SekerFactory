@@ -1,5 +1,5 @@
 import {ButtonHTMLAttributes, FunctionComponent} from "react"
-import "./styles.scss"
+import "./index.scss"
 
 const Button: FunctionComponent<
 	{
