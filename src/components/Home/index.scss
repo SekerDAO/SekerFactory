@@ -22,7 +22,7 @@
       align-items: center;
 
       &-item {
-        min-height: 250px;
+        height: 250px;
         width: calc(50% - 10px);
         position: relative;
 
@@ -50,15 +50,18 @@
       margin-top: 40px;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       &-item {
         width: calc(50% - 10px);
-        border: 1px solid $dark-grey50;
+        border: 1px solid $dark-grey75;
         padding: 20px;
         border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
 
         &-img-container {
-          height: 200px;
+          height: 250px;
           width: 250px;
           margin-bottom: 40px;
         }
@@ -68,22 +71,45 @@
         }
 
         .orange {
-          color: orange;
+          color: $orange;
         }
 
         h1,
         p,
         li {
           color: $white;
+          width: 100%;
         }
 
         ul {
           padding-left: 0;
+          margin-top: 20px;
           list-style: none;
+
+          li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+
+            svg {
+              margin-right: 25px;
+            }
+          }
         }
 
         .btn {
           width: 200px;
+        }
+      }
+
+      &-charity {
+        width: 100%;
+        margin-top: 40px;
+
+        p {
+          color: $white;
+          text-align: center;
+          font-weight: normal;
         }
       }
     }

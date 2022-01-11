@@ -1,3 +1,5 @@
+@import "../../assets/styles/colors.scss";
+
 .footer {
-  background: linear-gradient(#E66465, #9198E5);
+  background: transparent linear-gradient(241deg, $purple 0%, $orange 100%) 0% 0% no-repeat padding-box;
 }

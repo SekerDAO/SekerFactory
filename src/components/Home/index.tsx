@@ -1,4 +1,5 @@
 import {FunctionComponent} from "react"
+import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {UPCOMING_EVENTS, FEATURED_EVENT} from "../../data/events"
 import Button from "../Button"
 import ImagePlaceholder from "../ImagePlaceholder"
@@ -76,7 +77,44 @@ const HomePage: FunctionComponent = () => (
 						Seker Factory 001 (Downtown Los Angeles)
 					</p>
 					<ul>
-						<li>Lorem Ipsum</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							{`Access to all visitor areas at Seker Factory 001 as well as that of future locations
+							at a "first come, first serve" basis.`}
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Patron governance rights for Seker Factory 001.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Whitelist to all current and future generative NFT series released by Seker Factory
+							001.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Access to all general IRL and metaverse events hosted by Seker Factory 001.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Discounts to Seker Factory 001 merch.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							More to come!
+						</li>
 					</ul>
 					<Button>Purchase</Button>
 				</div>
@@ -88,10 +126,53 @@ const HomePage: FunctionComponent = () => (
 					<p>1000 total</p>
 					<p className="upcoming-events__purchase-item-address orange">All Seker Factories</p>
 					<ul>
-						<li>Lorem Ipsum</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							{`Access to all visitor areas at all Seker Factory locations with ability to reserve "special" exhibits / experiences.`}
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Patron governance rights for all Seker Factory locations.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Whitelist to all current and future generative NFT series released by all Seker
+							Factory locations.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Access to all IRL and metaverse events at all Seker Factory locations, including
+							exclusive VIP events.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							Free exclusive Seker Factory merch redemption.
+						</li>
+						<li>
+							<div className="upcoming-events__purchace-item-icon-container">
+								<DoneCircle width="20px" height="20px" />
+							</div>
+							More to come!
+						</li>
 					</ul>
 					<Button>Purchase</Button>
 				</div>
+				<section className="upcoming-events__purchase-charity">
+					<p>
+						15% of DAO treasury generated from Clearance Card sales with go to the following
+						foundations:
+					</p>
+				</section>
 			</section>
 		</section>
 	</main>

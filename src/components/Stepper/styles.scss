@@ -1,0 +1,62 @@
+@import "src/variables";
+
+.stepper {
+  display: flex;
+
+  &__step {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 25%;
+    position: relative;
+    height: 50px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 40px;
+      left: calc(50% + 10px);
+      height: 2px;
+      width: 100%;
+      background-color: $dark-grey25;
+    }
+
+    &:last-of-type {
+      &::after {
+        content: none;
+      }
+    }
+
+    &--done {
+      h3 {
+        color: $dark-grey;
+      }
+
+      &::after {
+        background-color: $purple;
+      }
+    }
+
+    &--current {
+      h3 {
+        color: $purple;
+      }
+    }
+
+    h3,
+    svg {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    svg {
+      margin-top: 10px;
+    }
+  }
+}
