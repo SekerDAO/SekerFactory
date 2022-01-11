@@ -62,9 +62,7 @@ const HomePage: FunctionComponent = () => (
 					spot to fight for our digital future. We are gathering like-minded individuals to form a
 					global community of digital artists, hackers, and futurists of all kinds.
 				</p>
-				<p className="upcoming-events__about--purple">
-					Come for the vibes. Stay for the revolution.
-				</p>
+				<p className="purple">Come for the vibes. Stay for the revolution.</p>
 				<p>Come co-own our vision of the future, party in dystopia, and build for wagmi utopia.</p>
 			</section>
 			<section className="upcoming-events__purchase">
@@ -74,7 +72,7 @@ const HomePage: FunctionComponent = () => (
 					</div>
 					<h1>General Clearance Cards</h1>
 					<p>1000 total</p>
-					<p className="upcoming-events__purchase-item-address">
+					<p className="upcoming-events__purchase-item-address orange">
 						Seker Factory 001 (Downtown Los Angeles)
 					</p>
 					<ul>
@@ -88,7 +86,7 @@ const HomePage: FunctionComponent = () => (
 					</div>
 					<h1>Top Clearance Cards</h1>
 					<p>1000 total</p>
-					<p className="upcoming-events__purchase-item-address">All Seker Factories</p>
+					<p className="upcoming-events__purchase-item-address orange">All Seker Factories</p>
 					<ul>
 						<li>Lorem Ipsum</li>
 					</ul>

@@ -40,7 +40,7 @@
         font-weight: bold;
       }
 
-      & &--purple {
+      .purple {
         margin-top: 20px;
         color: $purple;
       }
@@ -63,9 +63,12 @@
           margin-bottom: 40px;
         }
 
-        & &-address {
-          color: orange;
+        &-address {
           margin-top: 20px;
+        }
+
+        .orange {
+          color: orange;
         }
 
         h1,
