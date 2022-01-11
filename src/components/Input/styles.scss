@@ -1,4 +1,4 @@
-@import "src/variables";
+@import "../../assets/styles/colors.scss";
 
 .input {
   display: flex;
@@ -13,7 +13,7 @@
   }
 
   &__field {
-    font-family: Karla, 'Open Sans', sans-serif;
+    font-family: Karla, "Open Sans", sans-serif;
     font-size: 16px;
     line-height: 20px;
     height: 40px;
