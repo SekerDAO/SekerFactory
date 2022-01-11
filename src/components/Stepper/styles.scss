@@ -1,4 +1,4 @@
-@import "src/variables";
+@import "src/assets/styles/colors.scss";
 
 .stepper {
   display: flex;
@@ -21,42 +21,53 @@
       position: absolute;
       top: 40px;
       left: calc(50% + 10px);
-      height: 2px;
+      height: 1px;
       width: 100%;
-      background-color: $dark-grey25;
+      background-color: $white;
     }
 
-    &:last-of-type {
-      &::after {
-        content: none;
+    &:first-of-type {
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 40px;
+        right: calc(50% + 10px);
+        height: 1px;
+        width: 100%;
+        background-color: $white;
       }
     }
 
-    &--done {
-      h3 {
-        color: $dark-grey;
-      }
+    &-icon {
+      width: 40px;
+      height: 40px;
+      background-color: $white;
+      border-radius: 50%;
+      z-index: 2;
 
-      &::after {
-        background-color: $purple;
+      &--current {
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          background-color: $orange;
+          width: 30px;
+          height: 30px;
+          top: 12.5%;
+          left: 12.5%;
+          border-radius: 50%;
+        }
       }
     }
 
-    &--current {
-      h3 {
-        color: $purple;
-      }
-    }
-
-    h3,
-    svg {
+    p {
       display: flex;
       width: 100%;
       justify-content: center;
-    }
-
-    svg {
-      margin-top: 10px;
+      color: $white;
     }
   }
 }

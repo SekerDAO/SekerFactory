@@ -2,4 +2,27 @@
 
 .footer {
   background: transparent linear-gradient(241deg, $purple 0%, $orange 100%) 0% 0% no-repeat padding-box;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 19.5%;
+  padding-right: 19.5%;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      color: $white;
+    }
+  }
+
+  &__content {
+    margin-top: 120px;
+  }
+
+  &__bottom {
+    margin-top: 140px;
+    color: $white;
+  }
 }
