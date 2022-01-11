@@ -178,3 +178,44 @@
     }
   }
 }
+
+@media (max-width: 1039px) {
+  .home-page {
+    .upcoming-events {
+      padding-left: 20px;
+      padding-right: 20px;
+
+      &__purchase {
+        &-item {
+          width: 100%;
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .featured-event {
+      flex-flow: wrap-reverse;
+
+      &__col {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        justify-content: center;
+
+        h1 {
+          width: 30%;
+          display: flex;
+        }
+
+        &-hosted-by {
+          width: 30%;
+        }
+
+        .image-placeholder {
+          height: 565px;
+        }
+      }
+    }
+  }
+}

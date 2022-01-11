@@ -7,22 +7,45 @@
   padding-bottom: 80px;
   padding-left: 19.5%;
   padding-right: 19.5%;
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
 
   &__heading {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 
     h1 {
       color: $white;
     }
   }
 
-  &__content {
-    margin-top: 120px;
-  }
-
   &__bottom {
-    margin-top: 140px;
+    align-self: flex-end;
+    justify-self: flex-start;
     color: $white;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1039px) {
+  .footer {
+    padding: 20px;
+
+    &__heading {
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+
+      h1 {
+        width: 100%;
+        text-align: center;
+      }
+
+      .stepper {
+        margin-top: 40px;
+      }
+    }
   }
 }

@@ -20,12 +20,14 @@ const HomePage: FunctionComponent = () => (
 				<h1>
 					{FEATURED_EVENT.title} <br /> {FEATURED_EVENT.dateReadable}
 				</h1>
-				<p>Hosted by:</p>
-				<h2>
-					<p>Seker Factory 001</p>
-					<p>836 S Los Angeles Street</p>
-					<p>Los Angeles, CA 90014</p>
-				</h2>
+				<div className="featured-event__col-hosted-by">
+					<p>Hosted by:</p>
+					<h2>
+						<p>Seker Factory 001</p>
+						<p>836 S Los Angeles Street</p>
+						<p>Los Angeles, CA 90014</p>
+					</h2>
+				</div>
 				<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
 				<Button>RSVP</Button>
 			</div>
