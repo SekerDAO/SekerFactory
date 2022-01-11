@@ -1,0 +1,67 @@
+@import "../../assets/styles/colors.scss";
+
+.event-details-page {
+  &__heading {
+    background-color: $dark-grey;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &-col {
+      width: 30%;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      p {
+        color: $white;
+      }
+
+      h1 {
+        color: $white;
+        white-space: pre-line;
+        line-height: 42px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        p {
+          margin-top: 10px;
+          font-weight: bold;
+        }
+      }
+
+      &-description {
+        margin-top: 20px;
+        color: $white;
+      }
+
+      .btn {
+        margin-top: 40px;
+        width: 200px;
+      }
+    }
+  }
+
+  .subscribe {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: $white;
+
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__input-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      .btn {
+        margin-left: 10px;
+      }
+    }
+  }
+}

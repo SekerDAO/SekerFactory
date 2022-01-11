@@ -4,7 +4,11 @@
   padding-top: 10px;
   background-color: $dark-grey;
 
-  &-logo-container {
+  &__logo-container {
     padding-left: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

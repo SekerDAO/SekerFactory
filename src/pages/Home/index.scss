@@ -26,6 +26,10 @@
         width: calc(50% - 10px);
         position: relative;
 
+        &:hover {
+          cursor: pointer;
+        }
+
         .image-placeholder {
           position: absolute;
         }

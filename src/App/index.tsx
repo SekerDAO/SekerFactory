@@ -1,10 +1,10 @@
 import {FunctionComponent} from "react"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
-import EventDetails from "../components/EventDetails"
-import EventsList from "../components/EventsList"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import HomePage from "../components/Home"
+import EventDetails from "../pages/EventDetails"
+import EventsList from "../pages/EventsList"
+import HomePage from "../pages/Home"
 
 const App: FunctionComponent = () => (
 	<Router>
@@ -12,7 +12,7 @@ const App: FunctionComponent = () => (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/events" element={<EventsList />} />
-			<Route path="/events/:eventSlug" element={<EventDetails />} />
+			<Route path="/events/:slug" element={<EventDetails />} />
 		</Routes>
 		<Footer />
 	</Router>

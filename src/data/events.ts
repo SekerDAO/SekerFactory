@@ -1,4 +1,5 @@
 import {EventContent} from "../types/event"
+import {isEventUpcoming} from "../utils"
 
 const EVENTS: EventContent[] = [
 	{
@@ -32,7 +33,7 @@ const EVENTS: EventContent[] = [
 
 export const FEATURED_EVENT = EVENTS[0]
 export const UPCOMING_EVENTS = EVENTS.filter(
-	event => event.date.getTime() > new Date().getTime() && event.slug !== FEATURED_EVENT.slug
+	event => isEventUpcoming(event) && event.slug !== FEATURED_EVENT.slug
 )
 
 export default EVENTS
