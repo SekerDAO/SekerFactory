@@ -1,0 +1,22 @@
+@import "../../assets/styles/colors.scss";
+
+.subscribe {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: $white;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__input-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .btn {
+      margin-left: 10px;
+    }
+  }
+}

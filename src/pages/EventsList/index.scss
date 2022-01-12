@@ -1,13 +1,17 @@
 @import "../../assets/styles/colors.scss";
 
-.event-details-page {
-  &__heading {
+.events-list-page {
+  &__item {
     background-color: $dark-grey;
     padding-top: 40px;
     padding-bottom: 80px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &-col {
       width: 30%;

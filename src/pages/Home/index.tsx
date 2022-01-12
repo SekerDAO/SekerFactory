@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import Button from "../../components/Button"
 import ImagePlaceholder from "../../components/ImagePlaceholder"
-import Input from "../../components/Input"
+import SubscribeForm from "../../components/Subscribe"
 import {UPCOMING_EVENTS, FEATURED_EVENT} from "../../data/events"
 import "./index.scss"
 
@@ -35,17 +35,13 @@ const HomePage: FunctionComponent = () => {
 					<Button>RSVP</Button>
 				</div>
 			</section>
-			<section className="subscribe">
-				<h1>Keep in Touch for Future Events</h1>
-				<div className="subscribe__input-container">
-					<Input placeholder="Enter your email" borders="bottom" />
-					<Button variant="secondary">Join Now</Button>
-				</div>
-			</section>
+			<SubscribeForm />
 			<section className="upcoming-events">
 				<div className="upcoming-events__header">
 					<h3>Upcoming Events</h3>
-					<Button variant="link">Previous Events</Button>
+					<Button variant="link" onClick={() => navigate(`/events?sort=asc`)}>
+						Previous Events
+					</Button>
 				</div>
 				<section className="upcoming-events__list">
 					{UPCOMING_EVENTS.map(eventContent => (
