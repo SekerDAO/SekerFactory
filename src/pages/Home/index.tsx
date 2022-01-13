@@ -64,13 +64,13 @@ const HomePage: FunctionComponent = () => {
 				</section>
 				<section className="upcoming-events__about">
 					<p>
-						Seker Factory is building an immersive cyber noise of dystopian hangouts - the premier
+						Seker Factory is building an immersive tech noir of dystopian hangouts - the premier
 						spot to fight for our digital future. We are gathering like-minded individuals to form a
 						global community of digital artists, hackers, and futurists of all kinds.
 					</p>
 					<p className="purple">Come for the vibes. Stay for the revolution.</p>
 					<p>
-						Come co-own our vision of the future, party in dystopia, and build for wagmi utopia.
+						Come co-own our vision of the future, party in dystopia, and build for a wagmi horizon.
 					</p>
 				</section>
 				<section className="upcoming-events__purchase">
@@ -78,7 +78,7 @@ const HomePage: FunctionComponent = () => {
 						<div className="upcoming-events__purchase-item-img-container">
 							<ImagePlaceholder />
 						</div>
-						<h1>General Clearance Cards</h1>
+						<h1>001 Clearance Cards</h1>
 						<p>1000 total</p>
 						<p className="upcoming-events__purchase-item-address orange">
 							Seker Factory 001 (Downtown Los Angeles)
@@ -101,7 +101,7 @@ const HomePage: FunctionComponent = () => {
 								<div className="upcoming-events__purchace-item-icon-container">
 									<DoneCircle width="20px" height="20px" />
 								</div>
-								Whitelist to all current and future generative NFT series released by Seker Factory
+								Allowlist to all current and future generative NFT series released by Seker Factory
 								001.
 							</li>
 							<li>
@@ -149,7 +149,7 @@ const HomePage: FunctionComponent = () => {
 								<div className="upcoming-events__purchace-item-icon-container">
 									<DoneCircle width="20px" height="20px" />
 								</div>
-								Whitelist to all current and future generative NFT series released by all Seker
+								Allowlist to all current and future generative NFT series released by all Seker
 								Factory locations.
 							</li>
 							<li>

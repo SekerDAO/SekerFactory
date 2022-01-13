@@ -28,16 +28,17 @@ export const GenesisStep: FunctionComponent = () => (
 		content={
 			<>
 				<p className="bold">
-					Ran as truly decentralized autonomous organization (DAO), we are a community built by the
-					community - curating our own journey and experiences and projit-sharing among contributors
-					every step of the way .
+					Ran as truly decentralized autonomous organization (DAO), we are a community of
+					collectors, artists, technologists, and dreamers - curating our own journey and
+					experiences every step of the way.
 				</p>
 				<p className="bold">
 					With the backing of extensive Ethereum core developer experience, access to the most
-					cutting-edge DAO tooling, and an exciting physicla space (with ambitious of more to come),
-					Seker Factory aims to explore the boundaries between the digital and physical, the
-					promotion and expansion of the creative commons and public goods, and the technological
-					advancement within the NFT and DAO ecosystem.
+					cutting-edge DAO tooling, artists from around the globe, and an exciting physical space
+					(with more to come), Seker Factory aims to explore the leisure of an intergalactic cruise
+					ship, the boundaries between the digital and physical, the promotion and expansion of the
+					creative commons and public goods, and the technological advancement within the NFT and
+					DAO ecosystem.
 				</p>
 				<div className="genesis-step__buttons">
 					<Button>
