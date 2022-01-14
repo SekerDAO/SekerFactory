@@ -4,18 +4,16 @@ import "./styles.scss"
 const Input: FunctionComponent<
 	{
 		borders?: "bottom" | "all"
-		number?: boolean
 		validation?: string | null
-	} & Omit<InputHTMLAttributes<HTMLInputElement>, "type">
-> = ({borders = "all", number = false, validation, step = 1, onChange, value, ...inputProps}) => (
+	} & InputHTMLAttributes<HTMLInputElement>
+> = ({borders = "all", validation, type, onChange, value, ...inputProps}) => (
 	<div className="input">
 		<div className="input__wrapper">
 			<input
 				className={`input__field${borders === "all" ? " input__field--bordered" : ""}${
 					validation ? " input__field--bad" : ""
 				}`}
-				type={number ? "number" : "text"}
-				step={step}
+				type={type}
 				onChange={onChange}
 				value={value}
 				{...inputProps}
