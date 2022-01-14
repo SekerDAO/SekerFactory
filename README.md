@@ -1,4 +1,5 @@
 # SekerFactory Landing Page
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c62a4b71-c791-49b9-a846-d5529b559267/deploy-status)](https://app.netlify.com/sites/boring-swanson-bd03b1/deploys)
 
 ## Mailchimp integration
 To connect Subscribe form to the Mailchimp - you need to do following:
