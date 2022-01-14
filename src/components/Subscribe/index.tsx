@@ -11,7 +11,9 @@ const SubscribeForm: FunctionComponent = () => {
 		<section className={`subscribe${!isVisible ? " subscribe--hidden" : ""}`}>
 			<h1>Keep in Touch for Future Events</h1>
 			{success ? (
-				<p>Success! You are subscribed to our newsletter :)</p>
+				<p className="subscribe__success-message">
+					Success! You are subscribed to our newsletter :)
+				</p>
 			) : (
 				<form
 					className="subscribe__input-container"
