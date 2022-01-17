@@ -3,6 +3,8 @@
 .footer {
   background: transparent linear-gradient(241deg, $purple 0%, $orange 100%) 0% 0% no-repeat padding-box;
   min-height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
   padding-top: 120px;
   padding-bottom: 80px;
   padding-left: 19.5%;
@@ -49,6 +51,12 @@
 
       .stepper {
         margin-top: 40px;
+        margin-left: 0;
+        top: 0;
+
+        &__step {
+          width: 75px;
+        }
       }
     }
   }

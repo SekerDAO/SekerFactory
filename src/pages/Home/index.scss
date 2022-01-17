@@ -201,13 +201,19 @@
         margin-top: 20px;
         justify-content: center;
 
+        &:last-of-type,
+        &:first-of-type {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+
         h1 {
-          width: 30%;
+          width: 100%;
           display: flex;
         }
 
         &-hosted-by {
-          width: 30%;
+          width: 100%;
         }
 
         .image-placeholder {

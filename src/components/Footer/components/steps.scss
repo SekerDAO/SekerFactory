@@ -120,5 +120,15 @@
       max-width: 100%;
       margin-top: 40px;
     }
+
+    &__video-tour {
+      max-width: 100%;
+      margin-left: 0;
+
+      &-content {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
   }
 }
