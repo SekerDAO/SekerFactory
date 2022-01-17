@@ -14,7 +14,7 @@ const Phase: FunctionComponent<{title: string; subTitle?: string; content?: Reac
 }) => (
 	<section className="phase">
 		<section className="phase__content">
-			{subTitle && <h2>{subTitle}</h2>}
+			{subTitle && <h3>{subTitle}</h3>}
 			<h1>{title}</h1>
 			{content}
 		</section>

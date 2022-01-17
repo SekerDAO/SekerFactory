@@ -20,7 +20,9 @@ const Footer: FunctionComponent = () => {
 				<Stepper currentStepIndex={currentStepIdx} steps={steps} onStepClick={setCurrentStepIdx} />
 			</section>
 			<section className="footer__content">{currentStep.content}</section>
-			<section className="footer__bottom">© Seker Factory 2022</section>
+			<section className="footer__bottom">
+				<p>© Seker Factory 2022</p>
+			</section>
 		</footer>
 	)
 }

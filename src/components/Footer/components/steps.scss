@@ -30,15 +30,22 @@
 
   &__content {
     max-width: 565px;
+    margin-right: 20px;
 
     &-icon {
       margin-right: 20px;
     }
 
     h1 {
-      font-size: 60px;
-      line-height: 68px;
+      font-size: 48px;
+      line-height: 60px;
       margin-bottom: 40px;
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 20px;
     }
 
     p {
@@ -52,6 +59,8 @@
       li {
         display: flex;
         align-items: center;
+        color: $white;
+        margin-top: 20px;
       }
     }
 
@@ -67,7 +76,8 @@
     align-items: center;
     justify-content: center;
     align-self: center;
-    margin-left: 40px;
+    margin-left: 20px;
+    margin-top: 100px;
 
     .image-placeholder {
       width: 565px;
@@ -98,6 +108,7 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
+  font-family: SairaSemiCondensed, "Open Sans", sans-serif;
 }
 
 @media (max-width: 1039px) {
