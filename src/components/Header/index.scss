@@ -1,11 +1,11 @@
 @import "../../assets/styles/colors.scss";
 
 .header {
-  padding-top: 10px;
+  padding-top: 20px;
   background-color: $dark-grey;
 
   &__logo-container {
-    padding-left: 20px;
+    padding-left: 40px;
 
     &:hover {
       cursor: pointer;

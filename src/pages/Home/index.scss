@@ -3,7 +3,7 @@
 .home-page {
   .upcoming-events {
     background-color: $dark-grey;
-    padding: 40px 20% 80px;
+    padding: 80px 20% 80px;
 
     &__header {
       display: flex;
@@ -11,7 +11,8 @@
       align-items: center;
 
       h3 {
-        color: $white;
+        font-size: 24px;
+        line-height: 28px;
       }
     }
 
@@ -23,7 +24,7 @@
 
       &-item {
         height: 250px;
-        width: calc(50% - 10px);
+        width: calc(50% - 20px);
         position: relative;
 
         &:hover {
@@ -37,11 +38,11 @@
     }
 
     &__about {
-      margin-top: 40px;
+      margin-top: 80px;
 
-      p {
-        color: $white;
-        font-weight: bold;
+      h3 {
+        font-size: 32px;
+        line-height: 36px;
       }
 
       .purple {
@@ -51,15 +52,15 @@
     }
 
     &__purchase {
-      margin-top: 40px;
+      margin-top: 80px;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
 
       &-item {
-        width: calc(50% - 10px);
+        width: calc(50% - 20px);
         border: 1px solid $dark-grey75;
-        padding: 20px;
+        padding: 40px;
         border-radius: 5px;
         display: flex;
         flex-wrap: wrap;
@@ -78,10 +79,18 @@
           color: $orange;
         }
 
-        h1,
+        .bold {
+          font-weight: bold;
+        }
+
+        h3 {
+          font-size: 24px;
+          line-height: 28px;
+        }
+
+        h3,
         p,
         li {
-          color: $white;
           width: 100%;
         }
 
@@ -91,6 +100,7 @@
           list-style: none;
 
           li {
+            color: $white;
             display: flex;
             align-items: flex-start;
             margin-bottom: 20px;
@@ -111,7 +121,6 @@
         margin-top: 40px;
 
         p {
-          color: $white;
           text-align: center;
           font-weight: normal;
         }
@@ -128,30 +137,36 @@
 
     &__col {
       width: 30%;
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
 
-      p {
-        color: $white;
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
       }
 
       h1 {
-        color: $white;
         white-space: pre-line;
-        line-height: 42px;
+        font-size: 48px;
+        line-height: 60px;
         margin-bottom: 20px;
       }
 
       h2 {
-        p {
-          margin-top: 10px;
-          font-weight: bold;
-        }
+        font-size: 32px;
+        line-height: 36px;
+      }
+
+      h3 {
+        font-size: 20px;
+        line-height: 36px;
       }
 
       &-description {
         margin-top: 20px;
-        color: $white;
       }
 
       .btn {

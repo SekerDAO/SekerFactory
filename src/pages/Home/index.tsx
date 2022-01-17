@@ -24,11 +24,11 @@ const HomePage: FunctionComponent = () => {
 						{FEATURED_EVENT.title} <br /> {FEATURED_EVENT.dateReadable}
 					</h1>
 					<div className="featured-event__col-hosted-by">
-						<p>Hosted by:</p>
+						<h3>Hosted by:</h3>
 						<h2>
-							<p>Seker Factory 001</p>
-							<p>836 S Los Angeles Street</p>
-							<p>Los Angeles, CA 90014</p>
+							Seker Factory 001 <br />
+							836 S Los Angeles Street <br />
+							Los Angeles, CA 90014
 						</h2>
 					</div>
 					<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
@@ -63,25 +63,25 @@ const HomePage: FunctionComponent = () => {
 					))}
 				</section>
 				<section className="upcoming-events__about">
-					<p>
+					<h3>
 						Seker Factory is building an immersive tech noir of dystopian hangouts - the premier
 						spot to fight for our digital future. We are gathering like-minded individuals to form a
 						global community of digital artists, hackers, and futurists of all kinds.
-					</p>
-					<p className="purple">Come for the vibes. Stay for the revolution.</p>
-					<p>
+					</h3>
+					<h3 className="purple">Come for the vibes. Stay for the revolution.</h3>
+					<h3>
 						Come co-own our vision of the future, party in dystopia, and build for a wagmi horizon.
-					</p>
+					</h3>
 				</section>
 				<section className="upcoming-events__purchase">
 					<div className="upcoming-events__purchase-item">
 						<div className="upcoming-events__purchase-item-img-container">
 							<ImagePlaceholder />
 						</div>
-						<h1>001 Clearance Cards</h1>
+						<h3>001 Clearance Cards</h3>
 						<p>1000 total</p>
 						<p className="upcoming-events__purchase-item-address orange">
-							Seker Factory 001 (Downtown Los Angeles)
+							<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
 						</p>
 						<ul>
 							<li>
@@ -129,9 +129,11 @@ const HomePage: FunctionComponent = () => {
 						<div className="upcoming-events__purchase-item-img-container">
 							<ImagePlaceholder />
 						</div>
-						<h1>Top Clearance Cards</h1>
+						<h3>Top Clearance Cards</h3>
 						<p>1000 total</p>
-						<p className="upcoming-events__purchase-item-address orange">All Seker Factories</p>
+						<p className="upcoming-events__purchase-item-address orange bold">
+							All Seker Factories
+						</p>
 						<ul>
 							<li>
 								<div className="upcoming-events__purchace-item-icon-container">

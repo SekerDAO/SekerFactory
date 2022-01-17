@@ -10,7 +10,7 @@ const Header: FunctionComponent = () => {
 	return (
 		<header className="header">
 			<div className="header__logo-container" onClick={() => navigate("/")}>
-				<img src={logo} className="header__logo" alt="logo" width={230} height={30} />
+				<img src={logo} className="header__logo" alt="logo" width={230} height={40} />
 			</div>
 		</header>
 	)

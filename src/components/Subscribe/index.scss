@@ -1,8 +1,8 @@
 @import "../../assets/styles/colors.scss";
 
 .subscribe {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   background-color: $white;
   max-height: 500px;
   transition: all 0.5s ease-in;
@@ -14,8 +14,11 @@
   }
 
   h1 {
+    color: $dark-grey;
     width: 100%;
     text-align: center;
+    font-size: 32px;
+    line-height: 36px;
   }
 
   &__input-container {
@@ -23,6 +26,15 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
+
+    .input {
+      width: 280px;
+
+      &__wrapper,
+      &__field {
+        width: 100%;
+      }
+    }
 
     .btn {
       margin-left: 10px;

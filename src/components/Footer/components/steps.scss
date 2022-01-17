@@ -36,19 +36,13 @@
     }
 
     h1 {
-      color: $white;
       font-size: 60px;
       line-height: 68px;
       margin-bottom: 40px;
     }
 
-    h2 {
-      color: $white;
-    }
-
     p {
       margin-top: 20px;
-      color: $white;
     }
 
     ul {
@@ -58,7 +52,6 @@
       li {
         display: flex;
         align-items: center;
-        color: $white;
       }
     }
 
@@ -90,12 +83,10 @@
     }
 
     h1 {
-      color: $white;
       margin-top: 20px;
     }
 
     p {
-      color: $white;
       margin-top: 20px;
       font-style: italic;
       text-align: center;
