@@ -1,7 +1,6 @@
 import {FunctionComponent, StrictMode} from "react"
 import ReactDOM from "react-dom"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
-import Footer from "./components/Footer"
 import Header from "./components/Header"
 import "./index.scss"
 import EventDetails from "./pages/EventDetails"
@@ -16,7 +15,6 @@ const App: FunctionComponent = () => (
 			<Route path="/events" element={<EventsList />} />
 			<Route path="/events/:id" element={<EventDetails />} />
 		</Routes>
-		<Footer />
 	</Router>
 )
 

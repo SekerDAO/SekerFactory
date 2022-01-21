@@ -1,129 +1,39 @@
 @import "../../assets/styles/colors.scss";
 
 .home-page {
-  .upcoming-events {
-    background-color: $dark-grey;
-    padding: 80px 20% 80px;
+  .about-us {
+    height: 100vh;
+    display: flex;
+    align-items: center;
 
-    &__header {
+    &__inner-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      h3 {
-        font-size: 24px;
-        line-height: 28px;
-      }
-    }
-
-    &__list {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      &-item {
-        height: 250px;
-        width: calc(50% - 20px);
-        position: relative;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        .image-placeholder {
-          position: absolute;
-        }
-      }
-    }
-
-    &__about {
-      margin-top: 80px;
-
-      h3 {
-        font-size: 32px;
-        line-height: 36px;
-      }
-
-      .purple {
-        margin-top: 20px;
-        color: $purple;
-      }
-    }
-
-    &__purchase {
-      margin-top: 80px;
-      display: flex;
-      justify-content: space-between;
+      max-width: 1170px;
+      margin: 0 auto;
       flex-wrap: wrap;
+    }
 
-      &-item {
-        width: calc(50% - 20px);
-        border: 1px solid $dark-grey75;
-        padding: 40px;
-        border-radius: 5px;
+    h2,
+    p,
+    ul,
+    li {
+      color: $dark-grey;
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+
+      li {
         display: flex;
-        flex-wrap: wrap;
-
-        &-img-container {
-          height: 250px;
-          width: 250px;
-          margin-bottom: 40px;
-        }
-
-        &-address {
-          margin-top: 20px;
-        }
-
-        .orange {
-          color: $orange;
-        }
-
-        .bold {
-          font-weight: bold;
-        }
-
-        h3 {
-          font-size: 24px;
-          line-height: 28px;
-        }
-
-        h3,
-        p,
-        li {
-          width: 100%;
-        }
-
-        ul {
-          padding-left: 0;
-          margin-top: 20px;
-          list-style: none;
-
-          li {
-            color: $white;
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-
-            svg {
-              margin-right: 25px;
-            }
-          }
-        }
-
-        .btn {
-          width: 200px;
-        }
-      }
-
-      &-charity {
-        width: 100%;
-        margin-top: 40px;
-
-        p {
-          text-align: center;
-          font-weight: normal;
-        }
+        align-items: center;
+        margin-top: 20px;
       }
     }
   }
@@ -174,6 +84,157 @@
       .btn {
         margin-top: 40px;
         width: 200px;
+      }
+    }
+  }
+
+  .upcoming-events {
+    background-color: $dark-grey;
+    padding: 80px 20% 80px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
+
+    &__list {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-item {
+        height: 250px;
+        width: calc(50% - 20px);
+        position: relative;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        .image-placeholder {
+          position: absolute;
+        }
+      }
+    }
+
+    &__purchase {
+      margin-top: 120px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &-item {
+        width: calc(50% - 20px);
+        border: 1px solid $dark-grey75;
+        padding: 40px;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+
+        &-img-container {
+          height: 250px;
+          width: 250px;
+          margin-bottom: 40px;
+        }
+
+        &-address {
+          margin-top: 20px;
+        }
+
+        .orange {
+          color: $orange;
+        }
+
+        .bold {
+          font-weight: bold;
+        }
+
+        h3 {
+          font-size: 24px;
+          line-height: 28px;
+        }
+
+        h3,
+        p {
+          width: 100%;
+        }
+
+        ul {
+          padding-left: 0;
+          margin-top: 20px;
+          list-style: none;
+
+          li {
+            color: $white;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            width: 100%;
+
+            svg {
+              margin-right: 25px;
+            }
+          }
+        }
+
+        .btn {
+          width: 200px;
+        }
+      }
+
+      &-charity {
+        width: 100%;
+        margin-top: 40px;
+
+        p {
+          text-align: center;
+          font-weight: normal;
+        }
+      }
+    }
+
+    &__about {
+      margin-top: 80px;
+
+      h3 {
+        font-size: 32px;
+        line-height: 36px;
+      }
+
+      .purple {
+        margin-top: 20px;
+        color: $purple;
+      }
+
+      &-buttons {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        display: flex;
+
+        .btn {
+          background-color: $success;
+          display: flex;
+          align-items: center;
+
+          svg {
+            margin-right: 10px;
+
+            path {
+              fill: $white;
+            }
+          }
+        }
+
+        .btn:first-of-type {
+          margin-right: 20px;
+        }
       }
     }
   }

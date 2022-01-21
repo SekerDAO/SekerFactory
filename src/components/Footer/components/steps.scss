@@ -1,29 +1,5 @@
 @import "src/assets/styles/colors.scss";
 
-.genesis-step {
-  &__buttons {
-    margin-top: 40px;
-    display: flex;
-
-    .btn {
-      display: flex;
-      align-items: center;
-
-      svg {
-        margin-right: 10px;
-
-        path {
-          fill: $white;
-        }
-      }
-    }
-
-    .btn:first-of-type {
-      margin-right: 20px;
-    }
-  }
-}
-
 .phase {
   display: flex;
   justify-content: space-between;
@@ -50,18 +26,6 @@
 
     p {
       margin-top: 20px;
-    }
-
-    ul {
-      padding-left: 0;
-      list-style: none;
-
-      li {
-        display: flex;
-        align-items: center;
-        color: $white;
-        margin-top: 20px;
-      }
     }
 
     a {
@@ -102,13 +66,6 @@
       text-align: center;
     }
   }
-}
-
-.bold {
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
-  font-family: SairaSemiCondensed, "Open Sans", sans-serif;
 }
 
 @media (max-width: 1039px) {

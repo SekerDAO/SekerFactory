@@ -71,7 +71,7 @@ h3 {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: $dark-grey;
+  color: $white;
 }
 
 a,
@@ -82,4 +82,15 @@ a:hover {
 p {
   margin: 0;
   color: $white;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: SairaSemiCondensed, "Open Sans", sans-serif;
+}
+
+.full-width {
+  width: 100%;
 }

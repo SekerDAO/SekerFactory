@@ -1,13 +1,12 @@
 import {FunctionComponent, useState} from "react"
 import Stepper from "../Stepper"
-import {GenesisStep, PhaseOne, PhaseThree, PhaseTwo, PhaseZero} from "./components/Steps"
+import {GenesisStep, PhaseOne, PhaseThree, PhaseTwo} from "./components/Steps"
 import "./index.scss"
 
 const Footer: FunctionComponent = () => {
 	const [currentStepIdx, setCurrentStepIdx] = useState(0)
 	const steps = [
 		{title: "Genesis", content: <GenesisStep />},
-		{title: "Phase 0", content: <PhaseZero />},
 		{title: "Phase 1", content: <PhaseOne />},
 		{title: "Phase 2", content: <PhaseTwo />},
 		{title: "Phase 3", content: <PhaseThree />}

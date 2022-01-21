@@ -1,8 +1,4 @@
 import {FunctionComponent, ReactElement} from "react"
-import {ReactComponent as DiscordIcon} from "../../../assets/icons/discord-grayscale.svg"
-import {ReactComponent as StarIcon} from "../../../assets/icons/star.svg"
-import {ReactComponent as TwitterIcon} from "../../../assets/icons/twitter-grayscale.svg"
-import Button from "../../Button"
 import ImagePlaceholder from "../../ImagePlaceholder"
 import "./steps.scss"
 
@@ -24,45 +20,8 @@ const Phase: FunctionComponent<{title: string; subTitle?: string; content?: Reac
 
 export const GenesisStep: FunctionComponent = () => (
 	<Phase
-		title={`Where We're Going`}
-		content={
-			<>
-				<p className="bold">
-					Ran as truly decentralized autonomous organization (DAO), we are a community of
-					collectors, artists, technologists, and dreamers - curating our own journey and
-					experiences every step of the way.
-				</p>
-				<p className="bold">
-					With the backing of extensive Ethereum core developer experience, access to the most
-					cutting-edge DAO tooling, artists from around the globe, and an exciting physical space
-					(with more to come), Seker Factory aims to explore the leisure of an intergalactic cruise
-					ship, the boundaries between the digital and physical, the promotion and expansion of the
-					creative commons and public goods, and the technological advancement within the NFT and
-					DAO ecosystem.
-				</p>
-				<div className="genesis-step__buttons">
-					<Button>
-						<DiscordIcon height="20px" width="20px" />
-						Join the Community
-					</Button>
-					<Button>
-						<TwitterIcon height="20px" width="20px" />
-						Follow Us on Twitter
-					</Button>
-				</div>
-				<p>
-					For inquiries, email as at{" "}
-					<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
-				</p>
-			</>
-		}
-	/>
-)
-
-export const PhaseZero: FunctionComponent = () => (
-	<Phase
 		title="Where We Are"
-		subTitle="Phase 0 | January 2022"
+		subTitle="Genesis | January 2022"
 		content={
 			<>
 				<p className="bold">
@@ -77,30 +36,6 @@ export const PhaseZero: FunctionComponent = () => (
 	intend to continue expanding this creative center and its digital experiences with the help of
 	our community's innovative input.`}
 				</p>
-				<ul>
-					<li>
-						<div className="phase__content-icon">
-							<StarIcon width="20px" height="20px" />
-						</div>
-						Are you a digital artist looking for a gallery where you can truly stretch your creative
-						choops, co-own, and help build from the ground-up?
-					</li>
-					<li>
-						<div className="phase__content-icon">
-							<StarIcon width="20px" height="20px" />
-						</div>
-						Are you a futurist wanting to learn, explore, and collaborate on leading-edge technology
-						in the new digital age?
-					</li>
-					<li>
-						<div className="phase__content-icon">
-							<StarIcon width="20px" height="20px" />
-						</div>
-						Are you a patron of digital art...a supporter of the creative commons? <br />
-						{`Do you have some
-		ideas you'd like to see come to life?`}
-					</li>
-				</ul>
 			</>
 		}
 	>
