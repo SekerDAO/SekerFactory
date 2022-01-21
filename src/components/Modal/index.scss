@@ -1,0 +1,34 @@
+@import "../../assets/styles/colors.scss";
+
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+  }
+
+  &__body {
+    width: 500px;
+    background-color: $light-grey;
+    padding: 20px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__close {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    margin-right: -20px;
+  }
+}

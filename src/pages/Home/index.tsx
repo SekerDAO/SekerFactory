@@ -1,4 +1,4 @@
-import {FunctionComponent} from "react"
+import {FunctionComponent, useState} from "react"
 import {useNavigate} from "react-router-dom"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
@@ -8,12 +8,14 @@ import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import ImagePlaceholder from "../../components/ImagePlaceholder"
 import Loading from "../../components/Loading"
+import Modal from "../../components/Modal"
 import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
 import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
 import "./index.scss"
 
 const HomePage: FunctionComponent = () => {
+	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
 	const navigate = useNavigate()
 	const {events, loading} = useEvents({upcoming: "now"})
 	if (loading || !events || !events.length) {
@@ -25,6 +27,9 @@ const HomePage: FunctionComponent = () => {
 		.slice(0, 2)
 	return (
 		<>
+			<Modal open={viewScheduleOpen} onClose={() => setViewScheduleOpen(false)}>
+				Event Schedule
+			</Modal>
 			<main className="home-page">
 				<section className="featured-event">
 					<div className="featured-event__col">
@@ -45,6 +50,9 @@ const HomePage: FunctionComponent = () => {
 							<h2 dangerouslySetInnerHTML={{__html: FEATURED_EVENT.location}} />
 						</div>
 						<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
+						<Button variant="secondary" onClick={() => setViewScheduleOpen(true)}>
+							View Schedule
+						</Button>
 						<Button onClick={() => openRSVPForm(FEATURED_EVENT)}>RSVP</Button>
 					</div>
 				</section>
@@ -88,11 +96,11 @@ const HomePage: FunctionComponent = () => {
 							horizon.
 						</h3>
 						<div className="upcoming-events__about-buttons">
-							<Button>
+							<Button onClick={() => window.open("https://t.co/04Z4d1Zso3", "_blank")}>
 								<DiscordIcon height="20px" width="20px" />
 								Join the Community
 							</Button>
-							<Button>
+							<Button onClick={() => window.open("https://twitter.com/SekerFactory", "_blank")}>
 								<TwitterIcon height="20px" width="20px" />
 								Follow Us on Twitter
 							</Button>
@@ -152,7 +160,7 @@ const HomePage: FunctionComponent = () => {
 									More to come!
 								</li>
 							</ul>
-							<Button>Purchase</Button>
+							<Button disabled>Join Allowlist</Button>
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
@@ -203,7 +211,7 @@ const HomePage: FunctionComponent = () => {
 									More to come!
 								</li>
 							</ul>
-							<Button>Purchase</Button>
+							<Button disabled>Join Allowlist</Button>
 						</div>
 						<section className="upcoming-events__purchase-charity">
 							<p>
