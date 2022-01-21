@@ -40,7 +40,7 @@ export const useEvents = ({upcoming}: Params) => {
 }
 
 export const useEvent = (id?: string) => {
-	const [event, setEvents] = useState<EventContent>()
+	const [event, setEvent] = useState<EventContent>()
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
 
@@ -50,7 +50,7 @@ export const useEvent = (id?: string) => {
 			await fetch(`${config.BASE_URL}events/event/?token=${config.TOKEN}&event_id=${id}`)
 				.then(response => response.json())
 				.then(data => {
-					setEvents(data.events)
+					setEvent(data.event)
 					setLoading(false)
 				})
 				.catch(err => {

@@ -1,8 +1,12 @@
 import {EventContent} from "../types/event"
 
-export const isEventUpcoming = (event: EventContent) => new Date(event.date_start) > new Date()
+export const isEventUpcoming = (event: EventContent) =>
+	event && new Date(event.date_start) > new Date()
 
 export const getDateReadable = (event: EventContent) => {
+	if (!event) {
+		return
+	}
 	const startDate = new Date(event.date_start)
 	const endDate = new Date(event.date_end)
 
