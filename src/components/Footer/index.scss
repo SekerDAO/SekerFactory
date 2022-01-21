@@ -12,6 +12,7 @@
 
   &__heading {
     display: flex;
+    justify-content: space-between;
     width: 100%;
 
     h1 {
@@ -22,7 +23,6 @@
     .stepper {
       position: relative;
       top: -40px;
-      margin-left: 160px;
     }
   }
 
@@ -42,7 +42,6 @@
     &__heading {
       flex-wrap: wrap;
       justify-content: center;
-      width: 100%;
 
       h1 {
         width: 100%;

@@ -20,9 +20,9 @@ const HomePage: FunctionComponent = () => {
 		return <Loading />
 	}
 	const FEATURED_EVENT = events[0]
-	const UPCOMING_EVENTS = events.filter(
-		event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event)
-	)
+	const UPCOMING_EVENTS = events
+		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
+		.slice(0, 2)
 	return (
 		<>
 			<main className="home-page">
@@ -52,7 +52,7 @@ const HomePage: FunctionComponent = () => {
 				<section className="upcoming-events">
 					<div className="upcoming-events__header">
 						<h3>Upcoming Events</h3>
-						<Button variant="link" onClick={() => navigate(`/events?sort=asc`)}>
+						<Button variant="link" onClick={() => navigate(`/events?sort=date-desc`)}>
 							Previous Events
 						</Button>
 					</div>
