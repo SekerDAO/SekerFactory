@@ -3,41 +3,43 @@ import {useParams, useNavigate} from "react-router-dom"
 import Button from "../../components/Button"
 import ImagePlaceholder from "../../components/ImagePlaceholder"
 import SubscribeForm from "../../components/Subscribe"
-import EVENTS from "../../data/events"
-import {isEventUpcoming} from "../../utils"
+import {useEvent} from "../../hooks/useAddEvent"
+import {EventContent} from "../../types/event"
+import {getDateReadable, isEventUpcoming} from "../../utils"
 import "./index.scss"
 
 const EventDetails: FunctionComponent = () => {
-	const {slug} = useParams()
+	const {id} = useParams()
 	const navigate = useNavigate()
+	const {event, loading} = useEvent(id)
 
-	const currentEvent = EVENTS.find(event => event.slug === slug)
-	if (!currentEvent) {
+	if (!id) {
 		navigate("/404")
 		return null
 	}
+	if (!event && !loading) {
+		navigate("/404")
+		return null
+	}
+	const currentEvent = event as EventContent
 	const isUpcoming = isEventUpcoming(currentEvent)
 	return (
 		<main className="event-details-page">
 			<section className="event-details-page__heading">
 				<div className="event-details-page__heading-col">
-					{currentEvent.bannerSrc ? (
-						<img src={currentEvent.bannerSrc} alt={currentEvent.title} />
+					{currentEvent.custom_data?.bannerSrc ? (
+						<img src={currentEvent.custom_data?.bannerSrc} alt={currentEvent.title} />
 					) : (
 						<ImagePlaceholder />
 					)}
 				</div>
 				<div className="event-details-page__heading-col">
 					<h1>
-						{currentEvent.title} <br /> {currentEvent.dateReadable}
+						{currentEvent.title} <br /> {getDateReadable(currentEvent)}
 					</h1>
 					<div className="event-details-page__heading-col-hosted-by">
 						<p>Hosted by:</p>
-						<h2>
-							<p>Seker Factory 001</p>
-							<p>836 S Los Angeles Street</p>
-							<p>Los Angeles, CA 90014</p>
-						</h2>
+						<h2>{currentEvent.location}</h2>
 					</div>
 					<p className="event-details-page__heading-col-description">{currentEvent.description}</p>
 					{isUpcoming && <Button>RSVP</Button>}

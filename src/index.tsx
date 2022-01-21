@@ -14,7 +14,7 @@ const App: FunctionComponent = () => (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/events" element={<EventsList />} />
-			<Route path="/events/:slug" element={<EventDetails />} />
+			<Route path="/events/:id" element={<EventDetails />} />
 		</Routes>
 		<Footer />
 	</Router>

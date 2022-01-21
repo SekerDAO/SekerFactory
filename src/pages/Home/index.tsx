@@ -3,36 +3,44 @@ import {useNavigate} from "react-router-dom"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import Button from "../../components/Button"
 import ImagePlaceholder from "../../components/ImagePlaceholder"
+import Loading from "../../components/Loading"
 import SubscribeForm from "../../components/Subscribe"
-import {UPCOMING_EVENTS, FEATURED_EVENT} from "../../data/events"
+import {useEvents} from "../../hooks/useAddEvent"
+import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
 import "./index.scss"
 
 const HomePage: FunctionComponent = () => {
 	const navigate = useNavigate()
+	const {events, loading} = useEvents({upcoming: "now"})
+	if (loading || !events || !events.length) {
+		return <Loading />
+	}
+	const FEATURED_EVENT = events[0]
+	const UPCOMING_EVENTS = events.filter(
+		event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event)
+	)
 	return (
 		<main className="home-page">
 			<section className="featured-event">
 				<div className="featured-event__col">
-					{FEATURED_EVENT.bannerSrc ? (
-						<img src={FEATURED_EVENT.bannerSrc} alt={FEATURED_EVENT.title} />
+					{FEATURED_EVENT.custom_data?.bannerSrc ? (
+						<img src={FEATURED_EVENT.custom_data.bannerSrc} alt={FEATURED_EVENT.title} />
 					) : (
 						<ImagePlaceholder />
 					)}
 				</div>
 				<div className="featured-event__col">
-					<h1>
-						{FEATURED_EVENT.title} <br /> {FEATURED_EVENT.dateReadable}
-					</h1>
+					<h1
+						dangerouslySetInnerHTML={{
+							__html: `${FEATURED_EVENT.title} <br /> ${getDateReadable(FEATURED_EVENT)}`
+						}}
+					/>
 					<div className="featured-event__col-hosted-by">
 						<h3>Hosted by:</h3>
-						<h2>
-							Seker Factory 001 <br />
-							836 S Los Angeles Street <br />
-							Los Angeles, CA 90014
-						</h2>
+						<h2 dangerouslySetInnerHTML={{__html: FEATURED_EVENT.location}} />
 					</div>
 					<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
-					<Button>RSVP</Button>
+					<Button onClick={() => openRSVPForm(FEATURED_EVENT)}>RSVP</Button>
 				</div>
 			</section>
 			<SubscribeForm />
@@ -47,13 +55,13 @@ const HomePage: FunctionComponent = () => {
 					{UPCOMING_EVENTS.map(eventContent => (
 						<div
 							className="upcoming-events__list-item"
-							key={eventContent.slug}
-							onClick={() => navigate(`/events/${eventContent.slug}`)}
+							key={eventContent.id}
+							onClick={() => navigate(`/events/${eventContent.id}`)}
 						>
-							{eventContent.bannerSrc ? (
+							{eventContent.custom_data?.bannerSrc ? (
 								<img
 									alt={eventContent.title}
-									src={eventContent.bannerSrc}
+									src={eventContent.custom_data?.bannerSrc}
 									className="upcoming-events__list-item-banner"
 								/>
 							) : (
