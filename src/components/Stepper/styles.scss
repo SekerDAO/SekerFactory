@@ -40,7 +40,7 @@
         top: 60px;
         right: calc(50% + 10px);
         height: 1px;
-        width: 50%;
+        width: calc(50% - 10px);
         background-color: $light-grey;
       }
     }
@@ -48,7 +48,7 @@
     &:last-of-type {
       &::after {
         background-color: $light-grey;
-        width: 50%;
+        width: calc(50% - 10px);
       }
     }
 

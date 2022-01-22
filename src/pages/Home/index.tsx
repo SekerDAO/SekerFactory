@@ -1,5 +1,6 @@
 import {FunctionComponent, useState} from "react"
 import {useNavigate} from "react-router-dom"
+import {ReactComponent as ClearanceCardPlaceholder} from "../../assets/icons/clearance-card-placeholder.svg"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
@@ -86,7 +87,7 @@ const HomePage: FunctionComponent = () => {
 					<section className="upcoming-events__about">
 						<h3>
 							Seker Factory is building an immersive tech noir of dystopian hangouts - the premier
-							spot to adventure from phsyical to digital. We are gathering like-minded individuals
+							spot to adventure from physical to digital. We are gathering like-minded individuals
 							to form a global community of digital artists, hackers, avatars, and futurists of all
 							kinds.
 						</h3>
@@ -106,18 +107,18 @@ const HomePage: FunctionComponent = () => {
 							</Button>
 						</div>
 						<p>
-							For inquiries, email as at{" "}
+							For inquiries, email us at{" "}
 							<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
 						</p>
 					</section>
 					<section className="upcoming-events__purchase">
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<ImagePlaceholder />
+								<ClearanceCardPlaceholder width={250} height={250} />
 							</div>
 							<h3>001 Clearance Cards</h3>
 							<p>1000 total</p>
-							<p className="upcoming-events__purchase-item-address orange">
+							<p className="upcoming-events__purchase-item-address">
 								<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
 							</p>
 							<ul>
@@ -164,13 +165,11 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<ImagePlaceholder />
+								<ClearanceCardPlaceholder width={250} height={250} />
 							</div>
 							<h3>Top Clearance Cards</h3>
 							<p>1000 total</p>
-							<p className="upcoming-events__purchase-item-address orange bold">
-								All Seker Factories
-							</p>
+							<p className="upcoming-events__purchase-item-address bold">All Seker Factories</p>
 							<ul>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
@@ -224,8 +223,8 @@ const HomePage: FunctionComponent = () => {
 				<section className="about-us">
 					<div className="about-us__inner-container">
 						<h2>
-							Ran as truly decentralized autonomous organization (DAO), we are a community of
-							collectors, artists, technologists, and dreamers - curating our own journey and
+							Ran as a truly decentralized autonomous organization (DAO), we are a community of
+							collectors, artists, technologists, and dreamers — curating our own journey and
 							experiences every step of the way.
 						</h2>
 						<h2>
@@ -234,7 +233,7 @@ const HomePage: FunctionComponent = () => {
 							space (with more to come), Seker Factory aims to explore the leisure of an
 							intergalactic cruise ship, the boundaries between the digital and physical, the
 							promotion and expansion of the creative commons and public goods, and the
-							technological advancement within the NFT and DAO ecosystem.
+							technological advancement within the NFT and DAO ecosystems.
 						</h2>
 						<ul>
 							<li>
@@ -242,7 +241,7 @@ const HomePage: FunctionComponent = () => {
 									<StarIcon width="20px" height="20px" />
 								</div>
 								Are you a digital artist looking for a gallery where you can truly stretch your
-								creative choops, co-own, and help build from the ground-up?
+								creative chops, co-own, and help build from the ground-up?
 							</li>
 							<li>
 								<div className="phase__content-icon">

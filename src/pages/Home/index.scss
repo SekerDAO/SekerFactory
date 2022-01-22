@@ -2,7 +2,7 @@
 
 .home-page {
   .about-us {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
 
@@ -42,11 +42,13 @@
     background-color: $dark-grey;
     padding-top: 40px;
     padding-bottom: 80px;
+    padding-left: 19.5%;
+    padding-right: 19.5%;
     display: flex;
     justify-content: center;
 
     &__col {
-      width: 30%;
+      width: calc(50% - 20px);
       margin-left: 20px;
       margin-right: 20px;
 
@@ -94,7 +96,7 @@
 
   .upcoming-events {
     background-color: $dark-grey;
-    padding: 80px 20% 80px;
+    padding: 80px 19.5%;
 
     &__header {
       display: flex;
@@ -150,14 +152,13 @@
 
         &-address {
           margin-top: 20px;
-        }
-
-        .orange {
+          font-family: KarlaBold, "Open Sans", sans-serif;
           color: $orange;
-        }
-
-        .bold {
           font-weight: bold;
+
+          .bold {
+            font-family: KarlaBold, "Open Sans", sans-serif;
+          }
         }
 
         h3 {
@@ -205,7 +206,7 @@
     }
 
     &__about {
-      margin-top: 80px;
+      margin-top: 120px;
 
       h3 {
         font-size: 32px;
@@ -228,6 +229,11 @@
           display: flex;
           align-items: center;
 
+          &:hover {
+            background-color: $light-green;
+            border-color: $light-green;
+          }
+
           svg {
             margin-right: 10px;
 
@@ -247,6 +253,10 @@
 
 @media (max-width: 1039px) {
   .home-page {
+    .about-us {
+      padding: 20px;
+    }
+
     .upcoming-events {
       padding-left: 20px;
       padding-right: 20px;

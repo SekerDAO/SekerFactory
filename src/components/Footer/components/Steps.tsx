@@ -26,7 +26,7 @@ export const GenesisStep: FunctionComponent = () => (
 			<>
 				<p className="bold">
 					We have secured a 4000 sq ft location in the bustling heart of Downtown Los Angeles to
-					serve as our first official Seker Factory(001), with ambitions for the space to become an
+					serve as our first official Seker Factory (001), with ambitions for the space to become an
 					exceptionally immersive digital art gallery, a pioneering hackerspace / artist studio, an
 					exciting events venue, and much more
 				</p>
@@ -42,7 +42,7 @@ export const GenesisStep: FunctionComponent = () => (
 		<section className="phase__video-tour">
 			<ImagePlaceholder />
 			<div className="phase__video-tour-content">
-				<h1>Take a Virtual 360° Tour!</h1>
+				<h3>Take a Virtual 360° Tour!</h3>
 				<p>
 					If you would like an in-person walkthrough, <br />
 					feel free to reach out to set up an appointment.
@@ -55,19 +55,14 @@ export const GenesisStep: FunctionComponent = () => (
 export const PhaseOne: FunctionComponent = () => (
 	<Phase
 		title={`Let's Get Started`}
-		subTitle="Phase 1 | Q1 of 2022(In Progress)"
+		subTitle="Phase 1 | Q1 of 2022 (In Progress)"
 		content={
 			<>
 				<p className="bold">
-					In early-February, Seker Factory 001 will be hosting recurring min events / meet-ups.
+					In early-February, Seker Factory 001 will be hosting recurring mini events / meet-ups.
 				</p>
 				<p className="bold">In early-February, we will be releasing our NFT Clearance Card sale.</p>
-				<p className="bold">{`On Feb 25-26, Seker Factory will be hosting our first "Post ETHDenver Defrost" event.`}</p>
-				<p>
-					Join us for two days of networking, workshops, after-hours partying, cult-classing
-					back-to-back feature movie night, food and refreshments, and much more. This will be a
-					free event (RSVP required due to venue capacity).
-				</p>
+				<p className="bold">{`On February 26-27, Seker Factory will be hosting our first "Post ETHDenver Defrost" event.`}</p>
 				<p className="bold">
 					In early-March, Seker Factory 001 will be having our official grand opening exhibition
 					event.
@@ -90,7 +85,7 @@ export const PhaseTwo: FunctionComponent = () => (
 				<p className="bold">
 					In early-April, the Seker Factory 001 community will help determine the structure of the
 					DAO as well as help design the tokenomics <br /> (moving from NFT governance to an ERC-20
-					governance.)
+					governance).
 				</p>
 				<p className="bold">
 					As a community, we will also be deciding on additional visual components at Seker Factory
