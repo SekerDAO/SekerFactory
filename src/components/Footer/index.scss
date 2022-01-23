@@ -41,6 +41,7 @@
 @media (max-width: 1039px) {
   .footer {
     padding: 20px;
+    padding-bottom: 80px;
 
     &__heading {
       flex-wrap: wrap;
@@ -60,6 +61,10 @@
           width: 75px;
         }
       }
+    }
+
+    &__content {
+      margin-bottom: 40px;
     }
   }
 }
