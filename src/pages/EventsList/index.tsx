@@ -30,12 +30,12 @@ const EventsList: FunctionComponent = () => {
 						)}
 					</div>
 					<div className="events-list-page__item-col">
-						<h1>
-							{event.title} <br /> {getDateReadable(event)}
-						</h1>
+						<h1
+							dangerouslySetInnerHTML={{__html: `${event.title} <br /> ${getDateReadable(event)}`}}
+						/>
 						<div className="events-list-page__item-col-hosted-by">
 							<p>Hosted by:</p>
-							<h2>{event.location}</h2>
+							<h2 dangerouslySetInnerHTML={{__html: event.location}} />
 						</div>
 						<p className="events-list-page__item-col-description">{event.description}</p>
 						{isEventUpcoming(event) && <Button>RSVP</Button>}

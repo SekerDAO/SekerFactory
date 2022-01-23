@@ -5,6 +5,8 @@
     background-color: $dark-grey;
     padding-top: 40px;
     padding-bottom: 80px;
+    padding-left: 19.5%;
+    padding-right: 19.5%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -14,25 +16,35 @@
     }
 
     &-col {
-      width: 30%;
-      margin-left: 10px;
-      margin-right: 10px;
+      width: calc(50% - 20px);
+      margin-left: 20px;
+      margin-right: 20px;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
 
       h1 {
         white-space: pre-line;
-        line-height: 42px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 28px;
       }
 
       h2 {
-        p {
-          margin-top: 10px;
-          font-weight: bold;
-        }
+        font-size: 24px;
+        line-height: 28px;
       }
 
       &-description {
         margin-top: 20px;
+      }
+
+      &-hosted-by {
+        font-family: SairaSemiCondensed, "Open Sans", sans-serif;
       }
 
       .btn {
