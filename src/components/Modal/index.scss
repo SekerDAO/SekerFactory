@@ -12,7 +12,8 @@
   }
 
   &__body {
-    width: 500px;
+    width: 600px;
+    max-width: 100%;
     background-color: $light-grey;
     padding: 20px 40px 40px 40px;
     display: flex;

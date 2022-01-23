@@ -251,6 +251,64 @@
   }
 }
 
+.schedule-list {
+  padding-left: 0;
+  list-style: none;
+
+  span,
+  li,
+  p,
+  h2 {
+    color: $dark-grey;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    &:first-of-type {
+      margin-top: 20px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &-description {
+      box-shadow: 0 3px 5px #96989929;
+      background-color: $white;
+      border-radius: 5px;
+      margin-left: 10px;
+      padding: 10px;
+      width: 420px;
+
+      .orange {
+        color: $orange;
+      }
+
+      .purple {
+        color: $purple;
+      }
+
+      .grey {
+        color: $dark-grey50;
+        font-size: 14px;
+      }
+
+      .light-grey {
+        color: $dark-grey25;
+      }
+
+      .bold {
+        font-weight: bold;
+        font-family: KarlaBold, "Open Sans", sans-serif;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
 @media (max-width: 1039px) {
   .home-page {
     .about-us {
