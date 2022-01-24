@@ -5,6 +5,7 @@ import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscal
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
+import featuredEventBanner from "../../assets/images/featured-event-banner.png"
 import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import ImagePlaceholder from "../../components/ImagePlaceholder"
@@ -26,6 +27,11 @@ const HomePage: FunctionComponent = () => {
 	const UPCOMING_EVENTS = events
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)
+	if (FEATURED_EVENT) {
+		FEATURED_EVENT.custom_data = {
+			bannerSrc: featuredEventBanner
+		}
+	}
 	return (
 		<>
 			<Modal open={viewScheduleOpen} onClose={() => setViewScheduleOpen(false)}>
@@ -93,7 +99,11 @@ const HomePage: FunctionComponent = () => {
 				<section className="featured-event">
 					<div className="featured-event__col">
 						{FEATURED_EVENT.custom_data?.bannerSrc ? (
-							<img src={FEATURED_EVENT.custom_data.bannerSrc} alt={FEATURED_EVENT.title} />
+							<img
+								src={FEATURED_EVENT.custom_data.bannerSrc}
+								alt={FEATURED_EVENT.title}
+								width={565}
+							/>
 						) : (
 							<ImagePlaceholder />
 						)}
@@ -155,7 +165,7 @@ const HomePage: FunctionComponent = () => {
 							horizon.
 						</h3>
 						<div className="upcoming-events__about-buttons">
-							<Button onClick={() => window.open("https://t.co/04Z4d1Zso3", "_blank")}>
+							<Button onClick={() => window.open("https://discord.gg/8BguJkDkkU", "_blank")}>
 								<DiscordIcon height="20px" width="20px" />
 								Join the Community
 							</Button>
@@ -270,12 +280,6 @@ const HomePage: FunctionComponent = () => {
 							</ul>
 							<Button disabled>Join Allowlist</Button>
 						</div>
-						<section className="upcoming-events__purchase-charity">
-							<p>
-								15% of DAO treasury generated from Clearance Card sales with go to the following
-								foundations:
-							</p>
-						</section>
 					</section>
 				</section>
 				<section className="about-us">
@@ -312,7 +316,7 @@ const HomePage: FunctionComponent = () => {
 								<div className="phase__content-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
-								Are you a patron of digital art...a supporter of the creative commons?
+								Are you a patron of digital art...a supporter of the creative commons?{" "}
 								{`Do you have some ideas you'd like to see come to life?`}
 							</li>
 						</ul>
