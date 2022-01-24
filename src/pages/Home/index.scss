@@ -82,6 +82,7 @@
 
       img {
         max-width: 100%;
+        border-radius: 5px;
       }
 
       &-description {
@@ -319,6 +320,20 @@
     .upcoming-events {
       padding-left: 20px;
       padding-right: 20px;
+
+      &__list {
+        flex-wrap: wrap;
+
+        &-item {
+          width: 100%;
+          max-width: 565px;
+          margin-top: 20px;
+
+          &:first-of-type {
+            margin-top: 0;
+          }
+        }
+      }
 
       &__purchase {
         &-item {
