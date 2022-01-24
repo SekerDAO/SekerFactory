@@ -80,6 +80,10 @@
         line-height: 36px;
       }
 
+      img {
+        max-width: 100%;
+      }
+
       &-description {
         white-space: pre-wrap;
         margin-top: 20px;
@@ -247,6 +251,10 @@
   padding-left: 0;
   list-style: none;
 
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
   span,
   li,
   p,
@@ -295,7 +303,8 @@
       .bold {
         font-weight: bold;
         font-family: KarlaBold, "Open Sans", sans-serif;
-        font-size: 20px;
+        font-size: 16px;
+        line-height: 20px;
       }
     }
   }
@@ -321,6 +330,8 @@
 
     .featured-event {
       flex-flow: wrap-reverse;
+      padding-left: 20px;
+      padding-right: 20px;
 
       &__col {
         display: flex;

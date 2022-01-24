@@ -9,12 +9,10 @@ const useSubscribeForm = (): {
 	formActionUrl: string
 	success: boolean
 	error: string
-	isVisible: boolean
 } => {
 	const [email, setEmail] = useState("")
 	const [success, setSuccess] = useState(false)
 	const [error, setError] = useState("")
-	const [isVisible, setIsVisible] = useState(true)
 
 	// https://stackoverflow.com/questions/8425701/ajax-mailchimp-signup-form-integration
 	const formActionUrl = `https://${config.SUBSCRIBE_FORM.DOMAIN}/subscribe/post-json?u=${config.SUBSCRIBE_FORM.U}&amp;id=${config.SUBSCRIBE_FORM.ID}`
@@ -34,7 +32,6 @@ const useSubscribeForm = (): {
 					}
 				} else {
 					setSuccess(true)
-					setTimeout(() => setIsVisible(false), 3500)
 				}
 			})
 			.catch(() => {
@@ -49,8 +46,7 @@ const useSubscribeForm = (): {
 		email,
 		setEmail,
 		success,
-		error,
-		isVisible
+		error
 	}
 }
 

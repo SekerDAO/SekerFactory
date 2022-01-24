@@ -19,12 +19,17 @@
     h1 {
       font-size: 32px;
       line-height: 36px;
+      width: 565px;
     }
 
     .stepper {
       position: relative;
-      max-width: 565px;
+      width: 565px;
       top: -40px;
+
+      &__step {
+        width: 25%;
+      }
     }
   }
 
@@ -56,6 +61,7 @@
         margin-top: 40px;
         margin-left: 0;
         top: 0;
+        max-width: 100%;
 
         &__step {
           width: 75px;

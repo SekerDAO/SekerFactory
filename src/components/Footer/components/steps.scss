@@ -37,11 +37,9 @@
   &__video-tour {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
     margin-left: 20px;
-    margin-top: 100px;
+    margin-top: 25px;
+    width: 565px;
 
     .image-placeholder {
       width: 565px;
@@ -53,7 +51,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: 70%;
+      width: 100%;
     }
 
     h3 {
