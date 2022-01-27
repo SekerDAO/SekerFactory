@@ -23,6 +23,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   &__close {
@@ -31,5 +33,16 @@
     justify-content: flex-end;
     margin-bottom: 20px;
     margin-right: -20px;
+  }
+}
+
+@media screen and (max-height: 660px), screen and (max-width: 600px) {
+  .modal {
+    &__body {
+      transform: none;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
   }
 }

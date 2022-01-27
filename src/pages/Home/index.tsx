@@ -1,5 +1,4 @@
 import {FunctionComponent, useState} from "react"
-import {useNavigate} from "react-router-dom"
 import {ReactComponent as ClearanceCardPlaceholder} from "../../assets/icons/clearance-card-placeholder.svg"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
@@ -17,7 +16,6 @@ import "./index.scss"
 
 const HomePage: FunctionComponent = () => {
 	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
-	const navigate = useNavigate()
 	const {events, loading} = useEvents({upcoming: "now"})
 	if (loading || !events || !events.length) {
 		return <Loading />
@@ -117,17 +115,13 @@ const HomePage: FunctionComponent = () => {
 				<section className="upcoming-events">
 					<div className="upcoming-events__header">
 						<h3>Upcoming Events</h3>
-						<Button variant="link" onClick={() => navigate(`/events?sort=date-desc`)}>
+						<Button variant="link" disabled>
 							Previous Events
 						</Button>
 					</div>
 					<section className="upcoming-events__list">
 						{UPCOMING_EVENTS.slice(0, 2).map(eventContent => (
-							<div
-								className="upcoming-events__list-item"
-								key={eventContent.id}
-								onClick={() => navigate(`/events/${eventContent.id}`)}
-							>
+							<div className="upcoming-events__list-item" key={eventContent.id}>
 								<Image
 									alt={eventContent.title}
 									src={eventContent?.custom_data?.bannerSrc}

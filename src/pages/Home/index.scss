@@ -2,15 +2,15 @@
 
 .home-page {
   .about-us {
-    min-height: 100vh;
+    min-height: 50vh;
     display: flex;
     align-items: center;
 
     &__inner-container {
       display: flex;
-      max-width: 1170px;
       margin: 0 auto;
       flex-wrap: wrap;
+      width: 60%;
     }
 
     h2,
@@ -42,17 +42,16 @@
     background-color: $dark-grey;
     padding-top: 40px;
     padding-bottom: 80px;
-    padding-left: calc((100% - 1170px) / 2);
-    padding-right: calc((100% - 1170px) / 2);
+    padding-left: 20%;
+    padding-right: 20%;
 
     &__col {
       &-wrapper {
-        width: 1170px;
         display: flex;
         justify-content: center;
       }
 
-      width: 565px;
+      width: calc(50% - 20px);
       margin-left: 20px;
       margin-right: 20px;
 
@@ -60,6 +59,7 @@
         margin-left: 0;
         display: flex;
         align-items: flex-start;
+        justify-content: flex-end;
       }
 
       &:last-of-type {
@@ -85,7 +85,7 @@
       }
 
       img {
-        max-width: 100%;
+        width: 100%;
         border-radius: 5px;
       }
 
@@ -107,7 +107,10 @@
 
   .upcoming-events {
     background-color: $dark-grey;
-    padding: 80px 19.5%;
+    padding-bottom: 80px;
+    padding-top: 80px;
+    padding-left: 20%;
+    padding-right: 20%;
 
     &__header {
       display: flex;
@@ -131,12 +134,8 @@
         position: relative;
 
         img {
-          max-width: 100%;
+          width: 100%;
           border-radius: 5px;
-        }
-
-        &:hover {
-          cursor: pointer;
         }
 
         .image-placeholder {
@@ -188,6 +187,7 @@
         }
 
         ul {
+          width: 100%;
           padding-left: 0;
           margin-top: 20px;
           list-style: none;
@@ -324,6 +324,10 @@
   .home-page {
     .about-us {
       padding: 20px;
+
+      &__inner-container {
+        width: 100%;
+      }
     }
 
     .upcoming-events {

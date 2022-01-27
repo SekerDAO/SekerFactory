@@ -2,13 +2,13 @@
 
 .footer {
   background: transparent linear-gradient(241deg, $purple 0%, $orange 100%) 0% 0% no-repeat padding-box;
-  min-height: 100vh;
+  min-height: 50vh;
   max-width: 100%;
   overflow: hidden;
   padding-top: 120px;
   padding-bottom: 80px;
-  padding-left: calc((100% - 1170px) / 2);
-  padding-right: calc((100% - 1170px) / 2);
+  padding-left: 20%;
+  padding-right: 20%;
   position: relative;
 
   &__heading {
@@ -19,13 +19,12 @@
     h1 {
       font-size: 32px;
       line-height: 36px;
-      width: 565px;
+      width: calc(50% - 20px);
     }
 
     .stepper {
       position: relative;
-      width: 565px;
-      min-width: 565px;
+      width: calc(50% - 20px);
       top: -40px;
 
       &__step {
@@ -36,6 +35,7 @@
 
   &__content {
     margin-top: 120px;
+    margin-bottom: 80px;
   }
 
   &__bottom {
@@ -61,8 +61,7 @@
         margin-top: 40px;
         margin-left: 0;
         top: 0;
-        max-width: 100%;
-        min-width: auto;
+        width: 100%;
       }
     }
 
