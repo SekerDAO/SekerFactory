@@ -5,7 +5,6 @@ import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscal
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
-import featuredEventBanner from "../../assets/images/featured-event-banner.png"
 import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import ImagePlaceholder from "../../components/ImagePlaceholder"
@@ -27,11 +26,6 @@ const HomePage: FunctionComponent = () => {
 	const UPCOMING_EVENTS = events
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)
-	if (FEATURED_EVENT) {
-		FEATURED_EVENT.custom_data = {
-			bannerSrc: featuredEventBanner
-		}
-	}
 	return (
 		<>
 			<Modal open={viewScheduleOpen} onClose={() => setViewScheduleOpen(false)}>
@@ -99,11 +93,7 @@ const HomePage: FunctionComponent = () => {
 				<section className="featured-event">
 					<div className="featured-event__col">
 						{FEATURED_EVENT.custom_data?.bannerSrc ? (
-							<img
-								src={FEATURED_EVENT.custom_data.bannerSrc}
-								alt={FEATURED_EVENT.title}
-								width={565}
-							/>
+							<img src={FEATURED_EVENT.custom_data.bannerSrc} alt={FEATURED_EVENT.title} />
 						) : (
 							<ImagePlaceholder />
 						)}
@@ -134,7 +124,7 @@ const HomePage: FunctionComponent = () => {
 						</Button>
 					</div>
 					<section className="upcoming-events__list">
-						{UPCOMING_EVENTS.map(eventContent => (
+						{UPCOMING_EVENTS.slice(0, 2).map(eventContent => (
 							<div
 								className="upcoming-events__list-item"
 								key={eventContent.id}

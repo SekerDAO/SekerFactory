@@ -1,4 +1,7 @@
 import {useState, useEffect} from "react"
+import daoMeetingBanner from "../assets/images/dao-meeting-banner.png"
+import exhibitOneEventBanner from "../assets/images/exhibit-1-banner.png"
+import featuredEventBanner from "../assets/images/featured-event-banner.png"
 import config from "../config/addevent"
 import {EventContent} from "../types/event"
 
@@ -21,7 +24,34 @@ export const useEvents = ({upcoming}: Params) => {
 			await fetch(`${config.BASE_URL}events/list/?token=${config.TOKEN}${params}`)
 				.then(response => response.json())
 				.then(data => {
-					setEvents(data.events)
+					const _events: EventContent[] = data.events.map((event: EventContent) => {
+						if (event.eventname === "Post-ETH Denver Defrost Meet-Up") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: featuredEventBanner
+								}
+							}
+						}
+						if (event.eventname === "DAO Meetings") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: daoMeetingBanner
+								}
+							}
+						}
+						if (event.eventname === "Exhibit 1") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: exhibitOneEventBanner
+								}
+							}
+						}
+						return event
+					})
+					setEvents(_events)
 					setLoading(false)
 				})
 				.catch(err => {

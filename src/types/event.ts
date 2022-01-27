@@ -1,6 +1,7 @@
 export interface EventContent {
 	id: string
 	title: string
+	eventname: string
 	description: string
 	location: string
 	date_start: string

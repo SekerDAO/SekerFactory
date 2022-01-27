@@ -48,14 +48,14 @@
     justify-content: center;
 
     &__col {
-      width: calc(50% - 20px);
+      width: 565px;
       margin-left: 20px;
       margin-right: 20px;
 
       &:first-of-type {
         margin-left: 0;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
       }
 
       &:last-of-type {
@@ -123,9 +123,12 @@
       align-items: center;
 
       &-item {
-        height: 250px;
         width: calc(50% - 20px);
         position: relative;
+
+        img {
+          max-width: 100%;
+        }
 
         &:hover {
           cursor: pointer;
@@ -133,6 +136,7 @@
 
         .image-placeholder {
           position: absolute;
+          height: 250px;
         }
       }
     }
