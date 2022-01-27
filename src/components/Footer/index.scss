@@ -7,8 +7,8 @@
   overflow: hidden;
   padding-top: 120px;
   padding-bottom: 80px;
-  padding-left: 19.5%;
-  padding-right: 19.5%;
+  padding-left: calc((100% - 1170px) / 2);
+  padding-right: calc((100% - 1170px) / 2);
   position: relative;
 
   &__heading {
@@ -25,6 +25,7 @@
     .stepper {
       position: relative;
       width: 565px;
+      min-width: 565px;
       top: -40px;
 
       &__step {
@@ -61,6 +62,7 @@
         margin-left: 0;
         top: 0;
         max-width: 100%;
+        min-width: auto;
       }
     }
 

@@ -8,7 +8,7 @@ const SubscribeForm: FunctionComponent = () => {
 	const {email, formActionUrl, handleSubmit, setEmail, success, error} = useSubscribeForm()
 	return (
 		<section className="subscribe">
-			<h1>Keep in Touch for Future Events</h1>
+			{!success && <h1>Keep in Touch for Future Events</h1>}
 			{success ? (
 				<section className="subscribe__success-message">
 					<h2>Success!</h2>
