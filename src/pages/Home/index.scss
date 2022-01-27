@@ -5,6 +5,7 @@
     min-height: 50vh;
     display: flex;
     align-items: center;
+    padding: 80px 0;
 
     &__inner-container {
       display: flex;
@@ -339,7 +340,6 @@
 
         &-item {
           width: 100%;
-          max-width: 565px;
           margin-top: 20px;
 
           &:first-of-type {
@@ -416,6 +416,26 @@
           margin-top: 20px;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  .home-page {
+    .about-us {
+      &__inner-container {
+        width: 80%;
+      }
+    }
+
+    .featured-event {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
+    .upcoming-events {
+      padding-left: 10%;
+      padding-right: 10%;
     }
   }
 }

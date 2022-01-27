@@ -2,8 +2,8 @@
 
 .footer {
   background: transparent linear-gradient(241deg, $purple 0%, $orange 100%) 0% 0% no-repeat padding-box;
-  min-height: 50vh;
   max-width: 100%;
+  min-height: 100vh;
   overflow: hidden;
   padding-top: 120px;
   padding-bottom: 80px;
@@ -68,5 +68,18 @@
     &__content {
       margin-bottom: 40px;
     }
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  .footer {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+}
+
+@media screen and (min-width: 2250px) {
+  .footer {
+    min-height: 50vh;
   }
 }
