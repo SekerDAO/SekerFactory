@@ -321,7 +321,7 @@
   }
 }
 
-@media (max-width: 1190px) {
+@media (max-width: 1040px) {
   .home-page {
     .about-us {
       padding: 20px;
@@ -420,7 +420,7 @@
   }
 }
 
-@media screen and (max-width: 1919px) {
+@media screen and (min-width: 1040px) and (max-width: 1919px) {
   .home-page {
     .about-us {
       &__inner-container {
