@@ -80,7 +80,32 @@ export const useEvent = (id?: string) => {
 			await fetch(`${config.BASE_URL}events/event/?token=${config.TOKEN}&event_id=${id}`)
 				.then(response => response.json())
 				.then(data => {
-					setEvent(data.event)
+					let _event = {...data.event}
+					if (_event.eventname === "Post-ETH Denver Defrost Meet-Up") {
+						_event = {
+							...event,
+							custom_data: {
+								bannerSrc: featuredEventBanner
+							}
+						}
+					}
+					if (_event.eventname === "DAO Meetings") {
+						_event = {
+							...event,
+							custom_data: {
+								bannerSrc: daoMeetingBanner
+							}
+						}
+					}
+					if (_event.eventname === "Exhibit 1") {
+						_event = {
+							...event,
+							custom_data: {
+								bannerSrc: exhibitOneEventBanner
+							}
+						}
+					}
+					setEvent(_event)
 					setLoading(false)
 				})
 				.catch(err => {

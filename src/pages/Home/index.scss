@@ -42,12 +42,16 @@
     background-color: $dark-grey;
     padding-top: 40px;
     padding-bottom: 80px;
-    padding-left: 19.5%;
-    padding-right: 19.5%;
-    display: flex;
-    justify-content: center;
+    padding-left: calc((100% - 1170px) / 2);
+    padding-right: calc((100% - 1170px) / 2);
 
     &__col {
+      &-wrapper {
+        width: 1170px;
+        display: flex;
+        justify-content: center;
+      }
+
       width: 565px;
       margin-left: 20px;
       margin-right: 20px;
@@ -315,7 +319,7 @@
   }
 }
 
-@media (max-width: 1039px) {
+@media (max-width: 1190px) {
   .home-page {
     .about-us {
       padding: 20px;
@@ -352,6 +356,11 @@
       padding-left: 20px;
       padding-right: 20px;
 
+      &__col-wrapper {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
       &__col {
         display: flex;
         width: 100%;
@@ -376,6 +385,20 @@
 
         .image-placeholder {
           height: 565px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .featured-event {
+    & &__col {
+      .btn {
+        width: 100%;
+
+        &:first-of-type {
+          margin-right: 0;
         }
       }
     }

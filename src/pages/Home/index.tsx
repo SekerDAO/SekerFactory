@@ -91,28 +91,30 @@ const HomePage: FunctionComponent = () => {
 			</Modal>
 			<main className="home-page">
 				<section className="featured-event">
-					<div className="featured-event__col">
-						{FEATURED_EVENT.custom_data?.bannerSrc ? (
-							<img src={FEATURED_EVENT.custom_data.bannerSrc} alt={FEATURED_EVENT.title} />
-						) : (
-							<ImagePlaceholder />
-						)}
-					</div>
-					<div className="featured-event__col">
-						<h1
-							dangerouslySetInnerHTML={{
-								__html: `${FEATURED_EVENT.title} <br /> ${getDateReadable(FEATURED_EVENT)}`
-							}}
-						/>
-						<div className="featured-event__col-hosted-by">
-							<h3>Hosted by:</h3>
-							<h2 dangerouslySetInnerHTML={{__html: FEATURED_EVENT.location}} />
+					<div className="featured-event__col-wrapper">
+						<div className="featured-event__col">
+							{FEATURED_EVENT.custom_data?.bannerSrc ? (
+								<img src={FEATURED_EVENT.custom_data.bannerSrc} alt={FEATURED_EVENT.title} />
+							) : (
+								<ImagePlaceholder />
+							)}
 						</div>
-						<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
-						<Button variant="secondary" onClick={() => setViewScheduleOpen(true)}>
-							View Schedule
-						</Button>
-						<Button onClick={() => openRSVPForm(FEATURED_EVENT)}>RSVP</Button>
+						<div className="featured-event__col">
+							<h1
+								dangerouslySetInnerHTML={{
+									__html: `${FEATURED_EVENT.title} <br /> ${getDateReadable(FEATURED_EVENT)}`
+								}}
+							/>
+							<div className="featured-event__col-hosted-by">
+								<h3>Hosted by:</h3>
+								<h2 dangerouslySetInnerHTML={{__html: FEATURED_EVENT.location}} />
+							</div>
+							<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
+							<Button variant="secondary" onClick={() => setViewScheduleOpen(true)}>
+								View Schedule
+							</Button>
+							<Button onClick={() => openRSVPForm(FEATURED_EVENT)}>RSVP</Button>
+						</div>
 					</div>
 				</section>
 				<SubscribeForm />
