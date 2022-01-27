@@ -7,7 +7,7 @@ import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
 import Button from "../../components/Button"
 import Footer from "../../components/Footer"
-import ImagePlaceholder from "../../components/ImagePlaceholder"
+import Image from "../../components/Image"
 import Loading from "../../components/Loading"
 import Modal from "../../components/Modal"
 import SubscribeForm from "../../components/Subscribe"
@@ -93,11 +93,7 @@ const HomePage: FunctionComponent = () => {
 				<section className="featured-event">
 					<div className="featured-event__col-wrapper">
 						<div className="featured-event__col">
-							{FEATURED_EVENT.custom_data?.bannerSrc ? (
-								<img src={FEATURED_EVENT.custom_data.bannerSrc} alt={FEATURED_EVENT.title} />
-							) : (
-								<ImagePlaceholder />
-							)}
+							<Image src={FEATURED_EVENT?.custom_data?.bannerSrc} alt={FEATURED_EVENT.title} />
 						</div>
 						<div className="featured-event__col">
 							<h1
@@ -132,15 +128,11 @@ const HomePage: FunctionComponent = () => {
 								key={eventContent.id}
 								onClick={() => navigate(`/events/${eventContent.id}`)}
 							>
-								{eventContent.custom_data?.bannerSrc ? (
-									<img
-										alt={eventContent.title}
-										src={eventContent.custom_data?.bannerSrc}
-										className="upcoming-events__list-item-banner"
-									/>
-								) : (
-									<ImagePlaceholder />
-								)}
+								<Image
+									alt={eventContent.title}
+									src={eventContent?.custom_data?.bannerSrc}
+									className="upcoming-events__list-item-banner"
+								/>
 							</div>
 						))}
 					</section>

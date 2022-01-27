@@ -1,7 +1,7 @@
 import {FunctionComponent} from "react"
 import {useParams, useNavigate} from "react-router-dom"
 import Button from "../../components/Button"
-import ImagePlaceholder from "../../components/ImagePlaceholder"
+import Image from "../../components/Image"
 import Loading from "../../components/Loading"
 import SubscribeForm from "../../components/Subscribe"
 import {useEvent} from "../../hooks/useAddEvent"
@@ -27,11 +27,7 @@ const EventDetails: FunctionComponent = () => {
 		<main className="event-details-page">
 			<section className="event-details-page__heading">
 				<div className="event-details-page__heading-col">
-					{currentEvent?.custom_data?.bannerSrc ? (
-						<img src={currentEvent.custom_data?.bannerSrc} alt={currentEvent.title} />
-					) : (
-						<ImagePlaceholder />
-					)}
+					<Image src={currentEvent.custom_data?.bannerSrc} alt={currentEvent.title} />
 				</div>
 				<div className="event-details-page__heading-col">
 					<h1>

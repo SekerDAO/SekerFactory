@@ -2,7 +2,7 @@ import {parse} from "query-string"
 import {FunctionComponent} from "react"
 import {useLocation, useNavigate} from "react-router-dom"
 import Button from "../../components/Button"
-import ImagePlaceholder from "../../components/ImagePlaceholder"
+import Image from "../../components/Image"
 import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
 import {getDateReadable, isEventUpcoming} from "../../utils"
@@ -23,11 +23,7 @@ const EventsList: FunctionComponent = () => {
 					onClick={() => navigate(`/events/${event.id}`)}
 				>
 					<div className="events-list-page__item-col">
-						{event.custom_data?.bannerSrc ? (
-							<img src={event.custom_data?.bannerSrc} alt={event.title} />
-						) : (
-							<ImagePlaceholder />
-						)}
+						<Image src={event.custom_data?.bannerSrc} alt={event.title} />
 					</div>
 					<div className="events-list-page__item-col">
 						<h1

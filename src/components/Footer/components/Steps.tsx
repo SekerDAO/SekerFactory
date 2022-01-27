@@ -1,5 +1,5 @@
 import {FunctionComponent, ReactElement} from "react"
-import ImagePlaceholder from "../../ImagePlaceholder"
+import Image from "../../Image"
 import "./steps.scss"
 
 const Phase: FunctionComponent<{title: string; subTitle?: string; content?: ReactElement}> = ({
@@ -40,7 +40,7 @@ export const GenesisStep: FunctionComponent = () => (
 		}
 	>
 		<section className="phase__video-tour">
-			<ImagePlaceholder />
+			<Image />
 			<div className="phase__video-tour-content">
 				<h3>Take a Virtual 360° Tour!</h3>
 				<p>
