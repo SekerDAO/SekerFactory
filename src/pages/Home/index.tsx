@@ -52,7 +52,7 @@ const HomePage: FunctionComponent = () => {
 					<li className="schedule-list__item">
 						<span>8:00PM PST</span>
 						<div className="schedule-list__item-description">
-							<p className="purple bold">Party</p>
+							<p className="purple bold">Rave Party</p>
 						</div>
 					</li>
 				</ul>
