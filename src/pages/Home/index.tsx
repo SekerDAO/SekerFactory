@@ -139,8 +139,7 @@ const HomePage: FunctionComponent = () => {
 						</h3>
 						<h3 className="purple">Come for the vibes. Stay for the revolution.</h3>
 						<h3>
-							Come co-own our vision of the future, party in dystopia, and build for a wagmi
-							horizon.
+							Co-own our vision of the future, party in dystopia, and build for a wagmi horizon.
 						</h3>
 						<div className="upcoming-events__about-buttons">
 							<Button onClick={() => window.open("https://discord.gg/8BguJkDkkU", "_blank")}>
