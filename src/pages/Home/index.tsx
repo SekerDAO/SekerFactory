@@ -57,7 +57,7 @@ const HomePage: FunctionComponent = () => {
 					</li>
 				</ul>
 				<ul className="schedule-list">
-					<h2>Saturday, February 27</h2>
+					<h2>Sunday, February 27</h2>
 					<li className="schedule-list__item">
 						<span>2:00PM PST</span>
 						<div className="schedule-list__item-description">
