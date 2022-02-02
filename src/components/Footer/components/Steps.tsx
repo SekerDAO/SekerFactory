@@ -27,7 +27,7 @@ export const GenesisStep: FunctionComponent = () => (
 					We have secured a 4000 sq ft location in the bustling heart of Downtown Los Angeles to
 					serve as our first official Seker Factory (001), with ambitions for the space to become an
 					exceptionally immersive digital art gallery, a pioneering hackerspace / artist studio, an
-					exciting events venue, and much more
+					exciting events venue, and much more.
 				</p>
 				<p className="bold">
 					{`While we have completed construction upgrade to the venue and have started designing out the
@@ -60,7 +60,7 @@ export const PhaseOne: FunctionComponent = () => (
 				<p className="bold">
 					In early-February, Seker Factory 001 will be hosting recurring mini events / meet-ups.
 				</p>
-				<p className="bold">In early-February, we will be releasing our NFT Clearance Card sale.</p>
+				<p className="bold">In mid-February, we will be releasing our NFT Clearance Card sale.</p>
 				<p className="bold">{`On February 26-27, Seker Factory will be hosting our first "Post ETHDenver Defrost" event.`}</p>
 				<p className="bold">
 					In early-March, Seker Factory 001 will be having our official grand opening exhibition
@@ -78,13 +78,13 @@ export const PhaseTwo: FunctionComponent = () => (
 		content={
 			<>
 				<p className="bold">
-					In early-April, Seker Factory 001 will be releasing its official generative NFT series
-					sale.
+					In early-April, Seker Factory 001 will be releasing its official generative NFT series,
+					Avatars of the Necropolis.
 				</p>
 				<p className="bold">
 					In early-April, the Seker Factory 001 community will help determine the structure of the
-					DAO as well as help design the tokenomics <br /> (moving from NFT governance to an ERC-20
-					governance).
+					DAO as well as help design the tokenomics <br /> (making use of the flexible DAO tooling
+					in Zodiac and sekerdao.com).
 				</p>
 				<p className="bold">
 					As a community, we will also be deciding on additional visual components at Seker Factory
