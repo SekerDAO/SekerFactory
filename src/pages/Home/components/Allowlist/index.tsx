@@ -19,10 +19,11 @@ const Allowlist: FunctionComponent<{
 		error,
 		success,
 		handleSubmit,
+		handleClose,
 		formActionUrl
-	} = useAllowlist(joinAllowlistType)
+	} = useAllowlist({joinAllowlistType, setJoinAllowlistType})
 	return (
-		<Modal open={!!joinAllowlistType} onClose={() => setJoinAllowlistType(undefined)}>
+		<Modal open={!!joinAllowlistType} onClose={handleClose}>
 			{success ? (
 				<section className="join-allowlist__success-message">
 					<h2>Success!</h2>
@@ -35,7 +36,10 @@ const Allowlist: FunctionComponent<{
 					onSubmit={handleSubmit}
 					action={formActionUrl}
 				>
-					<h2>Join Allowlist</h2>
+					<h2>
+						Join Allowlist (
+						{joinAllowlistType === "001" ? "001 Clearance Cards" : "Top Clearance Cards"})
+					</h2>
 					<label>Email</label>
 					<Input
 						name="EMAIL"
@@ -44,17 +48,18 @@ const Allowlist: FunctionComponent<{
 						value={email}
 						onChange={event => setEmail(event.target.value)}
 					/>
-					<label>ETH Wallet Addrsss</label>
+					<label>ETH Wallet Address</label>
 					<Input
+						placeholder="0x..."
 						name="WALLET"
 						type="text"
 						required
 						value={wallet}
 						onChange={event => setWallet(event.target.value)}
 					/>
-					<label>Social Media</label>
+					<label>Social Media Link</label>
 					<Input
-						placeholder="(Twitter/Facebook/anything)"
+						placeholder="Twitter, Instagram, etc."
 						name="SOCIAL"
 						type="url"
 						required

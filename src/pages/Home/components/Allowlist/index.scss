@@ -51,4 +51,11 @@
       line-height: 20px;
     }
   }
+
+  &__error {
+    width: 100%;
+    color: $error;
+    margin-top: 10px;
+    text-align: center;
+  }
 }
