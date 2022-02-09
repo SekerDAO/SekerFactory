@@ -6,6 +6,7 @@ const useSubscribeForm = (): {
 	email: string
 	setEmail: Dispatch<SetStateAction<string>>
 	handleSubmit: FormEventHandler<HTMLFormElement>
+	handleSubscribeToNewsletter: (_email: string) => Promise<{_success: boolean; _error: string}>
 	formActionUrl: string
 	success: boolean
 	error: string
@@ -18,31 +19,42 @@ const useSubscribeForm = (): {
 	const formActionUrl = `https://${config.SUBSCRIBE_FORM.DOMAIN}/subscribe/post-json?u=${config.SUBSCRIBE_FORM.U}&amp;id=${config.SUBSCRIBE_FORM.ID}`
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
 		event.preventDefault()
-		await fetchJsonp(`${formActionUrl}&EMAIL=${email}`, {
+		const {_success, _error} = await handleSubscribeToNewsletter(email)
+		setSuccess(_success)
+		setError(_error)
+	}
+
+	const handleSubscribeToNewsletter = async (_email: string) => {
+		let _success = false
+		let _error = ""
+		await fetchJsonp(`${formActionUrl}&EMAIL=${_email}`, {
 			jsonpCallback: "c"
 		})
 			.then(response => response.json())
 			.then(data => {
 				if (data.result !== "success") {
-					setSuccess(false)
+					_success = false
 					if (data.msg.includes("already subscribed to list")) {
-						setError("Woops! You already subscribed :)")
+						_error = "Woops! You already subscribed :)"
 					} else {
-						setError(data.msg)
+						_error = data.msg
 					}
 				} else {
-					setSuccess(true)
+					_success = true
 				}
 			})
 			.catch(() => {
-				setSuccess(false)
-				setError("Unkown error occured. Please, try later")
+				_success = false
+				_error = "Unkown error occured. Please, try later"
 			})
+
+		return {_success, _error}
 	}
 
 	return {
 		formActionUrl,
 		handleSubmit,
+		handleSubscribeToNewsletter,
 		email,
 		setEmail,
 		success,
