@@ -152,6 +152,17 @@
       justify-content: space-between;
       flex-wrap: wrap;
 
+      &-description {
+        margin-bottom: 40px;
+
+        h3 {
+          font-size: 32px;
+          line-height: 36px;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+      }
+
       &-item {
         width: calc(50% - 20px);
         border: 1px solid $dark-grey75;

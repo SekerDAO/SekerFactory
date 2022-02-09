@@ -104,6 +104,17 @@ const HomePage: FunctionComponent = () => {
 						</p>
 					</section>
 					<section className="upcoming-events__purchase">
+						<div className="upcoming-events__purchase-description">
+							<h3>
+								Introducing the Seker Factory Clearance Cards. These limited edition NFTs represent
+								our way of opening our factory up to patrons of the Seker intergalactic metaverse
+								community. We have written custom smart contract code that lets you level up these
+								cards over time as you participate in events, add valuable contributions to the
+								community, or simply hang out and enjoy the productions. The higher your level, the
+								more rep, merited governance right on some proposals, and rewards you have in your
+								community. More details on this system coming soon.
+							</h3>
+						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
 								<ClearanceCardPlaceholder width={250} height={250} />
@@ -145,6 +156,12 @@ const HomePage: FunctionComponent = () => {
 										<DoneCircle width="20px" height="20px" />
 									</div>
 									Discounts to Seker Factory 001 merch.
+								</li>
+								<li>
+									<div className="upcoming-events__purchace-item-icon-container">
+										<DoneCircle width="20px" height="20px" />
+									</div>
+									Level starts at 0
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
@@ -199,10 +216,16 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
+									+10 minimal level boost for being an early supporter
+								</li>
+								<li>
+									<div className="upcoming-events__purchace-item-icon-container">
+										<DoneCircle width="20px" height="20px" />
+									</div>
 									More to come!
 								</li>
 							</ul>
-							<Button onClick={() => setJoinAllowlistType("top")}>Join Allowlist</Button>
+							<Button onClick={() => setJoinAllowlistType("TOP")}>Join Allowlist</Button>
 						</div>
 					</section>
 				</section>

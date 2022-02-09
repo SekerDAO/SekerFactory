@@ -6,8 +6,8 @@ import useAllowlist from "./hooks"
 import "./index.scss"
 
 const Allowlist: FunctionComponent<{
-	joinAllowlistType: "top" | "001" | undefined
-	setJoinAllowlistType: Dispatch<SetStateAction<"top" | "001" | undefined>>
+	joinAllowlistType: "TOP" | "001" | undefined
+	setJoinAllowlistType: Dispatch<SetStateAction<"TOP" | "001" | undefined>>
 }> = ({joinAllowlistType, setJoinAllowlistType}) => {
 	const {
 		email,
@@ -22,12 +22,13 @@ const Allowlist: FunctionComponent<{
 		handleClose,
 		formActionUrl
 	} = useAllowlist({joinAllowlistType, setJoinAllowlistType})
+	const title = joinAllowlistType === "001" ? "001 Clearance Cards" : "Top Clearance Cards"
 	return (
 		<Modal open={!!joinAllowlistType} onClose={handleClose}>
 			{success ? (
 				<section className="join-allowlist__success-message">
 					<h2>Success!</h2>
-					<p>You have successfully joined Allowlist.</p>
+					<p>You have successfully joined Allowlist ({title}).</p>
 				</section>
 			) : (
 				<form
@@ -36,10 +37,7 @@ const Allowlist: FunctionComponent<{
 					onSubmit={handleSubmit}
 					action={formActionUrl}
 				>
-					<h2>
-						Join Allowlist (
-						{joinAllowlistType === "001" ? "001 Clearance Cards" : "Top Clearance Cards"})
-					</h2>
+					<h2>Join Allowlist ({title})</h2>
 					<label>Email</label>
 					<Input
 						name="EMAIL"

@@ -6,15 +6,19 @@ const useAllowlist = ({
 	joinAllowlistType,
 	setJoinAllowlistType
 }: {
-	joinAllowlistType: "top" | "001" | undefined
-	setJoinAllowlistType: Dispatch<SetStateAction<"top" | "001" | undefined>>
+	joinAllowlistType: "TOP" | "001" | undefined
+	setJoinAllowlistType: Dispatch<SetStateAction<"TOP" | "001" | undefined>>
 }) => {
 	const [email, setEmail] = useState("")
 	const [wallet, setWallet] = useState("")
 	const [social, setSocial] = useState("")
 	const [error, setError] = useState("")
 	const [success, setSuccess] = useState(false)
-	const formActionUrl = `https://${config.ALLOWLIST_FORM.DOMAIN}/subscribe/post-json?u=${config.ALLOWLIST_FORM.U}&amp;id=${config.ALLOWLIST_FORM.ID}`
+	const getFormActionUrl = () => {
+		if (joinAllowlistType) {
+			return `https://${config.ALLOWLIST_FORM[joinAllowlistType].DOMAIN}/subscribe/post-json?u=${config.ALLOWLIST_FORM[joinAllowlistType].U}&amp;id=${config.ALLOWLIST_FORM[joinAllowlistType].ID}`
+		}
+	}
 
 	const handleClose = () => {
 		setJoinAllowlistType(undefined)
@@ -27,16 +31,9 @@ const useAllowlist = ({
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
 		event.preventDefault()
 		setError("")
-		let clearanceCard = "001 Clearance Cards"
-		if (joinAllowlistType === "top") {
-			clearanceCard = "Top Clearance Cards"
-		}
-		await fetchJsonp(
-			`${formActionUrl}&EMAIL=${email}&WALLET=${wallet}&SOCIALLINK=${social}&CARD=${clearanceCard}`,
-			{
-				jsonpCallback: "c"
-			}
-		)
+		await fetchJsonp(`${getFormActionUrl()}&EMAIL=${email}&WALLET=${wallet}&SOCIAL=${social}`, {
+			jsonpCallback: "c"
+		})
 			.then(response => response.json())
 			.then(data => {
 				if (data.result !== "success") {
@@ -65,7 +62,7 @@ const useAllowlist = ({
 		error,
 		success,
 		handleSubmit,
-		formActionUrl,
+		formActionUrl: getFormActionUrl(),
 		handleClose
 	}
 }
