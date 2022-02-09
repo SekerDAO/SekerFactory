@@ -1,5 +1,6 @@
 import {Dispatch, FunctionComponent, SetStateAction} from "react"
 import Button from "../../../../components/Button"
+import Checkbox from "../../../../components/Checkbox"
 import Input from "../../../../components/Input"
 import Modal from "../../../../components/Modal"
 import useAllowlist from "./hooks"
@@ -20,7 +21,9 @@ const Allowlist: FunctionComponent<{
 		success,
 		handleSubmit,
 		handleClose,
-		formActionUrl
+		formActionUrl,
+		shouldSubscribeToNewsletter,
+		setShouldSubscribeToNewsletter
 	} = useAllowlist({joinAllowlistType, setJoinAllowlistType})
 	const title = joinAllowlistType === "001" ? "001 Clearance Cards" : "Top Clearance Cards"
 	return (
@@ -63,6 +66,12 @@ const Allowlist: FunctionComponent<{
 						required
 						value={social}
 						onChange={event => setSocial(event.target.value)}
+					/>
+					<Checkbox
+						label="Sign up for the Seker Factory newsletter to receive updates about our exciting upcoming events, projects, and releases."
+						id="subscribe-to-newsletter-checkbox"
+						checked={shouldSubscribeToNewsletter}
+						onChange={() => setShouldSubscribeToNewsletter(!shouldSubscribeToNewsletter)}
 					/>
 					<Button variant="primary" type="submit" disabled={!email || !wallet || !social}>
 						Join Now

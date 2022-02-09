@@ -1,0 +1,71 @@
+@import "../../assets/styles/colors.scss";
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  width: 36px;
+  height: 36px;
+
+  // background: $purple;
+  border-radius: 5px;
+  position: relative;
+
+  input[type=checkbox] {
+    visibility: hidden;
+  }
+
+  label {
+    cursor: pointer;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    left: 4px;
+    top: 4px;
+    border: 1px solid $dark-grey;
+    border-radius: 5px;
+
+    &::after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 10px;
+      background: transparent;
+      top: 6px;
+      left: 6px;
+      border: 3px solid $white;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+    }
+
+    &:hover::after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+      filter: alpha(opacity=30);
+      opacity: 0.3;
+    }
+  }
+
+  input[type=checkbox]:checked + label {
+    background: $purple;
+    border: none;
+
+    &::after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+  }
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+
+  & > label {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+}

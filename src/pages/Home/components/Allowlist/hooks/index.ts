@@ -14,6 +14,7 @@ const useAllowlist = ({
 	const [social, setSocial] = useState("")
 	const [error, setError] = useState("")
 	const [success, setSuccess] = useState(false)
+	const [shouldSubscribeToNewsletter, setShouldSubscribeToNewsletter] = useState(true)
 	const getFormActionUrl = () => {
 		if (joinAllowlistType) {
 			return `https://${config.ALLOWLIST_FORM[joinAllowlistType].DOMAIN}/subscribe/post-json?u=${config.ALLOWLIST_FORM[joinAllowlistType].U}&amp;id=${config.ALLOWLIST_FORM[joinAllowlistType].ID}`
@@ -63,7 +64,9 @@ const useAllowlist = ({
 		success,
 		handleSubmit,
 		formActionUrl: getFormActionUrl(),
-		handleClose
+		handleClose,
+		shouldSubscribeToNewsletter,
+		setShouldSubscribeToNewsletter
 	}
 }
 
