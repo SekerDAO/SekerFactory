@@ -111,7 +111,7 @@ const HomePage: FunctionComponent = () => {
 								community. We have written custom smart contract code that lets you level up these
 								cards over time as you participate in events, add valuable contributions to the
 								community, or simply hang out and enjoy the productions. The higher your level, the
-								more rep, merited governance right on some proposals, and rewards you have in your
+								more rep, merited governance rights on some proposals, and rewards you have in your
 								community. More details on this system coming soon.
 							</h3>
 						</div>
@@ -216,7 +216,7 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									+10 minimal level boost for being an early supporter
+									level boost starting at level 1 for being an early supporter.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
