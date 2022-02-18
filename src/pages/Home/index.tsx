@@ -1,4 +1,4 @@
-import {FunctionComponent} from "react"
+import {FunctionComponent, useState} from "react"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
@@ -9,6 +9,7 @@ import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import Image from "../../components/Image"
 import Loading from "../../components/Loading"
+import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
 import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
@@ -18,6 +19,7 @@ import useHomePage from "./hooks"
 import "./index.scss"
 
 const HomePage: FunctionComponent = () => {
+	const [fullImageSrc, setFullImageSrc] = useState<string | undefined>(undefined)
 	const {viewScheduleOpen, joinAllowlistType, setViewScheduleOpen, setJoinAllowlistType} =
 		useHomePage()
 	const {events, loading} = useEvents({upcoming: "now"})
@@ -28,12 +30,18 @@ const HomePage: FunctionComponent = () => {
 	const UPCOMING_EVENTS = events
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)
+	const handleOpenFullImage = (src: string) => setFullImageSrc(src)
 	return (
 		<>
 			<Schedule viewScheduleOpen={viewScheduleOpen} setViewScheduleOpen={setViewScheduleOpen} />
 			<Allowlist
 				joinAllowlistType={joinAllowlistType}
 				setJoinAllowlistType={setJoinAllowlistType}
+			/>
+			<ImageModal
+				src={fullImageSrc}
+				open={!!fullImageSrc}
+				onClose={() => setFullImageSrc(undefined)}
 			/>
 			<main className="home-page">
 				<section className="featured-event">
@@ -118,7 +126,11 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<img src={clearanceCardOneSrc} alt="001 Clearance Card Visualization" />
+								<img
+									src={clearanceCardOneSrc}
+									alt="001 Clearance Card Visualization"
+									onClick={() => handleOpenFullImage(clearanceCardOneSrc)}
+								/>
 							</div>
 							<h3>001 Clearance Cards</h3>
 							<p>1000 total</p>
@@ -175,7 +187,11 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<img src={topClearanceCardSrc} alt="Top Clearance Card Visualization" />
+								<img
+									src={topClearanceCardSrc}
+									alt="Top Clearance Card Visualization"
+									onClick={() => handleOpenFullImage(topClearanceCardSrc)}
+								/>
 							</div>
 							<h3>Top Clearance Cards</h3>
 							<p>1000 total</p>
