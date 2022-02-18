@@ -172,9 +172,12 @@
         flex-wrap: wrap;
 
         &-img-container {
-          height: 250px;
-          width: 250px;
           margin-bottom: 40px;
+
+          img {
+            width: 100%;
+            border-radius: 5px;
+          }
         }
 
         &-address {

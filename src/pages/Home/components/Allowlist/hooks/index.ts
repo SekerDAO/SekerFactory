@@ -12,7 +12,6 @@ const useAllowlist = ({
 }) => {
 	const [email, setEmail] = useState("")
 	const [wallet, setWallet] = useState("")
-	const [social, setSocial] = useState("")
 	const [error, setError] = useState("")
 	const [success, setSuccess] = useState(false)
 	const [shouldSubscribeToNewsletter, setShouldSubscribeToNewsletter] = useState(true)
@@ -27,14 +26,13 @@ const useAllowlist = ({
 		setJoinAllowlistType(undefined)
 		setEmail("")
 		setWallet("")
-		setSocial("")
 		setError("")
 		setSuccess(false)
 	}
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
 		event.preventDefault()
 		setError("")
-		await fetchJsonp(`${getFormActionUrl()}&EMAIL=${email}&WALLET=${wallet}&SOCIAL=${social}`, {
+		await fetchJsonp(`${getFormActionUrl()}&EMAIL=${email}&WALLET=${wallet}`, {
 			jsonpCallback: "c"
 		})
 			.then(response => response.json())
@@ -72,8 +70,6 @@ const useAllowlist = ({
 		setEmail,
 		wallet,
 		setWallet,
-		social,
-		setSocial,
 		error,
 		success,
 		handleSubmit,

@@ -1,9 +1,10 @@
 import {FunctionComponent} from "react"
-import {ReactComponent as ClearanceCardPlaceholder} from "../../assets/icons/clearance-card-placeholder.svg"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
+import clearanceCardOneSrc from "../../assets/images/clearance-card-001.png"
+import topClearanceCardSrc from "../../assets/images/top-clearance-card.png"
 import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import Image from "../../components/Image"
@@ -117,7 +118,7 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<ClearanceCardPlaceholder width={250} height={250} />
+								<img src={clearanceCardOneSrc} alt="001 Clearance Card Visualization" />
 							</div>
 							<h3>001 Clearance Cards</h3>
 							<p>1000 total</p>
@@ -174,7 +175,7 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<ClearanceCardPlaceholder width={250} height={250} />
+								<img src={topClearanceCardSrc} alt="Top Clearance Card Visualization" />
 							</div>
 							<h3>Top Clearance Cards</h3>
 							<p>1000 total</p>

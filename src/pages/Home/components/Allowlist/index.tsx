@@ -15,8 +15,6 @@ const Allowlist: FunctionComponent<{
 		setEmail,
 		wallet,
 		setWallet,
-		social,
-		setSocial,
 		error,
 		success,
 		handleSubmit,
@@ -58,22 +56,13 @@ const Allowlist: FunctionComponent<{
 						value={wallet}
 						onChange={event => setWallet(event.target.value)}
 					/>
-					<label>Twitter</label>
-					<Input
-						placeholder="Your Twitter username"
-						name="SOCIAL"
-						type="text"
-						required
-						value={social}
-						onChange={event => setSocial(event.target.value)}
-					/>
 					<Checkbox
 						label="Sign up for the Seker Factory newsletter to receive updates about our exciting upcoming events, projects, and releases."
 						id="subscribe-to-newsletter-checkbox"
 						checked={shouldSubscribeToNewsletter}
 						onChange={() => setShouldSubscribeToNewsletter(!shouldSubscribeToNewsletter)}
 					/>
-					<Button variant="primary" type="submit" disabled={!email || !wallet || !social}>
+					<Button variant="primary" type="submit" disabled={!email || !wallet}>
 						Join Now
 					</Button>
 					{error && <p className="join-allowlist__error">{error}</p>}
