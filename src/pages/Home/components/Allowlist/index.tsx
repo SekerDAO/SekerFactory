@@ -58,11 +58,11 @@ const Allowlist: FunctionComponent<{
 						value={wallet}
 						onChange={event => setWallet(event.target.value)}
 					/>
-					<label>Social Media Link</label>
+					<label>Twitter</label>
 					<Input
-						placeholder="Twitter, Instagram, etc."
+						placeholder="Your Twitter username"
 						name="SOCIAL"
-						type="url"
+						type="text"
 						required
 						value={social}
 						onChange={event => setSocial(event.target.value)}
