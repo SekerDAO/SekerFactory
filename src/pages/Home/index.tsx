@@ -66,7 +66,8 @@ const HomePage: FunctionComponent = () => {
 		)
 		const etherValue = ethers.utils.parseEther("0.05")
 		const amount = parseInt(inputValue)
-		await saleContract.mint(amount, {value: etherValue})
+		const value = etherValue.mul(amount)
+		await saleContract.mint(amount, {value: value})
 		// Do the purchase
 	}, [web3Context.signer, setWeb3Context])
 	if (loading || !events || !events.length) {
