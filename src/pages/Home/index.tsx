@@ -53,7 +53,6 @@ const HomePage: FunctionComponent = () => {
 			const signer = provider.getSigner()
 			setWeb3Context({instance, signer})
 		}
-		console.log("signer", await web3Context.signer.getAddress())
 		const saleContract = new ethers.Contract(
 			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
 			Ukraine.abi,

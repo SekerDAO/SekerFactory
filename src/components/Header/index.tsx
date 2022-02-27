@@ -47,7 +47,6 @@ const Header: FunctionComponent = () => {
 			const instance = await web3Modal.connect()
 			const provider = new ethers.providers.Web3Provider(instance)
 			const signer = provider.getSigner()
-			console.log("signer", await signer.getAddress())
 			setWeb3Context({instance, signer})
 		} else {
 			setWeb3Context({instance: null, signer: null})
