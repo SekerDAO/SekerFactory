@@ -12,6 +12,7 @@ import topClearanceCardSrc from "../../assets/images/top-clearance-card.png"
 import Button from "../../components/Button"
 import Footer from "../../components/Footer"
 import Image from "../../components/Image"
+import Input from "../../components/Input"
 import Loading from "../../components/Loading"
 import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
@@ -42,27 +43,33 @@ const web3Modal = new Web3Modal({
 const HomePage: FunctionComponent = () => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
 	const [fullImageSrc, setFullImageSrc] = useState<string | undefined>(undefined)
+	const [inputValue, setInputValue] = useState<string>("1")
 	const {viewScheduleOpen, joinAllowlistType, setViewScheduleOpen, setJoinAllowlistType} =
 		useHomePage()
 	const {events, loading} = useEvents({upcoming: "now"})
 	const onPurchase = useCallback(async () => {
+		let signer = null
 		if (!web3Context.signer) {
 			// sign in
 			await web3Modal.clearCachedProvider()
 			const instance = await web3Modal.connect()
 			const provider = new ethers.providers.Web3Provider(instance)
-			const signer = provider.getSigner()
+			signer = provider.getSigner()
 			setWeb3Context({instance, signer})
+		} else {
+			signer = web3Context.signer
 		}
 		const saleContract = new ethers.Contract(
 			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
 			Ukraine.abi,
-			web3Context.signer
+			signer
 		)
 		const etherValue = ethers.utils.parseEther("0.05")
-		await saleContract.mint(1, {value: etherValue})
+		const amount = parseInt(inputValue)
+		const value = etherValue.mul(amount)
+		await saleContract.mint(amount, {value: value})
 		// Do the purchase
-	}, [web3Context.signer, setWeb3Context])
+	}, [inputValue, web3Context.signer, setWeb3Context])
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
@@ -101,7 +108,18 @@ const HomePage: FunctionComponent = () => {
 									"Over the last couple days, hundreds of thousands of Ukrainian people have fled their homes to seek refuge in neighboring European countries. Millions more are attempting to escape the chaos, but are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks across the country have been overwhelmed and Ukrainians, who still rely heavily on cash payments, are unable to cover the costs of getting themselves out. The devolper of this site that you are reading this on, a member of the Seker DAO and good friend of all of ours is currently in the midst of this stuggle. The artist of this NFT, another DAO member, grew up in the Ukraine and has family there. This war hits close to home for all. Purchasing a print of this NFT will be your badge of support. 100% of the proceeds go to humanitarian aid for those trying to evacuate including the members of Seker Factory trapped in this conflict. We all thank you for your support."
 								}
 							</p>
-							<Button onClick={onPurchase}>Purchase</Button>
+							<div style={{marginTop: 20}}>
+								<p style={{marginBottom: 20}}>Mint Amount</p>
+								<Input
+									type="number"
+									min="1"
+									value={inputValue}
+									onChange={(e: React.FormEvent<HTMLInputElement>) => {
+										setInputValue(e.currentTarget.value)
+									}}
+								/>
+								<Button onClick={onPurchase}>Purchase</Button>
+							</div>
 						</div>
 					</div>
 				</section>
