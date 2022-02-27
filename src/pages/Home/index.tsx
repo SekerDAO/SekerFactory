@@ -69,7 +69,7 @@ const HomePage: FunctionComponent = () => {
 		const value = etherValue.mul(amount)
 		await saleContract.mint(amount, {value: value})
 		// Do the purchase
-	}, [web3Context.signer, setWeb3Context])
+	}, [inputValue, web3Context.signer, setWeb3Context])
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
