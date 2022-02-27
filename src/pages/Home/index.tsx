@@ -48,6 +48,7 @@ const HomePage: FunctionComponent = () => {
 	const onPurchase = useCallback(async () => {
 		if (!web3Context.signer) {
 			// sign in
+			await web3Modal.clearCachedProvider()
 			const instance = await web3Modal.connect()
 			const provider = new ethers.providers.Web3Provider(instance)
 			const signer = provider.getSigner()
