@@ -90,7 +90,7 @@ const HomePage: FunctionComponent = () => {
 							/>
 							<p className="featured-event__col-description">
 								{
-									"RELI3F is a humanitarian aid initiative founded by NFT/web3 artists collaborating to support the people of Ukraine.  We recognize their struggle, and believe that in a crisis when time is of the essence, web3 allows us to call on communities of artists and collectors to get funds where they are most needed."
+									"Over the last couple days, hundreds of thousands of Ukrainian people have fled their homes to seek refuge in neighboring European countries. Millions more are attempting to escape the chaos, but are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks across the country have been overwhelmed and Ukrainians, who still rely heavily on cash payments, are unable to cover the costs of getting themselves out. The devolper of this site that you are reading this on, a member of the Seker DAO and good friend of all of ours is currently in the midst of this stuggle. The artist of this NFT, another DAO member, grew up in the Ukraine and has family there. This war hits close to home for all. Purchasing a print of this NFT will be your badge of support. 100% of the proceeds go to humanitarian aid for those trying to evacuate including the members of Seker Factory trapped in this conflict. We all thank you for your support."
 								}
 							</p>
 							<Button onClick={onPurchase}>Purchase</Button>
