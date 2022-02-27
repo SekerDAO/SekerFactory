@@ -1,6 +1,7 @@
 import {ethers} from "ethers"
 import {FunctionComponent, useCallback, useContext, useState} from "react"
 import Web3Modal from "web3modal"
+import Ukraine from "../../abi/Ukraine.json"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
@@ -52,7 +53,13 @@ const HomePage: FunctionComponent = () => {
 			const signer = provider.getSigner()
 			setWeb3Context({instance, signer})
 		}
-		console.log("signer", await web3Context.signer.getAddress())
+		const saleContract = new ethers.Contract(
+			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
+			Ukraine.abi,
+			web3Context.signer
+		)
+		const etherValue = ethers.utils.parseEther("0.05")
+		await saleContract.mint(1, {value: etherValue})
 		// Do the purchase
 	}, [web3Context.signer, setWeb3Context])
 	if (loading || !events || !events.length) {
