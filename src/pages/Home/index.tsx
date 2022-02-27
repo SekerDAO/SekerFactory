@@ -1,9 +1,12 @@
-import {FunctionComponent, useState} from "react"
+import {ethers} from "ethers"
+import {FunctionComponent, useCallback, useContext, useState} from "react"
+import Web3Modal from "web3modal"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
 import clearanceCardOneSrc from "../../assets/images/clearance-card-001.png"
+import seedImage from "../../assets/images/seeds.png"
 import topClearanceCardSrc from "../../assets/images/top-clearance-card.png"
 import Button from "../../components/Button"
 import Footer from "../../components/Footer"
@@ -11,18 +14,47 @@ import Image from "../../components/Image"
 import Loading from "../../components/Loading"
 import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
+import {Web3Context} from "../../context"
 import {useEvents} from "../../hooks/useAddEvent"
 import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
 import Allowlist from "./components/Allowlist"
 import Schedule from "./components/Schedule"
+//import config from "../../config/infura"
 import useHomePage from "./hooks"
 import "./index.scss"
 
+const providerOptions = {
+	// walletconnect: {
+	// 	package: WalletConnectProvider, // required
+	// 	options: {
+	// 		infuraId: config.INFURA_ID // required
+	// 	}
+	// }
+}
+
+const web3Modal = new Web3Modal({
+	network: "mainnet", // optional
+	cacheProvider: true, // optional
+	providerOptions // required
+})
+
 const HomePage: FunctionComponent = () => {
+	const {web3Context, setWeb3Context} = useContext(Web3Context)
 	const [fullImageSrc, setFullImageSrc] = useState<string | undefined>(undefined)
 	const {viewScheduleOpen, joinAllowlistType, setViewScheduleOpen, setJoinAllowlistType} =
 		useHomePage()
 	const {events, loading} = useEvents({upcoming: "now"})
+	const onPurchase = useCallback(async () => {
+		if (!web3Context.signer) {
+			// sign in
+			const instance = await web3Modal.connect()
+			const provider = new ethers.providers.Web3Provider(instance)
+			const signer = provider.getSigner()
+			setWeb3Context({instance, signer})
+		}
+		console.log("signer", await web3Context.signer.getAddress())
+		// Do the purchase
+	}, [web3Context.signer, setWeb3Context])
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
@@ -31,6 +63,7 @@ const HomePage: FunctionComponent = () => {
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)
 	const handleOpenFullImage = (src: string) => setFullImageSrc(src)
+
 	return (
 		<>
 			<Schedule viewScheduleOpen={viewScheduleOpen} setViewScheduleOpen={setViewScheduleOpen} />
@@ -44,6 +77,26 @@ const HomePage: FunctionComponent = () => {
 				onClose={() => setFullImageSrc(undefined)}
 			/>
 			<main className="home-page">
+				<section className="featured-event">
+					<div className="featured-event__col-wrapper">
+						<div className="featured-event__col">
+							<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
+						</div>
+						<div className="featured-event__col">
+							<h1
+								dangerouslySetInnerHTML={{
+									__html: `${"Join Seker Factory in Supporting Ukraine"}`
+								}}
+							/>
+							<p className="featured-event__col-description">
+								{
+									"RELI3F is a humanitarian aid initiative founded by NFT/web3 artists collaborating to support the people of Ukraine.  We recognize their struggle, and believe that in a crisis when time is of the essence, web3 allows us to call on communities of artists and collectors to get funds where they are most needed."
+								}
+							</p>
+							<Button onClick={onPurchase}>Purchase</Button>
+						</div>
+					</div>
+				</section>
 				<section className="featured-event">
 					<div className="featured-event__col-wrapper">
 						<div className="featured-event__col">
