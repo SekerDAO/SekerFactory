@@ -44,12 +44,13 @@ const Header: FunctionComponent = () => {
 	const onConnect = useCallback(async () => {
 		if (!web3Context.signer) {
 			// sign in
+			await web3Modal.clearCachedProvider()
 			const instance = await web3Modal.connect()
 			const provider = new ethers.providers.Web3Provider(instance)
 			const signer = provider.getSigner()
 			setWeb3Context({instance, signer})
 		} else {
-			setWeb3Context({instance: null, signer: null})
+			setWeb3Context({})
 		}
 	}, [web3Context.signer, setWeb3Context])
 
@@ -57,15 +58,17 @@ const Header: FunctionComponent = () => {
 		<header className="header">
 			<div className="header__logo-container" onClick={() => navigate("/")}>
 				<Image src={logo} className="header__logo" alt="logo" width={230} height={40} />
-			</div>
-			<div
-				style={{
-					float: "right",
-					verticalAlign: "center",
-					textAlign: "right"
-				}}
-			>
-				<Button onClick={onConnect}>{buttonText}</Button>
+				<Button
+					style={{
+						float: "right",
+						verticalAlign: "center",
+						textAlign: "right",
+						marginRight: 20
+					}}
+					onClick={onConnect}
+				>
+					{buttonText}
+				</Button>
 			</div>
 		</header>
 	)
