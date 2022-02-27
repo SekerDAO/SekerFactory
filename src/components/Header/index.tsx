@@ -1,10 +1,11 @@
 //import WalletConnectProvider from "@walletconnect/web3-provider"
 import {ethers} from "ethers"
-import {FunctionComponent} from "react"
+import {useContext, useEffect, useState, FunctionComponent, useCallback} from "react"
 import {useNavigate} from "react-router-dom"
 import Web3Modal from "web3modal"
 import logo from "../../assets/images/logo.svg"
 import Button from "../../components/Button"
+import {Web3Context} from "../../context"
 //import config from "../../config/infura"
 import useResetScroll from "../../hooks/useResetScroll"
 import Image from "../Image"
@@ -26,8 +27,32 @@ const web3Modal = new Web3Modal({
 })
 
 const Header: FunctionComponent = () => {
+	const {web3Context, setWeb3Context} = useContext(Web3Context)
+	const [buttonText, setButtonText] = useState("Connect")
 	const navigate = useNavigate()
 	useResetScroll()
+
+	useEffect(() => {
+		const getAddress = async () => {
+			if (web3Context.signer) {
+				setButtonText(await web3Context.signer.getAddress())
+			}
+		}
+		getAddress()
+	}, [web3Context, setButtonText])
+
+	const onConnect = useCallback(async () => {
+		if (!web3Context.signer) {
+			// sign in
+			const instance = await web3Modal.connect()
+			const provider = new ethers.providers.Web3Provider(instance)
+			const signer = provider.getSigner()
+			console.log("signer", await signer.getAddress())
+			setWeb3Context({instance, signer})
+		} else {
+			setWeb3Context({instance: null, signer: null})
+		}
+	}, [web3Context.signer, setWeb3Context])
 
 	return (
 		<header className="header">
@@ -41,16 +66,7 @@ const Header: FunctionComponent = () => {
 					textAlign: "right"
 				}}
 			>
-				<Button
-					onClick={async () => {
-						const instance = await web3Modal.connect()
-						const provider = new ethers.providers.Web3Provider(instance)
-						const signer = provider.getSigner()
-						console.log("signer", await signer.getAddress())
-					}}
-				>
-					Connect
-				</Button>
+				<Button onClick={onConnect}>{buttonText}</Button>
 			</div>
 		</header>
 	)
