@@ -18,21 +18,14 @@ import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
 import {Web3Context} from "../../context"
 import {useEvents} from "../../hooks/useAddEvent"
-import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
+import {getDateReadable, openRSVPForm} from "../../utils"
 import Allowlist from "./components/Allowlist"
 import Schedule from "./components/Schedule"
 //import config from "../../config/infura"
 import useHomePage from "./hooks"
 import "./index.scss"
 
-const providerOptions = {
-	// walletconnect: {
-	// 	package: WalletConnectProvider, // required
-	// 	options: {
-	// 		infuraId: config.INFURA_ID // required
-	// 	}
-	// }
-}
+const providerOptions = {}
 
 const web3Modal = new Web3Modal({
 	network: "mainnet", // optional
@@ -46,7 +39,7 @@ const HomePage: FunctionComponent = () => {
 	const [inputValue, setInputValue] = useState<string>("1")
 	const {viewScheduleOpen, joinAllowlistType, setViewScheduleOpen, setJoinAllowlistType} =
 		useHomePage()
-	const {events, loading} = useEvents({upcoming: "now"})
+	const {events, loading} = useEvents({})
 	const onPurchase = useCallback(async () => {
 		let signer = null
 		if (!web3Context.signer) {
@@ -73,10 +66,8 @@ const HomePage: FunctionComponent = () => {
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
-	const FEATURED_EVENT = events[0]
-	const UPCOMING_EVENTS = events
-		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
-		.slice(0, 2)
+	const FEATURED_EVENT = events[events.length - 1]
+	const UPCOMING_EVENTS = events.filter(event => event.id !== FEATURED_EVENT.id).slice(0, 2)
 	const handleOpenFullImage = (src: string) => setFullImageSrc(src)
 
 	return (
