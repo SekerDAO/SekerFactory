@@ -109,7 +109,7 @@ const HomePage: FunctionComponent = () => {
 										setInputValue(e.currentTarget.value)
 									}}
 								/>
-								<Button onClick={onPurchase}>Purchase</Button>
+								<Button onClick={onPurchase}>Donate</Button>
 							</div>
 						</div>
 					</div>
