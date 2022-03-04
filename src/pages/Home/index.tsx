@@ -291,7 +291,7 @@ const HomePage: FunctionComponent = () => {
 										<DoneCircle width="20px" height="20px" />
 									</div>
 									Access to all IRL and metaverse events at all Seker Factory locations, including
-									exclusive VIP events.
+									exclusive VIP cyber gala events.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
