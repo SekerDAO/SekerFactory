@@ -18,7 +18,8 @@ import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
 import {Web3Context} from "../../context"
 import {useEvents} from "../../hooks/useAddEvent"
-import {getDateReadable, openRSVPForm} from "../../utils"
+import {EventContent} from "../../types/event"
+import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
 import Allowlist from "./components/Allowlist"
 import Schedule from "./components/Schedule"
 //import config from "../../config/infura"
@@ -63,11 +64,14 @@ const HomePage: FunctionComponent = () => {
 		await saleContract.mint(amount, {value: value})
 		// Do the purchase
 	}, [inputValue, web3Context.signer, setWeb3Context])
+
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
-	const FEATURED_EVENT = events[events.length - 1]
-	const UPCOMING_EVENTS = events.filter(event => event.id !== FEATURED_EVENT.id).slice(0, 2)
+	const FEATURED_EVENT = events.find(event => event.eventname === "Exhibit 1") as EventContent
+	const UPCOMING_EVENTS = events
+		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
+		.slice(0, 2)
 	const handleOpenFullImage = (src: string) => setFullImageSrc(src)
 
 	return (
@@ -89,27 +93,34 @@ const HomePage: FunctionComponent = () => {
 							<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
 						</div>
 						<div className="featured-event__col">
-							<h1
-								dangerouslySetInnerHTML={{
-									__html: `${"Join Seker Factory in Supporting Ukraine"}`
-								}}
-							/>
+							<h1>Join Seker Factory in Supporting Ukraine</h1>
 							<p className="featured-event__col-description">
-								{
-									"Over the last couple days, hundreds of thousands of Ukrainian people have fled their homes to seek refuge in neighboring European countries. Millions more are attempting to escape the chaos but are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks across the country have been overwhelmed and Ukrainians, who still rely heavily on cash payments, are unable to cover the costs of getting themselves out. The developer of this site — a member of Seker DAO and a good friend of all of ours — is currently in the midst of this struggle. The artist of this NFT, another DAO member, grew up in the Ukraine and has family there. This war hits close to home for all. Purchasing a print of this NFT will be your badge of support. 100% of the proceeds go to humanitarian aid for those trying to evacuate including the members of Seker Factory trapped in this conflict. We all thank you for your support."
-								}
+								Over the last couple days, hundreds of thousands of Ukrainian people have fled their
+								homes to seek refuge in neighboring European countries. Millions more are attempting
+								to escape the chaos but are stranded on roadways due to traffic, abandoned cars, and
+								lack of gas. Banks across the country have been overwhelmed and Ukrainians, who
+								still rely heavily on cash payments, are unable to cover the costs of getting
+								themselves out. The developer of this site — a member of Seker DAO and a good friend
+								of all of ours — is currently in the midst of this struggle. The artist of this NFT,
+								another DAO member, grew up in the Ukraine and has family there. This war hits close
+								to home for all. Purchasing a print of this NFT will be your badge of support. 100%
+								of the proceeds go to humanitarian aid for those trying to evacuate including the
+								members of Seker Factory trapped in this conflict. We all thank you for your
+								support.
 							</p>
-							<div style={{marginTop: 20}}>
-								<p style={{marginBottom: 20}}>Mint Amount</p>
-								<Input
-									type="number"
-									min="1"
-									value={inputValue}
-									onChange={(e: React.FormEvent<HTMLInputElement>) => {
-										setInputValue(e.currentTarget.value)
-									}}
-								/>
-								<Button onClick={onPurchase}>Donate</Button>
+							<div className="featured-event__mint">
+								<h3>Mint Amount</h3>
+								<div>
+									<Input
+										type="number"
+										min="1"
+										value={inputValue}
+										onChange={(e: React.FormEvent<HTMLInputElement>) => {
+											setInputValue(e.currentTarget.value)
+										}}
+									/>
+									<Button onClick={onPurchase}>Donate</Button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -129,10 +140,15 @@ const HomePage: FunctionComponent = () => {
 								<h3>Hosted by:</h3>
 								<h2 dangerouslySetInnerHTML={{__html: FEATURED_EVENT.location}} />
 							</div>
-							<p className="featured-event__col-description">{FEATURED_EVENT.description}</p>
-							<Button variant="secondary" onClick={() => setViewScheduleOpen(true)}>
+							<p
+								className="featured-event__col-description"
+								dangerouslySetInnerHTML={{
+									__html: `${FEATURED_EVENT.description}`
+								}}
+							/>
+							{/* <Button variant="secondary" onClick={() => setViewScheduleOpen(true)}>
 								View Schedule
-							</Button>
+							</Button> */}
 							<Button onClick={() => openRSVPForm(FEATURED_EVENT)}>RSVP</Button>
 						</div>
 					</div>

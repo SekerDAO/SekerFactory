@@ -14,4 +14,5 @@ export interface EventContent {
 		streamUrl?: string
 		recordingUrl?: string
 	} | null
+	rrule: string
 }

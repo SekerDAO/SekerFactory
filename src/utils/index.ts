@@ -1,7 +1,7 @@
 import {EventContent} from "../types/event"
 
 export const isEventUpcoming = (event: EventContent): boolean =>
-	event && new Date(event.date_start) > new Date()
+	event && (new Date(event.date_start) > new Date() || event.rrule.includes("BYDAY=FR"))
 
 export const getDateReadable = (event: EventContent): string | undefined => {
 	if (!event) {

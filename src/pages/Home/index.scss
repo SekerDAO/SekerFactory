@@ -46,6 +46,24 @@
     padding-left: 20%;
     padding-right: 20%;
 
+    &__mint {
+      margin-top: 20px;
+
+      h3 {
+        margin-top: 20px;
+      }
+
+      & > div {
+        display: flex;
+
+        .btn {
+          margin-top: 0;
+          margin-right: 0;
+          margin-left: 20px;
+        }
+      }
+    }
+
     &__col {
       &-wrapper {
         display: flex;
