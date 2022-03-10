@@ -1,8 +1,15 @@
-import {useState} from "react"
+import {useState, Dispatch, SetStateAction} from "react"
 
-const useHomePage = () => {
+export type AllowlistType = "TOP" | "001" | undefined
+type HomePageState = {
+	viewScheduleOpen: boolean
+	joinAllowlistType: AllowlistType
+	setViewScheduleOpen: Dispatch<SetStateAction<boolean>>
+	setJoinAllowlistType: Dispatch<SetStateAction<AllowlistType>>
+}
+const useHomePage = (): HomePageState => {
 	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
-	const [joinAllowlistType, setJoinAllowlistType] = useState<"TOP" | "001" | undefined>()
+	const [joinAllowlistType, setJoinAllowlistType] = useState<AllowlistType>()
 
 	return {
 		viewScheduleOpen,

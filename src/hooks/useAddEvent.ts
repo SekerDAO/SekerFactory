@@ -9,7 +9,9 @@ type Params = {
 	upcoming?: string
 	sort?: string | string[] | null
 }
-export const useEvents = ({upcoming}: Params) => {
+export const useEvents = ({
+	upcoming
+}: Params): {events: EventContent[]; error: string | undefined; loading: boolean} => {
 	const [events, setEvents] = useState<EventContent[]>([])
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
@@ -69,7 +71,9 @@ export const useEvents = ({upcoming}: Params) => {
 	}
 }
 
-export const useEvent = (id?: string) => {
+export const useEvent = (
+	id?: string
+): {event: EventContent | undefined; error: string | undefined; loading: boolean} => {
 	const [event, setEvent] = useState<EventContent>()
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)

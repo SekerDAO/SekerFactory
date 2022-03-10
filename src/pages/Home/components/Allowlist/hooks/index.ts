@@ -2,14 +2,28 @@ import fetchJsonp from "fetch-jsonp"
 import {useState, FormEventHandler, Dispatch, SetStateAction} from "react"
 import useSubscribeForm from "../../../../../components/Subscribe/hooks"
 import config from "../../../../../config/mailchimp"
+import {AllowlistType} from "../../../hooks"
 
+type AllowlistState = {
+	email: string
+	wallet: string
+	error: string
+	success: boolean
+	setEmail: Dispatch<SetStateAction<string>>
+	setWallet: Dispatch<SetStateAction<string>>
+	handleSubmit: FormEventHandler<HTMLFormElement>
+	formActionUrl: string | undefined
+	handleClose: () => void
+	shouldSubscribeToNewsletter: boolean
+	setShouldSubscribeToNewsletter: Dispatch<SetStateAction<boolean>>
+}
 const useAllowlist = ({
 	joinAllowlistType,
 	setJoinAllowlistType
 }: {
-	joinAllowlistType: "TOP" | "001" | undefined
-	setJoinAllowlistType: Dispatch<SetStateAction<"TOP" | "001" | undefined>>
-}) => {
+	joinAllowlistType: AllowlistType
+	setJoinAllowlistType: Dispatch<SetStateAction<AllowlistType>>
+}): AllowlistState => {
 	const [email, setEmail] = useState("")
 	const [wallet, setWallet] = useState("")
 	const [error, setError] = useState("")

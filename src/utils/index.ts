@@ -1,9 +1,9 @@
 import {EventContent} from "../types/event"
 
-export const isEventUpcoming = (event: EventContent) =>
+export const isEventUpcoming = (event: EventContent): boolean =>
 	event && new Date(event.date_start) > new Date()
 
-export const getDateReadable = (event: EventContent) => {
+export const getDateReadable = (event: EventContent): string | undefined => {
 	if (!event) {
 		return
 	}
@@ -25,6 +25,6 @@ export const getDateReadable = (event: EventContent) => {
 	})}. ${endDate.getDate()}, ${startDate.getFullYear()}`
 }
 
-export const openRSVPForm = (event: EventContent) => {
+export const openRSVPForm = (event: EventContent): void => {
 	window.open(event.link_short, "_blank")
 }
