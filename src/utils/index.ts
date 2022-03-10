@@ -13,6 +13,12 @@ export const getDateReadable = (event: EventContent): string | undefined => {
 	const startMonth = startDate.getMonth()
 	const endMonth = endDate.getMonth()
 
+	if (startDate.getDate() === endDate.getDate()) {
+		return `${startDate.toLocaleString("en-US", {
+			month: "short"
+		})}. ${startDate.getDate()}, ${startDate.getFullYear()}`
+	}
+
 	if (startMonth === endMonth) {
 		return `${startDate.toLocaleString("en-US", {
 			month: "short"

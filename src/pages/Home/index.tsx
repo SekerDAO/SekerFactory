@@ -93,7 +93,10 @@ const HomePage: FunctionComponent = () => {
 							<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
 						</div>
 						<div className="featured-event__col">
-							<h1>Join Seker Factory in Supporting Ukraine</h1>
+							<h1>
+								Join Seker Factory in <br />
+								Supporting Ukraine
+							</h1>
 							<p className="featured-event__col-description">
 								Over the last couple days, hundreds of thousands of Ukrainian people have fled their
 								homes to seek refuge in neighboring European countries. Millions more are attempting
