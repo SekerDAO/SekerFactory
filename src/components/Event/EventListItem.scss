@@ -1,0 +1,147 @@
+@import "../../assets/styles/colors.scss";
+
+.event-list-item {
+  background-color: $dark-grey;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 20%;
+  padding-right: 20%;
+
+  &__col {
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    width: calc(50% - 20px);
+    margin-left: 20px;
+    margin-right: 20px;
+
+    &:first-of-type {
+      margin-left: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    h1 {
+      white-space: pre-line;
+      font-size: 48px;
+      line-height: 60px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 32px;
+      line-height: 36px;
+      white-space: pre-wrap;
+    }
+
+    h3 {
+      font-size: 20px;
+      line-height: 36px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    &-description {
+      white-space: pre-wrap;
+      margin-top: 20px;
+    }
+
+    .btn {
+      margin-top: 40px;
+      width: 200px;
+
+      &:first-of-type {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .event-list-item {
+    flex-flow: wrap-reverse;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &__col-wrapper {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    &__mint {
+      & > div {
+        .btn:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &__col {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      justify-content: center;
+
+      &:last-of-type,
+      &:first-of-type {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      h1 {
+        width: 100%;
+        display: flex;
+      }
+
+      &-hosted-by {
+        width: 100%;
+      }
+
+      .image-placeholder {
+        height: 565px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .event-list-item {
+    & &__col {
+      &:last-of-type,
+      &:first-of-type {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .btn {
+        width: 100%;
+
+        &:first-of-type {
+          margin-right: 0;
+        }
+
+        &:last-of-type {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1040px) and (max-width: 1919px) {
+  .event-list-item {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
