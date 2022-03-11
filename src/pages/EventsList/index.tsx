@@ -1,43 +1,23 @@
 import {parse} from "query-string"
 import {FunctionComponent} from "react"
-import {useLocation, useNavigate} from "react-router-dom"
-import Button from "../../components/Button"
-import Image from "../../components/Image"
+import {useLocation} from "react-router-dom"
+import EventListItem from "../../components/Event/EventListItem"
 import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
-import {getDateReadable, isEventUpcoming} from "../../utils"
-import "./index.scss"
+import {isEventUpcoming} from "../../utils"
 
 const EventsList: FunctionComponent = () => {
-	const navigate = useNavigate()
 	const {search} = useLocation()
 	const {sort} = parse(search)
 	const {events} = useEvents({sort})
 
 	return (
 		<main className="events-list-page">
-			{events.map(event => (
-				<section
-					className="events-list-page__item"
-					key={event.id}
-					onClick={() => navigate(`/events/${event.id}`)}
-				>
-					<div className="events-list-page__item-col">
-						<Image src={event.custom_data?.bannerSrc} alt={event.title} />
-					</div>
-					<div className="events-list-page__item-col">
-						<h1
-							dangerouslySetInnerHTML={{__html: `${event.title} <br /> ${getDateReadable(event)}`}}
-						/>
-						<div className="events-list-page__item-col-hosted-by">
-							<p>Hosted by:</p>
-							<h2 dangerouslySetInnerHTML={{__html: event.location}} />
-						</div>
-						<p className="events-list-page__item-col-description">{event.description}</p>
-						{isEventUpcoming(event) && <Button>RSVP</Button>}
-					</div>
-				</section>
-			))}
+			{events
+				.filter(event => !isEventUpcoming(event))
+				.map(event => (
+					<EventListItem event={event} showRSVP={false} showSchedule={false} key={event.id} />
+				))}
 			<SubscribeForm />
 		</main>
 	)

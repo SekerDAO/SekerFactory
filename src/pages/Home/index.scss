@@ -39,7 +39,7 @@
     }
   }
 
-  .featured-event {
+  .charity {
     background-color: $dark-grey;
     padding-top: 40px;
     padding-bottom: 80px;
@@ -56,7 +56,7 @@
       & > div {
         display: flex;
 
-        .btn {
+        .btn:first-of-type {
           margin-top: 0;
           margin-right: 0;
           margin-left: 20px;
@@ -392,7 +392,7 @@
       }
     }
 
-    .featured-event {
+    .charity {
       flex-flow: wrap-reverse;
       padding-left: 20px;
       padding-right: 20px;
@@ -400,6 +400,14 @@
       &__col-wrapper {
         width: 100%;
         flex-wrap: wrap;
+      }
+
+      &__mint {
+        & > div {
+          .btn:first-of-type {
+            margin-top: 0;
+          }
+        }
       }
 
       &__col {
@@ -433,7 +441,15 @@
 }
 
 @media (max-width: 767px) {
-  .featured-event {
+  .charity {
+    &__mint {
+      & > div {
+        .btn:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+
     & &__col {
       &:last-of-type,
       &:first-of-type {
@@ -464,7 +480,7 @@
       }
     }
 
-    .featured-event {
+    .charity {
       padding-left: 10%;
       padding-right: 10%;
     }

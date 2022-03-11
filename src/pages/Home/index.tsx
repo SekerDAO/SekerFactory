@@ -1,7 +1,5 @@
-import {ethers} from "ethers"
-import {FunctionComponent, useCallback, useContext, useState} from "react"
-import Web3Modal from "web3modal"
-import Ukraine from "../../abi/Ukraine.json"
+import {FunctionComponent, useState} from "react"
+import {useNavigate} from "react-router-dom"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
@@ -10,60 +8,34 @@ import clearanceCardOneSrc from "../../assets/images/clearance-card-001.png"
 import seedImage from "../../assets/images/seeds.png"
 import topClearanceCardSrc from "../../assets/images/top-clearance-card.png"
 import Button from "../../components/Button"
+import EventListItem from "../../components/Event/EventListItem"
 import Footer from "../../components/Footer"
 import Image from "../../components/Image"
 import Input from "../../components/Input"
 import Loading from "../../components/Loading"
 import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
-import {Web3Context} from "../../context"
 import {useEvents} from "../../hooks/useAddEvent"
 import {EventContent} from "../../types/event"
-import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
+import {isEventUpcoming} from "../../utils"
 import Allowlist from "./components/Allowlist"
 import Schedule from "./components/Schedule"
-//import config from "../../config/infura"
 import useHomePage from "./hooks"
 import "./index.scss"
 
-const providerOptions = {}
-
-const web3Modal = new Web3Modal({
-	network: "mainnet", // optional
-	cacheProvider: true, // optional
-	providerOptions // required
-})
-
 const HomePage: FunctionComponent = () => {
-	const {web3Context, setWeb3Context} = useContext(Web3Context)
+	const navigate = useNavigate()
 	const [fullImageSrc, setFullImageSrc] = useState<string | undefined>(undefined)
-	const [inputValue, setInputValue] = useState<string>("1")
-	const {viewScheduleOpen, joinAllowlistType, setViewScheduleOpen, setJoinAllowlistType} =
-		useHomePage()
+	const {
+		viewScheduleOpen,
+		joinAllowlistType,
+		setViewScheduleOpen,
+		setJoinAllowlistType,
+		onPurchase,
+		mintValue,
+		setMintValue
+	} = useHomePage()
 	const {events, loading} = useEvents({})
-	const onPurchase = useCallback(async () => {
-		let signer = null
-		if (!web3Context.signer) {
-			// sign in
-			await web3Modal.clearCachedProvider()
-			const instance = await web3Modal.connect()
-			const provider = new ethers.providers.Web3Provider(instance)
-			signer = provider.getSigner()
-			setWeb3Context({instance, signer})
-		} else {
-			signer = web3Context.signer
-		}
-		const saleContract = new ethers.Contract(
-			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
-			Ukraine.abi,
-			signer
-		)
-		const etherValue = ethers.utils.parseEther("0.05")
-		const amount = parseInt(inputValue)
-		const value = etherValue.mul(amount)
-		await saleContract.mint(amount, {value: value})
-		// Do the purchase
-	}, [inputValue, web3Context.signer, setWeb3Context])
 
 	if (loading || !events || !events.length) {
 		return <Loading />
@@ -87,17 +59,17 @@ const HomePage: FunctionComponent = () => {
 				onClose={() => setFullImageSrc(undefined)}
 			/>
 			<main className="home-page">
-				<section className="featured-event">
-					<div className="featured-event__col-wrapper">
-						<div className="featured-event__col">
+				<section className="charity">
+					<div className="charity__col-wrapper">
+						<div className="charity__col">
 							<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
 						</div>
-						<div className="featured-event__col">
+						<div className="charity__col">
 							<h1>
 								Join Seker Factory in <br />
 								Supporting Ukraine
 							</h1>
-							<p className="featured-event__col-description">
+							<p className="charity__col-description">
 								Over the last couple days, hundreds of thousands of Ukrainian people have fled their
 								homes to seek refuge in neighboring European countries. Millions more are attempting
 								to escape the chaos but are stranded on roadways due to traffic, abandoned cars, and
@@ -111,15 +83,15 @@ const HomePage: FunctionComponent = () => {
 								members of Seker Factory trapped in this conflict. We all thank you for your
 								support.
 							</p>
-							<div className="featured-event__mint">
+							<div className="charity__mint">
 								<h3>Mint Amount</h3>
 								<div>
 									<Input
 										type="number"
 										min="1"
-										value={inputValue}
+										value={mintValue}
 										onChange={(e: React.FormEvent<HTMLInputElement>) => {
-											setInputValue(e.currentTarget.value)
+											setMintValue(e.currentTarget.value)
 										}}
 									/>
 									<Button onClick={onPurchase}>Donate</Button>
@@ -128,39 +100,12 @@ const HomePage: FunctionComponent = () => {
 						</div>
 					</div>
 				</section>
-				<section className="featured-event">
-					<div className="featured-event__col-wrapper">
-						<div className="featured-event__col">
-							<Image src={FEATURED_EVENT?.custom_data?.bannerSrc} alt={FEATURED_EVENT.title} />
-						</div>
-						<div className="featured-event__col">
-							<h1
-								dangerouslySetInnerHTML={{
-									__html: `${FEATURED_EVENT.title} <br /> ${getDateReadable(FEATURED_EVENT)}`
-								}}
-							/>
-							<div className="featured-event__col-hosted-by">
-								<h3>Hosted by:</h3>
-								<h2 dangerouslySetInnerHTML={{__html: FEATURED_EVENT.location}} />
-							</div>
-							<p
-								className="featured-event__col-description"
-								dangerouslySetInnerHTML={{
-									__html: `${FEATURED_EVENT.description}`
-								}}
-							/>
-							{/* <Button variant="secondary" onClick={() => setViewScheduleOpen(true)}>
-								View Schedule
-							</Button> */}
-							<Button onClick={() => openRSVPForm(FEATURED_EVENT)}>RSVP</Button>
-						</div>
-					</div>
-				</section>
+				<EventListItem event={FEATURED_EVENT} showRSVP showSchedule={false} />
 				<SubscribeForm />
 				<section className="upcoming-events">
 					<div className="upcoming-events__header">
 						<h3>Upcoming Events</h3>
-						<Button variant="link" disabled>
+						<Button variant="link" onClick={() => navigate("/events")}>
 							Previous Events
 						</Button>
 					</div>
