@@ -31,6 +31,19 @@ export const getDateReadable = (event: EventContent): string | undefined => {
 	})}. ${endDate.getDate()}, ${startDate.getFullYear()}`
 }
 
+export const getTimeReadable = (event: EventContent): string => {
+	let ampmStartHours = parseInt(event.date_start_time)
+	let ampmEndHours = parseInt(event.date_end_time)
+
+	if (ampmStartHours > 12) {
+		ampmStartHours -= 12
+	}
+	if (ampmEndHours > 12) {
+		ampmEndHours -= 12
+	}
+	return `${ampmStartHours}${event.date_start_ampm} - ${ampmEndHours}${event.date_end_ampm}`
+}
+
 export const openRSVPForm = (event: EventContent): void => {
 	window.open(event.link_short, "_blank")
 }

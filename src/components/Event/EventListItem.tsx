@@ -1,6 +1,6 @@
 import {FunctionComponent} from "react"
 import {EventContent} from "../../types/event"
-import {getDateReadable, openRSVPForm} from "../../utils"
+import {getDateReadable, getTimeReadable, openRSVPForm} from "../../utils"
 import Button from "../Button"
 import Image from "../Image"
 import "./EventListItem.scss"
@@ -20,7 +20,9 @@ const EventListItem: FunctionComponent<{
 			<div className="event-list-item__col">
 				<h1
 					dangerouslySetInnerHTML={{
-						__html: `${event.title} <br /> ${getDateReadable(event)}`
+						__html: `${event.title} <br /> ${getDateReadable(event)} <br /> ${getTimeReadable(
+							event
+						)}`
 					}}
 				/>
 				<div className="event-list-item__col-hosted-by">
