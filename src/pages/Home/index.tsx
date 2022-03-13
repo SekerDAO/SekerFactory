@@ -267,7 +267,7 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									level boost starting at level 1 for being an early supporter.
+									Level boost starting at level 1 for being an early supporter.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
