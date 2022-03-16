@@ -183,7 +183,8 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Patron governance rights for Seker Factory 001.
+									Patron governance rights for Seker Factory 001 (Must level up card to level 1 to
+									earn this right).
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
