@@ -123,9 +123,9 @@ const HomePage: FunctionComponent = () => {
 					<section className="upcoming-events__about">
 						<h3>
 							Seker Factory is building an immersive tech noir of dystopian hangouts - the premier
-							spot to adventure from physical to digital. We are gathering like-minded individuals
-							to form a global community of digital artists, hackers, avatars, and futurists of all
-							kinds to navigate the metaverse.
+							spot to adventure from physical to digital. We are the architects of metaverse venues
+							and are gathering like-minded individuals to form a global community of digital
+							artists, hackers, avatars, and futurists of all kinds to navigate the metaverse.
 						</h3>
 						<h3 className="purple">Come for the vibes. Stay for the revolution.</h3>
 						<h3>
