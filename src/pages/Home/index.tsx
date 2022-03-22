@@ -83,6 +83,8 @@ const HomePage: FunctionComponent = () => {
 								members of Seker Factory trapped in this conflict. We all thank you for your
 								support.
 							</p>
+							<br />
+							<p>Please install MetaMask or WalletConnect before donating.</p>
 							<div className="charity__mint">
 								<h3>Mint Amount</h3>
 								<div>
