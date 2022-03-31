@@ -154,11 +154,13 @@ const HomePage: FunctionComponent = () => {
 							<h3>
 								Introducing the Seker Factory Clearance Cards. These limited edition NFTs represent
 								our way of opening our factory up to patrons of the Seker intergalactic metaverse
-								community. We have written custom smart contract code that lets you level up these
-								cards over time as you participate in events, add valuable contributions to the
-								community, or simply hang out and enjoy the productions. The higher your level, the
-								more rep, merited governance rights on some proposals, and rewards you have in your
-								community. More details on this system coming soon.
+								community. We are calling on you to help crowd source the wisdom of curation. We
+								believe a community of art appreciators should be the driving force of defining what
+								is authentic digital art. We have written custom smart contract code that lets you
+								level up these cards over time as you participate in events, add valuable
+								contributions to the community, or simply hang out and enjoy the productions. The
+								higher your level, the more rep, merited governance rights on some proposals, and
+								rewards you have in your community. More details on this system coming soon.
 							</h3>
 						</div>
 						<div className="upcoming-events__purchase-item">
