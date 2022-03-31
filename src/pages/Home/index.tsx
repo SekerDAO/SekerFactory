@@ -170,7 +170,7 @@ const HomePage: FunctionComponent = () => {
 								/>
 							</div>
 							<h3>001 Clearance Cards</h3>
-							<p>1000 total</p>
+							<p>2000 total</p>
 							<p className="upcoming-events__purchase-item-address">
 								<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
 							</p>
@@ -186,15 +186,13 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Patron governance rights for Seker Factory 001 (Must level up card to level 1 to
-									earn this right).
+									Patron governance rights for Seker Factory 001 including curation voting.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Allowlist to all current and future generative NFT series released by Seker
-									Factory 001.
+									Early access to NFTs released by Seker Factory 001 artists.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
@@ -245,14 +243,14 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Patron governance rights for all Seker Factory locations.
+									Extended patron governance rights for all Seker Factory locations including
+									curation voting on all locations virtual or real.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Allowlist to all current and future generative NFT series released by all Seker
-									Factory locations.
+									Early access to NFTs released NFTs released by all Seker Factory locations.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
