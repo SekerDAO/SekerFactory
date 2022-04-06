@@ -4,9 +4,11 @@ import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscal
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
-import clearanceCardOneSrc from "../../assets/images/clearance-card-001.png"
 import seedImage from "../../assets/images/seeds.png"
-import topClearanceCardSrc from "../../assets/images/top-clearance-card.png"
+// @ts-expect-error no types for video import
+import clearanceCardOneSrc from "../../assets/videos/Clearence_Card_00.mp4"
+// @ts-expect-error no types for video import
+import topClearanceCardSrc from "../../assets/videos/Top_Clearance_Card_01.mp4"
 import Button from "../../components/Button"
 import EventListItem from "../../components/Event/EventListItem"
 import Footer from "../../components/Footer"
@@ -25,7 +27,7 @@ import "./index.scss"
 
 const HomePage: FunctionComponent = () => {
 	const navigate = useNavigate()
-	const [fullImageSrc, setFullImageSrc] = useState<string | undefined>(undefined)
+	const [fullVideoSrc, setFullVideoSrc] = useState<string | undefined>(undefined)
 	const {
 		viewScheduleOpen,
 		joinAllowlistType,
@@ -44,7 +46,7 @@ const HomePage: FunctionComponent = () => {
 	const UPCOMING_EVENTS = events
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)
-	const handleOpenFullImage = (src: string) => setFullImageSrc(src)
+	const handleOpenFullVideo = (src: string) => setFullVideoSrc(src)
 
 	return (
 		<>
@@ -54,9 +56,10 @@ const HomePage: FunctionComponent = () => {
 				setJoinAllowlistType={setJoinAllowlistType}
 			/>
 			<ImageModal
-				src={fullImageSrc}
-				open={!!fullImageSrc}
-				onClose={() => setFullImageSrc(undefined)}
+				src={fullVideoSrc}
+				open={!!fullVideoSrc}
+				onClose={() => setFullVideoSrc(undefined)}
+				video
 			/>
 			<main className="home-page">
 				<section className="charity">
@@ -165,10 +168,13 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<img
+								<video
 									src={clearanceCardOneSrc}
-									alt="001 Clearance Card Visualization"
-									onClick={() => handleOpenFullImage(clearanceCardOneSrc)}
+									width={425}
+									muted
+									autoPlay
+									loop
+									onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
 								/>
 							</div>
 							<h3>001 Clearance Cards</h3>
@@ -225,10 +231,13 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<img
+								<video
 									src={topClearanceCardSrc}
-									alt="Top Clearance Card Visualization"
-									onClick={() => handleOpenFullImage(topClearanceCardSrc)}
+									width={425}
+									muted
+									autoPlay
+									loop
+									onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
 								/>
 							</div>
 							<h3>Top Clearance Cards</h3>
