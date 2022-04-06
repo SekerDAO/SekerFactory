@@ -170,7 +170,6 @@ const HomePage: FunctionComponent = () => {
 							<div className="upcoming-events__purchase-item-img-container">
 								<video
 									src={clearanceCardOneSrc}
-									width={425}
 									muted
 									autoPlay
 									loop
@@ -233,7 +232,6 @@ const HomePage: FunctionComponent = () => {
 							<div className="upcoming-events__purchase-item-img-container">
 								<video
 									src={topClearanceCardSrc}
-									width={425}
 									muted
 									autoPlay
 									loop
