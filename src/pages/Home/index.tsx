@@ -4,9 +4,11 @@ import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscal
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
-import clearanceCardOneSrc from "../../assets/images/clearance-card-001.png"
 import seedImage from "../../assets/images/seeds.png"
-import topClearanceCardSrc from "../../assets/images/top-clearance-card.png"
+// @ts-expect-error no types for video import
+import clearanceCardOneSrc from "../../assets/videos/Clearence_Card_00.mp4"
+// @ts-expect-error no types for video import
+import topClearanceCardSrc from "../../assets/videos/Top_Clearance_Card_01.mp4"
 import Button from "../../components/Button"
 import EventListItem from "../../components/Event/EventListItem"
 import Footer from "../../components/Footer"
@@ -25,7 +27,7 @@ import "./index.scss"
 
 const HomePage: FunctionComponent = () => {
 	const navigate = useNavigate()
-	const [fullImageSrc, setFullImageSrc] = useState<string | undefined>(undefined)
+	const [fullVideoSrc, setFullVideoSrc] = useState<string | undefined>(undefined)
 	const {
 		viewScheduleOpen,
 		joinAllowlistType,
@@ -44,7 +46,7 @@ const HomePage: FunctionComponent = () => {
 	const UPCOMING_EVENTS = events
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)
-	const handleOpenFullImage = (src: string) => setFullImageSrc(src)
+	const handleOpenFullVideo = (src: string) => setFullVideoSrc(src)
 
 	return (
 		<>
@@ -54,9 +56,10 @@ const HomePage: FunctionComponent = () => {
 				setJoinAllowlistType={setJoinAllowlistType}
 			/>
 			<ImageModal
-				src={fullImageSrc}
-				open={!!fullImageSrc}
-				onClose={() => setFullImageSrc(undefined)}
+				src={fullVideoSrc}
+				open={!!fullVideoSrc}
+				onClose={() => setFullVideoSrc(undefined)}
+				video
 			/>
 			<main className="home-page">
 				<section className="charity">
@@ -83,6 +86,8 @@ const HomePage: FunctionComponent = () => {
 								members of Seker Factory trapped in this conflict. We all thank you for your
 								support.
 							</p>
+							<br />
+							<p>Please install MetaMask or WalletConnect before donating.</p>
 							<div className="charity__mint">
 								<h3>Mint Amount</h3>
 								<div>
@@ -123,9 +128,10 @@ const HomePage: FunctionComponent = () => {
 					<section className="upcoming-events__about">
 						<h3>
 							Seker Factory is building an immersive tech noir of dystopian hangouts - the premier
-							spot to adventure from physical to digital. We are gathering like-minded individuals
-							to form a global community of digital artists, hackers, avatars, and futurists of all
-							kinds to navigate the metaverse.
+							spot to adventure from physical to digital. We are the architects of metaverse venues
+							and are gathering like-minded individuals to form a global community of digital
+							artists, hackers, avatars, and futurists of all kinds to navigate unchartered space
+							with us.
 						</h3>
 						<h3 className="purple">Come for the vibes. Stay for the revolution.</h3>
 						<h3>
@@ -151,23 +157,27 @@ const HomePage: FunctionComponent = () => {
 							<h3>
 								Introducing the Seker Factory Clearance Cards. These limited edition NFTs represent
 								our way of opening our factory up to patrons of the Seker intergalactic metaverse
-								community. We have written custom smart contract code that lets you level up these
-								cards over time as you participate in events, add valuable contributions to the
-								community, or simply hang out and enjoy the productions. The higher your level, the
-								more rep, merited governance rights on some proposals, and rewards you have in your
-								community. More details on this system coming soon.
+								community. We are calling on you to help crowd source the wisdom of curation. We
+								believe a community of art appreciators should be the driving force of defining what
+								is authentic digital art. We have written custom smart contract code that lets you
+								level up these cards over time as you participate in events, add valuable
+								contributions to the community, or simply hang out and enjoy the productions. The
+								higher your level, the more rep, merited governance rights on some proposals, and
+								rewards you have in your community. More details on this system coming soon.
 							</h3>
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<img
+								<video
 									src={clearanceCardOneSrc}
-									alt="001 Clearance Card Visualization"
-									onClick={() => handleOpenFullImage(clearanceCardOneSrc)}
+									muted
+									autoPlay
+									loop
+									onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
 								/>
 							</div>
 							<h3>001 Clearance Cards</h3>
-							<p>1000 total</p>
+							<p>2000 total</p>
 							<p className="upcoming-events__purchase-item-address">
 								<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
 							</p>
@@ -183,14 +193,13 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Patron governance rights for Seker Factory 001.
+									Patron governance rights for Seker Factory 001 including curation voting.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Allowlist to all current and future generative NFT series released by Seker
-									Factory 001.
+									Early access to NFTs released by Seker Factory 001 artists.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
@@ -221,10 +230,12 @@ const HomePage: FunctionComponent = () => {
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
-								<img
+								<video
 									src={topClearanceCardSrc}
-									alt="Top Clearance Card Visualization"
-									onClick={() => handleOpenFullImage(topClearanceCardSrc)}
+									muted
+									autoPlay
+									loop
+									onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
 								/>
 							</div>
 							<h3>Top Clearance Cards</h3>
@@ -241,14 +252,14 @@ const HomePage: FunctionComponent = () => {
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Patron governance rights for all Seker Factory locations.
+									Extended patron governance rights for all Seker Factory locations including
+									curation voting on all locations virtual or real.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
 										<DoneCircle width="20px" height="20px" />
 									</div>
-									Allowlist to all current and future generative NFT series released by all Seker
-									Factory locations.
+									Early access to NFTs released NFTs released by all Seker Factory locations.
 								</li>
 								<li>
 									<div className="upcoming-events__purchace-item-icon-container">
