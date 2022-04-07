@@ -42,7 +42,7 @@ const HomePage: FunctionComponent = () => {
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
-	const FEATURED_EVENT = events.find(event => event.eventname === "Exhibit 1") as EventContent
+	const FEATURED_EVENT = events.find(event => event.eventname === "DAO Party") as EventContent
 	const UPCOMING_EVENTS = events
 		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
 		.slice(0, 2)

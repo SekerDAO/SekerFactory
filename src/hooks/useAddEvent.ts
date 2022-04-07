@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react"
+import daoPartyBanner from "../assets/images/SekerFactory_DAOParty.png"
 import daoMeetingBanner from "../assets/images/dao-meeting-banner.png"
 import exhibitOneEventBanner from "../assets/images/exhibit-1-banner.png"
 import featuredEventBanner from "../assets/images/featured-event-banner.png"
@@ -48,6 +49,14 @@ export const useEvents = ({
 								...event,
 								custom_data: {
 									bannerSrc: exhibitOneEventBanner
+								}
+							}
+						}
+						if (event.eventname === "DAO Party") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: daoPartyBanner
 								}
 							}
 						}
