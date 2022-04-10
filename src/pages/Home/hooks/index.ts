@@ -36,7 +36,7 @@ const useHomePage = (): HomePageState => {
 	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
 	const [buyingClearanceCardType, setBuyingClearanceCardType] = useState<ClearanceCardType>()
 
-	const onPurchaseSupportUkraine = useCallback(async () => {
+	const signIn = async () => {
 		let signer = null
 		if (!web3Context.signer) {
 			// sign in
@@ -48,6 +48,11 @@ const useHomePage = (): HomePageState => {
 		} else {
 			signer = web3Context.signer
 		}
+
+		return signer
+	}
+	const onPurchaseSupportUkraine = useCallback(async () => {
+		const signer = await signIn()
 		const saleContract = new ethers.Contract(
 			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
 			Ukraine.abi,
@@ -61,50 +66,38 @@ const useHomePage = (): HomePageState => {
 	}, [mintValue, web3Context.signer, setWeb3Context])
 
 	const onPurchaseClearanceCard = useCallback(async () => {
-		let signer = null
-		if (!web3Context.signer) {
-			// sign in
-			await web3Modal.clearCachedProvider()
-			const instance = await web3Modal.connect()
-			const provider = new ethers.providers.Web3Provider(instance)
-			signer = provider.getSigner()
-			setWeb3Context({instance, signer})
-		} else {
-			signer = web3Context.signer
+		const signer = await signIn()
+		try {
+			const saleContract = new ethers.Contract(
+				"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
+				ClearanceCard001.abi,
+				signer
+			)
+			const etherValue = ethers.utils.parseEther("0.15")
+			const amount = parseInt(clearanceCardMintValue)
+			const value = etherValue.mul(amount)
+			await saleContract.mint(amount, {value})
+		} catch (e) {
+			console.error(e)
 		}
-		const saleContract = new ethers.Contract(
-			"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
-			ClearanceCard001.abi,
-			signer
-		)
-		const etherValue = ethers.utils.parseEther("0.15")
-		const amount = parseInt(clearanceCardMintValue)
-		const value = etherValue.mul(amount)
-		await saleContract.mint(amount, {value})
 		// Do the purchase
 	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
 
 	const onPurchaseTopClearanceCard = useCallback(async () => {
-		let signer = null
-		if (!web3Context.signer) {
-			// sign in
-			await web3Modal.clearCachedProvider()
-			const instance = await web3Modal.connect()
-			const provider = new ethers.providers.Web3Provider(instance)
-			signer = provider.getSigner()
-			setWeb3Context({instance, signer})
-		} else {
-			signer = web3Context.signer
+		const signer = await signIn()
+		try {
+			const saleContract = new ethers.Contract(
+				"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
+				TopClearanceCard.abi,
+				signer
+			)
+			const etherValue = ethers.utils.parseEther("0.5")
+			const amount = parseInt(clearanceCardMintValue)
+			const value = etherValue.mul(amount)
+			await saleContract.mint(amount, {value})
+		} catch (e) {
+			console.error(e)
 		}
-		const saleContract = new ethers.Contract(
-			"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
-			TopClearanceCard.abi,
-			signer
-		)
-		const etherValue = ethers.utils.parseEther("0.5")
-		const amount = parseInt(clearanceCardMintValue)
-		const value = etherValue.mul(amount)
-		await saleContract.mint(amount, {value})
 		// Do the purchase
 	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
 

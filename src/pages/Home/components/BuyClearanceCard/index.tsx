@@ -32,19 +32,28 @@ const BuyClearanceCard: FunctionComponent<{
 		}
 	}
 	const title = buyingClearanceCardType === "001" ? "001 Clearance Cards" : "Top Clearance Cards"
+	const clearanceCardIntValue = parseInt(clearanceCardMintValue)
 	return (
 		<Modal open={!!buyingClearanceCardType} onClose={handleClose}>
 			<form className="buy-clearance-card" onSubmit={handleSubmit}>
 				<h2>Buy ({title})</h2>
 				<label>Amount</label>
 				<Input
+					min={1}
+					max={5}
 					name="amount"
 					type="number"
 					required
 					value={clearanceCardMintValue}
 					onChange={event => setClearanceCardMintValue(event.target.value)}
 				/>
-				<Button variant="primary" type="submit" disabled={!clearanceCardMintValue}>
+				<Button
+					variant="primary"
+					type="submit"
+					disabled={
+						!clearanceCardMintValue || clearanceCardIntValue < 1 || clearanceCardIntValue > 5
+					}
+				>
 					Mint
 				</Button>
 			</form>
