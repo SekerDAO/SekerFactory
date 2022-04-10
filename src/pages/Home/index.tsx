@@ -20,7 +20,7 @@ import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
 import {EventContent} from "../../types/event"
 import {isEventUpcoming} from "../../utils"
-import Allowlist from "./components/Allowlist"
+import BuyClearanceCard from "./components/BuyClearanceCard"
 import Schedule from "./components/Schedule"
 import useHomePage from "./hooks"
 import "./index.scss"
@@ -30,12 +30,16 @@ const HomePage: FunctionComponent = () => {
 	const [fullVideoSrc, setFullVideoSrc] = useState<string | undefined>(undefined)
 	const {
 		viewScheduleOpen,
-		joinAllowlistType,
+		buyingClearanceCardType,
 		setViewScheduleOpen,
-		setJoinAllowlistType,
-		onPurchase,
+		setBuyingClearanceCardType,
+		onPurchaseSupportUkraine,
+		onPurchaseClearanceCard,
+		onPurchaseTopClearanceCard,
 		mintValue,
-		setMintValue
+		clearanceCardMintValue,
+		setMintValue,
+		setClearanceCardMintValue
 	} = useHomePage()
 	const {events, loading} = useEvents({})
 
@@ -51,9 +55,13 @@ const HomePage: FunctionComponent = () => {
 	return (
 		<>
 			<Schedule viewScheduleOpen={viewScheduleOpen} setViewScheduleOpen={setViewScheduleOpen} />
-			<Allowlist
-				joinAllowlistType={joinAllowlistType}
-				setJoinAllowlistType={setJoinAllowlistType}
+			<BuyClearanceCard
+				buyingClearanceCardType={buyingClearanceCardType}
+				setBuyingClearanceCardType={setBuyingClearanceCardType}
+				clearanceCardMintValue={clearanceCardMintValue}
+				setClearanceCardMintValue={setClearanceCardMintValue}
+				onPurchaseClearanceCard={onPurchaseClearanceCard}
+				onPurchaseTopClearanceCard={onPurchaseTopClearanceCard}
 			/>
 			<ImageModal
 				src={fullVideoSrc}
@@ -99,7 +107,7 @@ const HomePage: FunctionComponent = () => {
 											setMintValue(e.currentTarget.value)
 										}}
 									/>
-									<Button onClick={onPurchase}>Donate</Button>
+									<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
 								</div>
 							</div>
 						</div>
@@ -226,7 +234,7 @@ const HomePage: FunctionComponent = () => {
 									More to come!
 								</li>
 							</ul>
-							<Button onClick={() => setJoinAllowlistType("001")}>Join Allowlist</Button>
+							<Button onClick={() => setBuyingClearanceCardType("001")}>Mint</Button>
 						</div>
 						<div className="upcoming-events__purchase-item">
 							<div className="upcoming-events__purchase-item-img-container">
@@ -287,7 +295,7 @@ const HomePage: FunctionComponent = () => {
 									More to come!
 								</li>
 							</ul>
-							<Button onClick={() => setJoinAllowlistType("TOP")}>Join Allowlist</Button>
+							<Button onClick={() => setBuyingClearanceCardType("TOP")}>Mint</Button>
 						</div>
 					</section>
 				</section>

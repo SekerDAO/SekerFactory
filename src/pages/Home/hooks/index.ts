@@ -1,18 +1,24 @@
 import {ethers} from "ethers"
 import {useState, Dispatch, SetStateAction, useCallback, useContext} from "react"
 import Web3Modal from "web3modal"
+import ClearanceCard001 from "../../../abi/ClearanceCard001.json"
+import TopClearanceCard from "../../../abi/TopClearanceCard.json"
 import Ukraine from "../../../abi/Ukraine.json"
 import {Web3Context} from "../../../context"
 
-export type AllowlistType = "TOP" | "001" | undefined
+export type ClearanceCardType = "TOP" | "001" | undefined
 type HomePageState = {
 	viewScheduleOpen: boolean
-	joinAllowlistType: AllowlistType
+	buyingClearanceCardType: ClearanceCardType
 	setViewScheduleOpen: Dispatch<SetStateAction<boolean>>
-	setJoinAllowlistType: Dispatch<SetStateAction<AllowlistType>>
+	setBuyingClearanceCardType: Dispatch<SetStateAction<ClearanceCardType>>
 	mintValue: string
 	setMintValue: Dispatch<SetStateAction<string>>
-	onPurchase: () => Promise<void>
+	clearanceCardMintValue: string
+	setClearanceCardMintValue: Dispatch<SetStateAction<string>>
+	onPurchaseSupportUkraine: () => Promise<void>
+	onPurchaseClearanceCard: () => Promise<void>
+	onPurchaseTopClearanceCard: () => Promise<void>
 }
 
 const providerOptions = {}
@@ -26,10 +32,11 @@ const web3Modal = new Web3Modal({
 const useHomePage = (): HomePageState => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
 	const [mintValue, setMintValue] = useState<string>("1")
+	const [clearanceCardMintValue, setClearanceCardMintValue] = useState<string>("1")
 	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
-	const [joinAllowlistType, setJoinAllowlistType] = useState<AllowlistType>()
+	const [buyingClearanceCardType, setBuyingClearanceCardType] = useState<ClearanceCardType>()
 
-	const onPurchase = useCallback(async () => {
+	const onPurchaseSupportUkraine = useCallback(async () => {
 		let signer = null
 		if (!web3Context.signer) {
 			// sign in
@@ -53,14 +60,66 @@ const useHomePage = (): HomePageState => {
 		// Do the purchase
 	}, [mintValue, web3Context.signer, setWeb3Context])
 
+	const onPurchaseClearanceCard = useCallback(async () => {
+		let signer = null
+		if (!web3Context.signer) {
+			// sign in
+			await web3Modal.clearCachedProvider()
+			const instance = await web3Modal.connect()
+			const provider = new ethers.providers.Web3Provider(instance)
+			signer = provider.getSigner()
+			setWeb3Context({instance, signer})
+		} else {
+			signer = web3Context.signer
+		}
+		const saleContract = new ethers.Contract(
+			"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
+			ClearanceCard001.abi,
+			signer
+		)
+		const etherValue = ethers.utils.parseEther("0.15")
+		const amount = parseInt(clearanceCardMintValue)
+		const value = etherValue.mul(amount)
+		await saleContract.mint(amount, {value})
+		// Do the purchase
+	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
+
+	const onPurchaseTopClearanceCard = useCallback(async () => {
+		let signer = null
+		if (!web3Context.signer) {
+			// sign in
+			await web3Modal.clearCachedProvider()
+			const instance = await web3Modal.connect()
+			const provider = new ethers.providers.Web3Provider(instance)
+			signer = provider.getSigner()
+			setWeb3Context({instance, signer})
+		} else {
+			signer = web3Context.signer
+		}
+		const saleContract = new ethers.Contract(
+			"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
+			TopClearanceCard.abi,
+			signer
+		)
+		const etherValue = ethers.utils.parseEther("0.5")
+		const amount = parseInt(clearanceCardMintValue)
+		const value = etherValue.mul(amount)
+		await saleContract.mint(amount, {value})
+		// Do the purchase
+	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
+
 	return {
 		viewScheduleOpen,
-		joinAllowlistType,
+		buyingClearanceCardType,
 		setViewScheduleOpen,
-		setJoinAllowlistType,
-		onPurchase,
+		setBuyingClearanceCardType,
+		onPurchaseSupportUkraine,
+		onPurchaseClearanceCard,
+		onPurchaseTopClearanceCard,
 		mintValue,
-		setMintValue
+		clearanceCardMintValue,
+		setMintValue,
+		setClearanceCardMintValue
 	}
 }
 
