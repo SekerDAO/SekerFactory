@@ -39,7 +39,8 @@ const HomePage: FunctionComponent = () => {
 		mintValue,
 		clearanceCardMintValue,
 		setMintValue,
-		setClearanceCardMintValue
+		setClearanceCardMintValue,
+		processingClearanceCardPurchase
 	} = useHomePage()
 	const {events, loading} = useEvents({})
 
@@ -62,6 +63,7 @@ const HomePage: FunctionComponent = () => {
 				setClearanceCardMintValue={setClearanceCardMintValue}
 				onPurchaseClearanceCard={onPurchaseClearanceCard}
 				onPurchaseTopClearanceCard={onPurchaseTopClearanceCard}
+				processing={processingClearanceCardPurchase}
 			/>
 			<ImageModal
 				src={fullVideoSrc}

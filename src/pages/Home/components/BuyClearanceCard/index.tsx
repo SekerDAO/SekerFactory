@@ -12,13 +12,15 @@ const BuyClearanceCard: FunctionComponent<{
 	setClearanceCardMintValue: Dispatch<SetStateAction<string>>
 	onPurchaseClearanceCard: () => Promise<void>
 	onPurchaseTopClearanceCard: () => Promise<void>
+	processing: boolean
 }> = ({
 	buyingClearanceCardType,
 	setBuyingClearanceCardType,
 	clearanceCardMintValue,
 	setClearanceCardMintValue,
 	onPurchaseClearanceCard,
-	onPurchaseTopClearanceCard
+	onPurchaseTopClearanceCard,
+	processing
 }) => {
 	const handleClose = () => {
 		setBuyingClearanceCardType(undefined)
@@ -51,10 +53,13 @@ const BuyClearanceCard: FunctionComponent<{
 					variant="primary"
 					type="submit"
 					disabled={
-						!clearanceCardMintValue || clearanceCardIntValue < 1 || clearanceCardIntValue > 5
+						processing ||
+						!clearanceCardMintValue ||
+						clearanceCardIntValue < 1 ||
+						clearanceCardIntValue > 5
 					}
 				>
-					Mint
+					{processing ? "Processing..." : "Mint"}
 				</Button>
 			</form>
 		</Modal>

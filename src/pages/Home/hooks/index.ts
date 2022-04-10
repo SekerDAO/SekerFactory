@@ -19,6 +19,7 @@ type HomePageState = {
 	onPurchaseSupportUkraine: () => Promise<void>
 	onPurchaseClearanceCard: () => Promise<void>
 	onPurchaseTopClearanceCard: () => Promise<void>
+	processingClearanceCardPurchase: boolean
 }
 
 const providerOptions = {}
@@ -32,6 +33,7 @@ const web3Modal = new Web3Modal({
 const useHomePage = (): HomePageState => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
 	const [mintValue, setMintValue] = useState<string>("1")
+	const [processingClearanceCardPurchase, setProcessingClearanceCardPurchase] = useState(false)
 	const [clearanceCardMintValue, setClearanceCardMintValue] = useState<string>("1")
 	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
 	const [buyingClearanceCardType, setBuyingClearanceCardType] = useState<ClearanceCardType>()
@@ -53,20 +55,24 @@ const useHomePage = (): HomePageState => {
 	}
 	const onPurchaseSupportUkraine = useCallback(async () => {
 		const signer = await signIn()
-		const saleContract = new ethers.Contract(
-			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
-			Ukraine.abi,
-			signer
-		)
-		const etherValue = ethers.utils.parseEther("0.05")
-		const amount = parseInt(mintValue)
-		const value = etherValue.mul(amount)
-		await saleContract.mint(amount, {value: value})
-		// Do the purchase
+		try {
+			const saleContract = new ethers.Contract(
+				"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
+				Ukraine.abi,
+				signer
+			)
+			const etherValue = ethers.utils.parseEther("0.05")
+			const amount = parseInt(mintValue)
+			const value = etherValue.mul(amount)
+			await saleContract.mint(amount, {value: value})
+		} catch (e) {
+			console.error(e)
+		}
 	}, [mintValue, web3Context.signer, setWeb3Context])
 
 	const onPurchaseClearanceCard = useCallback(async () => {
 		const signer = await signIn()
+		setProcessingClearanceCardPurchase(true)
 		try {
 			const saleContract = new ethers.Contract(
 				"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
@@ -77,14 +83,16 @@ const useHomePage = (): HomePageState => {
 			const amount = parseInt(clearanceCardMintValue)
 			const value = etherValue.mul(amount)
 			await saleContract.mint(amount, {value})
+			setProcessingClearanceCardPurchase(false)
 		} catch (e) {
 			console.error(e)
+			setProcessingClearanceCardPurchase(false)
 		}
-		// Do the purchase
 	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
 
 	const onPurchaseTopClearanceCard = useCallback(async () => {
 		const signer = await signIn()
+		setProcessingClearanceCardPurchase(true)
 		try {
 			const saleContract = new ethers.Contract(
 				"0x0cB04a31d9c1c6201e7Bb881ECD332241b3d5AFD",
@@ -95,10 +103,11 @@ const useHomePage = (): HomePageState => {
 			const amount = parseInt(clearanceCardMintValue)
 			const value = etherValue.mul(amount)
 			await saleContract.mint(amount, {value})
+			setProcessingClearanceCardPurchase(false)
 		} catch (e) {
 			console.error(e)
+			setProcessingClearanceCardPurchase(false)
 		}
-		// Do the purchase
 	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
 
 	return {
@@ -112,7 +121,8 @@ const useHomePage = (): HomePageState => {
 		mintValue,
 		clearanceCardMintValue,
 		setMintValue,
-		setClearanceCardMintValue
+		setClearanceCardMintValue,
+		processingClearanceCardPurchase
 	}
 }
 
