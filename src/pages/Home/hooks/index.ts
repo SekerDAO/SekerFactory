@@ -100,6 +100,12 @@ const useHomePage = (): HomePageState => {
 		await saleContract.mint(amount, {value})
 	}
 
+	const purchaseClearanceCardSuccess = async () => {
+		await getCardsTotal()
+		setBuyingClearanceCardType(undefined)
+		setProcessingClearanceCardPurchase(false)
+	}
+
 	const onPurchaseSupportUkraine = useCallback(async () => {
 		try {
 			await purchase({
@@ -122,8 +128,7 @@ const useHomePage = (): HomePageState => {
 				etherValueString: "0.15",
 				mintAmount: clearanceCardMintValue
 			})
-			setTimeout(getCardsTotal, 10000)
-			setProcessingClearanceCardPurchase(false)
+			setTimeout(purchaseClearanceCardSuccess, 5000)
 		} catch (e) {
 			console.error(e)
 			setProcessingClearanceCardPurchase(false)
@@ -139,8 +144,7 @@ const useHomePage = (): HomePageState => {
 				etherValueString: "0.5",
 				mintAmount: clearanceCardMintValue
 			})
-			setTimeout(getCardsTotal, 10000)
-			setProcessingClearanceCardPurchase(false)
+			setTimeout(purchaseClearanceCardSuccess, 5000)
 		} catch (e) {
 			console.error(e)
 			setProcessingClearanceCardPurchase(false)
