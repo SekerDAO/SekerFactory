@@ -40,7 +40,9 @@ const HomePage: FunctionComponent = () => {
 		clearanceCardMintValue,
 		setMintValue,
 		setClearanceCardMintValue,
-		processingClearanceCardPurchase
+		processingClearanceCardPurchase,
+		clearanceCardTotal,
+		topClearanceCardTotal
 	} = useHomePage()
 	const {events, loading} = useEvents({})
 
@@ -187,7 +189,7 @@ const HomePage: FunctionComponent = () => {
 								/>
 							</div>
 							<h3>001 Clearance Cards</h3>
-							<p>2000 total</p>
+							<p>{clearanceCardTotal} minted / 2000 total</p>
 							<p className="upcoming-events__purchase-item-address">
 								<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
 							</p>
@@ -249,7 +251,7 @@ const HomePage: FunctionComponent = () => {
 								/>
 							</div>
 							<h3>Top Clearance Cards</h3>
-							<p>1000 total</p>
+							<p>{topClearanceCardTotal} minted / 1000 total</p>
 							<p className="upcoming-events__purchase-item-address bold">All Seker Factories</p>
 							<ul>
 								<li>
