@@ -189,7 +189,7 @@ const HomePage: FunctionComponent = () => {
 								/>
 							</div>
 							<h3>001 Clearance Cards</h3>
-							<p>{clearanceCardTotal} minted / 2000 total</p>
+							<p>{clearanceCardTotal} minted / 3000 total</p>
 							<p className="upcoming-events__purchase-item-address">
 								<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
 							</p>
@@ -251,7 +251,7 @@ const HomePage: FunctionComponent = () => {
 								/>
 							</div>
 							<h3>Top Clearance Cards</h3>
-							<p>{topClearanceCardTotal} minted / 1000 total</p>
+							<p>{topClearanceCardTotal} minted / 1500 total</p>
 							<p className="upcoming-events__purchase-item-address bold">All Seker Factories</p>
 							<ul>
 								<li>
