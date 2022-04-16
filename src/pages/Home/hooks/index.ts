@@ -45,7 +45,7 @@ const useHomePage = (): HomePageState => {
 	const [clearanceCardTotal, setClearanceCardTotal] = useState(0)
 	const [topClearanceCardTotal, setTopClearanceCardTotal] = useState(0)
 
-	const infuraProvider = new InfuraProvider("rinkeby", {
+	const infuraProvider = new InfuraProvider("mainnet", {
 		projectId: infuraConfig.INFURA_ID
 	})
 
