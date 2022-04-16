@@ -1,5 +1,6 @@
 import {useState, FunctionComponent, StrictMode} from "react"
 import ReactDOM from "react-dom"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import Header from "./components/Header"
 import {Web3Context} from "./context"

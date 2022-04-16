@@ -99,3 +99,13 @@ p {
 .full-width {
   width: 100%;
 }
+
+.carousel {
+  .slide {
+    text-align: left;
+
+    .event-list-item {
+      height: 100%;
+    }
+  }
+}

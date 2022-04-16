@@ -12,7 +12,7 @@ const EventListItem: FunctionComponent<{
 	onShowSchedule?: () => void
 	className?: string
 }> = ({event, showRSVP, showSchedule, onShowSchedule, className}) => (
-	<section className={`event-list-item ${className}`}>
+	<section className={`event-list-item ${className ?? ""}`}>
 		<div className="event-list-item__col-wrapper">
 			<div className="event-list-item__col">
 				<Image src={event?.custom_data?.bannerSrc} alt={event.title} />
