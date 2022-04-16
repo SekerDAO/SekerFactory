@@ -1,5 +1,6 @@
 import {Dispatch, FunctionComponent, SetStateAction, FormEventHandler} from "react"
 import Button from "../../../../components/Button"
+import Copy from "../../../../components/Copy"
 import Input from "../../../../components/Input"
 import Modal from "../../../../components/Modal"
 import {ClearanceCardType} from "../../hooks"
@@ -22,19 +23,21 @@ const BuyClearanceCard: FunctionComponent<{
 	onPurchaseTopClearanceCard,
 	processing
 }) => {
+	const isTopCard = buyingClearanceCardType === "TOP"
+	const title = isTopCard ? "Top Clearance Cards" : "001 Clearance Cards"
+	const clearanceCardIntValue = parseInt(clearanceCardMintValue)
+
 	const handleClose = () => {
 		setBuyingClearanceCardType(undefined)
 	}
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
 		event.preventDefault()
-		if (buyingClearanceCardType === "001") {
+		if (!isTopCard) {
 			await onPurchaseClearanceCard()
 		} else {
 			await onPurchaseTopClearanceCard()
 		}
 	}
-	const title = buyingClearanceCardType === "001" ? "001 Clearance Cards" : "Top Clearance Cards"
-	const clearanceCardIntValue = parseInt(clearanceCardMintValue)
 	return (
 		<Modal open={!!buyingClearanceCardType} onClose={handleClose}>
 			<form className="buy-clearance-card" onSubmit={handleSubmit}>
@@ -49,6 +52,8 @@ const BuyClearanceCard: FunctionComponent<{
 					value={clearanceCardMintValue}
 					onChange={event => setClearanceCardMintValue(event.target.value)}
 				/>
+				<Copy>Price per item: {isTopCard ? 0.5 : 0.15} (ETH)</Copy>
+				<Copy>Total: {clearanceCardIntValue * (isTopCard ? 0.5 : 0.15)} (ETH)</Copy>
 				<Button
 					variant="primary"
 					type="submit"
