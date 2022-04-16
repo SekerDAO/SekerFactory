@@ -42,7 +42,7 @@ const BuyClearanceCard: FunctionComponent<{
 				<label>Amount</label>
 				<Input
 					min={1}
-					max={5}
+					step={1}
 					name="amount"
 					type="number"
 					required
@@ -52,12 +52,7 @@ const BuyClearanceCard: FunctionComponent<{
 				<Button
 					variant="primary"
 					type="submit"
-					disabled={
-						processing ||
-						!clearanceCardMintValue ||
-						clearanceCardIntValue < 1 ||
-						clearanceCardIntValue > 5
-					}
+					disabled={processing || !clearanceCardMintValue || clearanceCardIntValue < 1}
 				>
 					{processing ? "Processing..." : "Mint"}
 				</Button>
