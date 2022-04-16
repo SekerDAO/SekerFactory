@@ -1,18 +1,30 @@
-import {ethers} from "ethers"
-import {useState, Dispatch, SetStateAction, useCallback, useContext} from "react"
+import {InfuraProvider} from "@ethersproject/providers"
+import {ethers, BigNumber} from "ethers"
+import {useState, useEffect, Dispatch, SetStateAction, useCallback, useContext} from "react"
 import Web3Modal from "web3modal"
+import ClearanceCard001 from "../../../abi/ClearanceCard001.json"
+import TopClearanceCard from "../../../abi/TopClearanceCard.json"
 import Ukraine from "../../../abi/Ukraine.json"
+import config from "../../../config/eth"
+import infuraConfig from "../../../config/infura"
 import {Web3Context} from "../../../context"
 
-export type AllowlistType = "TOP" | "001" | undefined
+export type ClearanceCardType = "TOP" | "001" | undefined
 type HomePageState = {
 	viewScheduleOpen: boolean
-	joinAllowlistType: AllowlistType
+	buyingClearanceCardType: ClearanceCardType
 	setViewScheduleOpen: Dispatch<SetStateAction<boolean>>
-	setJoinAllowlistType: Dispatch<SetStateAction<AllowlistType>>
+	setBuyingClearanceCardType: Dispatch<SetStateAction<ClearanceCardType>>
 	mintValue: string
 	setMintValue: Dispatch<SetStateAction<string>>
-	onPurchase: () => Promise<void>
+	clearanceCardMintValue: string
+	setClearanceCardMintValue: Dispatch<SetStateAction<string>>
+	onPurchaseSupportUkraine: () => Promise<void>
+	onPurchaseClearanceCard: () => Promise<void>
+	onPurchaseTopClearanceCard: () => Promise<void>
+	processingClearanceCardPurchase: boolean
+	clearanceCardTotal: number
+	topClearanceCardTotal: number
 }
 
 const providerOptions = {}
@@ -26,10 +38,34 @@ const web3Modal = new Web3Modal({
 const useHomePage = (): HomePageState => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
 	const [mintValue, setMintValue] = useState<string>("1")
+	const [processingClearanceCardPurchase, setProcessingClearanceCardPurchase] = useState(false)
+	const [clearanceCardMintValue, setClearanceCardMintValue] = useState<string>("1")
 	const [viewScheduleOpen, setViewScheduleOpen] = useState(false)
-	const [joinAllowlistType, setJoinAllowlistType] = useState<AllowlistType>()
+	const [buyingClearanceCardType, setBuyingClearanceCardType] = useState<ClearanceCardType>()
+	const [clearanceCardTotal, setClearanceCardTotal] = useState(0)
+	const [topClearanceCardTotal, setTopClearanceCardTotal] = useState(0)
 
-	const onPurchase = useCallback(async () => {
+	const infuraProvider = new InfuraProvider("mainnet", {
+		projectId: infuraConfig.INFURA_ID
+	})
+
+	const getCardsTotal = async () => {
+		const clearanceContract = new ethers.Contract(
+			config.CLEARANCE_CARD_001_CONTRACT_ADDRESS,
+			ClearanceCard001.abi,
+			infuraProvider
+		)
+
+		const topClearanceContract = new ethers.Contract(
+			config.TOP_CLEARANCE_CARD_CONTRACT_ADDRESS,
+			TopClearanceCard.abi,
+			infuraProvider
+		)
+		setClearanceCardTotal(BigNumber.from(await clearanceContract.totalSupply()).toNumber())
+		setTopClearanceCardTotal(BigNumber.from(await topClearanceContract.totalSupply()).toNumber())
+	}
+
+	const signIn = async () => {
 		let signer = null
 		if (!web3Context.signer) {
 			// sign in
@@ -41,26 +77,99 @@ const useHomePage = (): HomePageState => {
 		} else {
 			signer = web3Context.signer
 		}
-		const saleContract = new ethers.Contract(
-			"0xb7419c7B3ABcf81666B4eD006fa3503aA14F9588",
-			Ukraine.abi,
-			signer
-		)
-		const etherValue = ethers.utils.parseEther("0.05")
-		const amount = parseInt(mintValue)
+
+		return signer
+	}
+
+	const purchase = async ({
+		contractAddress,
+		abi,
+		etherValueString,
+		mintAmount
+	}: {
+		contractAddress: string
+		abi: ethers.ContractInterface
+		etherValueString: string
+		mintAmount: string
+	}) => {
+		const signer = await signIn()
+		const saleContract = new ethers.Contract(contractAddress, abi, signer)
+		const etherValue = ethers.utils.parseEther(etherValueString)
+		const amount = parseInt(mintAmount)
 		const value = etherValue.mul(amount)
-		await saleContract.mint(amount, {value: value})
-		// Do the purchase
+		await saleContract.mint(amount, {value})
+	}
+
+	const purchaseClearanceCardSuccess = async () => {
+		await getCardsTotal()
+		setBuyingClearanceCardType(undefined)
+		setProcessingClearanceCardPurchase(false)
+	}
+
+	const onPurchaseSupportUkraine = useCallback(async () => {
+		try {
+			await purchase({
+				contractAddress: config.SUPPORT_UKRAINE_CONTRACT_ADDRESS,
+				abi: Ukraine.abi,
+				etherValueString: "0.05",
+				mintAmount: mintValue
+			})
+		} catch (e) {
+			console.error(e)
+		}
 	}, [mintValue, web3Context.signer, setWeb3Context])
+
+	const onPurchaseClearanceCard = useCallback(async () => {
+		setProcessingClearanceCardPurchase(true)
+		try {
+			await purchase({
+				contractAddress: config.CLEARANCE_CARD_001_CONTRACT_ADDRESS,
+				abi: ClearanceCard001.abi,
+				etherValueString: "0.15",
+				mintAmount: clearanceCardMintValue
+			})
+			setTimeout(purchaseClearanceCardSuccess, 5000)
+		} catch (e) {
+			console.error(e)
+			setProcessingClearanceCardPurchase(false)
+		}
+	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
+
+	const onPurchaseTopClearanceCard = useCallback(async () => {
+		setProcessingClearanceCardPurchase(true)
+		try {
+			await purchase({
+				contractAddress: config.TOP_CLEARANCE_CARD_CONTRACT_ADDRESS,
+				abi: TopClearanceCard.abi,
+				etherValueString: "0.5",
+				mintAmount: clearanceCardMintValue
+			})
+			setTimeout(purchaseClearanceCardSuccess, 5000)
+		} catch (e) {
+			console.error(e)
+			setProcessingClearanceCardPurchase(false)
+		}
+	}, [clearanceCardMintValue, web3Context.signer, setWeb3Context])
+
+	useEffect(() => {
+		getCardsTotal()
+	}, [])
 
 	return {
 		viewScheduleOpen,
-		joinAllowlistType,
+		buyingClearanceCardType,
 		setViewScheduleOpen,
-		setJoinAllowlistType,
-		onPurchase,
+		setBuyingClearanceCardType,
+		onPurchaseSupportUkraine,
+		onPurchaseClearanceCard,
+		onPurchaseTopClearanceCard,
 		mintValue,
-		setMintValue
+		clearanceCardMintValue,
+		setMintValue,
+		setClearanceCardMintValue,
+		processingClearanceCardPurchase,
+		clearanceCardTotal,
+		topClearanceCardTotal
 	}
 }
 
