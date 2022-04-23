@@ -77,51 +77,46 @@ const HomePage: FunctionComponent = () => {
 			<main className="home-page">
 				<Carousel swipeable emulateTouch autoPlay infiniteLoop showStatus={false} interval={10000}>
 					<section className="charity">
-						<div className="charity__col-wrapper">
-							<div className="charity__col">
-								<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
-							</div>
-							<div className="charity__col">
-								<h1>
-									Join Seker Factory in <br />
-									Supporting Ukraine
-								</h1>
-								<p className="charity__col-description">
-									Over the last couple days, hundreds of thousands of Ukrainian people have fled
-									their homes to seek refuge in neighboring European countries. Millions more are
-									attempting to escape the chaos but are stranded on roadways due to traffic,
-									abandoned cars, and lack of gas. Banks across the country have been overwhelmed
-									and Ukrainians, who still rely heavily on cash payments, are unable to cover the
-									costs of getting themselves out. The developer of this site — a member of Seker
-									DAO and a good friend of all of ours — is currently in the midst of this struggle.
-									The artist of this NFT, another DAO member, grew up in the Ukraine and has family
-									there. This war hits close to home for all. Purchasing a print of this NFT will be
-									your badge of support. 100% of the proceeds go to humanitarian aid for those
-									trying to evacuate including the members of Seker Factory trapped in this
-									conflict. We all thank you for your support.
-								</p>
-								<br />
-								<p>Please install MetaMask or WalletConnect before donating.</p>
-								<div className="charity__mint">
-									<h3>Mint Amount</h3>
-									<div>
-										<Input
-											type="number"
-											min="1"
-											value={mintValue}
-											onChange={(e: React.FormEvent<HTMLInputElement>) => {
-												setMintValue(e.currentTarget.value)
-											}}
-										/>
-										<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
-									</div>
+						<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
+						<div className="charity__content">
+							<h1>
+								Join Seker Factory in <br />
+								Supporting Ukraine
+							</h1>
+							<p className="charity__content-description">
+								Over the last couple days, hundreds of thousands of Ukrainian people have fled their
+								homes to seek refuge in neighboring European countries. Millions more are attempting
+								to escape the chaos but are stranded on roadways due to traffic, abandoned cars, and
+								lack of gas. Banks across the country have been overwhelmed and Ukrainians, who
+								still rely heavily on cash payments, are unable to cover the costs of getting
+								themselves out. The developer of this site — a member of Seker DAO and a good friend
+								of all of ours — is currently in the midst of this struggle. The artist of this NFT,
+								another DAO member, grew up in the Ukraine and has family there. This war hits close
+								to home for all. Purchasing a print of this NFT will be your badge of support. 100%
+								of the proceeds go to humanitarian aid for those trying to evacuate including the
+								members of Seker Factory trapped in this conflict. We all thank you for your
+								support.
+							</p>
+							<br />
+							<p>Please install MetaMask or WalletConnect before donating.</p>
+							<div className="charity__mint">
+								<h3>Mint Amount</h3>
+								<div>
+									<Input
+										type="number"
+										min="1"
+										value={mintValue}
+										onChange={(e: React.FormEvent<HTMLInputElement>) => {
+											setMintValue(e.currentTarget.value)
+										}}
+									/>
+									<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
 								</div>
 							</div>
 						</div>
 					</section>
 					<EventListItem event={FEATURED_EVENT} showRSVP showSchedule={false} />
 				</Carousel>
-				<SubscribeForm />
 				<section className="upcoming-events">
 					<div className="upcoming-events__header">
 						<h3>Upcoming Events</h3>
@@ -346,6 +341,7 @@ const HomePage: FunctionComponent = () => {
 						</ul>
 					</div>
 				</section>
+				<SubscribeForm />
 			</main>
 			<Footer />
 		</>

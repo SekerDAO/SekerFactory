@@ -1,15 +1,40 @@
 @import "../../assets/styles/colors.scss";
 
 .header {
-  flex-flow: row;
-  padding-top: 20px;
-  background-color: $dark-grey;
+  padding: 24px;
+  background-color: $white;
+  justify-content: space-between;
+  display: flex;
 
   &__logo-container {
-    padding-left: 40px;
-
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  &__nav {
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+
+      li {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+
+        a {
+          color: $dark-grey;
+
+          &:hover {
+            color: $purple;
+            border-top: 1px solid $purple;
+          }
+        }
+      }
     }
   }
 }

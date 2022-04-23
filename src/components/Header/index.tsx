@@ -8,13 +8,14 @@ import Authereum from "authereum"
 import ethProvider from "eth-provider"
 import {ethers} from "ethers"
 import {useContext, useEffect, useState, FunctionComponent, useCallback} from "react"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import Web3Modal from "web3modal"
 import logo from "../../assets/images/logo.svg"
 import Button from "../../components/Button"
 import config from "../../config/infura"
 import {Web3Context} from "../../context"
 import useResetScroll from "../../hooks/useResetScroll"
+import {formatReadableAddress} from "../../utils"
 import Image from "../Image"
 import "./index.scss"
 
@@ -47,14 +48,14 @@ const providerOptions = {
 
 const Header: FunctionComponent = () => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
-	const [buttonText, setButtonText] = useState("Connect")
+	const [buttonText, setButtonText] = useState("Connect Wallet")
 	const navigate = useNavigate()
 	useResetScroll()
 
 	useEffect(() => {
 		const getAddress = async () => {
 			if (web3Context.signer) {
-				setButtonText(await web3Context.signer.getAddress())
+				setButtonText(formatReadableAddress(await web3Context.signer.getAddress()))
 			}
 		}
 		getAddress()
@@ -82,18 +83,29 @@ const Header: FunctionComponent = () => {
 		<header className="header">
 			<div className="header__logo-container" onClick={() => navigate("/")}>
 				<Image src={logo} className="header__logo" alt="logo" width={230} height={40} />
-				<Button
-					style={{
-						float: "right",
-						verticalAlign: "center",
-						textAlign: "right",
-						marginRight: 20
-					}}
-					onClick={onConnect}
-				>
-					{buttonText}
-				</Button>
 			</div>
+			<nav className="header__nav">
+				<ul>
+					<li>
+						<Link to="/">Home</Link>
+					</li>
+					<li>
+						<Link to="#">Apply</Link>
+					</li>
+					<li>
+						<Link to="#">Artists</Link>
+					</li>
+					<li>
+						<Link to="#">About</Link>
+					</li>
+					<li>
+						<Link to="#">Contact</Link>
+					</li>
+					<li>
+						<Button onClick={onConnect}>{buttonText}</Button>
+					</li>
+				</ul>
+			</nav>
 		</header>
 	)
 }

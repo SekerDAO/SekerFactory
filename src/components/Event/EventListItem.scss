@@ -1,32 +1,23 @@
 @import "../../assets/styles/colors.scss";
 
 .event-list-item {
-  background-color: $dark-grey;
-  padding-top: 40px;
-  padding-bottom: 80px;
-  padding-left: 20%;
-  padding-right: 20%;
+  position: relative;
 
-  &__col {
-    &-wrapper {
-      display: flex;
-      justify-content: center;
-    }
+  img {
+    width: 100%;
+    border-radius: 5px;
+    filter: brightness(0.5);
+  }
 
-    width: calc(50% - 20px);
+  &__content {
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    top: 25%;
+    width: 50%;
     margin-left: 20px;
     margin-right: 20px;
-
-    &:first-of-type {
-      margin-left: 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-    }
-
-    &:last-of-type {
-      margin-right: 0;
-    }
 
     h1 {
       white-space: pre-line;
@@ -44,11 +35,6 @@
     h3 {
       font-size: 20px;
       line-height: 36px;
-    }
-
-    img {
-      width: 100%;
-      border-radius: 5px;
     }
 
     &-description {
@@ -70,13 +56,6 @@
 @media (max-width: 1040px) {
   .event-list-item {
     flex-flow: wrap-reverse;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    &__col-wrapper {
-      width: 100%;
-      flex-wrap: wrap;
-    }
 
     &__mint {
       & > div {
@@ -86,7 +65,11 @@
       }
     }
 
-    &__col {
+    .image-placeholder {
+      height: 565px;
+    }
+
+    &__content {
       display: flex;
       width: 100%;
       flex-wrap: wrap;
@@ -107,17 +90,13 @@
       &-hosted-by {
         width: 100%;
       }
-
-      .image-placeholder {
-        height: 565px;
-      }
     }
   }
 }
 
 @media (max-width: 767px) {
   .event-list-item {
-    & &__col {
+    & &__content {
       &:last-of-type,
       &:first-of-type {
         margin-left: 0;
@@ -136,12 +115,5 @@
         }
       }
     }
-  }
-}
-
-@media screen and (min-width: 1040px) and (max-width: 1919px) {
-  .event-list-item {
-    padding-left: 10%;
-    padding-right: 10%;
   }
 }
