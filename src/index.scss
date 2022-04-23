@@ -93,9 +93,13 @@ p {
 
 .bold {
   font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
   font-family: SairaSemiCondensed, "Open Sans", sans-serif;
+}
+
+.italic {
+  font-style: italic;
+  font-weight: normal;
+  font-family: Karla, "Open Sans", sans-serif;
 }
 
 .full-width {

@@ -240,158 +240,161 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 					</div>
 				</section>
 				<section className="membership">
-					<div className="membership__description">
-						<h3>
-							Introducing the Seker Factory Clearance Cards. These limited edition NFTs represent
-							our way of opening our factory up to patrons of the Seker intergalactic metaverse
-							community. We are calling on you to help crowd source the wisdom of curation. We
-							believe a community of art appreciators should be the driving force of defining what
-							is authentic digital art. We have written custom smart contract code that lets you
-							level up these cards over time as you participate in events, add valuable
-							contributions to the community, or simply hang out and enjoy the productions. The
-							higher your level, the more rep, merited governance rights on some proposals, and
-							rewards you have in your community. More details on this system coming soon.
-						</h3>
-					</div>
-					<div className="membership__item">
-						<div className="membership__item-img-container">
-							<video
-								src={clearanceCardOneSrc}
-								muted
-								autoPlay
-								loop
-								onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
-							/>
+					<p className="membership__heading">Membership</p>
+					<div className="membership__content">
+						<div className="membership__description">
+							<p className="membership__description-content">
+								<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
+								limited-edition NFTs represent our way of opening our factory up to patrons of the
+								Seker intergalactic metaverse community. We are calling on you to help crowd source
+								the wisdom of curation. We believe a community of art appreciators should be the
+								driving force of defining what is authentic digital art. We have written custom
+								smart contract code that lets you level up these cards over time as you participate
+								in events, add valuable contributions to the community, or simply hang out and enjoy
+								the productions. The higher your level, the more representation, merited governance
+								rights on some proposals, and rewards you have in your community.
+							</p>
 						</div>
-						<h3>001 Clearance Cards</h3>
-						<p>{clearanceCardTotal} minted / 3000 total</p>
-						<p className="membership__item-address">
-							<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
-						</p>
-						<ul>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
+						<div className="membership__items-container">
+							<div className="membership__item">
+								<div className="membership__item-img-container">
+									<video
+										src={clearanceCardOneSrc}
+										muted
+										autoPlay
+										loop
+										onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
+									/>
+									<h3>Seker Factory 001 Clearance Cards</h3>
+									<p className="membership__item-address">Downtown Los Angeles</p>
+									<p className="membership__item-minted">
+										{clearanceCardTotal} minted / 3000 total
+									</p>
+									<Button onClick={() => setBuyingClearanceCardType("001")}>Mint NFT</Button>
 								</div>
-								{`Access to all visitor areas at Seker Factory 001 as well as that of future locations
-							at a "first come, first serve" basis.`}
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
+								<ul>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Access to All Factory Locations
+											<br />
+											<span className="italic">(first come, first serve)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Factory 001 Governance Rights
+											<br />
+											<span className="italic">
+												(including curation voting for IRL + metaverse)
+											</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Early access to NFTs
+											<br />
+											<span className="italic">(by Factory 001 artists)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>Access to All Factory 001 IRL + Metaverse Events</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>Level starts at 0</p>
+									</li>
+									<Button variant="link">Learn More</Button>
+								</ul>
+							</div>
+							<div className="membership__item">
+								<div className="membership__item-img-container">
+									<video
+										src={topClearanceCardSrc}
+										muted
+										autoPlay
+										loop
+										onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
+									/>
+									<h3>Seker Factory Top Clearance Cards</h3>
+									<p className="membership__item-address">All Locations</p>
+									<p className="membership__item-minted">
+										{topClearanceCardTotal} minted / 1500 total
+									</p>
+									<Button onClick={() => setBuyingClearanceCardType("TOP")}>Mint NFT</Button>
 								</div>
-								Patron governance rights for Seker Factory 001 including curation voting.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Early access to NFTs released by Seker Factory 001 artists.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Access to all general IRL and metaverse events hosted by Seker Factory 001.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Discounts to Seker Factory 001 merch.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Level starts at 0
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								More to come!
-							</li>
-						</ul>
-						<Button onClick={() => setBuyingClearanceCardType("001")}>Mint</Button>
-					</div>
-					<div className="membership__item">
-						<div className="membership__item-img-container">
-							<video
-								src={topClearanceCardSrc}
-								muted
-								autoPlay
-								loop
-								onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
-							/>
+								<ul>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Access to All Factory Locations
+											<br />
+											<span className="italic">(special reservations available)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Governance Rights for All Factory Locations
+											<br />
+											<span className="italic">
+												(including curation voting for IRL + metaverse)
+											</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Early access to NFTs
+											<br />
+											<span className="italic">(by artists from all Factory locations)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Access to all IRL + Metaverse Events
+											<br />
+											<span className="italic">
+												(all Factory locations including exclusive VIP Cyber Galas)
+											</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Level Boost Starting at 1
+											<br />
+											<span className="italic">(early patron / supporter perk)</span>
+										</p>
+									</li>
+									<Button variant="link">Learn More</Button>
+								</ul>
+							</div>
 						</div>
-						<h3>Top Clearance Cards</h3>
-						<p>{topClearanceCardTotal} minted / 1500 total</p>
-						<p className="membership__item-address bold">All Seker Factories</p>
-						<ul>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								{`Access to all visitor areas at all Seker Factory locations with ability to reserve "special" exhibits / experiences.`}
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Extended patron governance rights for all Seker Factory locations including curation
-								voting on all locations virtual or real.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Early access to NFTs released NFTs released by all Seker Factory locations.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Access to all IRL and metaverse events at all Seker Factory locations, including
-								exclusive VIP cyber gala events.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Free exclusive Seker Factory merch redemption.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								Level boost starting at level 1 for being an early supporter.
-							</li>
-							<li>
-								<div className="membership__item-icon-container">
-									<DoneCircle width="20px" height="20px" />
-								</div>
-								More to come!
-							</li>
-						</ul>
-						<Button onClick={() => setBuyingClearanceCardType("TOP")}>Mint</Button>
-					</div>
-				</section>
-				<section className="about-us">
-					<div className="about-us__inner-container">
-						<h2>
-							Ran as a truly decentralized autonomous organization (DAO), we are a community of
-							collectors, artists, technologists, and dreamers — curating our own journey and
-							experiences every step of the way.
-						</h2>
-						<h2>
-							With the backing of extensive Ethereum core developer experience, access to the most
-							cutting-edge DAO tooling, artists from around the globe, and an exciting physical
-							space (with more to come), Seker Factory aims to explore the leisure of an
-							intergalactic cruise ship, the boundaries between the digital and physical, the
-							promotion and expansion of the creative commons and public goods, and the
-							technological advancement within the NFT and DAO ecosystems.
-						</h2>
 					</div>
 				</section>
 				<SubscribeForm />
