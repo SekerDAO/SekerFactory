@@ -1,11 +1,13 @@
 import {FunctionComponent, ReactElement} from "react"
 import "./styles.scss"
 
-const Stepper: FunctionComponent<{
-	steps: {title: string; content?: ReactElement}[]
-	currentStepIndex: number
-	onStepClick: (stepId: number) => void
-}> = ({steps, currentStepIndex, onStepClick}) => (
+const Stepper: FunctionComponent<
+	React.PropsWithChildren<{
+		steps: {title: string; content?: ReactElement}[]
+		currentStepIndex: number
+		onStepClick: (stepId: number) => void
+	}>
+> = ({steps, currentStepIndex, onStepClick}) => (
 	<>
 		<div className="stepper">
 			{steps.map(({title}, index) => {

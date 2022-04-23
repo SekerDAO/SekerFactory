@@ -6,7 +6,7 @@ import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
 import {isEventUpcoming} from "../../utils"
 
-const EventsList: FunctionComponent = () => {
+const EventsList: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const {search} = useLocation()
 	const {sort} = parse(search)
 	const {events} = useEvents({sort})

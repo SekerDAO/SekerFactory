@@ -2,12 +2,14 @@ import {FunctionComponent} from "react"
 import {ReactComponent as CloseIcon} from "../../assets/icons/delete.svg"
 import "./index.scss"
 
-const Modal: FunctionComponent<{
-	open: boolean
-	onClose: () => void
-	zIndex?: number
-	title?: string
-}> = ({zIndex, open, onClose, title, children}) => {
+const Modal: FunctionComponent<
+	React.PropsWithChildren<{
+		open: boolean
+		onClose: () => void
+		zIndex?: number
+		title?: string
+	}>
+> = ({zIndex, open, onClose, title, children}) => {
 	if (!open) return null
 
 	return (

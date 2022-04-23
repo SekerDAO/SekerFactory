@@ -2,7 +2,9 @@ import {FunctionComponent, InputHTMLAttributes} from "react"
 import "./index.scss"
 
 const Checkbox: FunctionComponent<
-	{label: string; id: string} & Omit<InputHTMLAttributes<HTMLInputElement>, "type">
+	React.PropsWithChildren<
+		{label: string; id: string} & Omit<InputHTMLAttributes<HTMLInputElement>, "type">
+	>
 > = ({label, id, ...inputProps}) => (
 	<div className="checkbox-container">
 		<div className="checkbox">

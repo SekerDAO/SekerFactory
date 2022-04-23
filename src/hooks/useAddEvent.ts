@@ -8,7 +8,7 @@ import {EventContent} from "../types/event"
 
 type Params = {
 	upcoming?: string
-	sort?: string | string[] | null
+	sort?: string | (string | null)[] | null | undefined
 }
 export const useEvents = ({
 	upcoming

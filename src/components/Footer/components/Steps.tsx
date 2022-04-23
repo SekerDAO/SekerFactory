@@ -1,12 +1,9 @@
 import {FunctionComponent, ReactElement} from "react"
 import "./steps.scss"
 
-const Phase: FunctionComponent<{title: string; subTitle?: string; content?: ReactElement}> = ({
-	title,
-	subTitle,
-	children,
-	content
-}) => (
+const Phase: FunctionComponent<
+	React.PropsWithChildren<{title: string; subTitle?: string; content?: ReactElement}>
+> = ({title, subTitle, children, content}) => (
 	<section className="phase">
 		<section className="phase__content">
 			{subTitle && <h3>{subTitle}</h3>}
@@ -17,7 +14,7 @@ const Phase: FunctionComponent<{title: string; subTitle?: string; content?: Reac
 	</section>
 )
 
-export const GenesisStep: FunctionComponent = () => (
+export const GenesisStep: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
 	<Phase
 		title="Where We Are"
 		subTitle="Genesis | January 2022"
@@ -51,7 +48,7 @@ export const GenesisStep: FunctionComponent = () => (
 	</Phase>
 )
 
-export const PhaseOne: FunctionComponent = () => (
+export const PhaseOne: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
 	<Phase
 		title={`Let's Get Started`}
 		subTitle="Phase 1 | Q1 of 2022 (In Progress)"
@@ -71,7 +68,7 @@ export const PhaseOne: FunctionComponent = () => (
 	/>
 )
 
-export const PhaseTwo: FunctionComponent = () => (
+export const PhaseTwo: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
 	<Phase
 		title="Community Building"
 		subTitle="Phase 2 | Q2 of 2022"
@@ -100,7 +97,7 @@ export const PhaseTwo: FunctionComponent = () => (
 	/>
 )
 
-export const PhaseThree: FunctionComponent = () => (
+export const PhaseThree: FunctionComponent<React.PropsWithChildren<unknown>> = () => (
 	<Phase
 		title="Upward and Onward"
 		subTitle="Phase 3 | Q3 of 2022 and Beyond"

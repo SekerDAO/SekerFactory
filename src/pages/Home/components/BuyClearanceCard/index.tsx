@@ -6,15 +6,17 @@ import Modal from "../../../../components/Modal"
 import {ClearanceCardType} from "../../hooks"
 import "./index.scss"
 
-const BuyClearanceCard: FunctionComponent<{
-	buyingClearanceCardType: "TOP" | "001" | undefined
-	setBuyingClearanceCardType: Dispatch<SetStateAction<ClearanceCardType>>
-	clearanceCardMintValue: string
-	setClearanceCardMintValue: Dispatch<SetStateAction<string>>
-	onPurchaseClearanceCard: () => Promise<void>
-	onPurchaseTopClearanceCard: () => Promise<void>
-	processing: boolean
-}> = ({
+const BuyClearanceCard: FunctionComponent<
+	React.PropsWithChildren<{
+		buyingClearanceCardType: "TOP" | "001" | undefined
+		setBuyingClearanceCardType: Dispatch<SetStateAction<ClearanceCardType>>
+		clearanceCardMintValue: string
+		setClearanceCardMintValue: Dispatch<SetStateAction<string>>
+		onPurchaseClearanceCard: () => Promise<void>
+		onPurchaseTopClearanceCard: () => Promise<void>
+		processing: boolean
+	}>
+> = ({
 	buyingClearanceCardType,
 	setBuyingClearanceCardType,
 	clearanceCardMintValue,

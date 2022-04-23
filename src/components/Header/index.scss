@@ -2,6 +2,7 @@
 
 .header {
   padding: 24px;
+  align-items: center;
   background-color: $white;
   justify-content: space-between;
   display: flex;
@@ -22,17 +23,21 @@
       padding-left: 0;
 
       li {
-        padding: 8px;
         display: flex;
         align-items: center;
 
         a {
+          padding: 8px;
           color: $dark-grey;
 
           &:hover {
             color: $purple;
             border-top: 1px solid $purple;
           }
+        }
+
+        .btn {
+          margin-left: 16px;
         }
       }
     }

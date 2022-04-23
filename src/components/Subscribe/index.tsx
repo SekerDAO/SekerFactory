@@ -4,7 +4,7 @@ import Input from "../Input"
 import useSubscribeForm from "./hooks"
 import "./index.scss"
 
-const SubscribeForm: FunctionComponent = () => {
+const SubscribeForm: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const {email, formActionUrl, handleSubmit, setEmail, success, error} = useSubscribeForm()
 	return (
 		<section className="subscribe">

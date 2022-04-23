@@ -1,13 +1,15 @@
 import {FunctionComponent, useState} from "react"
 import "./index.scss"
 
-const ImagePlaceholder: FunctionComponent<{
-	src?: string
-	alt?: string
-	className?: string
-	width?: number | string
-	height?: number | string
-}> = ({src, alt, className, width, height}) => {
+const ImagePlaceholder: FunctionComponent<
+	React.PropsWithChildren<{
+		src?: string
+		alt?: string
+		className?: string
+		width?: number | string
+		height?: number | string
+	}>
+> = ({src, alt, className, width, height}) => {
 	const [loaded, setLoaded] = useState(false)
 	return (
 		<>

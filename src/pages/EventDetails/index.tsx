@@ -9,7 +9,7 @@ import {EventContent} from "../../types/event"
 import {getDateReadable, isEventUpcoming, openRSVPForm} from "../../utils"
 import "./index.scss"
 
-const EventDetails: FunctionComponent = () => {
+const EventDetails: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const {id} = useParams()
 	const navigate = useNavigate()
 	const {event, loading} = useEvent(id)

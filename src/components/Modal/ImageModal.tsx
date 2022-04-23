@@ -1,12 +1,14 @@
 import {FunctionComponent} from "react"
 import "./index.scss"
 
-const ImageModal: FunctionComponent<{
-	open: boolean
-	onClose: () => void
-	src?: string
-	video?: boolean
-}> = ({open, onClose, src, video}) => {
+const ImageModal: FunctionComponent<
+	React.PropsWithChildren<{
+		open: boolean
+		onClose: () => void
+		src?: string
+		video?: boolean
+	}>
+> = ({open, onClose, src, video}) => {
 	if (!open) return null
 
 	return (

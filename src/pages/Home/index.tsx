@@ -3,6 +3,10 @@ import {Carousel} from "react-responsive-carousel"
 import {useNavigate} from "react-router-dom"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
+import {ReactComponent as LeftArrowActive} from "../../assets/icons/leftarrow_active.svg"
+import {ReactComponent as LeftArrowInactive} from "../../assets/icons/leftarrow_inactive.svg"
+import {ReactComponent as RightArrowActive} from "../../assets/icons/rightarrow_active.svg"
+import {ReactComponent as RightArrowInactive} from "../../assets/icons/rightarrow_inactive.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
 import seedImage from "../../assets/images/seeds.png"
@@ -26,7 +30,7 @@ import Schedule from "./components/Schedule"
 import useHomePage from "./hooks"
 import "./index.scss"
 
-const HomePage: FunctionComponent = () => {
+const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const navigate = useNavigate()
 	const [fullVideoSrc, setFullVideoSrc] = useState<string | undefined>(undefined)
 	const {
@@ -75,7 +79,48 @@ const HomePage: FunctionComponent = () => {
 				video
 			/>
 			<main className="home-page">
-				<Carousel swipeable emulateTouch autoPlay infiniteLoop showStatus={false} interval={10000}>
+				<Carousel
+					swipeable
+					autoPlay
+					showThumbs={false}
+					showIndicators={false}
+					statusFormatter={(currentItem, total) => `${currentItem}/${total}`}
+					interval={60000}
+					renderArrowPrev={(clickHandler, hasPrev) => {
+						console.log("hasPrev", hasPrev)
+						return (
+							<Button
+								onClick={clickHandler}
+								disabled={!hasPrev}
+								className="carousel-arrow-prev"
+								variant="link"
+							>
+								{hasPrev ? (
+									<LeftArrowActive width={40} height={20} />
+								) : (
+									<LeftArrowInactive width={40} height={20} />
+								)}
+							</Button>
+						)
+					}}
+					renderArrowNext={(clickHandler, hasNext) => {
+						console.log("hasNext", hasNext)
+						return (
+							<Button
+								onClick={clickHandler}
+								disabled={!hasNext}
+								className="carousel-arrow-next"
+								variant="link"
+							>
+								{hasNext ? (
+									<RightArrowActive width={40} height={20} />
+								) : (
+									<RightArrowInactive width={40} height={20} />
+								)}
+							</Button>
+						)
+					}}
+				>
 					<section className="charity">
 						<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
 						<div className="charity__content">

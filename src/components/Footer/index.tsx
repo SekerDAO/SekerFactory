@@ -3,7 +3,7 @@ import Stepper from "../Stepper"
 import {GenesisStep, PhaseOne, PhaseThree, PhaseTwo} from "./components/Steps"
 import "./index.scss"
 
-const Footer: FunctionComponent = () => {
+const Footer: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const [currentStepIdx, setCurrentStepIdx] = useState(0)
 	const steps = [
 		{title: "Genesis", content: <GenesisStep />},
