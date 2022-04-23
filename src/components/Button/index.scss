@@ -55,6 +55,8 @@
     color: $purple;
     background-color: transparent;
     border: none;
+    border-top: 1px solid $purple;
+    border-radius: 0;
 
     &:not(:disabled):hover {
       background-color: transparent;

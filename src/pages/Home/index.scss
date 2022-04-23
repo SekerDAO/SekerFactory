@@ -22,48 +22,11 @@
         bottom: 24px;
         z-index: 10;
         left: 130px;
+        border-top: none;
       }
 
       &-next {
         left: 194px;
-      }
-    }
-  }
-
-  .about-us {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    padding: 80px 0;
-
-    &__inner-container {
-      display: flex;
-      margin: 0 auto;
-      flex-wrap: wrap;
-      width: 60%;
-    }
-
-    h2,
-    p,
-    ul,
-    li {
-      color: $dark-grey;
-    }
-
-    h2 {
-      margin-top: 20px;
-      font-size: 32px;
-      line-height: 36px;
-    }
-
-    ul {
-      padding-left: 0;
-      list-style: none;
-
-      li {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
       }
     }
   }
@@ -75,7 +38,6 @@
       width: 100%;
       height: 100%;
       max-height: 100vh;
-      border-radius: 5px;
       filter: brightness(0.5);
     }
 
@@ -140,172 +102,202 @@
     }
   }
 
-  .upcoming-events {
-    background-color: $dark-grey;
-    padding-bottom: 80px;
-    padding-top: 80px;
-    padding-left: 20%;
-    padding-right: 20%;
+  .about {
+    background: transparent linear-gradient(233deg, $dark-grey 0%, #000 100%) 0% 0% no-repeat padding-box;
+    padding: 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__cols-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     &__header {
+      p {
+        text-transform: uppercase;
+        position: relative;
+
+        &::after {
+          position: absolute;
+          height: 1px;
+          width: calc(100% - 56px);
+          background-color: $white;
+          content: "";
+          display: block;
+          right: 0;
+          top: 45%;
+        }
+      }
+    }
+
+    &__footer {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
+      align-self: flex-end;
+    }
+
+    &__col {
+      width: calc(34% - 24px);
+      color: $dark-grey50;
+      margin-left: 12px;
+      margin-right: 12px;
+      margin-top: 6px;
+
+      &:first-of-type {
+        width: calc(15% - 12px);
+        margin-left: 0;
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+        margin-left: 12px;
+        width: 15%;
+      }
+
+      h3 {
+        color: $success;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+
+        li {
+          display: flex;
+          margin-top: 24px;
+        }
+      }
+
+      p {
+        color: $dark-grey50;
+        margin-bottom: 24px;
+        font-size: 16px;
+        line-height: 20px;
+
+        &.bold {
+          color: $white;
+          font-weight: bold;
+        }
+
+        a {
+          color: $white;
+          font-weight: bold;
+        }
+      }
+
+      &-perk-icon {
+        margin-right: 8px;
+      }
+
+      .contact {
+        .btn {
+          display: flex;
+          width: 100%;
+          justify-content: space-around;
+
+          &:hover {
+            svg {
+              path {
+                fill: black;
+              }
+            }
+          }
+
+          &:last-of-type {
+            margin-top: 24px;
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  .membership {
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &-description {
+      margin-bottom: 40px;
+
+      h3 {
+        font-size: 32px;
+        line-height: 36px;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    }
+
+    &-item {
+      width: calc(50% - 20px);
+      border: 1px solid $dark-grey75;
+      padding: 40px;
+      border-radius: 5px;
+      display: flex;
+      flex-wrap: wrap;
+
+      &-img-container {
+        margin-bottom: 40px;
+
+        img,
+        video {
+          width: 100%;
+          border-radius: 5px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      &-address {
+        margin-top: 20px;
+        font-family: KarlaBold, "Open Sans", sans-serif;
+        color: $orange;
+        font-weight: bold;
+
+        .bold {
+          font-family: KarlaBold, "Open Sans", sans-serif;
+        }
+      }
 
       h3 {
         font-size: 24px;
         line-height: 28px;
       }
-    }
 
-    &__list {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      &-item {
-        width: calc(50% - 20px);
-        position: relative;
-
-        img {
-          width: 100%;
-          border-radius: 5px;
-        }
-
-        .image-placeholder {
-          position: absolute;
-          height: 250px;
-        }
-      }
-    }
-
-    &__purchase {
-      margin-top: 120px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-
-      &-description {
-        margin-bottom: 40px;
-
-        h3 {
-          font-size: 32px;
-          line-height: 36px;
-          font-weight: bold;
-          margin-top: 20px;
-        }
+      h3,
+      p {
+        width: 100%;
       }
 
-      &-item {
-        width: calc(50% - 20px);
-        border: 1px solid $dark-grey75;
-        padding: 40px;
-        border-radius: 5px;
-        display: flex;
-        flex-wrap: wrap;
-
-        &-img-container {
-          margin-bottom: 40px;
-
-          img,
-          video {
-            width: 100%;
-            border-radius: 5px;
-
-            &:hover {
-              cursor: pointer;
-            }
-          }
-        }
-
-        &-address {
-          margin-top: 20px;
-          font-family: KarlaBold, "Open Sans", sans-serif;
-          color: $orange;
-          font-weight: bold;
-
-          .bold {
-            font-family: KarlaBold, "Open Sans", sans-serif;
-          }
-        }
-
-        h3 {
-          font-size: 24px;
-          line-height: 28px;
-        }
-
-        h3,
-        p {
-          width: 100%;
-        }
-
-        ul {
-          width: 100%;
-          padding-left: 0;
-          margin-top: 20px;
-          list-style: none;
-
-          li {
-            color: $white;
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            width: 100%;
-
-            svg {
-              margin-right: 25px;
-            }
-          }
-        }
-
-        .btn {
-          width: 200px;
-        }
-      }
-    }
-
-    &__about {
-      margin-top: 120px;
-
-      h3 {
-        font-size: 32px;
-        line-height: 36px;
-      }
-
-      .purple {
+      ul {
+        width: 100%;
+        padding-left: 0;
         margin-top: 20px;
-        color: $purple;
-      }
+        list-style: none;
 
-      &-buttons {
-        margin-top: 40px;
-        margin-bottom: 20px;
-        display: flex;
-
-        .btn {
-          background-color: $success;
-          border-color: $success;
+        li {
+          color: $white;
           display: flex;
-          align-items: center;
-
-          &:hover {
-            background-color: $light-green;
-            border-color: $light-green;
-          }
+          align-items: flex-start;
+          margin-bottom: 20px;
+          width: 100%;
 
           svg {
-            margin-right: 10px;
-
-            path {
-              fill: $white;
-            }
+            margin-right: 25px;
           }
         }
+      }
 
-        .btn:first-of-type {
-          margin-right: 20px;
-        }
+      .btn {
+        width: 200px;
       }
     }
   }
@@ -376,39 +368,6 @@
 
 @media (max-width: 1040px) {
   .home-page {
-    .about-us {
-      padding: 20px;
-
-      &__inner-container {
-        width: 100%;
-      }
-    }
-
-    .upcoming-events {
-      padding-left: 20px;
-      padding-right: 20px;
-
-      &__list {
-        flex-wrap: wrap;
-
-        &-item {
-          width: 100%;
-          margin-top: 20px;
-
-          &:first-of-type {
-            margin-top: 0;
-          }
-        }
-      }
-
-      &__purchase {
-        &-item {
-          width: 100%;
-          margin-top: 20px;
-        }
-      }
-    }
-
     .charity {
       flex-flow: wrap-reverse;
 
@@ -475,21 +434,6 @@
           margin-top: 20px;
         }
       }
-    }
-  }
-}
-
-@media screen and (min-width: 1040px) and (max-width: 1919px) {
-  .home-page {
-    .about-us {
-      &__inner-container {
-        width: 80%;
-      }
-    }
-
-    .upcoming-events {
-      padding-left: 10%;
-      padding-right: 10%;
     }
   }
 }
