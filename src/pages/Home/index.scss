@@ -196,11 +196,20 @@
 
       .contact {
         .btn {
-          display: flex;
           width: 100%;
-          justify-content: space-around;
+
+          a {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            align-items: center;
+          }
 
           &:hover {
+            & > a {
+              color: $dark-grey;
+            }
+
             svg {
               path {
                 fill: black;

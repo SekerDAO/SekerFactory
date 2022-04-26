@@ -212,21 +212,17 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						</div>
 						<div className="about__col">
 							<div className="contact">
-								<Button
-									onClick={() => window.open("https://discord.gg/rju5QnZmpM", "_blank")}
-									variant="secondary"
-									color="white"
-								>
-									<DiscordIcon height="20px" width="20px" />
-									Join Our Discord
+								<Button variant="secondary" color="white">
+									<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
+										<DiscordIcon height="20px" width="20px" />
+										Join Our Discord
+									</a>
 								</Button>
-								<Button
-									onClick={() => window.open("https://twitter.com/SekerFactory", "_blank")}
-									variant="secondary"
-									color="white"
-								>
-									<TwitterIcon height="20px" width="20px" />
-									Follow Our Twitter
+								<Button variant="secondary" color="white">
+									<a href="https://twitter.com/SekerFactory" target="_blank" rel="noreferrer">
+										<TwitterIcon height="20px" width="20px" />
+										Follow Our Twitter
+									</a>
 								</Button>
 							</div>
 							<p>
@@ -263,6 +259,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										muted
 										autoPlay
 										loop
+										playsInline
 										onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
 									/>
 									<h3>Seker Factory 001 Clearance Cards</h3>
@@ -327,6 +324,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										muted
 										autoPlay
 										loop
+										playsInline
 										onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
 									/>
 									<h3>Seker Factory Top Clearance Cards</h3>

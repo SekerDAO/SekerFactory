@@ -22,5 +22,11 @@
     path {
       fill: $dark-grey50;
     }
+
+    &:hover {
+      path {
+        fill: $white;
+      }
+    }
   }
 }

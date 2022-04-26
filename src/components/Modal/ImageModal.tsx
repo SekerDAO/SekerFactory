@@ -6,16 +6,21 @@ const ImageModal: FunctionComponent<
 		open: boolean
 		onClose: () => void
 		src?: string
+		alt?: string
 		video?: boolean
 	}>
-> = ({open, onClose, src, video}) => {
+> = ({open, onClose, src, alt, video}) => {
 	if (!open) return null
 
 	return (
 		<>
 			<div className="modal__overlay modal__image-overlay" onClick={onClose} />
 			<div className="modal__image-body">
-				{video ? <video muted autoPlay loop src={src} width="100%" /> : <img src={src} />}
+				{video ? (
+					<video muted autoPlay loop playsInline src={src} width="100%" />
+				) : (
+					<img src={src} alt={alt} />
+				)}
 			</div>
 		</>
 	)
