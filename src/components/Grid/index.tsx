@@ -6,15 +6,21 @@ type GridSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 const Grid: FunctionComponent<
 	PropsWithChildren<{
 		size?: GridSize
+		xs?: GridSize
+		sm?: GridSize
+		lg?: GridSize
+		xl?: GridSize
 		row?: boolean
 		className?: string
 		Component?: keyof JSX.IntrinsicElements
 		innerRef?: (node: HTMLDivElement) => void
 		minHeight?: string
 	}>
-> = ({children, innerRef, size, row, className, Component = "div", minHeight}) => {
+> = ({children, innerRef, size, row, xs, sm, lg, xl, className, Component = "div", minHeight}) => {
 	const baseProps = {
-		className: `${row ? "row " : `col-${size} `}${className ?? ""}`,
+		className: `${row ? "row " : `col-${size} `}${xs ? `col-xs-${xs} ` : ""}${
+			sm ? `col-sm-${sm} ` : ""
+		}${lg ? `col-lg-${lg} ` : ""} ${xl ? `col-xl-${xl} ` : ""}${className ?? ""}`,
 		style: {
 			minHeight
 		}

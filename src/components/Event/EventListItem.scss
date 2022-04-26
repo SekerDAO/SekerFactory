@@ -60,8 +60,6 @@
 
 @media (max-width: 1040px) {
   .event-list-item {
-    flex-flow: wrap-reverse;
-
     .image-placeholder {
       height: 565px;
     }
@@ -73,6 +71,7 @@
       margin-top: 12px;
       padding-left: 24px;
       padding-right: 24px;
+      padding-bottom: 112px;
       justify-content: center;
       max-height: 100%;
       top: 0;

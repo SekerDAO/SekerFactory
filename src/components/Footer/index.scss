@@ -4,7 +4,7 @@
   background-color: black;
   display: flex;
   justify-content: space-between;
-  padding: 24px 75px;
+  padding: 24px 72px;
 
   &__left {
     display: flex;
@@ -28,5 +28,11 @@
         fill: $white;
       }
     }
+  }
+}
+
+@media (max-width: 1039px) {
+  .footer {
+    padding: 24px;
   }
 }

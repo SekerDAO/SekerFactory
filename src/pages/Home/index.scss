@@ -104,7 +104,7 @@
 
   .about {
     background: transparent linear-gradient(233deg, $dark-grey 0%, #000 100%) 0% 0% no-repeat padding-box;
-    padding: 72px 88px;
+    padding: 88px 72px;
     min-height: 100vh;
     flex-wrap: wrap;
 
@@ -225,7 +225,7 @@
     background: transparent linear-gradient(233deg, #F3722D 0%, #C11CAE 100%) 0% 0% no-repeat padding-box;
     display: flex;
     flex-wrap: wrap;
-    padding: 72px 88px;
+    padding: 88px 72px;
 
     &__heading {
       text-transform: uppercase;
@@ -459,6 +459,40 @@
 
         .image-placeholder {
           height: 565px;
+        }
+      }
+    }
+
+    .about {
+      padding: 44px 24px;
+
+      &__header {
+        p {
+          width: 100%;
+        }
+      }
+    }
+
+    .membership {
+      padding: 44px 24px;
+
+      &__heading {
+        width: 100%;
+      }
+
+      &__content {
+        width: 100%;
+      }
+
+      &__item {
+        margin-top: 12px;
+
+        &-img-container {
+          height: 414px;
+        }
+
+        &:last-of-type {
+          margin-top: 48px;
         }
       }
     }
