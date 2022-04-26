@@ -173,6 +173,7 @@
         margin-bottom: 24px;
         font-size: 16px;
         line-height: 20px;
+        width: 100%;
 
         &.bold {
           color: $white;
@@ -447,6 +448,9 @@
         padding: 24px;
         padding-bottom: 112px;
         overflow: scroll;
+        margin-left: 0;
+        margin-right: 0;
+
 
         h1 {
           width: 100%;
@@ -493,35 +497,6 @@
 
         &:last-of-type {
           margin-top: 48px;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .charity {
-    &__mint {
-      & > div {
-        .btn:first-of-type {
-          margin-top: 0;
-        }
-      }
-    }
-
-    & &__content {
-      margin-left: 0;
-      margin-right: 0;
-
-      .btn {
-        width: 100%;
-
-        &:first-of-type {
-          margin-right: 0;
-        }
-
-        &:last-of-type {
-          margin-top: 20px;
         }
       }
     }

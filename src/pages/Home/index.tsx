@@ -153,10 +153,10 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 				</Carousel>
 				<Grid Component="section" row className="about">
 					<Grid row className="about__cols-wrapper">
-						<Grid size={2} xs={12} className="about__col about__header">
+						<Grid size={2} xs={12} sm={12} lg={12} className="about__col about__header">
 							<p className="bold">About</p>
 						</Grid>
-						<Grid size={4} xs={12} className="about__col">
+						<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
 							<h3>
 								Come for the vibes.
 								<br />
@@ -186,7 +186,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								</li>
 							</ul>
 						</Grid>
-						<Grid size={4} xs={12} className="about__col">
+						<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
 							<p className="bold">
 								Seker Factory is at the heart of the digital revolution where artists, tech
 								pioneers, collectors, curators, and spectators of all walks come together to create,
@@ -211,7 +211,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								deserunt mollit anim id est laborum.
 							</p>
 						</Grid>
-						<Grid size={2} xs={12} className="about__col">
+						<Grid size={2} xs={12} sm={12} lg={12} className="about__col">
 							<div className="contact">
 								<Button variant="secondary" color="white">
 									<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
@@ -238,8 +238,8 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 				</Grid>
 				<Grid Component="section" row className="membership">
 					<p className="membership__heading">Membership</p>
-					<Grid xs={12} className="membership__content">
-						<Grid xs={12} className="membership__description">
+					<Grid xs={12} sm={12} lg={12} className="membership__content">
+						<Grid xs={12} sm={12} lg={12} className="membership__description">
 							<p className="membership__description-content">
 								<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
 								limited-edition NFTs represent our way of opening our factory up to patrons of the
@@ -253,7 +253,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 							</p>
 						</Grid>
 						<Grid row className="membership__items-container">
-							<Grid size={6} xs={12} className="membership__item">
+							<Grid size={6} xs={12} sm={12} lg={12} className="membership__item">
 								<Grid className="membership__item-img-container">
 									<video
 										src={clearanceCardOneSrc}
@@ -318,7 +318,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 									<Button variant="link">Learn More</Button>
 								</ul>
 							</Grid>
-							<Grid size={6} xs={12} className="membership__item">
+							<Grid size={6} xs={12} sm={12} lg={12} className="membership__item">
 								<Grid className="membership__item-img-container">
 									<video
 										src={topClearanceCardSrc}
