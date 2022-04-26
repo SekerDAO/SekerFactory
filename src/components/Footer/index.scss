@@ -1,85 +1,26 @@
 @import "../../assets/styles/colors.scss";
 
 .footer {
-  background: transparent linear-gradient(241deg, $purple 0%, $orange 100%) 0% 0% no-repeat padding-box;
-  max-width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  padding-top: 120px;
-  padding-bottom: 80px;
-  padding-left: 20%;
-  padding-right: 20%;
-  position: relative;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 75px;
 
-  &__heading {
+  &__left {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    align-items: center;
 
-    h1 {
-      font-size: 32px;
-      line-height: 36px;
-      width: calc(50% - 20px);
-    }
-
-    .stepper {
-      position: relative;
-      width: calc(50% - 20px);
-      top: -40px;
-
-      &__step {
-        width: 25%;
-      }
+    p {
+      color: $dark-grey50;
     }
   }
 
-  &__content {
-    margin-top: 120px;
-    margin-bottom: 80px;
-  }
+  svg {
+    margin-left: 16px;
+    margin-right: 16px;
 
-  &__bottom {
-    position: absolute;
-    bottom: 80px;
-  }
-}
-
-@media (max-width: 1040px) {
-  .footer {
-    padding: 80px 20px;
-
-    &__heading {
-      flex-wrap: wrap;
-      justify-content: center;
-
-      h1 {
-        width: 100%;
-        text-align: center;
-      }
-
-      .stepper {
-        margin-top: 40px;
-        margin-left: 0;
-        top: 0;
-        width: 100%;
-      }
+    path {
+      fill: $dark-grey50;
     }
-
-    &__content {
-      margin-bottom: 40px;
-    }
-  }
-}
-
-@media screen and (min-width: 1040px) and (max-width: 1919px) {
-  .footer {
-    padding-right: 10%;
-    padding-left: 10%;
-  }
-}
-
-@media screen and (min-width: 2250px) {
-  .footer {
-    min-height: 50vh;
   }
 }
