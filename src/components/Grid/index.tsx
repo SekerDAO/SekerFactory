@@ -9,9 +9,31 @@ const Grid: FunctionComponent<
 		row?: boolean
 		className?: string
 		Component?: keyof JSX.IntrinsicElements
+		innerRef?: (node: HTMLDivElement) => void
+		minHeight?: string
 	}>
-> = ({children, size, row, className, Component = "div"}) => (
-	<Component className={`${row ? "row " : `col-${size} `}${className ?? ""}`}>{children}</Component>
-)
+> = ({children, innerRef, size, row, className, Component = "div", minHeight}) => {
+	const baseProps = {
+		className: `${row ? "row " : `col-${size} `}${className ?? ""}`,
+		style: {
+			minHeight
+		}
+	}
+
+	if (Component === "div") {
+		return (
+			<div {...baseProps} ref={innerRef}>
+				{children}
+			</div>
+		)
+	} else if (Component === "section") {
+		return (
+			<section {...baseProps} ref={innerRef}>
+				{children}
+			</section>
+		)
+	}
+	return <Component {...baseProps}>{children}</Component>
+}
 
 export default Grid

@@ -62,14 +62,6 @@
   .event-list-item {
     flex-flow: wrap-reverse;
 
-    &__mint {
-      & > div {
-        .btn:first-of-type {
-          margin-top: 0;
-        }
-      }
-    }
-
     .image-placeholder {
       height: 565px;
     }
@@ -78,8 +70,14 @@
       display: flex;
       width: 100%;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 12px;
+      padding-left: 24px;
+      padding-right: 24px;
       justify-content: center;
+      max-height: 100%;
+      top: 0;
+      right: 0;
+      overflow: scroll;
 
       h1 {
         width: 100%;

@@ -173,4 +173,14 @@ const useHomePage = (): HomePageState => {
 	}
 }
 
+export const useClientRect = (): [DOMRect | undefined, (node: HTMLDivElement) => void] => {
+	const [rect, setRect] = useState<DOMRect>()
+	const ref = useCallback((node: HTMLDivElement) => {
+		if (node) {
+			setRect(node.getBoundingClientRect())
+		}
+	}, [])
+	return [rect, ref]
+}
+
 export default useHomePage

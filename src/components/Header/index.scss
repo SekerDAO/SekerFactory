@@ -6,6 +6,7 @@
   background-color: $white;
   justify-content: space-between;
   display: flex;
+  flex-wrap: wrap;
 
   &__logo-container {
     &:hover {
@@ -17,6 +18,8 @@
     ul {
       list-style: none;
       display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
       align-items: center;
       margin-top: 0;
       margin-bottom: 0;
