@@ -16,6 +16,7 @@ import topClearanceCardSrc from "../../assets/videos/Top_Clearance_Card_01.mp4"
 import Button from "../../components/Button"
 import EventListItem from "../../components/Event/EventListItem"
 import Footer from "../../components/Footer"
+import Grid from "../../components/Grid"
 import Image from "../../components/Image"
 import Input from "../../components/Input"
 import Loading from "../../components/Loading"
@@ -109,9 +110,9 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						</Button>
 					)}
 				>
-					<section className="charity">
+					<Grid Component="section" row className="charity">
 						<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
-						<div className="charity__content">
+						<Grid row className="charity__content">
 							<h1>
 								Join Seker Factory in <br />
 								Supporting Ukraine
@@ -132,9 +133,9 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 							</p>
 							<br />
 							<p>Please install MetaMask or WalletConnect before donating.</p>
-							<div className="charity__mint">
+							<Grid row className="charity__mint">
 								<h3>Mint Amount</h3>
-								<div>
+								<Grid row>
 									<Input
 										type="number"
 										min="1"
@@ -144,19 +145,19 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										}}
 									/>
 									<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
-								</div>
-							</div>
-						</div>
-					</section>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Grid>
 					<EventListItem event={FEATURED_EVENT} showRSVP showSchedule={false} />
 				</Carousel>
-				<section className="about">
-					<div className="about__cols-wrapper">
-						<div className="about__col about__header">
+				<Grid Component="section" row className="about">
+					<Grid row className="about__cols-wrapper">
+						<Grid size={2} className="about__col about__header">
 							<p className="bold">About</p>
-						</div>
-						<div className="about__col">
-							<h3 className="purple">
+						</Grid>
+						<Grid size={4} className="about__col">
+							<h3>
 								Come for the vibes.
 								<br />
 								Stay for the revolution.
@@ -184,8 +185,8 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 									{`Do you have some ideas you'd like to see come to life?`}
 								</li>
 							</ul>
-						</div>
-						<div className="about__col">
+						</Grid>
+						<Grid size={4} className="about__col">
 							<p className="bold">
 								Seker Factory is at the heart of the digital revolution where artists, tech
 								pioneers, collectors, curators, and spectators of all walks come together to create,
@@ -209,8 +210,8 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
 								deserunt mollit anim id est laborum.
 							</p>
-						</div>
-						<div className="about__col">
+						</Grid>
+						<Grid size={2} className="about__col">
 							<div className="contact">
 								<Button variant="secondary" color="white">
 									<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
@@ -229,16 +230,16 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								For inquiries, email us at{" "}
 								<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
 							</p>
-						</div>
-					</div>
-					<div className="about__footer">
+						</Grid>
+					</Grid>
+					<Grid row className="about__footer">
 						<Button variant="link">Learn More</Button>
-					</div>
-				</section>
-				<section className="membership">
+					</Grid>
+				</Grid>
+				<Grid Component="section" row className="membership">
 					<p className="membership__heading">Membership</p>
-					<div className="membership__content">
-						<div className="membership__description">
+					<Grid className="membership__content">
+						<Grid className="membership__description">
 							<p className="membership__description-content">
 								<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
 								limited-edition NFTs represent our way of opening our factory up to patrons of the
@@ -250,10 +251,10 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								the productions. The higher your level, the more representation, merited governance
 								rights on some proposals, and rewards you have in your community.
 							</p>
-						</div>
-						<div className="membership__items-container">
-							<div className="membership__item">
-								<div className="membership__item-img-container">
+						</Grid>
+						<Grid row className="membership__items-container">
+							<Grid size={6} className="membership__item">
+								<Grid className="membership__item-img-container">
 									<video
 										src={clearanceCardOneSrc}
 										muted
@@ -268,7 +269,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										{clearanceCardTotal} minted / 3000 total
 									</p>
 									<Button onClick={() => setBuyingClearanceCardType("001")}>Mint NFT</Button>
-								</div>
+								</Grid>
 								<ul>
 									<li>
 										<div className="membership__item-icon-container">
@@ -316,9 +317,9 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 									</li>
 									<Button variant="link">Learn More</Button>
 								</ul>
-							</div>
-							<div className="membership__item">
-								<div className="membership__item-img-container">
+							</Grid>
+							<Grid size={6} className="membership__item">
+								<Grid className="membership__item-img-container">
 									<video
 										src={topClearanceCardSrc}
 										muted
@@ -333,7 +334,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										{topClearanceCardTotal} minted / 1500 total
 									</p>
 									<Button onClick={() => setBuyingClearanceCardType("TOP")}>Mint NFT</Button>
-								</div>
+								</Grid>
 								<ul>
 									<li>
 										<div className="membership__item-icon-container">
@@ -391,10 +392,10 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 									</li>
 									<Button variant="link">Learn More</Button>
 								</ul>
-							</div>
-						</div>
-					</div>
-				</section>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Grid>
 				<SubscribeForm />
 			</main>
 			<Footer />

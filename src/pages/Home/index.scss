@@ -104,13 +104,11 @@
 
   .about {
     background: transparent linear-gradient(233deg, $dark-grey 0%, #000 100%) 0% 0% no-repeat padding-box;
-    padding: 80px;
+    padding: 72px 88px;
     min-height: 100vh;
-    display: flex;
     flex-wrap: wrap;
 
     &__cols-wrapper {
-      display: flex;
       flex-wrap: wrap;
     }
 
@@ -133,29 +131,26 @@
     }
 
     &__footer {
-      width: 100%;
-      display: flex;
       justify-content: center;
       align-self: flex-end;
     }
 
     &__col {
-      width: calc(34% - 24px);
       color: $dark-grey50;
-      margin-left: 12px;
-      margin-right: 12px;
+      padding-left: 12px;
+      padding-right: 12px;
       margin-top: 6px;
+      flex-wrap: wrap;
+      height: fit-content;
 
       &:first-of-type {
-        width: calc(15% - 12px);
-        margin-left: 0;
-        margin-top: 0;
+        padding-left: 0;
+        padding-top: 0;
       }
 
       &:last-of-type {
-        margin-right: 0;
-        margin-left: 12px;
-        width: 15%;
+        padding-right: 0;
+        padding-left: 12px;
       }
 
       h3 {
@@ -230,8 +225,7 @@
     background: transparent linear-gradient(233deg, #F3722D 0%, #C11CAE 100%) 0% 0% no-repeat padding-box;
     display: flex;
     flex-wrap: wrap;
-    padding: 80px 20%;
-    padding-left: 5%;
+    padding: 72px 88px;
 
     &__heading {
       text-transform: uppercase;
@@ -268,14 +262,11 @@
     }
 
     &__items-container {
-      width: 100%;
-      display: flex;
       justify-content: space-between;
     }
 
     &__item {
-      width: calc(50% - 12px);
-      display: flex;
+      padding: 0 12px;
       flex-wrap: wrap;
 
       &-img-container {
