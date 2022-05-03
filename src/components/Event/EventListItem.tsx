@@ -8,18 +8,18 @@ import "./EventListItem.scss"
 const EventListItem: FunctionComponent<
 	React.PropsWithChildren<{
 		event: EventContent
+		dateTitle?: string
 		showRSVP: boolean
+		showMoreInfo?: boolean
 		showSchedule: boolean
 		onShowSchedule?: () => void
 		className?: string
 	}>
-> = ({event, showRSVP, showSchedule, onShowSchedule, className}) => (
+> = ({event, dateTitle, showRSVP, showMoreInfo, showSchedule, onShowSchedule, className}) => (
 	<section className={`event-list-item ${className ?? ""}`}>
 		<Image src={event?.custom_data?.bannerSrc} alt={event.title} />
 		<div className="event-list-item__content">
-			<p>
-				{getDateReadable(event)} <br /> {getTimeReadable(event)}
-			</p>
+			<p>{dateTitle ?? `${getDateReadable(event)} <br /> ${getTimeReadable(event)}`}</p>
 			<h1
 				dangerouslySetInnerHTML={{
 					__html: event.title
@@ -38,9 +38,12 @@ const EventListItem: FunctionComponent<
 					RSVP
 				</Button>
 			)}
-			<Button color="white" variant="secondary">
-				More Info
-			</Button>
+			{showMoreInfo && (
+				<Button color="white" variant="secondary">
+					More Info
+				</Button>
+			)}
+			{!showRSVP && !showMoreInfo && <p dangerouslySetInnerHTML={{__html: event.description}} />}
 		</div>
 	</section>
 )

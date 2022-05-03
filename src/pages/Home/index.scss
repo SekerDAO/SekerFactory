@@ -68,11 +68,16 @@
       flex-wrap: wrap;
       align-items: flex-start;
 
+      p {
+        width: 100%;
+      }
+
       h1 {
         white-space: pre-line;
         font-size: 48px;
-        line-height: 60px;
-        margin-bottom: 20px;
+        line-height: 52px;
+        margin-bottom: 24px;
+        width: 100%;
       }
 
       h2 {
@@ -83,12 +88,13 @@
 
       h3 {
         font-size: 20px;
-        line-height: 36px;
+        line-height: 24px;
+        width: 100%;
       }
 
       &-description {
         white-space: pre-wrap;
-        margin-top: 20px;
+        margin-top: 24px;
       }
 
       .btn {
@@ -108,10 +114,6 @@
     min-height: 100vh;
     flex-wrap: wrap;
 
-    &__cols-wrapper {
-      flex-wrap: wrap;
-    }
-
     &__header {
       p {
         text-transform: uppercase;
@@ -128,6 +130,14 @@
           top: 45%;
         }
       }
+    }
+
+    &__top {
+      align-content: flex-start;
+    }
+
+    &__content {
+      margin-top: 48px;
     }
 
     &__footer {
@@ -165,6 +175,10 @@
         li {
           display: flex;
           margin-top: 24px;
+
+          &:first-of-type {
+            margin-top: 0;
+          }
         }
       }
 
@@ -450,7 +464,6 @@
         overflow: scroll;
         margin-left: 0;
         margin-right: 0;
-
 
         h1 {
           width: 100%;

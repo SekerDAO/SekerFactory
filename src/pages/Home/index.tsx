@@ -52,7 +52,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	if (loading || !events || !events.length) {
 		return <Loading />
 	}
-	const FEATURED_EVENT = events.find(event => event.eventname === "DAO Party") as EventContent
+	const FEATURED_EVENT = events.find(event => event.eventname === "Summer Solstice") as EventContent
 	const handleOpenFullVideo = (src: string) => setFullVideoSrc(src)
 
 	return (
@@ -110,28 +110,31 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						</Button>
 					)}
 				>
+					<EventListItem
+						event={FEATURED_EVENT}
+						showRSVP={false}
+						showSchedule={false}
+						dateTitle="Coming Late June 2022"
+					/>
 					<Grid Component="section" row className="charity">
-						<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
+						<Image src={seedImage} alt={"Seeds of Ukraine NFTs"} />
 						<Grid row className="charity__content">
-							<h1>
-								Join Seker Factory in <br />
-								Supporting Ukraine
-							</h1>
+							<p>Ongoing</p>
+							<h1>Seeds of Ukraine NFTs</h1>
+							<h3>Join Seker Factory in Supporting Ukraine</h3>
 							<p className="charity__content-description">
-								Over the last couple days, hundreds of thousands of Ukrainian people have fled their
-								homes to seek refuge in neighboring European countries. Millions more are attempting
-								to escape the chaos but are stranded on roadways due to traffic, abandoned cars, and
-								lack of gas. Banks across the country have been overwhelmed and Ukrainians, who
-								still rely heavily on cash payments, are unable to cover the costs of getting
-								themselves out. The developer of this site — a member of Seker DAO and a good friend
-								of all of ours — is currently in the midst of this struggle. The artist of this NFT,
-								another DAO member, grew up in the Ukraine and has family there. This war hits close
-								to home for all. Purchasing a print of this NFT will be your badge of support. 100%
-								of the proceeds go to humanitarian aid for those trying to evacuate including the
-								members of Seker Factory trapped in this conflict. We all thank you for your
-								support.
+								Hundreds of thousands of Ukrainian people have fled their homes to seek refuge in
+								neighboring European countries. Millions more are attempting to escape the chaos but
+								are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks
+								across the country have been overwhelmed and Ukrainians, who still rely heavily on
+								cash payments, are unable to cover the costs of getting themselves out. The
+								developer of this site — a member of Seker DAO and a good friend of all of ours — is
+								currently in the midst of this struggle. The artist of this NFT, another DAO member,
+								grew up in the Ukraine and has family there. This war hits close to home for all.
+								Purchasing a print of this NFT will be your badge of support. 100% of the proceeds
+								go to humanitarian aid for those trying to evacuate including the members of Seker
+								Factory trapped in this conflict. We all thank you for your support.
 							</p>
-							<br />
 							<p>Please install MetaMask or WalletConnect before donating.</p>
 							<Grid row className="charity__mint">
 								<h3>Mint Amount</h3>
@@ -149,87 +152,79 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 							</Grid>
 						</Grid>
 					</Grid>
-					<EventListItem event={FEATURED_EVENT} showRSVP showSchedule={false} />
 				</Carousel>
 				<Grid Component="section" row className="about">
-					<Grid row className="about__cols-wrapper">
-						<Grid size={2} xs={12} sm={12} lg={12} className="about__col about__header">
-							<p className="bold">About</p>
+					<Grid row className="about__top">
+						<Grid row>
+							<Grid size={2} xs={12} sm={12} lg={12} className="about__col about__header">
+								<p className="bold">About</p>
+							</Grid>
+							<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+								<h3>
+									Come for the vibes.
+									<br />
+									Stay for the revolution.
+								</h3>
+							</Grid>
 						</Grid>
-						<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
-							<h3>
-								Come for the vibes.
-								<br />
-								Stay for the revolution.
-							</h3>
-							<ul>
-								<li>
-									<div className="about__col-perk-icon">
-										<StarIcon width="20px" height="20px" />
-									</div>
-									Are you a digital artist looking for a gallery where you can truly stretch your
-									creative chops, co-own, and help build from the ground-up?
-								</li>
-								<li>
-									<div className="about__col-perk-icon">
-										<StarIcon width="20px" height="20px" />
-									</div>
-									Are you a futurist wanting to learn, explore, and collaborate on leading-edge
-									technology in the new digital age?
-								</li>
-								<li>
-									<div className="about__col-perk-icon">
-										<StarIcon width="20px" height="20px" />
-									</div>
-									Are you a patron of digital art ... a supporter of the creative commons?{" "}
-									{`Do you have some ideas you'd like to see come to life?`}
-								</li>
-							</ul>
-						</Grid>
-						<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
-							<p className="bold">
-								Seker Factory is at the heart of the digital revolution where artists, tech
-								pioneers, collectors, curators, and spectators of all walks come together to create,
-								inspire, and explore. Through the collective power of DAOs and NFTs, Seker Factory
-								strives to define a truly inclusive and expansive metaverse for the people, by the
-								people.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-								irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-								pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-								deserunt mollit anim id est laborum.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-								irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-								pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-								deserunt mollit anim id est laborum.
-							</p>
-						</Grid>
-						<Grid size={2} xs={12} sm={12} lg={12} className="about__col">
-							<div className="contact">
-								<Button variant="secondary" color="white">
-									<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
-										<DiscordIcon height="20px" width="20px" />
-										Join Our Discord
-									</a>
-								</Button>
-								<Button variant="secondary" color="white">
-									<a href="https://twitter.com/SekerFactory" target="_blank" rel="noreferrer">
-										<TwitterIcon height="20px" width="20px" />
-										Follow Our Twitter
-									</a>
-								</Button>
-							</div>
-							<p>
-								For inquiries, email us at{" "}
-								<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
-							</p>
+						<Grid row className="about__content">
+							<Grid size={2} xs={12} sm={12} lg={12} className="about__col" />
+							<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+								<ul>
+									<li>
+										<div className="about__col-perk-icon">
+											<StarIcon width="20px" height="20px" />
+										</div>
+										Are you a digital artist looking for a gallery where you can truly stretch your
+										creative chops, co-own, and help build from the ground-up?
+									</li>
+									<li>
+										<div className="about__col-perk-icon">
+											<StarIcon width="20px" height="20px" />
+										</div>
+										Are you a futurist wanting to learn, explore, and collaborate on leading-edge
+										technology in the new digital age?
+									</li>
+									<li>
+										<div className="about__col-perk-icon">
+											<StarIcon width="20px" height="20px" />
+										</div>
+										Are you a patron of digital art ... a supporter of the creative commons?{" "}
+										{`Do you have some ideas you'd like to see come to life?`}
+									</li>
+								</ul>
+							</Grid>
+							<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+								<p className="bold">
+									In the cradle of civilization Seker was known as the patron of builders,
+									craftsmen, and sacred objects. It stood at the crossroads of the physical world
+									and the spirit world. Today, Seker Factory is a bridge between our tangible
+									reality and the metaverse where creators gather to connect, learn, and build
+									together. Through an autonomous community utilizing blockchain tech, members
+									collectively own a commons to shape seasonal physical / digital experiences that
+									can only happen at Seker Factory.
+								</p>
+							</Grid>
+							<Grid size={2} xs={12} sm={12} lg={12} className="about__col">
+								<div className="contact">
+									<Button variant="secondary" color="white">
+										<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
+											<DiscordIcon height="20px" width="20px" />
+											Join Our Discord
+										</a>
+									</Button>
+									<Button variant="secondary" color="white">
+										<a href="https://twitter.com/SekerFactory" target="_blank" rel="noreferrer">
+											<TwitterIcon height="20px" width="20px" />
+											Follow Our Twitter
+										</a>
+									</Button>
+								</div>
+								<p>
+									For inquiries, email us at{" "}
+									<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
+								</p>
+							</Grid>
 						</Grid>
 					</Grid>
 					<Grid row className="about__footer">
