@@ -78,6 +78,10 @@
       right: 0;
       overflow: scroll;
 
+      &-date {
+        width: 100%;
+      }
+
       h1 {
         width: 100%;
         display: flex;
@@ -86,19 +90,14 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1039px) {
   .event-list-item {
     & &__content {
-      .btn {
-        width: 100%;
+      margin-top: 48px;
 
-        &:first-of-type {
-          margin-right: 0;
-        }
-
-        &:last-of-type {
-          margin-top: 20px;
-        }
+      h1 {
+        font-size: 40px;
+        line-height: 44px;
       }
     }
   }

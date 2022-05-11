@@ -31,13 +31,14 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1039px) {
   .footer {
     flex-wrap: wrap-reverse;
 
     &__left {
       justify-content: center;
       width: 100%;
+      margin-top: 12px;
     }
 
     &__right {

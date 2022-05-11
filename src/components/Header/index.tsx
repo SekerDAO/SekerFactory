@@ -15,7 +15,7 @@ const Header: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
 	const [buttonText, setButtonText] = useState("Connect Wallet")
 	const navigate = useNavigate()
-	const isMobile = useMediaQuery("(max-width: 767px)")
+	const isMobile = useMediaQuery("(max-width: 1039px)")
 	useResetScroll()
 
 	useEffect(() => {

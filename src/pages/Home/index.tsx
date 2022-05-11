@@ -17,12 +17,12 @@ import Button from "../../components/Button"
 import EventListItem from "../../components/Event/EventListItem"
 import Footer from "../../components/Footer"
 import Grid from "../../components/Grid"
-import Image from "../../components/Image"
 import Input from "../../components/Input"
 import Loading from "../../components/Loading"
 import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
 import {useEvents} from "../../hooks/useAddEvent"
+import useMediaQuery from "../../hooks/useMediaQuery"
 import {EventContent} from "../../types/event"
 import BuyClearanceCard from "./components/BuyClearanceCard"
 import Schedule from "./components/Schedule"
@@ -31,6 +31,7 @@ import "./index.scss"
 
 const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const [fullVideoSrc, setFullVideoSrc] = useState<string | undefined>(undefined)
+	const isMobile = useMediaQuery("(max-width: 1039px)")
 	const {
 		viewScheduleOpen,
 		buyingClearanceCardType,
@@ -53,6 +54,39 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 		return <Loading />
 	}
 	const FEATURED_EVENT = events.find(event => event.eventname === "Summer Solstice") as EventContent
+	const SUPPORT_UKRAINE_EVENT: EventContent = {
+		id: "support_ukraine",
+		title: "Seeds of Ukraine NFTs",
+		eventname: "Seeds of Ukraine NFTs",
+		description: `<p>
+		Hundreds of thousands of Ukrainian people have fled their homes to seek refuge in
+		neighboring European countries. Millions more are attempting to escape the chaos but
+		are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks
+		across the country have been overwhelmed and Ukrainians, who still rely heavily on
+		cash payments, are unable to cover the costs of getting themselves out. The
+		developer of this site — a member of Seker DAO and a good friend of all of ours — is
+		currently in the midst of this struggle. The artist of this NFT, another DAO member,
+		grew up in the Ukraine and has family there. This war hits close to home for all.
+		Purchasing a print of this NFT will be your badge of support. 100% of the proceeds
+		go to humanitarian aid for those trying to evacuate including the members of Seker
+		Factory trapped in this conflict. We all thank you for your support.
+	</p>
+	<p>Please install MetaMask or WalletConnect before donating.</p>`,
+		location: "Join Seker Factory in Supporting Ukraine",
+		date_start: "Ongoing",
+		date_start_time: "00:00",
+		date_start_ampm: "AM",
+		date_end: "Ongoing",
+		date_end_time: "00:00",
+		date_end_ampm: "AM",
+		date_format: "",
+		timezone: "",
+		link_short: "",
+		custom_data: {
+			bannerSrc: seedImage
+		},
+		rrule: ""
+	}
 	const handleOpenFullVideo = (src: string) => setFullVideoSrc(src)
 
 	return (
@@ -116,47 +150,33 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						showSchedule={false}
 						dateTitle="Coming Late June 2022"
 					/>
-					<Grid Component="section" row className="charity">
-						<Image src={seedImage} alt={"Seeds of Ukraine NFTs"} />
-						<Grid row className="charity__content">
-							<p>Ongoing</p>
-							<h1>Seeds of Ukraine NFTs</h1>
-							<h3>Join Seker Factory in Supporting Ukraine</h3>
-							<p className="charity__content-description">
-								Hundreds of thousands of Ukrainian people have fled their homes to seek refuge in
-								neighboring European countries. Millions more are attempting to escape the chaos but
-								are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks
-								across the country have been overwhelmed and Ukrainians, who still rely heavily on
-								cash payments, are unable to cover the costs of getting themselves out. The
-								developer of this site — a member of Seker DAO and a good friend of all of ours — is
-								currently in the midst of this struggle. The artist of this NFT, another DAO member,
-								grew up in the Ukraine and has family there. This war hits close to home for all.
-								Purchasing a print of this NFT will be your badge of support. 100% of the proceeds
-								go to humanitarian aid for those trying to evacuate including the members of Seker
-								Factory trapped in this conflict. We all thank you for your support.
-							</p>
-							<p>Please install MetaMask or WalletConnect before donating.</p>
-							<Grid row className="charity__mint">
-								<h3>Mint Amount</h3>
-								<Grid row>
-									<Input
-										type="number"
-										min="1"
-										value={mintValue}
-										onChange={(e: React.FormEvent<HTMLInputElement>) => {
-											setMintValue(e.currentTarget.value)
-										}}
-									/>
-									<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
-								</Grid>
+					<EventListItem
+						event={SUPPORT_UKRAINE_EVENT}
+						showRSVP={false}
+						showSchedule={false}
+						showDescription={!isMobile}
+						dateTitle="Ongoing"
+					>
+						<Grid row className="charity__mint">
+							<h3>Mint Amount</h3>
+							<Grid row>
+								<Input
+									type="number"
+									min="1"
+									value={mintValue}
+									onChange={(e: React.FormEvent<HTMLInputElement>) => {
+										setMintValue(e.currentTarget.value)
+									}}
+								/>
+								<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
 							</Grid>
 						</Grid>
-					</Grid>
+					</EventListItem>
 				</Carousel>
 				<Grid Component="section" row className="about">
 					<Grid row className="about__top">
 						<Grid row>
-							<Grid size={2} xs={12} sm={12} lg={12} className="about__col about__header">
+							<Grid size={2} xs={12} sm={12} lg={12} className="about__header">
 								<p className="bold">About</p>
 							</Grid>
 							<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
@@ -168,7 +188,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 							</Grid>
 						</Grid>
 						<Grid row className="about__content">
-							<Grid size={2} xs={12} sm={12} lg={12} className="about__col" />
+							<Grid size={2} xs={12} sm={12} lg={12} />
 							<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
 								<ul>
 									<li>
@@ -232,9 +252,9 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 					</Grid>
 				</Grid>
 				<Grid Component="section" row className="membership">
-					<p className="membership__heading">Membership</p>
-					<Grid xs={12} sm={12} lg={12} className="membership__content">
-						<Grid xs={12} sm={12} lg={12} className="membership__description">
+					<p className="membership__heading bold">Membership</p>
+					<Grid size={12} xs={12} sm={12} lg={12} className="membership__content">
+						<Grid size={12} xs={12} sm={12} lg={12} className="membership__description">
 							<p className="membership__description-content">
 								<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
 								limited-edition NFTs represent our way of opening our factory up to patrons of the

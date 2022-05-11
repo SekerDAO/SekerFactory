@@ -32,18 +32,7 @@
   }
 
   .charity {
-    position: relative;
-
-    img {
-      width: 100%;
-      height: 100%;
-      max-height: 100vh;
-      filter: brightness(0.5);
-    }
-
     &__mint {
-      margin-top: 20px;
-
       h3 {
         margin-top: 20px;
       }
@@ -58,54 +47,6 @@
         }
       }
     }
-
-    &__content {
-      position: absolute;
-      top: 25%;
-      width: 50%;
-      margin-left: 72px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-
-      p {
-        width: 100%;
-      }
-
-      h1 {
-        white-space: pre-line;
-        font-size: 48px;
-        line-height: 52px;
-        margin-bottom: 24px;
-        width: 100%;
-      }
-
-      h2 {
-        font-size: 32px;
-        line-height: 36px;
-        white-space: pre-wrap;
-      }
-
-      h3 {
-        font-size: 20px;
-        line-height: 24px;
-        width: 100%;
-      }
-
-      &-description {
-        white-space: pre-wrap;
-        margin-top: 24px;
-      }
-
-      .btn {
-        margin-top: 40px;
-        width: 200px;
-
-        &:first-of-type {
-          margin-right: 20px;
-        }
-      }
-    }
   }
 
   .about {
@@ -115,9 +56,14 @@
     flex-wrap: wrap;
 
     &__header {
-      p {
+      padding-left: 12px;
+
+      p.bold {
+        height: fit-content;
+        width: 100%;
         text-transform: uppercase;
         position: relative;
+        font-family: SairaSemiCondensed, "Open Sans", sans-serif;
 
         &::after {
           position: absolute;
@@ -192,6 +138,7 @@
         &.bold {
           color: $white;
           font-weight: bold;
+          font-family: Karla, "OpenSans", sans-serif;
         }
 
         a {
@@ -205,8 +152,12 @@
       }
 
       .contact {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
         .btn {
-          width: 100%;
+          width: 196px;
 
           a {
             display: flex;
@@ -252,7 +203,7 @@
       &::after {
         position: absolute;
         height: 1px;
-        width: 50%;
+        width: calc(100% - 104px);
         background-color: $white;
         content: "";
         display: block;
@@ -264,7 +215,7 @@
     &__content {
       display: flex;
       flex-wrap: wrap;
-      width: 80%;
+      width: 60%;
     }
 
     &__description {
@@ -291,7 +242,7 @@
         padding: 24px;
         padding-top: 0;
         width: 100%;
-        height: 390px;
+        min-height: 390px;
         text-align: center;
 
         .btn {
@@ -439,6 +390,52 @@
   }
 }
 
+@media (max-width: 1039px) {
+  .home-page {
+    .carousel {
+      &-slider {
+        overflow: visible;
+      }
+
+      &-status {
+        top: 100%;
+        width: 100%;
+        height: 87px;
+      }
+
+      &-arrow {
+        &-prev,
+        &-next {
+          bottom: -64px;
+        }
+      }
+    }
+
+    .about {
+      margin-top: 87px;
+
+      &__col {
+        p.bold {
+          margin-top: 48px;
+        }
+
+        h3 {
+          margin-top: 24px;
+        }
+      }
+
+      .contact {
+        width: 100%;
+        flex-flow: column;
+
+        .btn {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 1040px) {
   .home-page {
     .charity {
@@ -449,33 +446,6 @@
           .btn:first-of-type {
             margin-top: 0;
           }
-        }
-      }
-
-      &__content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        top: 0;
-        width: 100%;
-        max-height: 100%;
-        padding: 24px;
-        padding-bottom: 112px;
-        overflow: scroll;
-        margin-left: 0;
-        margin-right: 0;
-
-        h1 {
-          width: 100%;
-          display: flex;
-        }
-
-        &-hosted-by {
-          width: 100%;
-        }
-
-        .image-placeholder {
-          height: 565px;
         }
       }
     }
@@ -491,17 +461,20 @@
     }
 
     .membership {
-      padding: 44px 24px;
+      padding: 44px 36px;
 
       &__heading {
         width: 100%;
+        margin-right: 0;
       }
 
       &__content {
+        margin-top: 24px;
         width: 100%;
       }
 
       &__item {
+        padding: 0;
         margin-top: 12px;
 
         &-img-container {

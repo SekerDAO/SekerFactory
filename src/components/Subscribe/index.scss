@@ -1,8 +1,7 @@
 @import "../../assets/styles/colors.scss";
 
 .subscribe {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding: 80px 24px;
   background-color: $white;
   max-height: 500px;
   transition: all 0.5s ease-in;
@@ -63,9 +62,7 @@
 @media (max-width: 1040px) {
   .subscribe {
     &__input-container {
-      .btn {
-        margin-top: 20px;
-      }
+      align-items: center;
     }
   }
 }

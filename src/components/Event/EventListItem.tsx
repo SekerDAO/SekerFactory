@@ -12,14 +12,27 @@ const EventListItem: FunctionComponent<
 		showRSVP: boolean
 		showMoreInfo?: boolean
 		showSchedule: boolean
+		showDescription?: boolean
 		onShowSchedule?: () => void
 		className?: string
 	}>
-> = ({event, dateTitle, showRSVP, showMoreInfo, showSchedule, onShowSchedule, className}) => (
+> = ({
+	event,
+	dateTitle,
+	showRSVP,
+	showMoreInfo,
+	showSchedule,
+	showDescription,
+	onShowSchedule,
+	className,
+	children
+}) => (
 	<section className={`event-list-item ${className ?? ""}`}>
 		<Image src={event?.custom_data?.bannerSrc} alt={event.title} />
 		<div className="event-list-item__content">
-			<p>{dateTitle ?? `${getDateReadable(event)} <br /> ${getTimeReadable(event)}`}</p>
+			<p className="event-list-item__content-date">
+				{dateTitle ?? `${getDateReadable(event)} <br /> ${getTimeReadable(event)}`}
+			</p>
 			<h1
 				dangerouslySetInnerHTML={{
 					__html: event.title
@@ -43,7 +56,10 @@ const EventListItem: FunctionComponent<
 					More Info
 				</Button>
 			)}
-			{!showRSVP && !showMoreInfo && <p dangerouslySetInnerHTML={{__html: event.description}} />}
+			{!showRSVP && !showMoreInfo && showDescription && (
+				<p dangerouslySetInnerHTML={{__html: event.description}} />
+			)}
+			{children}
 		</div>
 	</section>
 )
