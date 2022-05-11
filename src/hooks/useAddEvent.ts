@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react"
+import sekerClubSaturdayBanner from "../assets/images/Event_SekerClub.png"
 import summerSolsticeBanner from "../assets/images/Event_SummerSolstice.png"
 import daoPartyBanner from "../assets/images/SekerFactory_DAOParty.png"
 import daoMeetingBanner from "../assets/images/dao-meeting-banner.png"
@@ -62,6 +63,14 @@ export const useEvents = ({
 							}
 						}
 
+						if (event.eventname === "SekerClub Saturday") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: sekerClubSaturdayBanner
+								}
+							}
+						}
 						if (event.eventname === "Summer Solstice") {
 							return {
 								...event,

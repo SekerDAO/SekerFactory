@@ -18,20 +18,20 @@ export const getDateReadable = (event: EventContent): string | undefined => {
 
 	if (startDate.getDate() === endDate.getDate()) {
 		return `${startDate.toLocaleString("en-US", {
-			month: "short"
-		})}. ${startDate.getDate()}, ${startDate.getFullYear()}`
+			month: "long"
+		})} ${startDate.getDate()}, ${startDate.getFullYear()}`
 	}
 
 	if (startMonth === endMonth) {
 		return `${startDate.toLocaleString("en-US", {
-			month: "short"
-		})}. ${startDate.getDate()}-${endDate.getDate()}, ${startDate.getFullYear()}`
+			month: "long"
+		})} ${startDate.getDate()}-${endDate.getDate()}, ${startDate.getFullYear()}`
 	}
 	return `${startDate.toLocaleString("en-US", {
-		month: "short"
-	})}. ${startDate.getDate()} - ${endDate.toLocaleString("en-US", {
-		month: "short"
-	})}. ${endDate.getDate()}, ${startDate.getFullYear()}`
+		month: "long"
+	})} ${startDate.getDate()} - ${endDate.toLocaleString("en-US", {
+		month: "long"
+	})} ${endDate.getDate()}, ${startDate.getFullYear()}`
 }
 
 export const getTimeReadable = (event: EventContent): string => {

@@ -48,7 +48,9 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 		topClearanceCardTotal
 	} = useHomePage()
 	const {events} = useEvents({})
-	const FEATURED_EVENT = events.find(event => event.eventname === "Summer Solstice") as EventContent
+	const FEATURED_EVENT = events.find(
+		event => event.eventname === "SekerClub Saturday"
+	) as EventContent
 	const SOLSTICE_EVENT = events.find(event => event.eventname === "Summer Solstice") as EventContent
 	const handleOpenFullVideo = (src: string) => setFullVideoSrc(src)
 
@@ -105,11 +107,17 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						</Button>
 					)}
 				>
-					<EventListItem event={FEATURED_EVENT} showRSVP={false} showSchedule={false} />
+					<EventListItem
+						event={FEATURED_EVENT}
+						showRSVP={false}
+						showSchedule={false}
+						showDescription
+					/>
 					<EventListItem
 						event={SOLSTICE_EVENT}
 						showRSVP={false}
 						showSchedule={false}
+						showDescription
 						dateTitle="Coming Late June 2022"
 					/>
 					<EventListItem
