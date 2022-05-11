@@ -106,19 +106,31 @@
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
-  @include make-size("xs"); }
+  @include make-size("xs");
+}
 
 @media (min-width: 426px) and (max-width: 767px) {
-  @include make-size("sm"); }
+  @include make-size("sm");
+}
 
 @media (min-width: 768px) and (max-width: 1039px) {
-  @include make-size("lg"); }
+  @include make-size("lg");
+}
 
 @media (min-width: 1040px) and (max-width: 1440px) {
-  @include make-size("xl"); }
+  @include make-size("xl");
+}
 
 .row {
   @include col(12);
 
+  flex-wrap: wrap;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
   flex-wrap: wrap;
 }

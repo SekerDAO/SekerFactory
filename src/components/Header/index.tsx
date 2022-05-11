@@ -8,6 +8,7 @@ import {Web3Context} from "../../context"
 import useMediaQuery from "../../hooks/useMediaQuery"
 import useResetScroll from "../../hooks/useResetScroll"
 import {formatReadableAddress} from "../../utils"
+import Grid from "../Grid"
 import Image from "../Image"
 import "./index.scss"
 
@@ -46,36 +47,38 @@ const Header: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 
 	return (
 		<header className="header">
-			<div className="header__logo-container" onClick={() => navigate("/")}>
-				<Image
-					src={logo}
-					className="header__logo"
-					alt="logo"
-					width={isMobile ? "auto" : 230}
-					height={isMobile ? 30 : 40}
-				/>
-				{isMobile && connectButton}
-			</div>
-			<nav className="header__nav">
-				<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="#">Apply</Link>
-					</li>
-					<li>
-						<Link to="#">Artists</Link>
-					</li>
-					<li>
-						<Link to="#">About</Link>
-					</li>
-					<li>
-						<Link to="#">Contact</Link>
-					</li>
-					{!isMobile && <li>{connectButton}</li>}
-				</ul>
-			</nav>
+			<Grid container className="header__inner-container">
+				<div className="header__logo-container" onClick={() => navigate("/")}>
+					<Image
+						src={logo}
+						className="header__logo"
+						alt="logo"
+						width={isMobile ? "auto" : 230}
+						height={isMobile ? 30 : 40}
+					/>
+					{isMobile && connectButton}
+				</div>
+				<nav className="header__nav">
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="#">Apply</Link>
+						</li>
+						<li>
+							<Link to="#">Artists</Link>
+						</li>
+						<li>
+							<Link to="#">About</Link>
+						</li>
+						<li>
+							<Link to="#">Contact</Link>
+						</li>
+						{!isMobile && <li>{connectButton}</li>}
+					</ul>
+				</nav>
+			</Grid>
 		</header>
 	)
 }

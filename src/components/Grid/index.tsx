@@ -11,16 +11,32 @@ const Grid: FunctionComponent<
 		lg?: GridSize
 		xl?: GridSize
 		row?: boolean
+		container?: boolean
 		className?: string
 		Component?: keyof JSX.IntrinsicElements
 		innerRef?: (node: HTMLDivElement) => void
 		minHeight?: string
 	}>
-> = ({children, innerRef, size, row, xs, sm, lg, xl, className, Component = "div", minHeight}) => {
+> = ({
+	children,
+	innerRef,
+	container,
+	size,
+	row,
+	xs,
+	sm,
+	lg,
+	xl,
+	className,
+	Component = "div",
+	minHeight
+}) => {
 	const baseProps = {
-		className: `${row ? "row " : `col-${size} `}${xs ? `col-xs-${xs} ` : ""}${
-			sm ? `col-sm-${sm} ` : ""
-		}${lg ? `col-lg-${lg} ` : ""} ${xl ? `col-xl-${xl} ` : ""}${className ?? ""}`,
+		className: `${container ? "container " : row ? "row " : `col-${size} `}${
+			xs ? `col-xs-${xs} ` : ""
+		}${sm ? `col-sm-${sm} ` : ""}${lg ? `col-lg-${lg} ` : ""} ${xl ? `col-xl-${xl} ` : ""}${
+			className ?? ""
+		}`,
 		style: {
 			minHeight
 		}

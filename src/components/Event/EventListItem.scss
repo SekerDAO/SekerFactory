@@ -1,7 +1,12 @@
 @import "../../assets/styles/colors.scss";
 
 .event-list-item {
+  &__outer-container {
+    justify-content: center;
+  }
+
   position: relative;
+  width: 100%;
 
   img {
     width: 100%;

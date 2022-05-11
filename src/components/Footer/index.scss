@@ -3,8 +3,11 @@
 .footer {
   background-color: black;
   display: flex;
-  justify-content: space-between;
   padding: 24px 72px;
+
+  &__inner-container {
+    justify-content: space-between;
+  }
 
   &__left {
     display: flex;
@@ -33,7 +36,9 @@
 
 @media (max-width: 1039px) {
   .footer {
-    flex-wrap: wrap-reverse;
+    &__inner-container {
+      flex-wrap: wrap-reverse;
+    }
 
     &__left {
       justify-content: center;

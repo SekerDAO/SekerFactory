@@ -42,7 +42,7 @@ body {
   font-size: 16px;
   line-height: 20px;
   color: $dark-grey;
-  background-color: $light-grey;
+  background-color: white;
 }
 
 h1 {
@@ -107,6 +107,10 @@ p {
 }
 
 .carousel {
+  &-root {
+    background-color: black;
+  }
+
   .slide {
     text-align: left;
 
