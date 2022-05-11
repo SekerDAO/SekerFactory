@@ -47,6 +47,10 @@
       line-height: 24px;
     }
 
+    p {
+      width: 100%;
+    }
+
     &-description {
       white-space: pre-wrap;
       margin-top: 20px;
@@ -73,15 +77,14 @@
       display: flex;
       width: 100%;
       flex-wrap: wrap;
-      margin-top: 12px;
       padding-left: 24px;
       padding-right: 24px;
-      padding-bottom: 112px;
       justify-content: center;
       max-height: 100%;
       top: 0;
       right: 0;
       overflow: scroll;
+      margin-top: 12px;
 
       &-date {
         width: 100%;
@@ -90,17 +93,6 @@
       h1 {
         width: 100%;
         display: flex;
-      }
-    }
-  }
-}
-
-@media (max-width: 1039px) {
-  .event-list-item {
-    & &__content {
-      margin-top: 48px;
-
-      h1 {
         font-size: 40px;
         line-height: 44px;
       }

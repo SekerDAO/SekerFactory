@@ -1,7 +1,7 @@
 @import "../../assets/styles/colors.scss";
 
 .subscribe {
-  padding: 80px 24px;
+  padding: 80px 36px;
   background-color: $white;
   max-height: 500px;
   width: 100%;
@@ -31,7 +31,7 @@
     }
 
     .btn {
-      margin-left: 10px;
+      margin-left: 20px;
     }
   }
 
@@ -64,6 +64,10 @@
   .subscribe {
     &__input-container {
       align-items: center;
+
+      .input {
+        width: 180px;
+      }
     }
   }
 }

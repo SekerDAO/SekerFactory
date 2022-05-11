@@ -212,7 +212,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 											</a>
 										</Button>
 									</div>
-									<p>
+									<p className="contact__email">
 										For inquiries, email us at{" "}
 										<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
 									</p>
@@ -228,8 +228,10 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 				</Grid>
 				<Grid Component="section" row className="membership">
 					<Grid container>
-						<p className="membership__heading bold">Membership</p>
-						<Grid size={12} xs={12} sm={12} lg={12} className="membership__content">
+						<Grid size={2} xs={12} sm={12} lg={12}>
+							<p className="membership__heading bold">Membership</p>
+						</Grid>
+						<Grid size={8} xs={12} sm={12} lg={12} className="membership__content">
 							<Grid size={12} xs={12} sm={12} lg={12} className="membership__description">
 								<p className="membership__description-content">
 									<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
@@ -391,6 +393,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								</Grid>
 							</Grid>
 						</Grid>
+						<Grid size={2} xs={12} sm={12} lg={12} />
 					</Grid>
 				</Grid>
 				<Grid container>
