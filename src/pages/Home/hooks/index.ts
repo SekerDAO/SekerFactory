@@ -1,9 +1,11 @@
 import {InfuraProvider} from "@ethersproject/providers"
+import {formatEther} from "@ethersproject/units"
 import {ethers, BigNumber} from "ethers"
 import {useState, useEffect, Dispatch, SetStateAction, useCallback, useContext} from "react"
 import ClearanceCard001 from "../../../abi/ClearanceCard001.json"
 import TopClearanceCard from "../../../abi/TopClearanceCard.json"
 import Ukraine from "../../../abi/Ukraine.json"
+import {toastError, toastSuccess} from "../../../components/Toast"
 import config, {web3Modal} from "../../../config/eth"
 import infuraConfig from "../../../config/infura"
 import {Web3Context} from "../../../context"
@@ -24,6 +26,9 @@ type HomePageState = {
 	processingClearanceCardPurchase: boolean
 	clearanceCardTotal: number
 	topClearanceCardTotal: number
+	ethBalance: number
+	walletConnected: boolean
+	signIn: () => Promise<ethers.Signer>
 }
 
 const useHomePage = (): HomePageState => {
@@ -35,6 +40,8 @@ const useHomePage = (): HomePageState => {
 	const [buyingClearanceCardType, setBuyingClearanceCardType] = useState<ClearanceCardType>()
 	const [clearanceCardTotal, setClearanceCardTotal] = useState(0)
 	const [topClearanceCardTotal, setTopClearanceCardTotal] = useState(0)
+	const [ethBalance, setEthBalance] = useState(0)
+	const walletConnected = !!web3Context?.signer
 
 	const infuraProvider = new InfuraProvider("mainnet", {
 		projectId: infuraConfig.INFURA_ID
@@ -54,6 +61,12 @@ const useHomePage = (): HomePageState => {
 		)
 		setClearanceCardTotal(BigNumber.from(await clearanceContract.totalSupply()).toNumber())
 		setTopClearanceCardTotal(BigNumber.from(await topClearanceContract.totalSupply()).toNumber())
+	}
+
+	const getBalance = async () => {
+		if (web3Context.signer) {
+			setEthBalance(Number(formatEther(await web3Context.signer.getBalance())))
+		}
 	}
 
 	const signIn = async () => {
@@ -82,16 +95,31 @@ const useHomePage = (): HomePageState => {
 		abi: ethers.ContractInterface
 		etherValueString: string
 		mintAmount: string
-	}) => {
+	}): Promise<boolean> => {
 		const signer = await signIn()
 		const saleContract = new ethers.Contract(contractAddress, abi, signer)
 		const etherValue = ethers.utils.parseEther(etherValueString)
 		const amount = parseInt(mintAmount)
 		const value = etherValue.mul(amount)
-		await saleContract.mint(amount, {value})
+		const ethAmount = formatEther(value.toString())
+		const _ethBalance = Number(formatEther(await signer.getBalance()))
+		if (Number(ethAmount) > _ethBalance) {
+			toastError(
+				`Woops! You don't have enough ETH in your wallet. Your balance: ${_ethBalance} ETH, you need at least ${ethAmount} ETH.`
+			)
+			return false
+		} else {
+			await saleContract.mint(amount, {value})
+			return true
+		}
 	}
 
 	const purchaseClearanceCardSuccess = async () => {
+		toastSuccess(
+			`Congratulations! You successfully bought ${
+				buyingClearanceCardType === "001" ? "001 Clearance Card" : "Top Clearance Card"
+			}. Welcome to the Seker Factory family, dear friend :)`
+		)
 		await getCardsTotal()
 		setBuyingClearanceCardType(undefined)
 		setProcessingClearanceCardPurchase(false)
@@ -113,13 +141,17 @@ const useHomePage = (): HomePageState => {
 	const onPurchaseClearanceCard = useCallback(async () => {
 		setProcessingClearanceCardPurchase(true)
 		try {
-			await purchase({
+			const success = await purchase({
 				contractAddress: config.CLEARANCE_CARD_001_CONTRACT_ADDRESS,
 				abi: ClearanceCard001.abi,
 				etherValueString: "0.15",
 				mintAmount: clearanceCardMintValue
 			})
-			setTimeout(purchaseClearanceCardSuccess, 5000)
+			if (success) {
+				setTimeout(purchaseClearanceCardSuccess, 5000)
+			} else {
+				setProcessingClearanceCardPurchase(false)
+			}
 		} catch (e) {
 			console.error(e)
 			setProcessingClearanceCardPurchase(false)
@@ -129,13 +161,17 @@ const useHomePage = (): HomePageState => {
 	const onPurchaseTopClearanceCard = useCallback(async () => {
 		setProcessingClearanceCardPurchase(true)
 		try {
-			await purchase({
+			const success = await purchase({
 				contractAddress: config.TOP_CLEARANCE_CARD_CONTRACT_ADDRESS,
 				abi: TopClearanceCard.abi,
 				etherValueString: "0.5",
 				mintAmount: clearanceCardMintValue
 			})
-			setTimeout(purchaseClearanceCardSuccess, 5000)
+			if (success) {
+				setTimeout(purchaseClearanceCardSuccess, 5000)
+			} else {
+				setProcessingClearanceCardPurchase(false)
+			}
 		} catch (e) {
 			console.error(e)
 			setProcessingClearanceCardPurchase(false)
@@ -145,6 +181,9 @@ const useHomePage = (): HomePageState => {
 	useEffect(() => {
 		getCardsTotal()
 	}, [])
+	useEffect(() => {
+		getBalance()
+	}, [web3Context.signer])
 
 	return {
 		viewScheduleOpen,
@@ -160,7 +199,10 @@ const useHomePage = (): HomePageState => {
 		setClearanceCardMintValue,
 		processingClearanceCardPurchase,
 		clearanceCardTotal,
-		topClearanceCardTotal
+		topClearanceCardTotal,
+		ethBalance,
+		walletConnected,
+		signIn
 	}
 }
 

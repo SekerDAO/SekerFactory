@@ -45,7 +45,10 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 		setClearanceCardMintValue,
 		processingClearanceCardPurchase,
 		clearanceCardTotal,
-		topClearanceCardTotal
+		topClearanceCardTotal,
+		ethBalance,
+		walletConnected,
+		signIn
 	} = useHomePage()
 	const {events} = useEvents({})
 	const FEATURED_EVENT = events.find(
@@ -139,8 +142,16 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										setMintValue(e.currentTarget.value)
 									}}
 								/>
-								<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
+								<Button
+									onClick={onPurchaseSupportUkraine}
+									disabled={walletConnected && ethBalance < 0.05}
+								>
+									Donate
+								</Button>
 							</Grid>
+							{walletConnected && ethBalance < 0.05 && (
+								<p className="charity__helper-text">{`You don't have enough ETH in your wallet. Price per item is 0.05 ETH`}</p>
+							)}
 						</Grid>
 					</EventListItem>
 				</Carousel>
@@ -262,7 +273,14 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										<p className="membership__item-minted">
 											{clearanceCardTotal} minted / 3000 total
 										</p>
-										<Button onClick={() => setBuyingClearanceCardType("001")}>Mint NFT</Button>
+										<Button
+											onClick={async () => {
+												await signIn()
+												setBuyingClearanceCardType("001")
+											}}
+										>
+											Mint NFT
+										</Button>
 									</Grid>
 									<ul>
 										<li>
@@ -329,7 +347,14 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 										<p className="membership__item-minted">
 											{topClearanceCardTotal} minted / 1500 total
 										</p>
-										<Button onClick={() => setBuyingClearanceCardType("TOP")}>Mint NFT</Button>
+										<Button
+											onClick={async () => {
+												await signIn()
+												setBuyingClearanceCardType("TOP")
+											}}
+										>
+											Mint NFT
+										</Button>
 									</Grid>
 									<ul>
 										<li>
