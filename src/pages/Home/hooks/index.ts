@@ -1,11 +1,10 @@
 import {InfuraProvider} from "@ethersproject/providers"
 import {ethers, BigNumber} from "ethers"
 import {useState, useEffect, Dispatch, SetStateAction, useCallback, useContext} from "react"
-import Web3Modal from "web3modal"
 import ClearanceCard001 from "../../../abi/ClearanceCard001.json"
 import TopClearanceCard from "../../../abi/TopClearanceCard.json"
 import Ukraine from "../../../abi/Ukraine.json"
-import config from "../../../config/eth"
+import config, {web3Modal} from "../../../config/eth"
 import infuraConfig from "../../../config/infura"
 import {Web3Context} from "../../../context"
 
@@ -26,14 +25,6 @@ type HomePageState = {
 	clearanceCardTotal: number
 	topClearanceCardTotal: number
 }
-
-const providerOptions = {}
-
-const web3Modal = new Web3Modal({
-	network: "mainnet", // optional
-	cacheProvider: true, // optional
-	providerOptions // required
-})
 
 const useHomePage = (): HomePageState => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
