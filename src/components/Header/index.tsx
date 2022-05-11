@@ -1,60 +1,28 @@
-import BurnerConnectProvider from "@burner-wallet/burner-connect-provider"
-// @ts-expect-error module doesn't have types
-import MewConnect from "@myetherwallet/mewconnect-web-client"
-import Torus from "@toruslabs/torus-embed"
-import WalletConnectProvider from "@walletconnect/web3-provider"
-import Authereum from "authereum"
-// @ts-expect-error module doesn't have types
-import ethProvider from "eth-provider"
 import {ethers} from "ethers"
 import {useContext, useEffect, useState, FunctionComponent, useCallback} from "react"
-import {useNavigate} from "react-router-dom"
-import Web3Modal from "web3modal"
+import {useNavigate, Link} from "react-router-dom"
 import logo from "../../assets/images/logo.svg"
 import Button from "../../components/Button"
-import config from "../../config/infura"
+import {web3Modal} from "../../config/eth"
 import {Web3Context} from "../../context"
+import useMediaQuery from "../../hooks/useMediaQuery"
 import useResetScroll from "../../hooks/useResetScroll"
+import {formatReadableAddress} from "../../utils"
+import Grid from "../Grid"
 import Image from "../Image"
 import "./index.scss"
 
-const providerOptions = {
-	walletconnect: {
-		package: WalletConnectProvider, // required
-		options: {
-			infuraId: config.INFURA_ID // required
-		}
-	},
-	torus: {
-		package: Torus
-	},
-	authereum: {
-		package: Authereum
-	},
-	frame: {
-		package: ethProvider
-	},
-	burnerconnect: {
-		package: BurnerConnectProvider
-	},
-	mewconnect: {
-		package: MewConnect,
-		options: {
-			infuraId: config.INFURA_ID
-		}
-	}
-}
-
-const Header: FunctionComponent = () => {
+const Header: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const {web3Context, setWeb3Context} = useContext(Web3Context)
-	const [buttonText, setButtonText] = useState("Connect")
+	const [buttonText, setButtonText] = useState("Connect Wallet")
 	const navigate = useNavigate()
+	const isMobile = useMediaQuery("(max-width: 1039px)")
 	useResetScroll()
 
 	useEffect(() => {
 		const getAddress = async () => {
 			if (web3Context.signer) {
-				setButtonText(await web3Context.signer.getAddress())
+				setButtonText(formatReadableAddress(await web3Context.signer.getAddress()))
 			}
 		}
 		getAddress()
@@ -62,38 +30,55 @@ const Header: FunctionComponent = () => {
 
 	const onConnect = useCallback(async () => {
 		if (!web3Context.signer) {
-			const web3Modal = new Web3Modal({
-				network: "mainnet", // optional
-				cacheProvider: true, // optional
-				providerOptions // required
-			})
 			// sign in
 			await web3Modal.clearCachedProvider()
 			const instance = await web3Modal.connect()
 			const provider = new ethers.providers.Web3Provider(instance)
 			const signer = provider.getSigner()
 			setWeb3Context({instance, signer})
-		} else {
-			setWeb3Context({})
 		}
 	}, [web3Context.signer, setWeb3Context])
 
+	const connectButton = (
+		<Button onClick={onConnect} disabled={!!web3Context.signer}>
+			{buttonText}
+		</Button>
+	)
+
 	return (
 		<header className="header">
-			<div className="header__logo-container" onClick={() => navigate("/")}>
-				<Image src={logo} className="header__logo" alt="logo" width={230} height={40} />
-				<Button
-					style={{
-						float: "right",
-						verticalAlign: "center",
-						textAlign: "right",
-						marginRight: 20
-					}}
-					onClick={onConnect}
-				>
-					{buttonText}
-				</Button>
-			</div>
+			<Grid container className="header__inner-container">
+				<div className="header__logo-container" onClick={() => navigate("/")}>
+					<Image
+						src={logo}
+						className="header__logo"
+						alt="logo"
+						width={isMobile ? "auto" : 230}
+						height={isMobile ? 30 : 40}
+					/>
+					{isMobile && connectButton}
+				</div>
+				<nav className="header__nav">
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="#">Apply</Link>
+						</li>
+						<li>
+							<Link to="#">Artists</Link>
+						</li>
+						<li>
+							<Link to="#">About</Link>
+						</li>
+						<li>
+							<Link to="#">Contact</Link>
+						</li>
+						{!isMobile && <li>{connectButton}</li>}
+					</ul>
+				</nav>
+			</Grid>
 		</header>
 	)
 }

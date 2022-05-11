@@ -4,11 +4,11 @@ import Input from "../Input"
 import useSubscribeForm from "./hooks"
 import "./index.scss"
 
-const SubscribeForm: FunctionComponent = () => {
+const SubscribeForm: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const {email, formActionUrl, handleSubmit, setEmail, success, error} = useSubscribeForm()
 	return (
 		<section className="subscribe">
-			{!success && <h1>Keep in Touch for Future Events</h1>}
+			{!success && <h1>Stay in the loop. Sign up for our newsletter!</h1>}
 			{success ? (
 				<section className="subscribe__success-message">
 					<h2>Success!</h2>
@@ -22,7 +22,7 @@ const SubscribeForm: FunctionComponent = () => {
 					onSubmit={handleSubmit}
 				>
 					<Input
-						placeholder="Enter your email"
+						placeholder="Email Address"
 						borders="bottom"
 						name="EMAIL"
 						type="email"
@@ -30,8 +30,8 @@ const SubscribeForm: FunctionComponent = () => {
 						value={email}
 						onChange={event => setEmail(event.target.value)}
 					/>
-					<Button variant="secondary" type="submit">
-						Join Now
+					<Button variant="primary" type="submit">
+						Sign Up
 					</Button>
 					{error && <p className="subscribe__error">{error}</p>}
 				</form>

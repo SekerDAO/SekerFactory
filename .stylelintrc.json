@@ -3,6 +3,7 @@
   "rules" : {
     "indentation": 2,
     "color-hex-case": "upper",
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "at-rule-no-unknown": null
   }
 }

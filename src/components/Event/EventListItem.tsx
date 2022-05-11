@@ -2,48 +2,74 @@ import {FunctionComponent} from "react"
 import {EventContent} from "../../types/event"
 import {getDateReadable, getTimeReadable, openRSVPForm} from "../../utils"
 import Button from "../Button"
+import Grid from "../Grid"
 import Image from "../Image"
 import "./EventListItem.scss"
 
-const EventListItem: FunctionComponent<{
-	event: EventContent
-	showRSVP: boolean
-	showSchedule: boolean
-	onShowSchedule?: () => void
-	className?: string
-}> = ({event, showRSVP, showSchedule, onShowSchedule, className}) => (
-	<section className={`event-list-item ${className ?? ""}`}>
-		<div className="event-list-item__col-wrapper">
-			<div className="event-list-item__col">
-				<Image src={event?.custom_data?.bannerSrc} alt={event.title} />
-			</div>
-			<div className="event-list-item__col">
+const EventListItem: FunctionComponent<
+	React.PropsWithChildren<{
+		event: EventContent
+		dateTitle?: string
+		showRSVP: boolean
+		showMoreInfo?: boolean
+		showSchedule: boolean
+		showDescription?: boolean
+		onShowSchedule?: () => void
+		className?: string
+	}>
+> = ({
+	event,
+	dateTitle,
+	showRSVP,
+	showMoreInfo,
+	showSchedule,
+	showDescription,
+	onShowSchedule,
+	className,
+	children
+}) => (
+	<Grid container className="event-list-item__outer-container">
+		<section className={`event-list-item ${className ?? ""}`}>
+			<Image src={event?.custom_data?.bannerSrc} alt={event?.title} />
+			<div className="event-list-item__content">
+				<p className="event-list-item__content-date">
+					{event &&
+						(dateTitle ?? (
+							<>
+								{getDateReadable(event)} <br /> {getTimeReadable(event)}
+							</>
+						))}
+				</p>
 				<h1
 					dangerouslySetInnerHTML={{
-						__html: `${event.title} <br /> ${getDateReadable(event)} <br /> ${getTimeReadable(
-							event
-						)}`
+						__html: event?.title
 					}}
 				/>
-				<div className="event-list-item__col-hosted-by">
-					<h3>Hosted by:</h3>
-					<h2 dangerouslySetInnerHTML={{__html: event.location}} />
+				<div className="event-list-item__content-hosted-by">
+					<h3 dangerouslySetInnerHTML={{__html: event?.location}} />
 				</div>
-				<p
-					className="event-list-item__col-description"
-					dangerouslySetInnerHTML={{
-						__html: `${event.description}`
-					}}
-				/>
 				{showSchedule && (
 					<Button variant="secondary" onClick={onShowSchedule}>
 						View Schedule
 					</Button>
 				)}
-				{showRSVP && <Button onClick={() => openRSVPForm(event)}>RSVP</Button>}
+				{showRSVP && (
+					<Button onClick={() => openRSVPForm(event)} color="white">
+						RSVP
+					</Button>
+				)}
+				{showMoreInfo && (
+					<Button color="white" variant="secondary">
+						More Info
+					</Button>
+				)}
+				{!showRSVP && !showMoreInfo && showDescription && (
+					<p dangerouslySetInnerHTML={{__html: event?.description}} />
+				)}
+				{children}
 			</div>
-		</div>
-	</section>
+		</section>
+	</Grid>
 )
 
 export default EventListItem

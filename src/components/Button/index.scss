@@ -19,8 +19,8 @@
   }
 
   &:not(:disabled):hover {
-    background-color: $purple75;
-    border-color: $purple75;
+    background-color: $purple;
+    border-color: $purple;
     color: $white;
   }
 
@@ -29,15 +29,34 @@
     background-color: $purple;
   }
 
+  &--primary.btn--white {
+    background-color: $white;
+    color: $dark-grey;
+    border-color: $white;
+  }
+
   &--secondary {
     color: $purple;
     background-color: transparent;
+  }
+
+  &--secondary.btn--white {
+    color: $white;
+    border-color: $white;
+
+    &:hover {
+      background-color: $white;
+      border-color: $white;
+      color: $dark-grey;
+    }
   }
 
   &--link {
     color: $purple;
     background-color: transparent;
     border: none;
+    border-top: 1px solid $purple;
+    border-radius: 0;
 
     &:not(:disabled):hover {
       background-color: transparent;

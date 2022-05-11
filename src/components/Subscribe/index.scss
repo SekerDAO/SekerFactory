@@ -1,10 +1,10 @@
 @import "../../assets/styles/colors.scss";
 
 .subscribe {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding: 80px 36px;
   background-color: $white;
   max-height: 500px;
+  width: 100%;
   transition: all 0.5s ease-in;
 
   h1 {
@@ -31,7 +31,7 @@
     }
 
     .btn {
-      margin-left: 10px;
+      margin-left: 20px;
     }
   }
 
@@ -63,8 +63,10 @@
 @media (max-width: 1040px) {
   .subscribe {
     &__input-container {
-      .btn {
-        margin-top: 20px;
+      align-items: center;
+
+      .input {
+        width: 180px;
       }
     }
   }

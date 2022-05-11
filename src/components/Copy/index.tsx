@@ -1,7 +1,10 @@
 import {FunctionComponent} from "react"
 import "./index.scss"
 
-const Copy: FunctionComponent<{value?: string | null}> = ({children, value}) => {
+const Copy: FunctionComponent<React.PropsWithChildren<{value?: string | null}>> = ({
+	children,
+	value
+}) => {
 	const handleCopy = () => {
 		if (value) {
 			navigator.clipboard.writeText(value)

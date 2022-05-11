@@ -1,10 +1,12 @@
 import {Dispatch, FunctionComponent, SetStateAction} from "react"
 import Modal from "../../../../components/Modal"
 
-const Schedule: FunctionComponent<{
-	viewScheduleOpen: boolean
-	setViewScheduleOpen: Dispatch<SetStateAction<boolean>>
-}> = ({viewScheduleOpen, setViewScheduleOpen}) => (
+const Schedule: FunctionComponent<
+	React.PropsWithChildren<{
+		viewScheduleOpen: boolean
+		setViewScheduleOpen: Dispatch<SetStateAction<boolean>>
+	}>
+> = ({viewScheduleOpen, setViewScheduleOpen}) => (
 	<Modal open={viewScheduleOpen} onClose={() => setViewScheduleOpen(false)}>
 		<ul className="schedule-list">
 			<h2>Saturday, February 26</h2>

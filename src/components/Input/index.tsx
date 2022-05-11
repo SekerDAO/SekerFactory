@@ -2,10 +2,12 @@ import {FunctionComponent, InputHTMLAttributes} from "react"
 import "./styles.scss"
 
 const Input: FunctionComponent<
-	{
-		borders?: "bottom" | "all"
-		validation?: string | null
-	} & InputHTMLAttributes<HTMLInputElement>
+	React.PropsWithChildren<
+		{
+			borders?: "bottom" | "all"
+			validation?: string | null
+		} & InputHTMLAttributes<HTMLInputElement>
+	>
 > = ({borders = "all", validation, type, onChange, value, ...inputProps}) => (
 	<div className="input">
 		<div className="input__wrapper">

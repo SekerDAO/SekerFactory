@@ -1,23 +1,75 @@
 @import "../../assets/styles/colors.scss";
 
 .header {
-  flex-flow: row;
-  padding-top: 20px;
-  background-color: $dark-grey;
+  height: 88px;
+  padding: 24px;
+  align-items: center;
+  background-color: $white;
+
+  &__inner-container {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__logo-container {
-    padding-left: 40px;
-
     &:hover {
       cursor: pointer;
     }
   }
+
+  &__nav {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+
+        a {
+          padding: 8px;
+          color: $dark-grey;
+
+          &:hover {
+            color: $purple;
+            border-top: 1px solid $purple;
+          }
+        }
+
+        .btn {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1039px) {
   .header {
+    height: auto;
+
     &__logo-container {
-      padding-left: 20px;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+    }
+
+    &__nav {
+      margin-top: 12px;
+      width: 100%;
+
+      ul {
+        width: 100%;
+        justify-content: center;
+      }
     }
   }
 }

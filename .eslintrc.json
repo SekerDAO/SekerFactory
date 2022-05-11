@@ -79,9 +79,7 @@
       }
     ],
     "@typescript-eslint/no-var-requires": "error",
-    "react/jsx-props-no-spreading": ["error", {
-      "html": "ignore"
-    }],
+    "react/jsx-props-no-spreading": "off",
     "no-implicit-coercion": ["error", {"boolean": false}],
     "no-param-reassign": ["error", {"props":  true}],
     "no-process-env": "error"

@@ -1,4 +1,6 @@
 import {useState, useEffect} from "react"
+import sekerClubSaturdayBanner from "../assets/images/Event_SekerClub.png"
+import summerSolsticeBanner from "../assets/images/Event_SummerSolstice.png"
 import daoPartyBanner from "../assets/images/SekerFactory_DAOParty.png"
 import daoMeetingBanner from "../assets/images/dao-meeting-banner.png"
 import exhibitOneEventBanner from "../assets/images/exhibit-1-banner.png"
@@ -8,7 +10,7 @@ import {EventContent} from "../types/event"
 
 type Params = {
 	upcoming?: string
-	sort?: string | string[] | null
+	sort?: string | (string | null)[] | null | undefined
 }
 export const useEvents = ({
 	upcoming
@@ -57,6 +59,23 @@ export const useEvents = ({
 								...event,
 								custom_data: {
 									bannerSrc: daoPartyBanner
+								}
+							}
+						}
+
+						if (event.eventname === "SekerClub Saturday") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: sekerClubSaturdayBanner
+								}
+							}
+						}
+						if (event.eventname === "Summer Solstice") {
+							return {
+								...event,
+								custom_data: {
+									bannerSrc: summerSolsticeBanner
 								}
 							}
 						}

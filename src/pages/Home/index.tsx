@@ -1,11 +1,13 @@
 import {FunctionComponent, useState} from "react"
 import {Carousel} from "react-responsive-carousel"
-import {useNavigate} from "react-router-dom"
 import {ReactComponent as DiscordIcon} from "../../assets/icons/discord-grayscale.svg"
 import {ReactComponent as DoneCircle} from "../../assets/icons/done-circle.svg"
+import {ReactComponent as LeftArrowActive} from "../../assets/icons/leftarrow_active.svg"
+import {ReactComponent as LeftArrowInactive} from "../../assets/icons/leftarrow_inactive.svg"
+import {ReactComponent as RightArrowActive} from "../../assets/icons/rightarrow_active.svg"
+import {ReactComponent as RightArrowInactive} from "../../assets/icons/rightarrow_inactive.svg"
 import {ReactComponent as StarIcon} from "../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../assets/icons/twitter-grayscale.svg"
-import seedImage from "../../assets/images/seeds.png"
 // @ts-expect-error no types for video import
 import clearanceCardOneSrc from "../../assets/videos/Clearence_Card_00.mp4"
 // @ts-expect-error no types for video import
@@ -13,22 +15,22 @@ import topClearanceCardSrc from "../../assets/videos/Top_Clearance_Card_01.mp4"
 import Button from "../../components/Button"
 import EventListItem from "../../components/Event/EventListItem"
 import Footer from "../../components/Footer"
-import Image from "../../components/Image"
+import Grid from "../../components/Grid"
 import Input from "../../components/Input"
-import Loading from "../../components/Loading"
 import ImageModal from "../../components/Modal/ImageModal"
 import SubscribeForm from "../../components/Subscribe"
+import {SUPPORT_UKRAINE_EVENT} from "../../config/addevent"
 import {useEvents} from "../../hooks/useAddEvent"
+import useMediaQuery from "../../hooks/useMediaQuery"
 import {EventContent} from "../../types/event"
-import {isEventUpcoming} from "../../utils"
 import BuyClearanceCard from "./components/BuyClearanceCard"
 import Schedule from "./components/Schedule"
 import useHomePage from "./hooks"
 import "./index.scss"
 
-const HomePage: FunctionComponent = () => {
-	const navigate = useNavigate()
+const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 	const [fullVideoSrc, setFullVideoSrc] = useState<string | undefined>(undefined)
+	const isMobile = useMediaQuery("(max-width: 1039px)")
 	const {
 		viewScheduleOpen,
 		buyingClearanceCardType,
@@ -43,17 +45,16 @@ const HomePage: FunctionComponent = () => {
 		setClearanceCardMintValue,
 		processingClearanceCardPurchase,
 		clearanceCardTotal,
-		topClearanceCardTotal
+		topClearanceCardTotal,
+		ethBalance,
+		walletConnected,
+		signIn
 	} = useHomePage()
-	const {events, loading} = useEvents({})
-
-	if (loading || !events || !events.length) {
-		return <Loading />
-	}
-	const FEATURED_EVENT = events.find(event => event.eventname === "DAO Party") as EventContent
-	const UPCOMING_EVENTS = events
-		.filter(event => event.id !== FEATURED_EVENT.id && isEventUpcoming(event))
-		.slice(0, 2)
+	const {events} = useEvents({})
+	const FEATURED_EVENT = events.find(
+		event => event.eventname === "SekerClub Saturday"
+	) as EventContent
+	const SOLSTICE_EVENT = events.find(event => event.eventname === "Summer Solstice") as EventContent
 	const handleOpenFullVideo = (src: string) => setFullVideoSrc(src)
 
 	return (
@@ -75,277 +76,354 @@ const HomePage: FunctionComponent = () => {
 				video
 			/>
 			<main className="home-page">
-				<Carousel swipeable emulateTouch autoPlay infiniteLoop showStatus={false} interval={10000}>
-					<section className="charity">
-						<div className="charity__col-wrapper">
-							<div className="charity__col">
-								<Image src={seedImage} alt={"Join Seker Factory in Supporting Ukraine"} />
-							</div>
-							<div className="charity__col">
-								<h1>
-									Join Seker Factory in <br />
-									Supporting Ukraine
-								</h1>
-								<p className="charity__col-description">
-									Over the last couple days, hundreds of thousands of Ukrainian people have fled
-									their homes to seek refuge in neighboring European countries. Millions more are
-									attempting to escape the chaos but are stranded on roadways due to traffic,
-									abandoned cars, and lack of gas. Banks across the country have been overwhelmed
-									and Ukrainians, who still rely heavily on cash payments, are unable to cover the
-									costs of getting themselves out. The developer of this site — a member of Seker
-									DAO and a good friend of all of ours — is currently in the midst of this struggle.
-									The artist of this NFT, another DAO member, grew up in the Ukraine and has family
-									there. This war hits close to home for all. Purchasing a print of this NFT will be
-									your badge of support. 100% of the proceeds go to humanitarian aid for those
-									trying to evacuate including the members of Seker Factory trapped in this
-									conflict. We all thank you for your support.
-								</p>
-								<br />
-								<p>Please install MetaMask or WalletConnect before donating.</p>
-								<div className="charity__mint">
-									<h3>Mint Amount</h3>
-									<div>
-										<Input
-											type="number"
-											min="1"
-											value={mintValue}
-											onChange={(e: React.FormEvent<HTMLInputElement>) => {
-												setMintValue(e.currentTarget.value)
-											}}
-										/>
-										<Button onClick={onPurchaseSupportUkraine}>Donate</Button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<EventListItem event={FEATURED_EVENT} showRSVP showSchedule={false} />
-				</Carousel>
-				<SubscribeForm />
-				<section className="upcoming-events">
-					<div className="upcoming-events__header">
-						<h3>Upcoming Events</h3>
-						<Button variant="link" onClick={() => navigate("/events")}>
-							Previous Events
+				<Carousel
+					swipeable
+					showThumbs={false}
+					showIndicators={false}
+					statusFormatter={(currentItem, total) => `${currentItem}/${total}`}
+					renderArrowPrev={(clickHandler, hasPrev) => (
+						<Button
+							onClick={clickHandler}
+							disabled={!hasPrev}
+							className="carousel-arrow-prev"
+							variant="link"
+						>
+							{hasPrev ? (
+								<LeftArrowActive width={40} height={20} />
+							) : (
+								<LeftArrowInactive width={40} height={20} />
+							)}
 						</Button>
-					</div>
-					<section className="upcoming-events__list">
-						{UPCOMING_EVENTS.slice(0, 2).map(eventContent => (
-							<div className="upcoming-events__list-item" key={eventContent.id}>
-								<Image
-									alt={eventContent.title}
-									src={eventContent?.custom_data?.bannerSrc}
-									className="upcoming-events__list-item-banner"
+					)}
+					renderArrowNext={(clickHandler, hasNext) => (
+						<Button
+							onClick={clickHandler}
+							disabled={!hasNext}
+							className="carousel-arrow-next"
+							variant="link"
+						>
+							{hasNext ? (
+								<RightArrowActive width={40} height={20} />
+							) : (
+								<RightArrowInactive width={40} height={20} />
+							)}
+						</Button>
+					)}
+				>
+					<EventListItem
+						event={FEATURED_EVENT}
+						showRSVP={false}
+						showSchedule={false}
+						showDescription
+					/>
+					<EventListItem
+						event={SOLSTICE_EVENT}
+						showRSVP={false}
+						showSchedule={false}
+						showDescription
+						dateTitle="Coming Late June 2022"
+					/>
+					<EventListItem
+						event={SUPPORT_UKRAINE_EVENT}
+						showRSVP={false}
+						showSchedule={false}
+						showDescription={!isMobile}
+						dateTitle="Ongoing"
+					>
+						<Grid row className="charity__mint">
+							<h3>Mint Amount</h3>
+							<Grid row>
+								<Input
+									type="number"
+									min="1"
+									step={1}
+									value={mintValue}
+									onChange={(e: React.FormEvent<HTMLInputElement>) => {
+										setMintValue(e.currentTarget.value)
+									}}
 								/>
-							</div>
-						))}
-					</section>
-					<section className="upcoming-events__about">
-						<h3>
-							Seker Factory is building an immersive tech noir of dystopian hangouts - the premier
-							spot to adventure from physical to digital. We are the architects of metaverse venues
-							and are gathering like-minded individuals to form a global community of digital
-							artists, hackers, avatars, and futurists of all kinds to navigate unchartered space
-							with us.
-						</h3>
-						<h3 className="purple">Come for the vibes. Stay for the revolution.</h3>
-						<h3>
-							Co-own our vision of the future, party in dystopia, and build for a wagmi horizon.
-						</h3>
-						<div className="upcoming-events__about-buttons">
-							<Button onClick={() => window.open("https://discord.gg/rju5QnZmpM", "_blank")}>
-								<DiscordIcon height="20px" width="20px" />
-								Join the Community
+								<Button
+									onClick={onPurchaseSupportUkraine}
+									disabled={walletConnected && ethBalance < 0.05}
+								>
+									Donate
+								</Button>
+							</Grid>
+							{walletConnected && ethBalance < 0.05 && (
+								<p className="charity__helper-text">{`You don't have enough ETH in your wallet. Price per item is 0.05 ETH`}</p>
+							)}
+						</Grid>
+					</EventListItem>
+				</Carousel>
+				<Grid Component="section" row className="about">
+					<Grid container>
+						<Grid row className="about__top">
+							<Grid row>
+								<Grid size={2} xs={12} sm={12} lg={12} className="about__header">
+									<p className="bold">About</p>
+								</Grid>
+								<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+									<h3>
+										Come for the vibes.
+										<br />
+										Stay for the revolution.
+									</h3>
+								</Grid>
+							</Grid>
+							<Grid row className="about__content">
+								<Grid size={2} xs={12} sm={12} lg={12} />
+								<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+									<ul>
+										<li>
+											<div className="about__col-perk-icon">
+												<StarIcon width="20px" height="20px" />
+											</div>
+											Are you a digital artist looking for a gallery where you can truly stretch
+											your creative chops, co-own, and help build from the ground-up?
+										</li>
+										<li>
+											<div className="about__col-perk-icon">
+												<StarIcon width="20px" height="20px" />
+											</div>
+											Are you a futurist wanting to learn, explore, and collaborate on leading-edge
+											technology in the new digital age?
+										</li>
+										<li>
+											<div className="about__col-perk-icon">
+												<StarIcon width="20px" height="20px" />
+											</div>
+											Are you a patron of digital art ... a supporter of the creative commons?{" "}
+											{`Do you have some ideas you'd like to see come to life?`}
+										</li>
+									</ul>
+								</Grid>
+								<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+									<p className="bold">
+										In the cradle of civilization Seker was known as the patron of builders,
+										craftsmen, and sacred objects. It stood at the crossroads of the physical world
+										and the spirit world. Today, Seker Factory is a bridge between our tangible
+										reality and the metaverse where creators gather to connect, learn, and build
+										together. Through an autonomous community utilizing blockchain tech, members
+										collectively own a commons to shape seasonal physical / digital experiences that
+										can only happen at Seker Factory.
+									</p>
+								</Grid>
+								<Grid size={2} xs={12} sm={12} lg={12} className="about__col">
+									<div className="contact">
+										<Button variant="secondary" color="white">
+											<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
+												<DiscordIcon height="20px" width="20px" />
+												Join Our Discord
+											</a>
+										</Button>
+										<Button variant="secondary" color="white">
+											<a href="https://twitter.com/SekerFactory" target="_blank" rel="noreferrer">
+												<TwitterIcon height="20px" width="20px" />
+												Follow Our Twitter
+											</a>
+										</Button>
+									</div>
+									<p className="contact__email">
+										For inquiries, email us at{" "}
+										<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
+									</p>
+								</Grid>
+							</Grid>
+						</Grid>
+						<Grid row className="about__footer">
+							<Button variant="link" disabled>
+								Learn More
 							</Button>
-							<Button onClick={() => window.open("https://twitter.com/SekerFactory", "_blank")}>
-								<TwitterIcon height="20px" width="20px" />
-								Follow Us on Twitter
-							</Button>
-						</div>
-						<p>
-							For inquiries, email us at{" "}
-							<a href="mailto:info@sekerfactory.com">info@sekerfactory.com</a>
-						</p>
-					</section>
-					<section className="upcoming-events__purchase">
-						<div className="upcoming-events__purchase-description">
-							<h3>
-								Introducing the Seker Factory Clearance Cards. These limited edition NFTs represent
-								our way of opening our factory up to patrons of the Seker intergalactic metaverse
-								community. We are calling on you to help crowd source the wisdom of curation. We
-								believe a community of art appreciators should be the driving force of defining what
-								is authentic digital art. We have written custom smart contract code that lets you
-								level up these cards over time as you participate in events, add valuable
-								contributions to the community, or simply hang out and enjoy the productions. The
-								higher your level, the more rep, merited governance rights on some proposals, and
-								rewards you have in your community. More details on this system coming soon.
-							</h3>
-						</div>
-						<div className="upcoming-events__purchase-item">
-							<div className="upcoming-events__purchase-item-img-container">
-								<video
-									src={clearanceCardOneSrc}
-									muted
-									autoPlay
-									loop
-									onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
-								/>
-							</div>
-							<h3>001 Clearance Cards</h3>
-							<p>{clearanceCardTotal} minted / 3000 total</p>
-							<p className="upcoming-events__purchase-item-address">
-								<span className="bold">Seker Factory 001</span> (Downtown Los Angeles)
-							</p>
-							<ul>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									{`Access to all visitor areas at Seker Factory 001 as well as that of future locations
-							at a "first come, first serve" basis.`}
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Patron governance rights for Seker Factory 001 including curation voting.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Early access to NFTs released by Seker Factory 001 artists.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Access to all general IRL and metaverse events hosted by Seker Factory 001.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Discounts to Seker Factory 001 merch.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Level starts at 0
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									More to come!
-								</li>
-							</ul>
-							<Button onClick={() => setBuyingClearanceCardType("001")}>Mint</Button>
-						</div>
-						<div className="upcoming-events__purchase-item">
-							<div className="upcoming-events__purchase-item-img-container">
-								<video
-									src={topClearanceCardSrc}
-									muted
-									autoPlay
-									loop
-									onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
-								/>
-							</div>
-							<h3>Top Clearance Cards</h3>
-							<p>{topClearanceCardTotal} minted / 1500 total</p>
-							<p className="upcoming-events__purchase-item-address bold">All Seker Factories</p>
-							<ul>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									{`Access to all visitor areas at all Seker Factory locations with ability to reserve "special" exhibits / experiences.`}
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Extended patron governance rights for all Seker Factory locations including
-									curation voting on all locations virtual or real.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Early access to NFTs released NFTs released by all Seker Factory locations.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Access to all IRL and metaverse events at all Seker Factory locations, including
-									exclusive VIP cyber gala events.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Free exclusive Seker Factory merch redemption.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									Level boost starting at level 1 for being an early supporter.
-								</li>
-								<li>
-									<div className="upcoming-events__purchace-item-icon-container">
-										<DoneCircle width="20px" height="20px" />
-									</div>
-									More to come!
-								</li>
-							</ul>
-							<Button onClick={() => setBuyingClearanceCardType("TOP")}>Mint</Button>
-						</div>
-					</section>
-				</section>
-				<section className="about-us">
-					<div className="about-us__inner-container">
-						<h2>
-							Ran as a truly decentralized autonomous organization (DAO), we are a community of
-							collectors, artists, technologists, and dreamers — curating our own journey and
-							experiences every step of the way.
-						</h2>
-						<h2>
-							With the backing of extensive Ethereum core developer experience, access to the most
-							cutting-edge DAO tooling, artists from around the globe, and an exciting physical
-							space (with more to come), Seker Factory aims to explore the leisure of an
-							intergalactic cruise ship, the boundaries between the digital and physical, the
-							promotion and expansion of the creative commons and public goods, and the
-							technological advancement within the NFT and DAO ecosystems.
-						</h2>
-						<ul>
-							<li>
-								<div className="phase__content-icon">
-									<StarIcon width="20px" height="20px" />
-								</div>
-								Are you a digital artist looking for a gallery where you can truly stretch your
-								creative chops, co-own, and help build from the ground-up?
-							</li>
-							<li>
-								<div className="phase__content-icon">
-									<StarIcon width="20px" height="20px" />
-								</div>
-								Are you a futurist wanting to learn, explore, and collaborate on leading-edge
-								technology in the new digital age?
-							</li>
-							<li>
-								<div className="phase__content-icon">
-									<StarIcon width="20px" height="20px" />
-								</div>
-								Are you a patron of digital art...a supporter of the creative commons?{" "}
-								{`Do you have some ideas you'd like to see come to life?`}
-							</li>
-						</ul>
-					</div>
-				</section>
+						</Grid>
+					</Grid>
+				</Grid>
+				<Grid Component="section" row className="membership">
+					<Grid container>
+						<Grid size={2} xs={12} sm={12} lg={12}>
+							<p className="membership__heading bold">Membership</p>
+						</Grid>
+						<Grid size={8} xs={12} sm={12} lg={12} className="membership__content">
+							<Grid size={12} xs={12} sm={12} lg={12} className="membership__description">
+								<p className="membership__description-content">
+									<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
+									limited-edition NFTs represent our way of opening our factory up to patrons of the
+									Seker intergalactic metaverse community. We are calling on you to help crowd
+									source the wisdom of curation. We believe a community of art appreciators should
+									be the driving force of defining what is authentic digital art. We have written
+									custom smart contract code that lets you level up these cards over time as you
+									participate in events, add valuable contributions to the community, or simply hang
+									out and enjoy the productions. The higher your level, the more representation,
+									merited governance rights on some proposals, and rewards you have in your
+									community.
+								</p>
+							</Grid>
+							<Grid row className="membership__items-container">
+								<Grid size={6} xs={12} sm={12} lg={12} className="membership__item">
+									<Grid className="membership__item-img-container">
+										<video
+											src={clearanceCardOneSrc}
+											muted
+											autoPlay
+											loop
+											playsInline
+											onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
+										/>
+										<h3>Seker Factory 001 Clearance Cards</h3>
+										<p className="membership__item-address">Downtown Los Angeles</p>
+										<p className="membership__item-minted">
+											{clearanceCardTotal} minted / 3000 total
+										</p>
+										<Button
+											onClick={async () => {
+												await signIn()
+												setBuyingClearanceCardType("001")
+											}}
+										>
+											Mint NFT
+										</Button>
+									</Grid>
+									<ul>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Access to All Factory Locations
+												<br />
+												<span className="italic">(first come, first serve)</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Factory 001 Governance Rights
+												<br />
+												<span className="italic">
+													(including curation voting for IRL + metaverse)
+												</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Early access to NFTs
+												<br />
+												<span className="italic">(by Factory 001 artists)</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>Access to All Factory 001 IRL + Metaverse Events</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>Level starts at 0</p>
+										</li>
+										<Button variant="link" disabled>
+											Learn More
+										</Button>
+									</ul>
+								</Grid>
+								<Grid size={6} xs={12} sm={12} lg={12} className="membership__item">
+									<Grid className="membership__item-img-container">
+										<video
+											src={topClearanceCardSrc}
+											muted
+											autoPlay
+											loop
+											playsInline
+											onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
+										/>
+										<h3>Seker Factory Top Clearance Cards</h3>
+										<p className="membership__item-address">All Locations</p>
+										<p className="membership__item-minted">
+											{topClearanceCardTotal} minted / 1500 total
+										</p>
+										<Button
+											onClick={async () => {
+												await signIn()
+												setBuyingClearanceCardType("TOP")
+											}}
+										>
+											Mint NFT
+										</Button>
+									</Grid>
+									<ul>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Access to All Factory Locations
+												<br />
+												<span className="italic">(special reservations available)</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Governance Rights for All Factory Locations
+												<br />
+												<span className="italic">
+													(including curation voting for IRL + metaverse)
+												</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Early access to NFTs
+												<br />
+												<span className="italic">(by artists from all Factory locations)</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Access to all IRL + Metaverse Events
+												<br />
+												<span className="italic">
+													(all Factory locations including exclusive VIP Cyber Galas)
+												</span>
+											</p>
+										</li>
+										<li>
+											<div className="membership__item-icon-container">
+												<DoneCircle width="20px" height="20px" />
+											</div>
+											<p>
+												Level Boost Starting at 1
+												<br />
+												<span className="italic">(early patron / supporter perk)</span>
+											</p>
+										</li>
+										<Button variant="link" disabled>
+											Learn More
+										</Button>
+									</ul>
+								</Grid>
+							</Grid>
+						</Grid>
+						<Grid size={2} xs={12} sm={12} lg={12} />
+					</Grid>
+				</Grid>
+				<Grid container>
+					<SubscribeForm />
+				</Grid>
 			</main>
 			<Footer />
 		</>
