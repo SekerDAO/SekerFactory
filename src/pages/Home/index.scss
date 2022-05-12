@@ -485,12 +485,17 @@
     }
 
     .about {
-      padding: 44px 24px;
+      padding: 44px 36px;
 
       &__header {
         p {
           width: 100%;
         }
+      }
+
+      &__col {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 

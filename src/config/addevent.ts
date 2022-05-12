@@ -27,7 +27,7 @@ export const SUPPORT_UKRAINE_EVENT: EventContent = {
 	Factory trapped in this conflict. We all thank you for your support.
 </p>
 <p>Please install MetaMask or WalletConnect before donating.</p>`,
-	location: "Join Seker Factory in Supporting Ukraine",
+	location: "Join Us in Supporting Ukraine",
 	date_start: "Ongoing",
 	date_start_time: "00:00",
 	date_start_ampm: "AM",

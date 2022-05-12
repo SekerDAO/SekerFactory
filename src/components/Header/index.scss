@@ -60,6 +60,7 @@
       justify-content: space-between;
       align-items: center;
       display: flex;
+      flex-wrap: wrap;
     }
 
     &__nav {
@@ -70,6 +71,11 @@
         width: 100%;
         justify-content: center;
       }
+    }
+
+    .btn {
+      height: 30px;
+      padding-top: 6px;
     }
   }
 }

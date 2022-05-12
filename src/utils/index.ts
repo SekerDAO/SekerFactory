@@ -25,7 +25,7 @@ export const getDateReadable = (event: EventContent): string | undefined => {
 	if (startMonth === endMonth) {
 		return `${startDate.toLocaleString("en-US", {
 			month: "long"
-		})} ${startDate.getDate()}-${endDate.getDate()}, ${startDate.getFullYear()}`
+		})} ${startDate.getDate()} - ${endDate.getDate()}, ${startDate.getFullYear()}`
 	}
 	return `${startDate.toLocaleString("en-US", {
 		month: "long"

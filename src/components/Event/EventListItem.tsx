@@ -36,7 +36,7 @@ const EventListItem: FunctionComponent<
 					{event &&
 						(dateTitle ?? (
 							<>
-								{getDateReadable(event)} <br /> {getTimeReadable(event)}
+								{getDateReadable(event)} | {getTimeReadable(event)}
 							</>
 						))}
 				</p>
