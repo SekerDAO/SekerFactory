@@ -162,7 +162,7 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 								<Grid size={2} xs={12} sm={12} lg={12} className="about__header">
 									<p className="bold">About</p>
 								</Grid>
-								<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+								<Grid size={4} xs={12} sm={12} lg={12} className="about__subheader">
 									<h3>
 										Come for the vibes.
 										<br />
@@ -172,7 +172,13 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 							</Grid>
 							<Grid row className="about__content">
 								<Grid size={2} xs={12} sm={12} lg={12} />
-								<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
+								<Grid
+									size={4}
+									xs={12}
+									sm={12}
+									lg={12}
+									className="about__col about__col--no-left-gutters"
+								>
 									<ul>
 										<li>
 											<div className="about__col-perk-icon">
