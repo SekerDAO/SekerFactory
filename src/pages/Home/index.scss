@@ -2,6 +2,11 @@
 
 .home-page {
   .carousel {
+    &-wrapper {
+      width: 100%;
+      background-color: black;
+    }
+
     &-status {
       left: 0;
       bottom: 0;

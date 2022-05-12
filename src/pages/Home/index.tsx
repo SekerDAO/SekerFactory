@@ -76,85 +76,89 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 				video
 			/>
 			<main className="home-page">
-				<Carousel
-					swipeable
-					showThumbs={false}
-					showIndicators={false}
-					statusFormatter={(currentItem, total) => `${currentItem}/${total}`}
-					renderArrowPrev={(clickHandler, hasPrev) => (
-						<Button
-							onClick={clickHandler}
-							disabled={!hasPrev}
-							className="carousel-arrow-prev"
-							variant="link"
-						>
-							{hasPrev ? (
-								<LeftArrowActive width={40} height={20} />
-							) : (
-								<LeftArrowInactive width={40} height={20} />
-							)}
-						</Button>
-					)}
-					renderArrowNext={(clickHandler, hasNext) => (
-						<Button
-							onClick={clickHandler}
-							disabled={!hasNext}
-							className="carousel-arrow-next"
-							variant="link"
-						>
-							{hasNext ? (
-								<RightArrowActive width={40} height={20} />
-							) : (
-								<RightArrowInactive width={40} height={20} />
-							)}
-						</Button>
-					)}
-				>
-					<EventListItem
-						event={FEATURED_EVENT}
-						showRSVP={false}
-						showSchedule={false}
-						showDescription
-					/>
-					<EventListItem
-						event={SOLSTICE_EVENT}
-						showRSVP={false}
-						showSchedule={false}
-						showDescription
-						dateTitle="Coming Late June 2022"
-					/>
-					<EventListItem
-						event={SUPPORT_UKRAINE_EVENT}
-						showRSVP={false}
-						showSchedule={false}
-						showDescription={!isMobile}
-						dateTitle="Ongoing"
-					>
-						<Grid row className="charity__mint">
-							<h3>Mint Amount</h3>
-							<Grid row>
-								<Input
-									type="number"
-									min="1"
-									step={1}
-									value={mintValue}
-									onChange={(e: React.FormEvent<HTMLInputElement>) => {
-										setMintValue(e.currentTarget.value)
-									}}
-								/>
+				<Grid Component="section" row className="carousel-wrapper">
+					<Grid container>
+						<Carousel
+							swipeable
+							showThumbs={false}
+							showIndicators={false}
+							statusFormatter={(currentItem, total) => `${currentItem}/${total}`}
+							renderArrowPrev={(clickHandler, hasPrev) => (
 								<Button
-									onClick={onPurchaseSupportUkraine}
-									disabled={walletConnected && ethBalance < 0.05}
+									onClick={clickHandler}
+									disabled={!hasPrev}
+									className="carousel-arrow-prev"
+									variant="link"
 								>
-									Donate
+									{hasPrev ? (
+										<LeftArrowActive width={40} height={20} />
+									) : (
+										<LeftArrowInactive width={40} height={20} />
+									)}
 								</Button>
-							</Grid>
-							{walletConnected && ethBalance < 0.05 && (
-								<p className="charity__helper-text">{`You don't have enough ETH in your wallet. Price per item is 0.05 ETH`}</p>
 							)}
-						</Grid>
-					</EventListItem>
-				</Carousel>
+							renderArrowNext={(clickHandler, hasNext) => (
+								<Button
+									onClick={clickHandler}
+									disabled={!hasNext}
+									className="carousel-arrow-next"
+									variant="link"
+								>
+									{hasNext ? (
+										<RightArrowActive width={40} height={20} />
+									) : (
+										<RightArrowInactive width={40} height={20} />
+									)}
+								</Button>
+							)}
+						>
+							<EventListItem
+								event={FEATURED_EVENT}
+								showRSVP={false}
+								showSchedule={false}
+								showDescription
+							/>
+							<EventListItem
+								event={SOLSTICE_EVENT}
+								showRSVP={false}
+								showSchedule={false}
+								showDescription
+								dateTitle="Coming Late June 2022"
+							/>
+							<EventListItem
+								event={SUPPORT_UKRAINE_EVENT}
+								showRSVP={false}
+								showSchedule={false}
+								showDescription={!isMobile}
+								dateTitle="Ongoing"
+							>
+								<Grid row className="charity__mint">
+									<h3>Mint Amount</h3>
+									<Grid row>
+										<Input
+											type="number"
+											min="1"
+											step={1}
+											value={mintValue}
+											onChange={(e: React.FormEvent<HTMLInputElement>) => {
+												setMintValue(e.currentTarget.value)
+											}}
+										/>
+										<Button
+											onClick={onPurchaseSupportUkraine}
+											disabled={walletConnected && ethBalance < 0.05}
+										>
+											Donate
+										</Button>
+									</Grid>
+									{walletConnected && ethBalance < 0.05 && (
+										<p className="charity__helper-text">{`You don't have enough ETH in your wallet. Price per item is 0.05 ETH`}</p>
+									)}
+								</Grid>
+							</EventListItem>
+						</Carousel>
+					</Grid>
+				</Grid>
 				<Grid Component="section" row className="about">
 					<Grid container>
 						<Grid row className="about__top">
