@@ -23,6 +23,10 @@ const providerOptions = {
 		package: WalletConnectProvider, // required
 		options: {
 			infuraId: infuraConfig.INFURA_ID // required
+		},
+		display: {
+			description:
+				"Scan with WalletConnect to connect. Use it on mobile to connect with Metamask mobile app"
 		}
 	},
 	torus: {
@@ -46,7 +50,8 @@ const providerOptions = {
 }
 
 export const web3Modal = new Web3Modal({
-	network: "mainnet", // optional
-	cacheProvider: true, // optional
-	providerOptions // required
+	network: "mainnet",
+	cacheProvider: false,
+	providerOptions,
+	theme: "dark"
 })
