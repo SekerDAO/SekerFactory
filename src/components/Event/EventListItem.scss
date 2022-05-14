@@ -103,3 +103,19 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .event-list-item {
+    &__content {
+      padding-top: 24px;
+
+      h1 {
+        margin-bottom: 12px;
+      }
+
+      &-hosted-by {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
