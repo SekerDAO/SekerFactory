@@ -68,6 +68,14 @@
   }
 }
 
+@media (min-width: 1520px) {
+  .event-list-item {
+    img {
+      min-height: auto;
+    }
+  }
+}
+
 @media (max-width: 1040px) {
   .event-list-item {
     img {
