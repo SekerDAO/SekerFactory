@@ -255,16 +255,16 @@ const HomePage: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						<Grid size={8} xs={12} sm={12} lg={12} className="membership__content">
 							<Grid size={12} xs={12} sm={12} lg={12} className="membership__description">
 								<p className="membership__description-content">
-									<span className="bold">Introducing the Seker Factory Clearance Cards.</span>These
-									limited-edition NFTs represent our way of opening our factory up to patrons of the
-									Seker intergalactic metaverse community. We are calling on you to help crowd
-									source the wisdom of curation. We believe a community of art appreciators should
-									be the driving force of defining what is authentic digital art. We have written
-									custom smart contract code that lets you level up these cards over time as you
-									participate in events, add valuable contributions to the community, or simply hang
-									out and enjoy the productions. The higher your level, the more representation,
-									merited governance rights on some proposals, and rewards you have in your
-									community.
+									<span className="karla-bold">Introducing the Seker Factory Clearance Cards.</span>
+									These limited-edition NFTs represent our way of opening our factory up to patrons
+									of the Seker intergalactic metaverse community. We are calling on you to help
+									crowd source the wisdom of curation. We believe a community of art appreciators
+									should be the driving force of defining what is authentic digital art. We have
+									written custom smart contract code that lets you level up these cards over time as
+									you participate in events, add valuable contributions to the community, or simply
+									hang out and enjoy the productions. The higher your level, the more
+									representation, merited governance rights on some proposals, and rewards you have
+									in your community.
 								</p>
 							</Grid>
 							<Grid row className="membership__items-container">
