@@ -1,47 +1,23 @@
-import {ethers} from "ethers"
-import {useContext, useEffect, useState, FunctionComponent, useCallback} from "react"
+import {useContext, FunctionComponent, PropsWithChildren} from "react"
 import {useNavigate, Link} from "react-router-dom"
 import logo from "../../assets/images/logo.svg"
 import Button from "../../components/Button"
-import {web3Modal} from "../../config/eth"
 import {Web3Context} from "../../context"
 import useMediaQuery from "../../hooks/useMediaQuery"
 import useResetScroll from "../../hooks/useResetScroll"
-import {formatReadableAddress} from "../../utils"
 import Grid from "../Grid"
 import Image from "../Image"
 import "./index.scss"
 
-const Header: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
-	const {web3Context, setWeb3Context} = useContext(Web3Context)
-	const [buttonText, setButtonText] = useState("Connect Wallet")
+const Header: FunctionComponent<PropsWithChildren<unknown>> = () => {
+	const {address, walletConnected, signIn} = useContext(Web3Context)
 	const navigate = useNavigate()
 	const isMobile = useMediaQuery("(max-width: 1039px)")
 	useResetScroll()
 
-	useEffect(() => {
-		const getAddress = async () => {
-			if (web3Context.signer) {
-				setButtonText(formatReadableAddress(await web3Context.signer.getAddress()))
-			}
-		}
-		getAddress()
-	}, [web3Context, setButtonText])
-
-	const onConnect = useCallback(async () => {
-		if (!web3Context.signer) {
-			// sign in
-			await web3Modal.clearCachedProvider()
-			const instance = await web3Modal.connect()
-			const provider = new ethers.providers.Web3Provider(instance)
-			const signer = provider.getSigner()
-			setWeb3Context({instance, signer})
-		}
-	}, [web3Context.signer, setWeb3Context])
-
 	const connectButton = (
-		<Button onClick={onConnect} disabled={!!web3Context.signer}>
-			{buttonText}
+		<Button onClick={signIn} disabled={walletConnected}>
+			{address ?? "Connect Wallet"}
 		</Button>
 	)
 
@@ -66,14 +42,8 @@ const Header: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 						<li>
 							<Link to="#">Apply</Link>
 						</li>
-						<li>
-							<Link to="#">Artists</Link>
-						</li>
-						<li>
-							<Link to="#">About</Link>
-						</li>
-						<li>
-							<Link to="#">Contact</Link>
+						<li className="disabled">
+							<a>Artists</a>
 						</li>
 						{!isMobile && <li>{connectButton}</li>}
 					</ul>

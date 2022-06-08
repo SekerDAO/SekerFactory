@@ -1,0 +1,118 @@
+@import "../../../../assets/styles/colors.scss";
+
+.home-page {
+  .carousel {
+    &-wrapper {
+      width: 100%;
+      background-color: black;
+    }
+
+    &-status {
+      left: 0;
+      bottom: 0;
+      top: auto;
+      font-size: 16px;
+      line-height: 20px;
+      width: 268px;
+      background-color: black;
+      padding: 34px 24px 32px 72px;
+    }
+
+    &-arrow {
+      &-prev,
+      &-next {
+        position: absolute;
+        border-radius: 0;
+        background-color: transparent;
+        bottom: 24px;
+        z-index: 1;
+        left: 130px;
+        border-top: none;
+      }
+
+      &-next {
+        left: 194px;
+      }
+    }
+  }
+
+  .charity {
+    &__mint {
+      h3 {
+        margin-top: 10px;
+      }
+
+      & > div {
+        display: flex;
+
+        .btn {
+          margin-top: 0;
+          margin-right: 0;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    &__helper-text {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1039px) {
+  .home-page {
+    .carousel {
+      &-slider {
+        overflow: visible;
+      }
+
+      &-status {
+        top: 100%;
+        width: 100%;
+        height: 87px;
+        padding-left: calc(50% - 100px);
+        position: relative;
+      }
+
+      &-arrow {
+        &-prev,
+        &-next {
+          bottom: 24px;
+        }
+
+        &-prev {
+          left: calc(50% - 60px);
+        }
+
+        &-next {
+          left: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .home-page {
+    .charity {
+      &__mint {
+        .input {
+          &__field {
+            height: 30px;
+          }
+        }
+
+        & > div {
+          flex-wrap: nowrap;
+
+          .btn {
+            margin-top: 0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}

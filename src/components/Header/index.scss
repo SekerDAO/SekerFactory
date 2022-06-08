@@ -46,6 +46,16 @@
         .btn {
           margin-left: 16px;
         }
+
+        &.disabled a {
+          color: $dark-grey50;
+          cursor: not-allowed;
+
+          &:hover {
+            color: $dark-grey50;
+            border: none;
+          }
+        }
       }
     }
   }
