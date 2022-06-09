@@ -55,7 +55,7 @@ export const events: EventData[] = [
     transformative live performances, tantalizing food and craft cocktails, new interactive
      digital art, and much more – to conclude our s.0 artist cohort.
     </p>`,
-		description2: `<p>Guestlist open:<br/> Fri | June 3, 2022</p>`,
+		description2: `<p>Seker Factory membership cards available for purchase on homepage.</p>`,
 		image: vervBanner,
 		subPageImage: vervImage,
 		location: "Seker Factory 001 (Los Angeles)",
@@ -87,9 +87,7 @@ export const events: EventData[] = [
     our Solstice Series.</p>`,
 		description2: `<p><b>Open to public.</b><br/>
     Event is 18+.<br/>
-    RSVP is required.<br/><br/>
-    Tickets go on sale:<br/>
-    Fri | June 3, 2022</p>`,
+    RSVP is required.<br/><br/>`,
 		image: vervSeriesBanner,
 		subPageImage: vervSeriesImage,
 		location: "836 S Los Angeles Street Los Angeles, CA 90014",

@@ -29,11 +29,13 @@
   }
 
   &__image {
-    flex: 1;
-    min-height: 450px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: left top;
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-right: 20px;
   }
 
   &__description {
@@ -76,6 +78,10 @@
   }
 
   .event {
+    &__image {
+      margin-right: 0;
+    }
+
     &__mint {
       padding-left: 0;
     }
