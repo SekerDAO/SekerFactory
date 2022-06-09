@@ -4,7 +4,6 @@
   .about {
     background: transparent linear-gradient(233deg, $dark-grey 0%, #000 100%) 0% 0% no-repeat padding-box;
     padding: 88px 72px;
-    min-height: 100vh;
     flex-wrap: wrap;
 
     &__header {
@@ -43,7 +42,7 @@
     }
 
     &__content {
-      margin-top: 48px;
+      margin: 48px 0;
     }
 
     &__footer {
@@ -101,6 +100,12 @@
         }
       }
 
+      .learn-more-link {
+        color: $purple;
+        border-top: 1px solid $purple;
+        padding-top: 5px;
+      }
+
       &-perk-icon {
         margin-right: 8px;
       }
@@ -111,6 +116,7 @@
 
         .btn {
           width: 196px;
+          margin-bottom: 24px;
 
           a {
             display: flex;
@@ -129,11 +135,6 @@
                 fill: black;
               }
             }
-          }
-
-          &:last-of-type {
-            margin-top: 24px;
-            margin-bottom: 24px;
           }
         }
       }
@@ -165,7 +166,7 @@
         }
 
         .btn {
-          margin: 0 auto;
+          margin: 0 auto 24px auto;
         }
       }
     }

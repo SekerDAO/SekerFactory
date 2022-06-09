@@ -136,9 +136,13 @@ const Membership: FunctionComponent = () => {
 										</div>
 										<p>Level starts at 0</p>
 									</li>
-									<Button variant="link" disabled>
-										Learn More
-									</Button>
+									<a
+										href="https://sekerfactory.medium.com/power-over-9000-level-your-seker-factory-dao-nft-889bd6cd5577"
+										target="_blank"
+										rel="noreferrer noopener"
+									>
+										<Button variant="link">Learn More</Button>
+									</a>
 								</ul>
 							</Grid>
 							<Grid size={6} xs={12} sm={12} lg={12} className="membership__item">
@@ -220,9 +224,13 @@ const Membership: FunctionComponent = () => {
 											<span className="italic">(early patron / supporter perk)</span>
 										</p>
 									</li>
-									<Button variant="link" disabled>
-										Learn More
-									</Button>
+									<a
+										href="https://sekerfactory.medium.com/power-over-9000-level-your-seker-factory-dao-nft-889bd6cd5577"
+										target="_blank"
+										rel="noreferrer noopener"
+									>
+										<Button variant="link">Learn More</Button>
+									</a>
 								</ul>
 							</Grid>
 						</Grid>

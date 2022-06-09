@@ -1,5 +1,6 @@
 import {FunctionComponent} from "react"
 import {ReactComponent as DiscordIcon} from "../../../../assets/icons/discord-grayscale.svg"
+import {ReactComponent as IGIcon} from "../../../../assets/icons/instagram-grayscale.svg"
 import {ReactComponent as StarIcon} from "../../../../assets/icons/star.svg"
 import {ReactComponent as TwitterIcon} from "../../../../assets/icons/twitter-grayscale.svg"
 import Button from "../../../../components/Button"
@@ -58,19 +59,41 @@ const About: FunctionComponent = () => (
 							community utilizing blockchain tech, members collectively own a commons to shape
 							seasonal physical / digital experiences that can only happen at Seker Factory.
 						</p>
+						<a
+							className="learn-more-link"
+							href="https://sekerfactory.medium.com/welcome-to-seker-factory-dao-c9cb3cfc9d3"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Learn More
+						</a>
 					</Grid>
 					<Grid size={2} xs={12} sm={12} lg={12} className="about__col">
 						<div className="contact">
 							<Button variant="secondary" color="white">
-								<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noreferrer">
+								<a href="https://discord.gg/rju5QnZmpM" target="_blank" rel="noopener noreferrer">
 									<DiscordIcon height="20px" width="20px" />
 									Join Our Discord
 								</a>
 							</Button>
 							<Button variant="secondary" color="white">
-								<a href="https://twitter.com/SekerFactory" target="_blank" rel="noreferrer">
+								<a
+									href="https://twitter.com/SekerFactory"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									<TwitterIcon height="20px" width="20px" />
 									Follow Our Twitter
+								</a>
+							</Button>
+							<Button variant="secondary" color="white">
+								<a
+									href="https://www.instagram.com/sekerfactory/"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<IGIcon height="20px" width="20px" />
+									Follow Our IG
 								</a>
 							</Button>
 						</div>
@@ -80,11 +103,6 @@ const About: FunctionComponent = () => (
 						</p>
 					</Grid>
 				</Grid>
-			</Grid>
-			<Grid row className="about__footer">
-				<Button variant="link" disabled>
-					Learn More
-				</Button>
 			</Grid>
 		</Grid>
 	</Grid>

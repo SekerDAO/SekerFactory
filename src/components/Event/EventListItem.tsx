@@ -1,71 +1,52 @@
-import {FunctionComponent} from "react"
-import {EventContent} from "../../types/event"
-import {getDateReadable, getTimeReadable, openRSVPForm} from "../../utils"
+import {FunctionComponent, PropsWithChildren} from "react"
+import {EventData} from "../../config/events"
+import {getDateReadable, getTimeReadable} from "../../utils"
 import Button from "../Button"
 import Grid from "../Grid"
-import Image from "../Image"
 import "./EventListItem.scss"
 
 const EventListItem: FunctionComponent<
-	React.PropsWithChildren<{
-		event: EventContent
-		dateTitle?: string
-		showRSVP: boolean
-		showMoreInfo?: boolean
-		showSchedule: boolean
-		showDescription?: boolean
+	PropsWithChildren<{
+		event: EventData
+		showSchedule?: boolean
 		onShowSchedule?: () => void
 		className?: string
 	}>
-> = ({
-	event,
-	dateTitle,
-	showRSVP,
-	showMoreInfo,
-	showSchedule,
-	showDescription,
-	onShowSchedule,
-	className,
-	children
-}) => (
+> = ({event, showSchedule, onShowSchedule, className, children}) => (
 	<Grid container className="event-list-item__outer-container">
 		<section className={`event-list-item ${className ?? ""}`}>
-			<Image src={event?.custom_data?.bannerSrc} alt={event?.title} />
 			<div className="event-list-item__content">
-				<p className="event-list-item__content-date">
-					{event &&
-						(dateTitle ?? (
-							<>
-								{getDateReadable(event)} | {getTimeReadable(event)}
-							</>
-						))}
-				</p>
-				<h1
-					dangerouslySetInnerHTML={{
-						__html: event?.title
-					}}
-				/>
-				<div className="event-list-item__content-hosted-by">
-					<h3 dangerouslySetInnerHTML={{__html: event?.location}} />
-				</div>
+				<div className="image" style={{backgroundImage: `url("${event.image}")`}} />
+				{event.dates.map((date, index) => (
+					<p className="event-list-item__content-date" key={index}>
+						{getDateReadable(date)} {date.date_start_time && date.date_end_time && "|"}{" "}
+						{getTimeReadable(date)}
+					</p>
+				))}
+				<h1>{event.title}</h1>
+				{event.location && (
+					<div className="event-list-item__content-hosted-by">
+						<h3>{event.location}</h3>
+					</div>
+				)}
 				{showSchedule && (
 					<Button variant="secondary" onClick={onShowSchedule}>
 						View Schedule
 					</Button>
 				)}
-				{showRSVP && (
-					<Button onClick={() => openRSVPForm(event)} color="white">
-						RSVP
-					</Button>
-				)}
-				{showMoreInfo && (
-					<Button color="white" variant="secondary">
-						More Info
-					</Button>
-				)}
-				{!showRSVP && !showMoreInfo && showDescription && (
-					<p dangerouslySetInnerHTML={{__html: event?.description}} />
-				)}
+				{event.showDescription && <p dangerouslySetInnerHTML={{__html: event.description}} />}
+				<div className="event-list-item__buttons">
+					{event.links.map((link, index) => (
+						<a key={index} href={link.url} target="_blank" rel="noreferrer noopener">
+							<Button color="white">{link.title}</Button>
+						</a>
+					))}
+					{event.showMoreInfo && (
+						<Button color="white" variant="secondary">
+							More Info
+						</Button>
+					)}
+				</div>
 				{children}
 			</div>
 		</section>
