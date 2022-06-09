@@ -70,7 +70,7 @@ export const events: EventData[] = [
 			etherValue: "0.05"
 		},
 		showMoreInfo: true,
-		showDescription: true,
+		showDescription: false,
 		links: [],
 		dates: []
 	},
@@ -104,7 +104,7 @@ export const events: EventData[] = [
 			}
 		],
 		showMoreInfo: true,
-		showDescription: true
+		showDescription: false
 	},
 	{
 		id: "verv_solstice_series",
@@ -146,7 +146,7 @@ export const events: EventData[] = [
 				url: "https://www.eventbrite.com/e/verv-solstice-series-closing-saturday-tickets-360968224677"
 			}
 		],
-		showDescription: true,
+		showDescription: false,
 		showMoreInfo: true
 	},
 	{
@@ -179,7 +179,7 @@ export const events: EventData[] = [
 				url: "https://docs.google.com/forms/d/e/1FAIpQLSf6EpkzVMPe05mW1ijIFbQQFIr62-einO_h54FpceMoNmitmA/viewform"
 			}
 		],
-		showDescription: true,
+		showDescription: false,
 		showMoreInfo: true
 	},
 	{
@@ -209,6 +209,6 @@ export const events: EventData[] = [
 		],
 		links: [],
 		showMoreInfo: true,
-		showDescription: true
+		showDescription: false
 	}
 ]
