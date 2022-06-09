@@ -46,67 +46,6 @@ export type EventData = {
 
 export const events: EventData[] = [
 	{
-		id: "support_ukraine",
-		title: "Seeds of Ukraine NFTs",
-		description: `<p>
-    Hundreds of thousands of Ukrainian people have fled their homes to seek refuge in
-	  neighboring European countries. Millions more are attempting to escape the chaos but
-	  are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks
-	  across the country have been overwhelmed and Ukrainians, who still rely heavily on
-	  cash payments, are unable to cover the costs of getting themselves out. The
-	  developer of this site — a member of Seker DAO and a good friend of all of ours — is
-	  currently in the midst of this struggle. The artist of this NFT, another DAO member,
-	  grew up in the Ukraine and has family there. This war hits close to home for all.
-	  <br/><br/>
-	  Purchasing a print of this NFT will be your badge of support. 100% of the proceeds
-	  go to humanitarian aid for those trying to evacuate including the members of Seker
-	  Factory trapped in this conflict. We all thank you for your support.
-    </p>`,
-		image: seedBanner,
-		subPageImage: seedImage,
-		mint: {
-			address: config.SUPPORT_UKRAINE_CONTRACT_ADDRESS,
-			abi: Ukraine,
-			etherValue: "0.05"
-		},
-		showMoreInfo: true,
-		showDescription: false,
-		links: [],
-		dates: []
-	},
-	{
-		id: "verv",
-		title: "VERV: A Mixed Reality Solstice Experience",
-		description: `<p>
-    Join us for an unforgettable, members-only night of immersive digital magic – with 
-    transformative live performances, tantalizing food and craft cocktails, new interactive
-     digital art, and much more – to conclude our s.0 artist cohort.
-    </p>`,
-		description2: `<p>Guestlist open:<br/> Fri | June 3, 2022</p>`,
-		image: vervBanner,
-		subPageImage: vervImage,
-		location: "Seker Factory 001 (Los Angeles)",
-		dates: [
-			{
-				date_start: "06/21/2022",
-				date_start_time: "19:00:00",
-				date_start_ampm: "PM",
-				date_end: "06/21/2022",
-				date_end_time: "22:00:00",
-				date_end_ampm: "PM",
-				date_format: "MM/DD/YYYY"
-			}
-		],
-		links: [
-			{
-				title: "RSVP",
-				url: "https://www.addevent.com/event/JQ13973574"
-			}
-		],
-		showMoreInfo: true,
-		showDescription: false
-	},
-	{
 		id: "verv_solstice_series",
 		title: "The VERV Solstice Series",
 		description: `<p>Unable to attend <b>VERV: A Mixed Reality Solstice Experience?</b><br/> 
@@ -208,6 +147,67 @@ export const events: EventData[] = [
 			}
 		],
 		links: [],
+		showMoreInfo: true,
+		showDescription: false
+	},
+	{
+		id: "support_ukraine",
+		title: "Seeds of Ukraine NFTs",
+		description: `<p>
+    Hundreds of thousands of Ukrainian people have fled their homes to seek refuge in
+	  neighboring European countries. Millions more are attempting to escape the chaos but
+	  are stranded on roadways due to traffic, abandoned cars, and lack of gas. Banks
+	  across the country have been overwhelmed and Ukrainians, who still rely heavily on
+	  cash payments, are unable to cover the costs of getting themselves out. The
+	  developer of this site — a member of Seker DAO and a good friend of all of ours — is
+	  currently in the midst of this struggle. The artist of this NFT, another DAO member,
+	  grew up in the Ukraine and has family there. This war hits close to home for all.
+	  <br/><br/>
+	  Purchasing a print of this NFT will be your badge of support. 100% of the proceeds
+	  go to humanitarian aid for those trying to evacuate including the members of Seker
+	  Factory trapped in this conflict. We all thank you for your support.
+    </p>`,
+		image: seedBanner,
+		subPageImage: seedImage,
+		mint: {
+			address: config.SUPPORT_UKRAINE_CONTRACT_ADDRESS,
+			abi: Ukraine,
+			etherValue: "0.05"
+		},
+		showMoreInfo: true,
+		showDescription: false,
+		links: [],
+		dates: []
+	},
+	{
+		id: "verv",
+		title: "VERV: A Mixed Reality Solstice Experience",
+		description: `<p>
+    Join us for an unforgettable, members-only night of immersive digital magic – with 
+    transformative live performances, tantalizing food and craft cocktails, new interactive
+     digital art, and much more – to conclude our s.0 artist cohort.
+    </p>`,
+		description2: `<p>Guestlist open:<br/> Fri | June 3, 2022</p>`,
+		image: vervBanner,
+		subPageImage: vervImage,
+		location: "Seker Factory 001 (Los Angeles)",
+		dates: [
+			{
+				date_start: "06/21/2022",
+				date_start_time: "19:00:00",
+				date_start_ampm: "PM",
+				date_end: "06/21/2022",
+				date_end_time: "22:00:00",
+				date_end_ampm: "PM",
+				date_format: "MM/DD/YYYY"
+			}
+		],
+		links: [
+			{
+				title: "RSVP",
+				url: "https://www.addevent.com/event/JQ13973574"
+			}
+		],
 		showMoreInfo: true,
 		showDescription: false
 	}
