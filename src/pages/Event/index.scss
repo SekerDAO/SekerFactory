@@ -46,6 +46,15 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+
+    .btn {
+      margin-bottom: 10px;
+    }
+  }
+
   &__mint {
     display: flex;
     flex-direction: column;
@@ -57,6 +66,18 @@
 
     input {
       margin: 10px 0;
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .event-page {
+    padding: 44px 36px;
+  }
+
+  .event {
+    &__mint {
+      padding-left: 0;
     }
   }
 }

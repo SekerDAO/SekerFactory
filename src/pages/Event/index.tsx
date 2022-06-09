@@ -95,6 +95,13 @@ const Event: FunctionComponent = () => {
 										{event.description2 && (
 											<div dangerouslySetInnerHTML={{__html: event.description2}} />
 										)}
+										<div className="event__buttons">
+											{event.links.map((link, index) => (
+												<a key={index} href={link.url} target="_blank" rel="noreferrer noopener">
+													<Button>{link.title}</Button>
+												</a>
+											))}
+										</div>
 									</div>
 								</Grid>
 
