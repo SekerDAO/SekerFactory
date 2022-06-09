@@ -100,7 +100,8 @@ export const useWeb3 = (): IWeb3ContextContainer => {
 			)
 			return false
 		} else {
-			await saleContract.mint(amount, {value})
+			const tx = await saleContract.mint(amount, {value})
+			await tx.wait()
 			return true
 		}
 	}

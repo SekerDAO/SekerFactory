@@ -8,6 +8,7 @@ import Header from "./components/Header"
 import {useWeb3, Web3Context} from "./context"
 import useMediaQuery from "./hooks/useMediaQuery"
 import "./index.scss"
+import Event from "./pages/Event"
 import HomePage from "./pages/Home"
 
 const App: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
@@ -21,6 +22,7 @@ const App: FunctionComponent<React.PropsWithChildren<unknown>> = () => {
 				<ToastContainer position={isMobile ? "bottom-center" : "bottom-right"} theme="colored" />
 				<Routes>
 					<Route path="/" element={<HomePage />} />
+					<Route path="/event/:id" element={<Event />} />
 				</Routes>
 			</Router>
 		</Web3Context.Provider>

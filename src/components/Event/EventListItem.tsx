@@ -1,4 +1,5 @@
 import {FunctionComponent, PropsWithChildren} from "react"
+import {Link} from "react-router-dom"
 import {EventData} from "../../config/events"
 import {getDateReadable, getTimeReadable} from "../../utils"
 import Button from "../Button"
@@ -42,9 +43,11 @@ const EventListItem: FunctionComponent<
 						</a>
 					))}
 					{event.showMoreInfo && (
-						<Button color="white" variant="secondary">
-							More Info
-						</Button>
+						<Link to={`/event/${event.id}`}>
+							<Button color="white" variant="secondary">
+								More Info
+							</Button>
+						</Link>
 					)}
 				</div>
 				{children}

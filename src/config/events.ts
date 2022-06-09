@@ -35,6 +35,7 @@ export type EventData = {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		abi: any
 		etherValue: string
+		buttonText?: string
 	}
 	showMoreInfo: boolean
 	showDescription: boolean
@@ -46,15 +47,51 @@ export type EventData = {
 
 export const events: EventData[] = [
 	{
+		id: "verv",
+		title: "VERV: A Mixed Reality Solstice Experience",
+		description: `<p>
+    Join us for an unforgettable, members-only night of immersive digital magic – with 
+    transformative live performances, tantalizing food and craft cocktails, new interactive
+     digital art, and much more – to conclude our s.0 artist cohort.
+    </p>`,
+		description2: `<p>Guestlist open:<br/> Fri | June 3, 2022</p>`,
+		image: vervBanner,
+		subPageImage: vervImage,
+		location: "Seker Factory 001 (Los Angeles)",
+		dates: [
+			{
+				date_start: "06/21/2022",
+				date_start_time: "19:00:00",
+				date_start_ampm: "PM",
+				date_end: "06/21/2022",
+				date_end_time: "22:00:00",
+				date_end_ampm: "PM",
+				date_format: "MM/DD/YYYY"
+			}
+		],
+		links: [
+			{
+				title: "RSVP",
+				url: "https://www.addevent.com/event/JQ13973574"
+			}
+		],
+		showMoreInfo: true,
+		showDescription: false
+	},
+	{
 		id: "verv_solstice_series",
 		title: "The VERV Solstice Series",
 		description: `<p>Unable to attend <b>VERV: A Mixed Reality Solstice Experience?</b><br/> 
     You can still experience the magic of Seker Factory 001's summer solstice creations through 
     our Solstice Series.</p>`,
-		description2: `<p><b>Open to public.</b> Event is 18+. RSVP is required. Tickets go on sale: 
+		description2: `<p><b>Open to public.</b><br/>
+    Event is 18+.<br/>
+    RSVP is required.<br/><br/>
+    Tickets go on sale:<br/>
     Fri | June 3, 2022</p>`,
 		image: vervSeriesBanner,
 		subPageImage: vervSeriesImage,
+		location: "836 S Los Angeles Street Los Angeles, CA 90014",
 		dates: [
 			{
 				date_start: "06/18/2022",
@@ -171,44 +208,13 @@ export const events: EventData[] = [
 		subPageImage: seedImage,
 		mint: {
 			address: config.SUPPORT_UKRAINE_CONTRACT_ADDRESS,
-			abi: Ukraine,
-			etherValue: "0.05"
+			abi: Ukraine.abi,
+			etherValue: "0.05",
+			buttonText: "Donate"
 		},
 		showMoreInfo: true,
 		showDescription: false,
 		links: [],
 		dates: []
-	},
-	{
-		id: "verv",
-		title: "VERV: A Mixed Reality Solstice Experience",
-		description: `<p>
-    Join us for an unforgettable, members-only night of immersive digital magic – with 
-    transformative live performances, tantalizing food and craft cocktails, new interactive
-     digital art, and much more – to conclude our s.0 artist cohort.
-    </p>`,
-		description2: `<p>Guestlist open:<br/> Fri | June 3, 2022</p>`,
-		image: vervBanner,
-		subPageImage: vervImage,
-		location: "Seker Factory 001 (Los Angeles)",
-		dates: [
-			{
-				date_start: "06/21/2022",
-				date_start_time: "19:00:00",
-				date_start_ampm: "PM",
-				date_end: "06/21/2022",
-				date_end_time: "22:00:00",
-				date_end_ampm: "PM",
-				date_format: "MM/DD/YYYY"
-			}
-		],
-		links: [
-			{
-				title: "RSVP",
-				url: "https://www.addevent.com/event/JQ13973574"
-			}
-		],
-		showMoreInfo: true,
-		showDescription: false
 	}
 ]

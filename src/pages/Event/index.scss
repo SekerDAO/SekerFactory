@@ -1,0 +1,62 @@
+@import "../../assets/styles/colors.scss";
+
+.event-page {
+  margin-bottom: 48px;
+  min-height: calc(100vh - 219px);
+}
+
+.event {
+  &__link {
+    margin-top: 86px;
+
+    a {
+      color: $purple;
+    }
+  }
+
+  &__title {
+    margin: 48px 0;
+
+    h3 {
+      color: $light-green;
+    }
+  }
+
+  &__content {
+    p {
+      color: $dark-grey;
+    }
+  }
+
+  &__image {
+    flex: 1;
+    min-height: 450px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+
+    > div,
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__mint {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+
+    h3 {
+      color: $dark-grey;
+    }
+
+    input {
+      margin: 10px 0;
+    }
+  }
+}
