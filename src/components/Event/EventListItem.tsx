@@ -35,6 +35,7 @@ const EventListItem: FunctionComponent<
 						View Schedule
 					</Button>
 				)}
+				{event.homePageInfo && <p>{event.homePageInfo}</p>}
 				{event.showDescription && <p dangerouslySetInnerHTML={{__html: event.description}} />}
 				<div className="event-list-item__buttons">
 					{event.links.map((link, index) => (

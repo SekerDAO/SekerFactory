@@ -24,6 +24,7 @@ export type EventDate = {
 export type EventData = {
 	id: string
 	title: string
+	homePageInfo?: string
 	description: string
 	description2?: string
 	image: string
@@ -170,6 +171,7 @@ export const events: EventData[] = [
     you party!</b><br/><br/>
     For more information on the next SekerClub event, follow us on Instagram and 
     Twitter or join our Discord! Events are 21+. RSVP is required.</p>`,
+		homePageInfo: "Check back for guestlist opening.",
 		image: sekerClubSaturdayBanner,
 		subPageImage: sekerClubSaturdayImage,
 		dates: [
