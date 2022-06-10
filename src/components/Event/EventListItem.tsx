@@ -14,10 +14,10 @@ const EventListItem: FunctionComponent<
 		className?: string
 	}>
 > = ({event, showSchedule, onShowSchedule, className, children}) => (
-	<Grid container className="event-list-item__outer-container">
-		<section className={`event-list-item ${className ?? ""}`}>
+	<section className={`event-list-item ${className ?? ""}`}>
+		<div className="image" style={{backgroundImage: `url("${event.image}")`}} />
+		<Grid container className="event-list-item__outer-container">
 			<div className="event-list-item__content">
-				<div className="image" style={{backgroundImage: `url("${event.image}")`}} />
 				{event.dates.map((date, index) => (
 					<p className="event-list-item__content-date" key={index}>
 						{getDateReadable(date)} {date.date_start_time && date.date_end_time && "|"}{" "}
@@ -53,8 +53,8 @@ const EventListItem: FunctionComponent<
 				</div>
 				{children}
 			</div>
-		</section>
-	</Grid>
+		</Grid>
+	</section>
 )
 
 export default EventListItem

@@ -83,6 +83,14 @@
   }
 }
 
+@media (max-width: 1506px) {
+  .event-list-item {
+    &__content {
+      padding-left: 72px;
+    }
+  }
+}
+
 @media (max-width: 1040px) {
   .event-list-item {
     &__content {
