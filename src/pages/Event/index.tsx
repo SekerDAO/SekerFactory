@@ -14,7 +14,7 @@ const Event: FunctionComponent = () => {
 	const {id} = useParams()
 	const event = events.find(ev => ev.id === id)
 
-	const {ethBalance, walletConnected, purchase} = useContext(Web3Context)
+	const {walletConnected, purchase, signIn} = useContext(Web3Context)
 	const [mintValue, setMintValue] = useState("1")
 	const [loading, setLoading] = useState(false)
 
@@ -118,22 +118,13 @@ const Event: FunctionComponent = () => {
 													setMintValue(e.currentTarget.value)
 												}}
 											/>
-											<Button
-												onClick={onPurchase}
-												disabled={
-													(walletConnected &&
-														ethBalance < Number(mintValue) * Number(event.mint.etherValue)) ||
-													loading
-												}
-											>
-												{event.mint.buttonText ?? "Mint"}
+											<Button onClick={walletConnected ? onPurchase : signIn} disabled={loading}>
+												{walletConnected
+													? loading
+														? "Processing..."
+														: event.mint.buttonText ?? "Mint"
+													: "Connect wallet"}
 											</Button>
-											{walletConnected &&
-												ethBalance < Number(mintValue) * Number(event.mint.etherValue) && (
-													<p>
-														{`You don't have enough ETH in your wallet. Price per item is ${event.mint.etherValue} ETH`}
-													</p>
-												)}
 										</div>
 									</Grid>
 								)}

@@ -18,17 +18,17 @@ const SuccessToast: FunctionComponent<{message: string}> = ({message}) => (
 )
 
 export const toastError = (message: string): void => {
-	toast.error(<ErrorToast message={message} />, {hideProgressBar: true})
+	toast.error(<ErrorToast message={message} />, {hideProgressBar: true, position: "top-right"})
 }
 
 export const toastWarning = (message: string): void => {
-	toast.warning(<WarningToast message={message} />, {hideProgressBar: true})
+	toast.warning(<WarningToast message={message} />, {hideProgressBar: true, position: "top-right"})
 }
 
 export const toastSuccess = (message: string): void => {
-	toast.success(<SuccessToast message={message} />, {hideProgressBar: true})
+	toast.success(<SuccessToast message={message} />, {hideProgressBar: true, position: "top-right"})
 }
 
 export const toastInfo = (message: string): void => {
-	toast.info(<InfoToast message={message} />, {hideProgressBar: true})
+	toast.info(<InfoToast message={message} />, {hideProgressBar: true, position: "top-right"})
 }
