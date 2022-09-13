@@ -17,6 +17,8 @@ const About: FunctionComponent = () => (
 					</Grid>
 					<Grid size={4} xs={12} sm={12} lg={12} className="about__subheader">
 						<h3>
+							A DAO for creators.
+							<br />
 							Come for the vibes.
 							<br />
 							Stay for the revolution.
@@ -31,21 +33,22 @@ const About: FunctionComponent = () => (
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
-								Are you a digital artist looking for a gallery where you can truly stretch your
-								creative chops, co-own, and help build from the ground-up?
+								Are you a digital artist looking for a gallery where a DAO is the curator,
+								empowering you as the value creator and not a value extractor?
 							</li>
 							<li>
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
-								Are you a futurist wanting to learn, explore, and collaborate on leading-edge
-								technology in the new digital age?
+								Are you a musician looking to be discovered and you want to own your music career
+								without the record label cartels?
 							</li>
 							<li>
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
-								Are you a patron of digital art ... a supporter of the creative commons?{" "}
+								Are you a patron of digital art and music ... a supporter of the creative commons
+								that wants to be involved in your favorite artists careers?{" "}
 								{`Do you have some ideas you'd like to see come to life?`}
 							</li>
 						</ul>
@@ -54,10 +57,10 @@ const About: FunctionComponent = () => (
 						<p className="bold">
 							In the cradle of civilization Seker was known as the patron of builders, craftsmen,
 							and sacred objects. It stood at the crossroads of the physical world and the spirit
-							world. Today, Seker Factory is a bridge between our tangible reality and the metaverse
-							where creators gather to connect, learn, and build together. Through an autonomous
-							community utilizing blockchain tech, members collectively own a commons to shape
-							seasonal physical / digital experiences that can only happen at Seker Factory.
+							world. Today, Seker Factory DAO is a bridge between our tangible reality, web3, and
+							the metaverse where creators gather to connect, learn, and build together. Through an
+							autonomous community utilizing blockchain tech, members collectively own a commons to
+							shape seasonal physical / digital experiences that can only happen at Seker Factory.
 						</p>
 						<a
 							className="learn-more-link"
