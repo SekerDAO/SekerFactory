@@ -1,14 +1,10 @@
 import Ukraine from "../abi/Ukraine.json"
 import s1CohortBanner from "../assets/images/Event_S1ArtistCohort_Application.png"
 import sekerClubSaturdayBanner from "../assets/images/Event_SekerClub.png"
-import vervSeriesBanner from "../assets/images/Event_VERVSeries_v2.png"
-import vervBanner from "../assets/images/Event_VERV_v2.png"
 import s1CohortImage from "../assets/images/season1_cohortapplications.png"
 import seedBanner from "../assets/images/seeds.png"
 import seedImage from "../assets/images/seedsofukrainenft.png"
 import sekerClubSaturdayImage from "../assets/images/sekerclubsaturdays.png"
-import vervImage from "../assets/images/verv.png"
-import vervSeriesImage from "../assets/images/verv_solstice.png"
 import config from "./eth"
 
 export type EventDate = {
@@ -47,83 +43,6 @@ export type EventData = {
 }
 
 export const events: EventData[] = [
-	{
-		id: "verv",
-		title: "VERV: A Mixed Reality Solstice Experience",
-		description: `<p>
-    Join us for an unforgettable, members-only night of immersive digital magic – with 
-    transformative live performances, tantalizing food and craft cocktails, new interactive
-     digital art, and much more – to conclude our s.0 artist cohort.
-    </p>`,
-		description2: `<p>Seker Factory membership cards available for purchase on homepage.</p>`,
-		image: vervBanner,
-		subPageImage: vervImage,
-		location: "Seker Factory 001 (Los Angeles)",
-		dates: [
-			{
-				date_start: "06/21/2022",
-				date_start_time: "19:00:00",
-				date_start_ampm: "PM",
-				date_end: "06/21/2022",
-				date_end_time: "22:00:00",
-				date_end_ampm: "PM",
-				date_format: "MM/DD/YYYY"
-			}
-		],
-		links: [
-			{
-				title: "RSVP",
-				url: "https://www.addevent.com/event/JQ13973574"
-			}
-		],
-		showMoreInfo: true,
-		showDescription: false
-	},
-	{
-		id: "verv_solstice_series",
-		title: "The VERV Solstice Series",
-		description: `<p>Unable to attend <b>VERV: A Mixed Reality Solstice Experience?</b><br/> 
-    You can still experience the magic of Seker Factory 001's summer solstice creations through 
-    our Solstice Series.</p>`,
-		description2: `<p><b>Open to public.</b><br/>
-    Event is 18+.<br/>
-    RSVP is required.<br/><br/>`,
-		image: vervSeriesBanner,
-		subPageImage: vervSeriesImage,
-		location: "836 S Los Angeles Street Los Angeles, CA 90014",
-		dates: [
-			{
-				date_start: "06/18/2022",
-				date_start_time: "20:00:00",
-				date_start_ampm: "PM",
-				date_end: "06/18/2022",
-				date_end_time: "12:00:00",
-				date_end_ampm: "AM",
-				date_format: "MM/DD/YYYY"
-			},
-			{
-				date_start: "06/25/2022",
-				date_start_time: "20:00:00",
-				date_start_ampm: "PM",
-				date_end: "06/25/2022",
-				date_end_time: "12:00:00",
-				date_end_ampm: "AM",
-				date_format: "MM/DD/YYYY"
-			}
-		],
-		links: [
-			{
-				title: "June 18th Tickets",
-				url: "https://www.eventbrite.com/e/verv-solstice-series-opening-saturday-tickets-360588659387"
-			},
-			{
-				title: "June 25th Tickets",
-				url: "https://www.eventbrite.com/e/verv-solstice-series-closing-saturday-tickets-360968224677"
-			}
-		],
-		showDescription: false,
-		showMoreInfo: true
-	},
 	{
 		id: "s1_cohort",
 		title: "Now Accepting s.1 Cohort Applications",
