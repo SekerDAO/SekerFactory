@@ -40,8 +40,8 @@ const About: FunctionComponent = () => (
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
-								Are you a musician looking to be discovered and you want to own your music career
-								without the record label cartels?
+								Are you a musician looking to be discovered and you want to own and monetize your
+								music career without record labels?
 							</li>
 							<li>
 								<div className="about__col-perk-icon">
