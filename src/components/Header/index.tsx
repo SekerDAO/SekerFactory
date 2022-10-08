@@ -1,5 +1,5 @@
 import {useContext, FunctionComponent, PropsWithChildren} from "react"
-import {useNavigate, Link} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import logo from "../../assets/images/logo.svg"
 import Button from "../../components/Button"
 import {Web3Context} from "../../context"
@@ -35,18 +35,7 @@ const Header: FunctionComponent<PropsWithChildren<unknown>> = () => {
 					{isMobile && connectButton}
 				</div>
 				<nav className="header__nav">
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="#">Apply</Link>
-						</li>
-						<li className="disabled">
-							<a>Artists</a>
-						</li>
-						{!isMobile && <li>{connectButton}</li>}
-					</ul>
+					<ul>{!isMobile && <li>{connectButton}</li>}</ul>
 				</nav>
 			</Grid>
 		</header>
