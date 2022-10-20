@@ -41,14 +41,14 @@ const About: FunctionComponent = () => (
 									<StarIcon width="20px" height="20px" />
 								</div>
 								Are you a musician looking to be discovered and you want to own and monetize your
-								music career without record labels?
+								music career?
 							</li>
 							<li>
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
 								Are you a patron of digital art and music ... a supporter of the creative commons
-								that wants to be involved in your favorite artists careers?{" "}
+								that wants to be involved in your favorite artists careers from the beginning?{" "}
 								{`Do you have some ideas you'd like to see come to life?`}
 							</li>
 						</ul>
