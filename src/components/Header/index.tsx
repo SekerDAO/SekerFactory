@@ -1,5 +1,5 @@
 import {useContext, FunctionComponent, PropsWithChildren} from "react"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import logo from "../../assets/images/logo.svg"
 import Button from "../../components/Button"
 import {Web3Context} from "../../context"
@@ -35,7 +35,17 @@ const Header: FunctionComponent<PropsWithChildren<unknown>> = () => {
 					{isMobile && connectButton}
 				</div>
 				<nav className="header__nav">
-					<ul>{!isMobile && <li>{connectButton}</li>}</ul>
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<a href="https://seker-factory-dao.gitbook.io/" target="_blank" rel="noreferrer">
+								Litepaper
+							</a>
+						</li>
+						{!isMobile && <li>{connectButton}</li>}
+					</ul>
 				</nav>
 			</Grid>
 		</header>
