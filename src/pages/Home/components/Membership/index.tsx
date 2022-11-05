@@ -56,14 +56,14 @@ const Membership: FunctionComponent = () => {
 						<Grid size={12} xs={12} sm={12} lg={12} className="membership__description">
 							<p className="membership__description-content">
 								<span className="karla-bold">Introducing the Seker Factory Clearance Cards.</span>
-								These limited-edition NFTs represent our way of opening our factory up to patrons of
-								the Seker intergalactic metaverse community. We are calling on you to help crowd
-								source the wisdom of curation. We believe a community of art appreciators should be
-								the driving force of defining what is authentic digital art. We have written custom
-								smart contract code that lets you level up these cards over time as you participate
-								in events, add valuable contributions to the community, or simply hang out and enjoy
-								the productions. The higher your level, the more representation, merited governance
-								rights on some proposals, and rewards you have in your community.
+								&nbsp; These limited-edition NFTs represent our way of opening our factory up to
+								patrons and contributors. We are calling on you to help crowd source the wisdom of
+								curation. We believe a community of art appreciators should be the driving force of
+								defining what is authentic digital art. We have written custom smart contract code
+								that lets you level up these cards over time as you participate in events, add
+								valuable contributions to the community, or simply hang out and enjoy the
+								productions and earn. The higher your level, the more representation, merited
+								governance rights on some proposals, and rewards you have in your community.
 							</p>
 						</Grid>
 						<Grid row className="membership__items-container">
@@ -78,7 +78,6 @@ const Membership: FunctionComponent = () => {
 										onClick={() => handleOpenFullVideo(clearanceCardOneSrc)}
 									/>
 									<h3>Seker Factory 001 Clearance Cards</h3>
-									<p className="membership__item-address">Downtown Los Angeles</p>
 									<p className="membership__item-minted">
 										{clearanceCardTotal} minted / 3000 total
 									</p>
@@ -156,7 +155,6 @@ const Membership: FunctionComponent = () => {
 										onClick={() => handleOpenFullVideo(topClearanceCardSrc)}
 									/>
 									<h3>Seker Factory Top Clearance Cards</h3>
-									<p className="membership__item-address">All Locations</p>
 									<p className="membership__item-minted">
 										{topClearanceCardTotal} minted / 1500 total
 									</p>
