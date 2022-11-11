@@ -106,11 +106,9 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Factory 001 Governance Rights
+											Governance Rights
 											<br />
-											<span className="italic">
-												(including curation voting for IRL + metaverse)
-											</span>
+											<span className="italic">(allows one vote)</span>
 										</p>
 									</li>
 									<li>
@@ -118,22 +116,36 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Early access to NFTs
+											Early Access to NFT Drops
 											<br />
-											<span className="italic">(by Factory 001 artists)</span>
+											<span className="italic">(by Factory artists)</span>
 										</p>
 									</li>
 									<li>
 										<div className="membership__item-icon-container">
 											<DoneCircle width="20px" height="20px" />
 										</div>
-										<p>Access to All Factory 001 IRL + Metaverse Events</p>
+										<p>Bypass Guest Lists for All Events</p>
 									</li>
 									<li>
 										<div className="membership__item-icon-container">
 											<DoneCircle width="20px" height="20px" />
 										</div>
-										<p>Level starts at 0</p>
+										<p>
+											Level Starts at 0
+											<br />
+											<span className="italic">(Proof of Humanity can level one card to vote)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Earn SEKER ERC20 Tokens
+											<br />
+											<span className="italic">(based on contribution)</span>
+										</p>
 									</li>
 									<a
 										href="https://sekerfactory.medium.com/power-over-9000-level-your-seker-factory-dao-nft-889bd6cd5577"
@@ -173,7 +185,7 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Access to All Factory Locations
+											Access to all Factory locations
 											<br />
 											<span className="italic">(special reservations available)</span>
 										</p>
@@ -183,10 +195,40 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Governance Rights for All Factory Locations
+											Governance rights
+											<br />
+											<span className="italic">(allows one vote)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Early access to NFT Drops
+											<br />
+											<span className="italic">(by Factory artists)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Bypass Guest Lists for All Events
+											<br />
+											<span className="italic">(including exclusive VIP Galas)</span>
+										</p>
+									</li>
+									<li>
+										<div className="membership__item-icon-container">
+											<DoneCircle width="20px" height="20px" />
+										</div>
+										<p>
+											Level Boost Starting at 2
 											<br />
 											<span className="italic">
-												(including curation voting for IRL + metaverse)
+												(early patron / supporter perk with Proof of Humanity)
 											</span>
 										</p>
 									</li>
@@ -195,31 +237,9 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Early access to NFTs
+											Earn SEKER ERC20 Tokens
 											<br />
-											<span className="italic">(by artists from all Factory locations)</span>
-										</p>
-									</li>
-									<li>
-										<div className="membership__item-icon-container">
-											<DoneCircle width="20px" height="20px" />
-										</div>
-										<p>
-											Access to all IRL + Metaverse Events
-											<br />
-											<span className="italic">
-												(all Factory locations including exclusive VIP Cyber Galas)
-											</span>
-										</p>
-									</li>
-									<li>
-										<div className="membership__item-icon-container">
-											<DoneCircle width="20px" height="20px" />
-										</div>
-										<p>
-											Level Boost Starting at 1
-											<br />
-											<span className="italic">(early patron / supporter perk)</span>
+											<span className="italic">(based on contribution)</span>
 										</p>
 									</li>
 									<a
