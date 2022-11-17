@@ -34,21 +34,28 @@ const About: FunctionComponent = () => (
 									<StarIcon width="20px" height="20px" />
 								</div>
 								Are you a digital artist looking for a gallery where a DAO is the curator,
-								empowering you as the value creator and not a value extractor?
+								empowering you as the value creator?
 							</li>
 							<li>
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
 								Are you a musician looking to be discovered and you want to own and monetize your
-								music career?
+								music career with Web3?
 							</li>
 							<li>
 								<div className="about__col-perk-icon">
 									<StarIcon width="20px" height="20px" />
 								</div>
-								Are you a patron of digital art and music ... a supporter of the creative commons
-								that wants to be involved in your favorite artists careers from the beginning?{" "}
+								Are you a builder that wants to work with other skilled builders in the
+								entertainment industry?
+							</li>
+							<li>
+								<div className="about__col-perk-icon">
+									<StarIcon width="20px" height="20px" />
+								</div>
+								Are you a patron of the arts ... a supporter of the creative commons that wants to
+								be involved in your favorite artists careers from the beginning?{" "}
 								{`Do you have some ideas you'd like to see come to life?`}
 							</li>
 						</ul>
@@ -57,10 +64,10 @@ const About: FunctionComponent = () => (
 						<p className="bold">
 							In the cradle of civilization Seker was known as the patron of builders, craftsmen,
 							and sacred objects. It stood at the crossroads of the physical world and the spirit
-							world. Today, Seker Factory DAO is a bridge between our tangible reality, web3, and
+							world. Today, Seker Factory DAO is a bridge between our tangible reality, Web3, and
 							the metaverse where creators gather to connect, learn, and build together. Through an
 							autonomous community utilizing blockchain tech, members collectively own a commons to
-							shape seasonal physical / digital experiences that can only happen at Seker Factory.
+							shape culture in the arts.
 						</p>
 						<a
 							className="learn-more-link"

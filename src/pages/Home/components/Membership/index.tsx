@@ -56,14 +56,16 @@ const Membership: FunctionComponent = () => {
 						<Grid size={12} xs={12} sm={12} lg={12} className="membership__description">
 							<p className="membership__description-content">
 								<span className="karla-bold">Introducing the Seker Factory Clearance Cards.</span>
-								&nbsp; These limited-edition NFTs represent our way of opening our factory up to
-								patrons and contributors. We are calling on you to help crowd source the wisdom of
-								curation. We believe a community of art appreciators should be the driving force of
-								defining what is authentic digital art. We have written custom smart contract code
-								that lets you level up these cards over time as you participate in events, add
-								valuable contributions to the community, or simply hang out and enjoy the
-								productions and earn. The higher your level, the more representation, merited
-								governance rights on some proposals, and rewards you have in your community.
+								&nbsp; These limited-edition Soulbound NFTs represent our way of opening our factory
+								up to patrons and contributors. We are calling on you to help crowd source the
+								wisdom of curation. We believe a community of art appreciators should be the driving
+								force of defining what is authentic digital art. We have written custom smart
+								contract code that lets you level up these cards over time as you participate in
+								events, add valuable contributions to the community, or simply hang out and enjoy
+								the productions and earn. The higher your level, the more representation, merited
+								governance rights on some proposals, and rewards you have in your community. These
+								soulbound tokens are transferable, however the level will decrease to 0 and earned
+								reputation and voting rights will automatically be removed.
 							</p>
 						</Grid>
 						<Grid row className="membership__items-container">
@@ -96,9 +98,9 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Access to All Factory Locations
+											Access to the DAO
 											<br />
-											<span className="italic">(first come, first serve)</span>
+											<span className="italic">(all necessary DAO channels)</span>
 										</p>
 									</li>
 									<li>
@@ -142,9 +144,9 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Earn SEKER ERC20 Tokens
+											Mine SEKER ERC20 Tokens
 											<br />
-											<span className="italic">(based on contribution)</span>
+											<span className="italic">(earn based on contribution)</span>
 										</p>
 									</li>
 									<a
@@ -185,9 +187,9 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Access to all Factory locations
+											VIP Access to the DAO
 											<br />
-											<span className="italic">(special reservations available)</span>
+											<span className="italic">(private channels)</span>
 										</p>
 									</li>
 									<li>
@@ -205,7 +207,7 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Early access to NFT Drops
+											Early Access to NFT Drops
 											<br />
 											<span className="italic">(by Factory artists)</span>
 										</p>
@@ -237,9 +239,9 @@ const Membership: FunctionComponent = () => {
 											<DoneCircle width="20px" height="20px" />
 										</div>
 										<p>
-											Earn SEKER ERC20 Tokens
+											Mine SEKER ERC20 Tokens
 											<br />
-											<span className="italic">(based on contribution)</span>
+											<span className="italic">(earn based on contribution)</span>
 										</p>
 									</li>
 									<a
