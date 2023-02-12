@@ -63,11 +63,10 @@ const About: FunctionComponent = () => (
 					<Grid size={4} xs={12} sm={12} lg={12} className="about__col">
 						<p className="bold">
 							In the cradle of civilization Seker was known as the patron of builders, craftsmen,
-							and sacred objects. It stood at the crossroads of the physical world and the spirit
-							world. Today, Seker Factory DAO is a bridge between our tangible reality, Web3, and
-							the metaverse where creators gather to connect, learn, and build together. Through an
-							autonomous community utilizing blockchain tech, members collectively own a commons to
-							shape culture in the arts.
+							and sacred objects -- standing at the crossroads of the physical world and the spirit
+							world. Today, Seker Factory DAO gathers creators to connect, learn, and build together
+							in order to disrupt culture through supporting public goods and decentralized
+							curation.
 						</p>
 						<a
 							className="learn-more-link"
